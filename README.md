@@ -1,5 +1,5 @@
 # React + Express No-Fluff Boilerplate
-* LOOK AT ME I DID A CHANGE *
+
 
 A boilerplate project for anyone interested in making a project that uses React and Express.
 
