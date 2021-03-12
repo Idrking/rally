@@ -1,9 +1,7 @@
-const express = require("express");
-const router = express.Router();
-const userQueries = require("../db/queries/users/userQueries");
-
-//constants
-const deliverError = errMessage => `500: Internal Server Error. \n Error: ${errMessage}`
+const express           = require("express");
+const router            = express.Router();
+const userQueries       = require("../db/queries/users/userQueries");
+const { deliverError }  = require("./helpers/routeHelpers")
 
 
 
@@ -23,8 +21,8 @@ module.exports = (db) => {
   // (checks approved_users table)
   router.get("/:id/organizations", (req, res) => {
     db.query(userQueries.joinedOrganizations, [req.params.id])
-    .then((orgs) => res.json(orgs.rows))
-    .catch((err) => res.status(500).send(deliverError(err.message)));
+    .then(orgs => res.json(orgs.rows))
+    .catch(err => res.status(500).send(deliverError(err.message)));
   });
   
   

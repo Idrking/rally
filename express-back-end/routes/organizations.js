@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const orgQueries = require("../db/queries/organizations/organizationQueries");
+const { deliverError }  = require("./helpers/routeHelpers");
 
 module.exports = (db) => {
 
@@ -7,7 +9,8 @@ module.exports = (db) => {
   
   // Gets all owners of organization with :id
   router.get("/:id/owners", (req, res) => {
-    
+    db.query(orgQueries.allOwners, [req.params.id])
+    .then(owners => res.json(owners.rows))
   });
   
   // Gets the config file for the organizations application
