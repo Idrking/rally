@@ -31,6 +31,5 @@ put /approveduser/:orgid/:userid - adds an approved user to the database
 
 put /owners/:orgid/:userid - adds a user to an organizations owners
 
-put /pendingapplications/:orgid/:userid - adds a users application to table
 
 put /signup/:taskid/:userid - creates a signup for a task with a certain user
