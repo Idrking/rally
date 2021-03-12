@@ -5,6 +5,7 @@ CREATE TABLE organizations (
   description VARCHAR(255) NOT NULL,
   primary_email VARCHAR(255) NOT NULL,
   primary_phone VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL,
   image_url VARCHAR(255) NOT NULL,
   website VARCHAR(255) NOT NULL,
   application_config JSON
