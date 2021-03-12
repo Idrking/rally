@@ -1,4 +1,4 @@
-const queries = {
+module.exports = {
   
   //01_all.sql
   allUsers:`
@@ -44,5 +44,3 @@ const queries = {
   WHERE id = $1
   `
 }
-
-module.exports = queries;

@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const orgQueries = require("../db/queries/organizations/organizationQueries");
+const express           = require("express");
+const router            = express.Router();
+const orgQueries        = require("../db/queries/organizations/organizationQueries");
 const { deliverError }  = require("./helpers/routeHelpers");
 
 module.exports = (db) => {
