@@ -1,15 +1,16 @@
 require('dotenv').config();
-const Express = require('express');
-const App = Express();
-const bodyParser = require('body-parser');
-const PORT = 8080;
+const Express       = require('express');
+const App           = Express();
+const bodyParser    = require('body-parser');
+const PORT          = 8080;
 const cookieSession = require('cookie-session');
-const morgan = require('morgan');
+const morgan        = require('morgan');
 
-//Routes
-const usersRoutes = require("./routes/users");
-const orgRoutes = require("./routes/organizations");
-
+//Importing Routes
+const usersRoutes   = require("./routes/users");
+const orgRoutes     = require("./routes/organizations");
+const taskRoutes    = require("./routes/tasks");
+const appUserRoutes = require("./routes/approvedUser");
 
 // Express Configuration
 App.use(bodyParser.urlencoded({ extended: false }));
@@ -28,8 +29,10 @@ const dbParams = require('./lib/db.js')
 const db = new Pool(dbParams)
 db.connect();
 
-App.use("/api/users", usersRoutes(db))
-App.use("/api/organizations", orgRoutes(db))
+// Mounting route handlers
+App.use("/api/users", usersRoutes(db));
+App.use("/api/organizations", orgRoutes(db));
+App.use("/api/tasks", taskRoutes(db));
 
 
 
@@ -38,6 +41,10 @@ App.use("/api/organizations", orgRoutes(db))
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
+
+App.get('*', (req, res) => {
+  res.status(404).json({error: "Resource not found"})
+});
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

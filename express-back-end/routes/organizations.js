@@ -5,33 +5,33 @@ module.exports = (db) => {
 
   // GET ROUTES ---------------------------------------------
   
-  // Gets all organizations
-  router.get("/", (req, res) => {
-
-  });
-
   // Gets all owners of organization with :id
   router.get("/:id/owners", (req, res) => {
-
+    
   });
-
+  
   // Gets the config file for the organizations application
   router.get("/:id/application", (req, res) => {
-
+    
   });
-
+  
   // Gets all the tasks issued by an organization
   router.get("/:id/tasks", (req, res) => {
-
+    
   });
-
+  
   // Gets all approved users for an organization
   router.get("/:id/users", (req, res) => {
-
+    
   });
-
+  
   // Gets a specific organization
   router.get("/:id", (req, res) => {
+    
+  });
+  
+  // Gets all organizations
+  router.get("/", (req, res) => {
 
   });
 
