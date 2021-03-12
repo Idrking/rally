@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const userQueries = require("../db/queries/users/userQueries");
+
 
 
 module.exports = (db) => {
@@ -8,8 +10,9 @@ module.exports = (db) => {
   
   
   //returns all organization user with :id owns
-  router.get("/:id/organizations/owns", (req, res) => {
-    
+  router.get("/:id/organizations/owns", async (req, res) => {
+    const data = await db.query(userQueries.ownedOrganizations, [req.params.id])
+    res.json(data.rows)
   });
   
   //returns all organizations user with :id is a part of

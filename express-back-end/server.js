@@ -11,6 +11,8 @@ const usersRoutes   = require("./routes/users");
 const orgRoutes     = require("./routes/organizations");
 const taskRoutes    = require("./routes/tasks");
 const appUserRoutes = require("./routes/approvedUser");
+const ownerRoutes   = require("./routes/owners");
+const signupRoutes  = require("./routes/signups");
 
 // Express Configuration
 App.use(bodyParser.urlencoded({ extended: false }));
@@ -33,14 +35,19 @@ db.connect();
 App.use("/api/users", usersRoutes(db));
 App.use("/api/organizations", orgRoutes(db));
 App.use("/api/tasks", taskRoutes(db));
+App.use("/api/approveduser/", appUserRoutes(db));
+App.use("/api/owners", ownerRoutes(db));
+App.use("/api/signup", signupRoutes(db));
 
-
-
+//testing, if I forget to delete this slap me
+const queries = require("./db/queries/users/userQueries")
 
 // Sample GET route
-App.get('/api/data', (req, res) => res.json({
-  message: "Seems to work!",
-}));
+App.get('/api/data', async (req, res) => {
+  const data = await db.query(queries.allUsers)
+  res.json({message: data.rows[0].first_name})
+
+});
 
 App.get('*', (req, res) => {
   res.status(404).json({error: "Resource not found"})
