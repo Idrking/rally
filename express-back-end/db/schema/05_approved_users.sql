@@ -6,4 +6,5 @@ CREATE TABLE approved_users (
   approved BOOLEAN DEFAULT FALSE,
   application JSON
 );
+
 ALTER TABLE approved_users OWNER TO labber;
