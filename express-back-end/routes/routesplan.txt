@@ -1,0 +1,36 @@
+// users
+
+get /users - gets all users,
+    /users/:id/organizations - gets all organizations a user belongs to
+    /users/:id/organizations/owns - gets all organizations a user owns
+    /users/:id/tasks - gets all tasks a user has signed up for
+    /users/:id - gets a specific user
+put /users - adds a user to the database
+patch /users/:id - changes details on a user
+delete /users/:id - removes a user from the database
+
+get /organizations - gets all organizations
+    /organizations/owners - gets all users that own an organization
+    /organizations/:id - gets a specific organizations
+    /organizations/:id/application - gets the config file for the organization's application
+    /organizations/:id/tasks - gets all tasks for an organization
+    /organizations/:id/users - gets all approved users for an organization
+put /organizations - adds org to database
+patch /organizations/:id - edits details for specific organization
+patch /organizations/:id/application - edits details for organizations application config
+delete /organizations/:id - deletes specific organization
+
+
+get /tasks - gets all tasks
+    /tasks/:id - gets a specific task
+    /tasks/:id/signups - gets all the users signed up for a specific task
+put /tasks - adds a new task
+patch /tasks/:id - edits a specific task
+
+put /approveduser/:orgid/:userid - adds an approved user to the database
+
+put /owners/:orgid/:userid - adds a user to an organizations owners
+
+put /pendingapplications/:orgid/:userid - adds a users application to table
+
+put /signup/:taskid/:userid - creates a signup for a task with a certain user
