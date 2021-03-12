@@ -17,6 +17,7 @@ get /organizations - gets all organizations
     /organizations/:id/users - gets all approved users for an organization
 put /organizations - adds org to database
 patch /organizations/:id - edits details for specific organization
+patch /organizations/:id/application - edits details for organizations application config
 delete /organizations/:id - deletes specific organization
 
 

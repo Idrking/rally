@@ -7,7 +7,8 @@ const cookieSession = require('cookie-session');
 const morgan = require('morgan');
 
 //Routes
-const usersRoutes = require("./routes/users")
+const usersRoutes = require("./routes/users");
+const orgRoutes = require("./routes/organizations");
 
 
 // Express Configuration
@@ -28,6 +29,7 @@ const db = new Pool(dbParams)
 db.connect();
 
 App.use("/api/users", usersRoutes(db))
+App.use("/api/organizations", orgRoutes(db))
 
 
 
