@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -7,4 +6,4 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   profile_image_url VARCHAR(500) NOT NULL
 );
-ALTER TABLE pending_applications OWNER TO labber;
+ALTER TABLE users OWNER TO labber;
