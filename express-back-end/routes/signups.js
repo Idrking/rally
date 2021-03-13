@@ -1,5 +1,7 @@
-const express = require("express");
-const router = express.Router();
+const express           = require("express");
+const router            = express.Router();
+const { deliverError }  = require("./helpers/routeHelpers");
+const signupQueries     = require("../db/queries/signups/signupQueries");
 
 
 module.exports = (db) => {
@@ -11,7 +13,9 @@ module.exports = (db) => {
   
   // Creates a signup for a task with a certain user
   router.put("/:taskid/:userid", (req, res) => {
-
+    db.query(signupQueries.signUp, [req.params.userid, req.params.taskid])
+    .then(() => res.status(201))
+    .catch(err => res.status(500).send(deliverError(err.message)))
   });
 
   // PATCH ROUTES ---------------------------------------------
@@ -20,7 +24,9 @@ module.exports = (db) => {
   
   // Cancels a signup
   router.delete("/:taskid/:userid", (req, res) => {
-
+    db.query(signupQueries.cancel, [req.params.userid, req.params.taskid])
+    .then(() => res.status(200))
+    .catch(err => res.status(500).send(deliverError(err.message)));
   });
 
   return router;

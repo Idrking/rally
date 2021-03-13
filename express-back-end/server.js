@@ -35,7 +35,7 @@ db.connect();
 App.use("/api/users", usersRoutes(db));
 App.use("/api/organizations", orgRoutes(db));
 App.use("/api/tasks", taskRoutes(db));
-App.use("/api/approveduser/", appUserRoutes(db));
+App.use("/api/approveduser", appUserRoutes(db));
 App.use("/api/owners", ownerRoutes(db));
 App.use("/api/signup", signupRoutes(db));
 
