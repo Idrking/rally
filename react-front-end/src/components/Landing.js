@@ -1,8 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/button';
 
-
-
 function Landing() {
   return (
 
