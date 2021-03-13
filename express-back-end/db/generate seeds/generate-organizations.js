@@ -4,10 +4,10 @@ const fs = require('fs');
 const generateUsers = () => {
 
   // TABLE INFO
-  const NAME = "users";
+  const NAME = "organizations";
   const ATTRIBUTES = "(name, description, primary_email, primary_phone, location, image_url, website)";
 
-  let users = "";
+  let organizations = "";
 
   for (let i = 1; i <= 2; i++) {
 
@@ -20,11 +20,12 @@ const generateUsers = () => {
     let website = faker.internet.url();
 
 
-    users += `INSERT INTO ${NAME} ${ATTRIBUTES} VALUES ('${companyName}', '${description}', '${email}', '${phone}', '${city}', '${imageUrl}', '${website}');`;
-    users += "\n";
+    organizations += `INSERT INTO ${NAME} ${ATTRIBUTES} VALUES ('${companyName}', '${description}', '${email}', '${phone}', '${city}', '${imageUrl}', '${website}');`;
+    organizations += "\n";
   }
+  
 
-  return users;
+  return organizations;
 };
 
 fs.writeFileSync('../seeds/03_organizations.sql', generateUsers());
