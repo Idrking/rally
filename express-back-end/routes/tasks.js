@@ -2,7 +2,8 @@ const express           = require("express");
 const router            = express.Router();
 const { deliverError }  = require("./helpers/routeHelpers");
 const taskQueries       = require("../db/queries/tasks/taskQueries");
-const { response } = require("express");
+const { sendTaskNotification } = require("../notifications/sms/send-sms");
+const { formatMessage } = require("../notifications/sms/formatMessage");
 
 
 module.exports = (db) => {
@@ -32,6 +33,11 @@ module.exports = (db) => {
 
   // Gets all tasks
   router.get("/", (req, res) => {
+    const details = {name: "Gary", start_date: Date.now(), id: 1, organization: "Larry's Place"}
+    const message = formatMessage(details);
+
+    sendTaskNotification(message);
+    
     db.query(taskQueries.allTasks)
     .then(tasks => res.json(tasks.rows))
     .catch(err => res.status(500).send(deliverError(err.message)));
@@ -40,6 +46,7 @@ module.exports = (db) => {
   // PUT ROUTES ---------------------------------------------
 
   // Adds a new task
+  // (When we're constructing the form, make sure we send along the name of the organization as well)
   router.put("/", (req, res) => {
     const queryParams = [
       req.body.name,
@@ -51,10 +58,18 @@ module.exports = (db) => {
       req.body.organization_id,
       req.body.location
     ];
+
+    const messageDetails = {
+      name: req.body.name,
+      startDate: req.body.start_date,
+      id: req.body.id,
+      organization: req.body.organization
+    }
     
     db.query(taskQueries.newTask, queryParams)
     .then(() => {
-      // send a text message here
+      const message = formatMessage(messageDetails)
+      sendTaskNotification(message);
       res.status(201)
     })
     .catch(err => res.status(500).send(deliverError(err.message)));
