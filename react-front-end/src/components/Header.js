@@ -6,7 +6,7 @@ function Header() {
   return <AppBar position="static">
     <Toolbar>
       <Typography>
-        This is our header
+        Rally header
       </Typography>
     </Toolbar>
   </AppBar>

@@ -1,17 +1,17 @@
-import React from 'react';
-import { Grid } from '@material-ui/core'
+import React from "react";
+import { Card, CardActionArea, CardContent, Typography } from "@material-ui/core";
 
 function Tasks() {
   return (
-    <Grid container direction="column">
-      <Grid item>
-        Heading
-      </Grid>
-      <Grid item>
-        Heading
-      </Grid>
-    </Grid>
-  )
+    <Card elevation={10}>
+      <CardActionArea>
+        <CardContent>
+          <Typography variant="h2">Task</Typography>
+          <Typography variant="body2">Task description</Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
 }
 
 export default Tasks;
