@@ -4,6 +4,8 @@ const { deliverError }  = require("./helpers/routeHelpers");
 const taskQueries       = require("../db/queries/tasks/taskQueries");
 const { sendTaskNotification } = require("../notifications/sms/send-sms");
 const { formatMessage } = require("../notifications/sms/formatMessage");
+const { formatEmailObject } = require("../notifications/email/emailFormatters")
+const { emailTask }     = require("../notifications/email/sendEmail")
 
 
 module.exports = (db) => {
@@ -33,11 +35,6 @@ module.exports = (db) => {
 
   // Gets all tasks
   router.get("/", (req, res) => {
-    const details = {name: "Gary", start_date: Date.now(), id: 1, organization: "Larry's Place"}
-    const message = formatMessage(details);
-
-    sendTaskNotification(message);
-    
     db.query(taskQueries.allTasks)
     .then(tasks => res.json(tasks.rows))
     .catch(err => res.status(500).send(deliverError(err.message)));
@@ -68,8 +65,10 @@ module.exports = (db) => {
     
     db.query(taskQueries.newTask, queryParams)
     .then(() => {
-      const message = formatMessage(messageDetails)
-      sendTaskNotification(message);
+      const sms = formatMessage(messageDetails)
+      const email = formatEmailObject(messageDetails)
+      sendTaskNotification(sms);
+      emailTask(email);
       res.status(201)
     })
     .catch(err => res.status(500).send(deliverError(err.message)));
