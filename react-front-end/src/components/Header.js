@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Grid, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
 function Header() {
 
