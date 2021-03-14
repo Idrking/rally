@@ -1,9 +1,7 @@
 import React from "react";
+import { Card, Grid } from "@material-ui/core";
 
-import { Grid } from "@material-ui/core";
-import TaskContent from "./TaskContent";
-
-function Tasks() {
+function Orgnizations() {
 
   return (
     <Grid container direction="column">
@@ -13,7 +11,7 @@ function Tasks() {
         {/* Gutter left side */}
         <Grid xs={0} sm={2}/>
         <Grid item xs={12} sm={10}>
-          <TaskContent></TaskContent>
+          <Card>11</Card>
         </Grid>
         {/* Gutter right side */}
         <Grid xs={0} sm={2}/>
@@ -23,4 +21,4 @@ function Tasks() {
   );
 }
 
-export default Tasks;
+export default Orgnizations;

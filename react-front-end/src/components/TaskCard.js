@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   },
 });
 
-
 function TaskCard() {
   const classes = useStyles();
   return (
