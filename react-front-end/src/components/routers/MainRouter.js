@@ -5,13 +5,16 @@ import Landing from '../Landing';
 import UsersRouter from './UsersRouter';
 import OrganizationsRouter from './OrganizationsRouter';
 import TaskRouter from './TaskRouter';
+import Header from "../Header"
 
 const MainRouter = () => {
   return (
     <Router>
       
       <Switch>
-        <Route path="/users" component={withRouter(UsersRouter)} />
+        <Route path="/users">
+          <UsersRouter />
+        </Route>
         <Route path="/organizations">
           <OrganizationsRouter />
         </Route>
@@ -19,7 +22,7 @@ const MainRouter = () => {
           <TaskRouter />
         </Route>
         <Route path="/">
-          <Typography variant="h1">Rally</Typography>
+          <Header />
           <Landing></Landing>
         </Route>
       </Switch>

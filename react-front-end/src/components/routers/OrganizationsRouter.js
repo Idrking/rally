@@ -5,13 +5,22 @@ const OrganizationsRouter = () => {
   return (
       <Switch>
         <Route path="/organizations/:id/volunteers">
-          Show volunteer management page for organized:id
+          <>
+            <Header />
+            Show volunteer management page for organized:id
+          </>
         </Route>
         <Route path="/organizations/:id">
-          Show dashboard for specific organizations
+          <>
+            <Header />
+            Show dashboard for specific organizations
+          </>
         </Route>
         <Route path="/organizations">
-          Show all the organizations
+          <>
+            <Header />
+            Show all the organizations
+          </>
         </Route>
       </Switch>
   )

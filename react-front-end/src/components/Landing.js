@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/button';
+import { Typography } from '@material-ui/core'
 
 function Landing() {
   return (
