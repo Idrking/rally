@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from '../Header';
 import LogIn from "../LogIn";
-import SignUp from "../SignUp";
+import Register from "../Register";
+
 
 const LoginRouter = () => {
   return (
@@ -10,7 +11,7 @@ const LoginRouter = () => {
         <Route path="/login/register">
           <>
             <Header />
-            <SignUp />
+            <Register />
           </>
         </Route>
         <Route path="/login">
