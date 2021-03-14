@@ -8,7 +8,7 @@ const UsersRouter = () => {
         <Route path="/users/:id">
           <>
             <Header />
-            Render a specific user
+            Render a specific users dashboard
           </>
         </Route>
         <Route path="/users">
