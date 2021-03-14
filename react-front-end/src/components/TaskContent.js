@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import TaskCard from './TaskCard';
 
-function TaskContent() {
+export default function TaskContent() {
   return (
     <Grid item container spacing={4}>
       <Grid item xs={12} sm={10}>
@@ -14,5 +14,3 @@ function TaskContent() {
     </Grid>
   );
 }
-
-export default TaskContent;
