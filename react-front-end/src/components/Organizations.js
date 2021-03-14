@@ -1,7 +1,5 @@
 import React from "react";
 import OrganizationsCards from "./OrganizationsCards"
-import { Divider, Gri } from "@material-ui/core";
-
 
 export default function Organizations() {
 
