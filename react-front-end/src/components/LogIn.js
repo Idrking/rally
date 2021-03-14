@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from "axios"
+import { useHistory } from "react-router-dom"; 
 
 function Copyright() {
   return (
@@ -48,6 +50,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LogIn() {
   const classes = useStyles();
+  const history = useHistory()
+
+  const loginFaker = (event) => {
+    event.preventDefault();
+    axios.get("/api/login/1")
+    .then(() => history.push("/users/1"))
+    .catch(err => console.error(err));
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -92,6 +102,7 @@ export default function LogIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={(event) => loginFaker(event)}
           >
             Sign In
           </Button>

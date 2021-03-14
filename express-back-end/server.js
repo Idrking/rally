@@ -13,6 +13,7 @@ const taskRoutes    = require("./routes/tasks");
 const appUserRoutes = require("./routes/approvedUser");
 const ownerRoutes   = require("./routes/owners");
 const signupRoutes  = require("./routes/signups");
+const loginRoutes   = require("./routes/login");
 
 // Express Configuration
 App.use(bodyParser.urlencoded({ extended: false }));
@@ -38,6 +39,7 @@ App.use("/api/tasks", taskRoutes(db));
 App.use("/api/approveduser", appUserRoutes(db));
 App.use("/api/owners", ownerRoutes(db));
 App.use("/api/signup", signupRoutes(db));
+App.use("/api/login", loginRoutes(db));
 
 //testing, if I forget to delete this slap me
 const queries = require("./db/queries/users/userQueries")

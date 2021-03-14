@@ -5,12 +5,12 @@ import Landing from '../Landing';
 import UsersRouter from './UsersRouter';
 import OrganizationsRouter from './OrganizationsRouter';
 import TaskRouter from './TaskRouter';
+import LoginRouter from './LoginRouter';
 import Header from "../Header"
 
 const MainRouter = () => {
   return (
     <Router>
-      
       <Switch>
         <Route path="/users">
           <UsersRouter />
@@ -20,6 +20,9 @@ const MainRouter = () => {
         </Route>
         <Route path="/tasks">
           <TaskRouter />
+        </Route>
+        <Route path="/login">
+          <LoginRouter />
         </Route>
         <Route path="/">
           <Header />
