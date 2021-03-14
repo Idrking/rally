@@ -7,7 +7,7 @@ import SignUp from "../SignUp";
 const LoginRouter = () => {
   return (
       <Switch>
-        <Route path="login/register">
+        <Route path="/login/register">
           <>
             <Header />
             <SignUp />
