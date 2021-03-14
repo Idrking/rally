@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from "axios"
-import { Redirect, useHistory } from "react-router-dom"; 
+import { useHistory } from "react-router-dom"; 
 
 function Copyright() {
   return (
@@ -54,8 +54,8 @@ export default function LogIn() {
 
   const loginFaker = (event) => {
     event.preventDefault();
-    axios.get("/api/login/1", {login:"fake"})
-    .then(() => history.pushState("/users/1"))
+    axios.get("/api/login/1")
+    .then(() => history.push("/users/1"))
     .catch(err => console.error(err));
   };
 
@@ -102,7 +102,7 @@ export default function LogIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={loginFaker}
+            onClick={(event) => loginFaker(event)}
           >
             Sign In
           </Button>
