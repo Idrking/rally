@@ -12,7 +12,6 @@ module.exports = (db) => {
   //Fake login routes for demo - don't you dare use this in production
   router.get("/1", (req, res) => {
     req.session.userID = 1
-    res.redirect('/users/1')
   });
 
   router.get("/2", (req, res) => {
