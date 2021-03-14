@@ -11,7 +11,7 @@ function Landing() {
         <Button variant="contained" color="primary">Log In</Button>
       </Link>
       <Link to="/login/register">
-        <Button variant="contained" color="primary">SignUp</Button>
+        <Button variant="contained" color="primary">Register</Button>
       </Link>
     </div>
 
