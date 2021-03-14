@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import organizationsCardsStyles from "../styles/organizationCardsStyles";
 import {
   CardActionArea,
   CardActions,
@@ -10,19 +10,10 @@ import {
   Card,
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 400,
-    margin: "auto",
-    marginTop: 30,
-  },
-  media: {
-    height: 140,
-  },
-});
+
 
 export default function OrganizationsCards() {
-  const classes = useStyles();
+  const classes = organizationsCardsStyles();
 
   return (
     <Card className={classes.root}>
