@@ -16,7 +16,7 @@ const OrganizationsRouter = () => {
           <>
             <Header />
             {/* Show dashboard for specific organizations */}
-            <Organizations></Organizations>
+            <Organizations />
           </>
         </Route>
         <Route path="/organizations">
