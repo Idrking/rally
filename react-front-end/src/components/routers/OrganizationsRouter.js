@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from '../Header';
+import Organizations from '../Organizations';
 
 const OrganizationsRouter = () => {
   return (
@@ -14,7 +15,8 @@ const OrganizationsRouter = () => {
         <Route path="/organizations/:id">
           <>
             <Header />
-            Show dashboard for specific organizations
+            {/* Show dashboard for specific organizations */}
+            <Organizations></Organizations>
           </>
         </Route>
         <Route path="/organizations">
