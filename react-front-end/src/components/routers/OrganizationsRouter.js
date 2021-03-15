@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from '../Header';
 import HeaderOrgDashboard from '../HeaderOrgDashboard';
 import OrganizationDashboard from "../OrganizationDashboard";
+import OrganizationInfo from "../OrganizationInfo";
 import Organizations from '../Organizations';
 import Volunteers from '../Volunteers';
 
@@ -17,8 +18,17 @@ const OrganizationsRouter = () => {
             </>
           );
         }} />
-        {/* Dashboard that an org owner can see, create new tasks or manage volunteers */}
+        {/* Anyone can see; info about org, button to join/submit application */}
         <Route path="/organizations/:id/" render={() => {
+          return (
+            <>
+              <Header />
+              <OrganizationInfo />
+            </>
+          );
+        }}/>
+        {/* Dashboard for specific org's owner, can create new tasks or manage volunteers */}
+        <Route path="/organizations/:id/dashboard" render={() => {
           return (
             <>
               <HeaderOrgDashboard />
@@ -26,6 +36,7 @@ const OrganizationsRouter = () => {
             </>
           );
         }}/>
+        {/* List of all orgs that a user can browse */}
         <Route path="/organizations" render={() => {
           return (
             <>
