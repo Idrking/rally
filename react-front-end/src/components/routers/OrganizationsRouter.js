@@ -16,8 +16,8 @@ const OrganizationsRouter = () => {
             </>
           );
         }} />
-        {/*  */}
-        <Route path="/organizations/:id" render={() => {
+        {/* Dashboard that an org owner can see, create new tasks or manage volunteers */}
+        <Route path="/organizations/:id/" render={() => {
           return (
             <>
               <Header />

@@ -16,16 +16,10 @@ export default function OrganizationDashboard() {
         </Button>
         <Tasks />
       </div>
-      <div>
-      <br />
-        <Button type="submit" variant="contained" color="primary">
-          Tasks
-        </Button>
-      </div>
 
       <div>
       <br />
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary" href="#">
           Manage Volunteers
         </Button>
       </div>
