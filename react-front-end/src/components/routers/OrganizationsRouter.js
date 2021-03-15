@@ -19,7 +19,7 @@ const OrganizationsRouter = () => {
           return (
             <>
               <Header />
-              <Organizations></Organizations>
+              <Organizations />
             </>
           );
         }}/>
