@@ -56,8 +56,8 @@ export default function VolunteerCard() {
           src="https://material-ui.com/static/images/avatar/1.jpg">
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="Volunteer Name"
+        subheader="///"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
