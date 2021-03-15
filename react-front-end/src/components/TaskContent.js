@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import React from "react";
 import TaskCard from "./TaskCard";
 
@@ -9,6 +8,7 @@ export default function TaskContent() {
         {" "}
         <TaskCard />
       </div>
+      <br/>
       <div>
         {" "}
         <TaskCard />
