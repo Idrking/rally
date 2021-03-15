@@ -4,6 +4,11 @@ import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/
 
 const useStyles = makeStyles({
 
+  root: {
+    maxWidth: 800,
+    margin: "auto",
+    marginTop: "100"
+  },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
@@ -22,7 +27,7 @@ const useStyles = makeStyles({
 export default function TaskCard() {
   const classes = useStyles();
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           TASK
