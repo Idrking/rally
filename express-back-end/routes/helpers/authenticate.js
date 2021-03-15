@@ -1,4 +1,5 @@
 const orgQueries = require("../../db/queries/organizations/organizationQueries");
+const appUsersQueries = require("../../db/queries/approved_users/appUsersQueries");
 
 module.exports = {
   //Checks if request is made by a logged-in user
@@ -17,6 +18,7 @@ module.exports = {
         return false; 
       }
     })
+    .catch(err => console.error(err));
   },
 
   //Checks to see if the currently logged in user can sign up for this task
@@ -25,15 +27,9 @@ module.exports = {
       return Promise.resolve(false);
     }
 
-    return db.query(`
-      SELECT approved_users.id
-      FROM approved_users
-      JOIN organizations ON organizations.id = approved_users.organization_id
-      JOIN tasks ON organizations.id = tasks.organization_id
-    
-    `)
-
-
+    return db.query(appUsersQueries, [params.taskid, params.userid])
+    .then(user => user.rows ? true : false)
+    .catch(err => console.error(err));
   }
   
 }
