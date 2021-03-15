@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Header from '../Header';
+import HeaderUser from '../HeaderUser';
 import UserDashboard from '../UserDashboard';
 
 const UsersRouter = () => {
@@ -9,7 +9,7 @@ const UsersRouter = () => {
         <Route path="/users/:id" render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <UserDashboard />
             </>
           );
