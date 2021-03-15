@@ -6,7 +6,6 @@ import Organizations from '../Organizations';
 const OrganizationsRouter = () => {
   return (
       <Switch>
-<<<<<<< HEAD
         <Route path="/organizations/:id/volunteers" render={() => {
           return (
             <>
@@ -31,27 +30,6 @@ const OrganizationsRouter = () => {
             </>
           );
         }}/>
-=======
-        <Route path="/organizations/:id/volunteers">
-          <>
-            <Header />
-            Show volunteer management page for organized:id
-          </>
-        </Route>
-        <Route path="/organizations/:id">
-          <>
-            <Header />
-            {/* Show dashboard for specific organizations */}
-            <Organizations />
-          </>
-        </Route>
-        <Route path="/organizations">
-          <>
-            <Header />
-            Show all the organizations
-          </>
-        </Route>
->>>>>>> master
       </Switch>
   )
 };
