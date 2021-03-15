@@ -12,22 +12,11 @@ const MainRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/users">
-          <UsersRouter />
-        </Route>
-        <Route path="/organizations">
-          <OrganizationsRouter />
-        </Route>
-        <Route path="/tasks">
-          <TaskRouter />
-        </Route>
-        <Route path="/login">
-          <LoginRouter />
-        </Route>
-        <Route path="/">
-          <Header />
-          <Landing></Landing>
-        </Route>
+        <Route path="/users" render={() => <UsersRouter />} />
+        <Route path="/organizations" render={() => <OrganizationsRouter />} />
+        <Route path="/tasks" render={() => <TaskRouter />} />
+        <Route path="/login" render={() => <LoginRouter />} />
+        <Route path="/" render={() => <><Header /><Landing /></>} />
       </Switch>
     </Router>
   )
