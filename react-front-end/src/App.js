@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import MainRouter from './components/routers/MainRouter';
 import UserContext from './contexts/UserContext';
@@ -7,6 +7,13 @@ import UserContext from './contexts/UserContext';
 
 function App() {
   const [userState, setUserState] = useState({id: null, name: null})
+  useEffect(() => {
+    Axios.get("/api/login/authenticate")
+    .then(res => {
+      setUserState({id: res.data.id, name: res.data.name})
+    })
+    .catch(err => console.error(err));
+  }, [])
   return (
     <UserContext.Provider value={{userState, setUserState}} >
       <div className="App">
