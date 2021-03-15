@@ -17,14 +17,13 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <div>
-          Hi <span>{userState.id && <p> {userState.name}</p>}</span></div>
+          <span>Hi {userState.id && <p> {userState.name}</p>}</span></div>
 
           <Typography>📣 Rally!</Typography>
 
           <Button color="inherit">
             My Organizations
           </Button>
-
         </Toolbar>
         
       </AppBar>
