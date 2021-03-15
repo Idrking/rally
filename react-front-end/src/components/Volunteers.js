@@ -7,6 +7,7 @@ export default function Organizations() {
    <div>
      <br></br>
      <div><VolunteerCard /></div>
+     <br></br>
      <div><VolunteerCard /></div>
    </div>
   );

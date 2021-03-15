@@ -11,7 +11,6 @@ const OrganizationsRouter = () => {
           return (
             <>
               <Header />
-              Show volunteer management page for organized:id
               <Volunteers />
             </>
           );
