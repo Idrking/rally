@@ -7,30 +7,26 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import UserContext from "../contexts/UserContext";
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    flexGrow: 1,
-  },
-  name: {
-    flexGrow: 1,
-  },
-}));
+import "../styles/HeaderUser.css";
 
 export default function Header() {
-  const classes = useStyles();
 
   const { userState } = useContext(UserContext);
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <Toolbar>
-          <span>{userState.id && <p> {userState.name}</p>}</span>
-          <Typography className={classes.title}>📣 Rally!</Typography>
+          <div>
+          Hi <span>{userState.id && <p> {userState.name}</p>}</span></div>
+
+          <Typography>📣 Rally!</Typography>
+
           <Button color="inherit">
             My Organizations
           </Button>
+
         </Toolbar>
+        
       </AppBar>
     </div>
   );

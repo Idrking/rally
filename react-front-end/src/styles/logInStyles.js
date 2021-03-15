@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const logInStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
