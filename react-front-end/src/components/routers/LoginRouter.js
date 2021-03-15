@@ -8,18 +8,22 @@ import Register from "../Register";
 const LoginRouter = () => {
   return (
       <Switch>
-        <Route path="/login/register">
+        <Route path="/login/register" render={() => {
+          return (
           <>
             <Header />
             <Register />
           </>
-        </Route>
-        <Route path="/login">
+          )
+        }} />
+        <Route path="/login" render ={() => {
+          return (
           <>
             <Header />
             <LogIn />
           </>
-        </Route>
+          )
+        }} />
       </Switch>
   )
 };

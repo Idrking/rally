@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from "axios"
 import { useHistory } from "react-router-dom"; 
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import logInStyles from "../styles/logInStyles.js";
+import UserContext from "../contexts/UserContext";
 
 function Copyright() {
   return (
@@ -21,14 +22,20 @@ function Copyright() {
 export default function LogIn() {
   const classes = logInStyles();
   const history = useHistory()
-
+  const { setUserState } = useContext(UserContext);
+  
   const loginFaker = (event) => {
     event.preventDefault();
     axios.get("/api/login/1")
-    .then(() => history.push("/users/1"))
+    .then(() => {
+      setUserState(prev => {
+        return { ...prev, id: 1, name: "Gabe" };
+      })
+      history.push("/users/1")
+    })
     .catch(err => console.error(err));
   };
-
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

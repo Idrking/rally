@@ -5,15 +5,15 @@ import Header from '../Header';
 const UsersRouter = () => {
   return (
       <Switch>
-        <Route path="/users/:id">
-          <>
-            <Header />
-            Render a specific users dashboard
-          </>
-        </Route>
-        <Route path="/users">
-          <Redirect to="/" />
-        </Route>
+        <Route path="/users/:id" render={() => {
+          return (
+            <>
+              <Header />
+              Render a specific users dashboard
+            </>
+          );
+        }} />
+        <Route path="/users" render={() => <Redirect to="/" />} />
       </Switch>
   )
 };

@@ -6,15 +6,15 @@ import Tasks from '../Tasks';
 const TasksRouter = () => {
   return (
       <Switch>
-        <Route path="/tasks/:id">
-          <>
-            <Header />
-            <Tasks />
-          </>
-        </Route>
-        <Route path="/tasks">
-          <Redirect to="/" />
-        </Route>
+        <Route path="/tasks/:id" render={() => {
+          return (
+            <>
+              <Header />
+              <Tasks />
+            </>
+          );
+        }} />
+        <Route path="/tasks" render={() => <Redirect to="/" />} />
       </Switch>
   )
 };
