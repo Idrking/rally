@@ -35,6 +35,7 @@ const OrganizationsRouter = () => {
             </>
           );
         }}/>
+        {/* List of all orgs that a user can browse */}
         <Route path="/organizations" render={() => {
           return (
             <>
