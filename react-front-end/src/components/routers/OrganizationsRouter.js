@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from '../Header';
+import HeaderOrgDashboard from '../HeaderOrgDashboard';
 import OrganizationDashboard from "../OrganizationDashboard";
 import Organizations from '../Organizations';
 import Volunteers from '../Volunteers';
@@ -20,7 +21,7 @@ const OrganizationsRouter = () => {
         <Route path="/organizations/:id/" render={() => {
           return (
             <>
-              <Header />
+              <HeaderOrgDashboard />
               <OrganizationDashboard />
             </>
           );
