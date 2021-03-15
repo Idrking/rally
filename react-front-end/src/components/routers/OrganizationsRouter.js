@@ -27,7 +27,7 @@ const OrganizationsRouter = () => {
           return (
             <>
               <Header />
-              Show all the organizations
+              <Organizations />
             </>
           );
         }}/>

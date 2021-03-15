@@ -12,7 +12,7 @@ import {
 
 
 
-export default function OrganizationsCards() {
+export default function OrganizationsCards({ details }) {
   const classes = organizationsCardsStyles();
 
   return (
@@ -20,17 +20,18 @@ export default function OrganizationsCards() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://pnwraptors.com/wp-content/uploads/2020/05/105-18-048-e1589565999168.jpg"
-          title="Raptor"
+          image={details.image_url}
+          title={details.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            The Raptors
+          <Typography gutterBottom variant="h5" component="h2" align="left">
+            {details.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Wildlife organization dedicated to the conservation of birds of
-            prey. Visitor Centre in Duncan, BC. Bird abatement/wildlife
-            management across Canada.
+          <Typography color="primary" component="h3" align="left">
+            {details.location}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p" align="left">
+            {details.description}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -38,10 +39,15 @@ export default function OrganizationsCards() {
         <Button size="medium" color="primary">
           Join
         </Button>
-        <Button size="medium" color="primary">
+        <Button target="_blank" href={details.website} size="medium" color="primary">
           Learn More
         </Button>
       </CardActions>
     </Card>
   );
 }
+
+// https://pnwraptors.com/wp-content/uploads/2020/05/105-18-048-e1589565999168.jpg"
+// Wildlife organization dedicated to the conservation of birds of
+//             prey. Visitor Centre in Duncan, BC. Bird abatement/wildlife
+//             management across Canada.
