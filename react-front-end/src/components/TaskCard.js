@@ -1,31 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import taskCardStyles from '../styles/taskCardStyles';
 
-const useStyles = makeStyles({
 
-  root: {
-    maxWidth: 800,
-    margin: "auto",
-    marginTop: "100"
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  
-  title: {
-    fontSize: 30,
-  },
-
-  pos: {
-    marginBottom: 12,
-  },
-});
 
 export default function TaskCard() {
-  const classes = useStyles();
+  const classes = taskCardStyles();
   return (
     <Card className={classes.root}>
       <CardContent>

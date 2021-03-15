@@ -4,7 +4,7 @@ import {
   Toolbar,
   Typography,
   Button,
-  makeStyles,
+
 } from "@material-ui/core";
 import UserContext from "../contexts/UserContext";
 import "../styles/HeaderUser.css";
@@ -19,7 +19,7 @@ export default function Header() {
           <div>
           <span>Hi {userState.id && <p> {userState.name}</p>}</span></div>
 
-          <Typography>📣 Rally!</Typography>
+          <Typography><span>📣 </span>Rally!</Typography>
 
           <Button color="inherit">
             My Organizations
