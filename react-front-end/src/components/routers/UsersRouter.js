@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from '../Header';
+import UserDashboard from '../UserDashboard';
 
 const UsersRouter = () => {
   return (
@@ -9,7 +10,7 @@ const UsersRouter = () => {
           return (
             <>
               <Header />
-              Render a specific users dashboard
+              <UserDashboard />
             </>
           );
         }} />
