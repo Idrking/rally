@@ -1,0 +1,5 @@
+.MuiToolbar-regular {
+  display: flex;
+  flex-direction: center;
+  justify-content: space-between;
+}
