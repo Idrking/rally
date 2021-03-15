@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from '../Header';
 import HeaderOrgDashboard from '../HeaderOrgDashboard';
 import OrganizationDashboard from "../OrganizationDashboard";
+import OrganizationInfo from "../OrganizationInfo";
 import Organizations from '../Organizations';
 import Volunteers from '../Volunteers';
 
@@ -22,7 +23,7 @@ const OrganizationsRouter = () => {
           return (
             <>
               <Header />
-              <Organizations />
+              <OrganizationInfo />
             </>
           );
         }}/>
