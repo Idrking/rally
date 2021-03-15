@@ -17,7 +17,7 @@ import Add from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 500,
     margin: "auto",
     marginTop: "100"
   },
@@ -56,8 +56,8 @@ export default function VolunteerCard() {
           src="https://material-ui.com/static/images/avatar/1.jpg">
           </Avatar>
         }
-        title="Volunteer Name"
-        subheader="///"
+        title="Larry Labber"
+        subheader="Completed tasks: 5"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -67,9 +67,6 @@ export default function VolunteerCard() {
       <CardActions disableSpacing>
         <IconButton aria-label="add">
           <Add />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
