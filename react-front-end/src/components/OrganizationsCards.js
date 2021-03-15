@@ -24,10 +24,13 @@ export default function OrganizationsCards({ details }) {
           title={details.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h2" align="left">
             {details.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography color="primary" component="h3" align="left">
+            {details.location}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p" align="left">
             {details.description}
           </Typography>
         </CardContent>
