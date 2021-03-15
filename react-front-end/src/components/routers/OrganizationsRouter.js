@@ -16,6 +16,7 @@ const OrganizationsRouter = () => {
             </>
           );
         }} />
+        {/*  */}
         <Route path="/organizations/:id" render={() => {
           return (
             <>
