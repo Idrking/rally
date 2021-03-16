@@ -10,7 +10,6 @@ import {
   Card,
   List,
   ListItem,
-  Avatar,
   ListItemText,
   ListItemIcon,
   Divider,
@@ -81,9 +80,6 @@ export default function OrganizationInfo() {
       <CardActions>
         <Button size="medium" color="primary">
           Join
-        </Button>
-        <Button size="medium" color="primary">
-          Submit Application
         </Button>
       </CardActions>
     </Card>
