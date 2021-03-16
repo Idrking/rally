@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import HeaderUser from '../HeaderUser';
+import HeaderUser from '../Header/HeaderUser';
 import UserDashboard from '../UserDashboard';
 
 const UsersRouter = () => {

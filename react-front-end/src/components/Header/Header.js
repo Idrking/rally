@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import UserContext from "../contexts/UserContext";
+import UserContext from "../../contexts/UserContext";
 
 
 export default function Header() {
