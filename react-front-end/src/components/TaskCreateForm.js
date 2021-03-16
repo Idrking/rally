@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import { useHistory } from "react-router-dom"
 import FormGroup from '@material-ui/core/FormGroup';
 import { TextField, Button } from '@material-ui/core';
 import Axios from 'axios';
 
 
 const TaskCreateForm = ({ org }) => {
+  const history = useHistory();
   const [taskDetails, setTaskDetails] = useState({
     name: '',
     description: '',
@@ -34,9 +36,8 @@ const TaskCreateForm = ({ org }) => {
       organization_id: org.id,
       organization: org.name
     }
-    console.log("we sending da message")
     Axios.put("/api/tasks", taskData)
-    .then(() =>  console.log("We did it babeh"))
+    .then(res =>  history.push(`/tasks/${res.data[0].id}`))
     .catch(err => console.error(err));
   }
 

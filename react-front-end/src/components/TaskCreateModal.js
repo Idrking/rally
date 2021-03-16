@@ -34,9 +34,9 @@ export default function TaskModal({org}) {
 
   const body = (
     <div className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
+      <h2 id="simple-modal-title">Create a New Task</h2>
       <p id="simple-modal-description">
-        Here are some words
+        Enter details below
       </p>
       <TaskCreateForm org={org} />
     </div>
