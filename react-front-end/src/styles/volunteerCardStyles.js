@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 
-
 const volunteerCardStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 500,

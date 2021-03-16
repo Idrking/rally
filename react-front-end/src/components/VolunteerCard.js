@@ -6,8 +6,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Add from '@material-ui/icons/Add';
 import volunteerCardStyles from "../styles/volunteerCardStyles";
 
-
-
 export default function VolunteerCard() {
   const classes = volunteerCardStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -58,6 +56,3 @@ export default function VolunteerCard() {
     </Card>
   );
 }
-
-// tasks that are available
-// 

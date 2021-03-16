@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import UserContext from "../contexts/UserContext";
 
 
-function Header() {
+export default function Header() {
   const { userState } = useContext(UserContext);
   return <AppBar position="static">
     <Toolbar>
@@ -14,5 +14,3 @@ function Header() {
     </Toolbar>
   </AppBar>
 }
-
-export default Header;
