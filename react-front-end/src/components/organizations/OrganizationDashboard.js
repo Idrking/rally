@@ -23,7 +23,7 @@ export default function OrganizationDashboard() {
         </Typography>
         <br />
         <TaskModal org={organization}/>
-        <Tasks />
+        <Tasks tasks={[]}/>
       </div>
 
       <div>
