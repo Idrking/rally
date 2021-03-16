@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Tasks from "../Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
-import TaskModal from "../Tasks/TaskCreateModal";
+import TaskCreateForm from "../Tasks/TaskCreateForm";
+import FormModal from "../helperComponents/FormModal";
 import { useParams } from "react-router-dom";
 
 export default function OrganizationDashboard() {
@@ -22,7 +23,9 @@ export default function OrganizationDashboard() {
           {organization.name} Dashboard
         </Typography>
         <br />
-        <TaskModal org={organization}/>
+        <FormModal data={organization} FormComponent={TaskCreateForm} details={{task: "Create a Task", description: "Enter the details below"}}>
+          Create a Task
+        </FormModal>
         <Tasks tasks={[]}/>
       </div>
 
