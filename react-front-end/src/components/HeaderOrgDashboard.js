@@ -14,7 +14,10 @@ export default function Header() {
           </div>
 
           <Typography>
-            <span>📣 </span>Rally!
+            <span role="img" aria-label="megaphone">
+              📣{" "}
+            </span>
+            Rally!
           </Typography>
 
           <Avatar

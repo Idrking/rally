@@ -14,7 +14,12 @@ import {
   ListItemIcon,
   Divider,
 } from "@material-ui/core";
-import {PhoneSharp, MailOutlineSharp, LocationOnSharp, LanguageSharp } from "@material-ui/icons/";
+import {
+  PhoneSharp,
+  MailOutlineSharp,
+  LocationOnSharp,
+  LanguageSharp,
+} from "@material-ui/icons/";
 
 export default function OrganizationInfo() {
   const classes = organizationsCardsStyles();
@@ -22,9 +27,11 @@ export default function OrganizationInfo() {
   return (
     <Card className={classes.root}>
       <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://images.ctfassets.net/hrltx12pl8hq/6bi6wKIM5DDM5U1PtGVFcP/1c7fce6de33bb6575548a646ff9b03aa/nature-photography-pictures.jpg?fit=fill&w=800&h=300"
+        />
 
-        <CardMedia image="https://images.ctfassets.net/hrltx12pl8hq/6bi6wKIM5DDM5U1PtGVFcP/1c7fce6de33bb6575548a646ff9b03aa/nature-photography-pictures.jpg?fit=fill&w=800&h=300" />
-        
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" align="left">
             Organization Name
@@ -43,7 +50,6 @@ export default function OrganizationInfo() {
           <div className={classes.root}>
             <Divider />
             <List component="nav" aria-label="main mailbox folders">
-
               <ListItem button>
                 <ListItemIcon>
                   <PhoneSharp />
@@ -73,7 +79,6 @@ export default function OrganizationInfo() {
               </ListItem>
             </List>
             <Divider />
-
           </div>
         </CardContent>
       </CardActionArea>

@@ -5,13 +5,10 @@ export default function Organizations() {
 
   return (
    <div>
-     <br></br>
+     <br />
      <div><VolunteerCard /></div>
-     <br></br>
+     <br />
      <div><VolunteerCard /></div>
    </div>
   );
 }
-
-
-//pending applications above - in managing volunteers page
