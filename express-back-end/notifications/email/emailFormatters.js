@@ -5,7 +5,8 @@ const formatText = details => {
   A new task has been issued by ${details.organization}:
 
   ${details.name}
-  ${details.start_date}
+  ${details.startDate}
+  ${details.description}
 
   If you're available, or need more details, please visit
   http://rally.com/tasks/${details.id}
@@ -19,7 +20,7 @@ const formatHTML = details => {
   <p> A new task has been issued by <strong>${details.organization}</strong></p>
   <hr>
   <h3>${details.name}</h3>
-  <h4>${details.start_date}</h4>
+  <h4>${details.startDate}</h4>
   <hr>
   <p> If you're available, or need more details, please click below
   <br>

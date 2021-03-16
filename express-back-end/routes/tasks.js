@@ -43,7 +43,8 @@ module.exports = (db) => {
   // PUT ROUTES ---------------------------------------------
 
   // Adds a new task
-  // (When we're constructing the form, make sure we send along the name of the organization as well)
+  //Automatically sends out notifications after successfully adding to db
+
   router.put("/", (req, res) => {
     const queryParams = [
       req.body.name,
@@ -56,22 +57,25 @@ module.exports = (db) => {
       req.body.location
     ];
 
+    console.log(new Date(req.body.start_date).toString())
     const messageDetails = {
       name: req.body.name,
-      startDate: req.body.start_date,
-      id: req.body.id,
-      organization: req.body.organization
+      startDate: new Date(req.body.start_date),
+      id: req.body.organization_id,
+      organization: req.body.organization,
+      description: req.body.description
     }
     
+
     db.query(taskQueries.newTask, queryParams)
-    .then(() => {
+    .then(taskID => {
       const sms = formatMessage(messageDetails)
       const email = formatEmailObject(messageDetails)
       sendTaskNotification(sms);
       emailTask(email);
-      res.status(201)
+      res.status(201).json(taskID.rows);
     })
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => console.error(err));
   });
 
   // PATCH ROUTES ---------------------------------------------
