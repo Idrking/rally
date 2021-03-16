@@ -3,8 +3,8 @@ import axios from "axios"
 import { useHistory } from "react-router-dom"; 
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import logInStyles from "../styles/logInStyles.js";
-import UserContext from "../contexts/UserContext";
+import logInStyles from "../../styles/logInStyles.js";
+import UserContext from "../../contexts/UserContext";
 
 function Copyright() {
   return (

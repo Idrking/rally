@@ -1,5 +1,5 @@
 import React from "react";
-import organizationsCardsStyles from "../styles/organizationCardsStyles";
+import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import {
   CardActionArea,
   CardActions,

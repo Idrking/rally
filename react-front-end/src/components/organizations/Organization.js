@@ -1,6 +1,6 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
-import SimpleBottomNavigation from "./OrganizationNav";
+import SimpleBottomNavigation from "../OrganizationNav";
 
 export default function Organization() {
 
