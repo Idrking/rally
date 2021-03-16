@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import HeaderUser from '../Header/HeaderUser';
-import UserDashboard from '../UserDashboard';
+import UserDashboard from '../Users/UserDashboard';
 
 const UsersRouter = () => {
   return (

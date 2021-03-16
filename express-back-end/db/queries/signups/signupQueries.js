@@ -10,5 +10,22 @@ module.exports = {
   cancel:`
     DELETE FROM signups
     WHERE approved_user_id = $1 AND task_id = $2;
+  `,
+
+  //03_tasks.sql
+  tasks:`
+    SELECT *
+    FROM tasks
+    JOIN signups ON tasks.id = task_id
+    WHERE approved_user_id = $1;
+  `,
+
+  //04_available.sql
+  available:`
+    SELECT tasks.*
+    FROM tasks
+    JOIN organizations ON organizations.id = tasks.organization_id
+    JOIN approved_users ON approved_users.organization_id = organizations.id
+    WHERE approved_users.user_id = $1;
   `
 };
