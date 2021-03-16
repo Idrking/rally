@@ -13,6 +13,7 @@ module.exports = (db) => {
   // GET ROUTES ---------------------------------------------
   
   // Gets a count of all users signed up for a specific task
+  
   router.get("/:id/signups/count", (req, res) => {
     db.query(taskQueries.countSignups, [req.params.id])
     .then(count => res.json(count.rows[0].count))
