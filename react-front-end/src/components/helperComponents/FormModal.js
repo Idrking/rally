@@ -4,7 +4,6 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import TaskCreateForm from './TaskCreateForm';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -20,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function TaskModal({org}) {
+// Component renders a button with the text=children of the component
+// Accepts data(array), FormComponent(component that renders a form), details(object with keys task and description) as props
+export default function FormModal(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -34,24 +34,24 @@ export default function TaskModal({org}) {
 
   const body = (
     <div className={classes.paper}>
-      <h2 id="simple-modal-title">Create a New Task</h2>
+      <h2 id="simple-modal-title">{props.details.task}</h2>
       <p id="simple-modal-description">
-        Enter details below
+        {props.details.description}
       </p>
-      <TaskCreateForm org={org} />
+      <props.FormComponent data={props.data} />
     </div>
   );
 
   return (
     <div>
       <Button type="button" variant="contained" color="primary" onClick={handleOpen}>
-          Create New Task
+          {props.children}
       </Button>
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="task-creation-form"
-        aria-describedby="form-to-create-a-task"
+        aria-labelledby="form-modal"
+        aria-describedby="form"
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{

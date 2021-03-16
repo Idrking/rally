@@ -5,7 +5,7 @@ import { TextField, Button } from '@material-ui/core';
 import Axios from 'axios';
 
 
-const TaskCreateForm = ({ org }) => {
+const TaskCreateForm = ({ data }) => {
   const history = useHistory();
   const [taskDetails, setTaskDetails] = useState({
     name: '',
@@ -33,8 +33,8 @@ const TaskCreateForm = ({ org }) => {
       spots: taskDetails.spots,
       image_url: taskDetails.image_url,
       location: taskDetails.location,
-      organization_id: org.id,
-      organization: org.name
+      organization_id: data.id,
+      organization: data.name
     }
     Axios.put("/api/tasks", taskData)
     .then(res =>  history.push(`/tasks/${res.data[0].id}`))
