@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import taskCardStyles from '../styles/taskCardStyles';
+import taskCardStyles from '../../styles/taskCardStyles';
 
 export default function TaskCard() {
   const classes = taskCardStyles();

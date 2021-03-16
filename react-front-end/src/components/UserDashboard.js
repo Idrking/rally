@@ -1,5 +1,5 @@
 import React from "react";
-import Tasks from "./Tasks";
+import Tasks from "./Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
 
 export default function Organizations() {

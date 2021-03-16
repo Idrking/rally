@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Landing from '../Landing';
+import Landing from '../Landing/Landing';
 import UsersRouter from './UsersRouter';
 import OrganizationsRouter from './OrganizationsRouter';
 import TaskRouter from './TaskRouter';
 import LoginRouter from './LoginRouter';
-import Header from "../Header"
+import Header from "../Header/Header"
 
 const MainRouter = () => {
   return (

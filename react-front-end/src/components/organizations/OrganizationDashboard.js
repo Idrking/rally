@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import Tasks from "./Tasks";
+import Tasks from "../Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
-import TaskModal from "./TaskCreateModal";
+import TaskModal from "../Tasks/TaskCreateModal";
 import { useParams } from "react-router-dom";
 
 export default function OrganizationDashboard() {

@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from '../Header';
-import LogIn from "../LogIn";
-import Register from "../Register";
+import Header from '../Header/Header';
+import LogIn from "../Login-Register/LogIn";
+import Register from "../Login-Register/Register";
 
 
 const LoginRouter = () => {

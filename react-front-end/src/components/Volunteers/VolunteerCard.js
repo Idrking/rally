@@ -4,7 +4,7 @@ import { Card,  CardHeader, CardContent, CardActions, Avatar, IconButton, Typogr
 import clsx from 'clsx';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Add from '@material-ui/icons/Add';
-import volunteerCardStyles from "../styles/volunteerCardStyles";
+import volunteerCardStyles from "../../styles/volunteerCardStyles";
 
 export default function VolunteerCard() {
   const classes = volunteerCardStyles();

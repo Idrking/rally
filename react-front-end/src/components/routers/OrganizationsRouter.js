@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "../Header";
-import HeaderOrgDashboard from "../HeaderOrgDashboard";
-import ManagingVolunteers from "../ManagingVolunteers";
-import PendingVolunteers from "../PendingVolunteers";
-import OrganizationDashboard from "../OrganizationDashboard";
-import OrganizationInfo from "../OrganizationInfo";
-import Organizations from "../Organizations";
-import Volunteers from "../Volunteers";
+import Header from "../Header/Header";
+import HeaderOrgDashboard from "../Header/HeaderOrgDashboard";
+import ManagingVolunteers from "../Volunteers/ManagingVolunteers";
+import PendingVolunteers from "../Volunteers/PendingVolunteers";
+import OrganizationDashboard from "../organizations/OrganizationDashboard";
+import OrganizationInfo from "../organizations/OrganizationInfo";
+import Organizations from "../organizations/Organizations";
+import Volunteers from "../Volunteers/Volunteers";
 
 const OrganizationsRouter = () => {
   return (

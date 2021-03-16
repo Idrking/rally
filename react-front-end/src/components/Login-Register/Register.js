@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import registerStyles from "../styles/registerStyles";
+import registerStyles from "../../styles/registerStyles";
 
 function Copyright() {
   return (

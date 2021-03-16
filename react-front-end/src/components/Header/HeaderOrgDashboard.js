@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppBar, Toolbar, Typography, Avatar } from "@material-ui/core";
-import UserContext from "../contexts/UserContext";
-import "../styles/HeaderUser.css";
+import UserContext from "../../contexts/UserContext";
+import "../../styles/HeaderUser.css";
 
 export default function Header() {
   const { userState } = useContext(UserContext);
