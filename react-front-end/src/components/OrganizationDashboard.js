@@ -22,7 +22,7 @@ export default function OrganizationDashboard() {
           {organization.name} Dashboard
         </Typography>
         <br />
-        <TaskModal application={organization.application}/>
+        <TaskModal org={organization}/>
         <Tasks />
       </div>
 

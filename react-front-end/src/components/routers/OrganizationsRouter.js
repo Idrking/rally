@@ -18,21 +18,21 @@ const OrganizationsRouter = () => {
             </>
           );
         }} />
-        {/* Anyone can see; info about org, button to join/submit application */}
-        <Route path="/organizations/:id/" render={() => {
-          return (
-            <>
-              <Header />
-              <OrganizationInfo />
-            </>
-          );
-        }}/>
         {/* Dashboard for specific org's owner, can create new tasks or manage volunteers */}
         <Route path="/organizations/:id/dashboard" render={() => {
           return (
             <>
               <HeaderOrgDashboard />
               <OrganizationDashboard />
+            </>
+          );
+        }}/>
+        {/* Anyone can see; info about org, button to join/submit application */}
+        <Route path="/organizations/:id/" render={() => {
+          return (
+            <>
+              <Header />
+              <OrganizationInfo />
             </>
           );
         }}/>

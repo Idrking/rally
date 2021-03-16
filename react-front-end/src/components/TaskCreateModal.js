@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import TaskCreateForm from './TaskCreateForm';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function TaskModal() {
+export default function TaskModal({org}) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -37,6 +38,7 @@ export default function TaskModal() {
       <p id="simple-modal-description">
         Here are some words
       </p>
+      <TaskCreateForm org={org} />
     </div>
   );
 
