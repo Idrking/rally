@@ -41,4 +41,3 @@ export default function ManagingVolunteers() {
   );
 }
 
-//pending applications above - in managing volunteers page

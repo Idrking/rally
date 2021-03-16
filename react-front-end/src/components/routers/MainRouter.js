@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
-import { Typography } from '@material-ui/core'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from '../Landing';
 import UsersRouter from './UsersRouter';
 import OrganizationsRouter from './OrganizationsRouter';

@@ -10,8 +10,6 @@ import {
   Card,
 } from "@material-ui/core";
 
-
-
 export default function OrganizationsCards({ details }) {
   const classes = organizationsCardsStyles();
 
@@ -46,8 +44,3 @@ export default function OrganizationsCards({ details }) {
     </Card>
   );
 }
-
-// https://pnwraptors.com/wp-content/uploads/2020/05/105-18-048-e1589565999168.jpg"
-// Wildlife organization dedicated to the conservation of birds of
-//             prey. Visitor Centre in Duncan, BC. Bird abatement/wildlife
-//             management across Canada.

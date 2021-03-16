@@ -3,8 +3,8 @@ import TaskContent from "./TaskContent";
 
 export default function Tasks() {
   return (
-          <div>
-          <TaskContent />
-          </div>
+    <div>
+      <TaskContent />
+    </div>
   );
 }

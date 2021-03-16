@@ -4,8 +4,7 @@ import './App.css';
 import MainRouter from './components/routers/MainRouter';
 import UserContext from './contexts/UserContext';
 
-
-function App() {
+export default function App() {
   const [userState, setUserState] = useState({id: null, name: null})
   useEffect(() => {
     Axios.get("/api/login/authenticate")
@@ -22,5 +21,3 @@ function App() {
     </UserContext.Provider>
   );
 }
-
-export default App;
