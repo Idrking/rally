@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import {
   CardActionArea,
@@ -22,23 +24,37 @@ import {
 } from "@material-ui/icons/";
 
 export default function OrganizationInfo() {
+  const { id } = useParams();
   const classes = organizationsCardsStyles();
+  const [organization, setOrganization] = useState({
+    name: null, 
+    description: null, 
+    primary_phone: null, 
+    primary_email: null, 
+    location: null,
+    image_url: null,
+    website: null,
+    application_config: null
+  });
 
+  useEffect(() => {
+    axios.get(`/api/organizations/${id}`)
+    .then(orgs => setOrganization(orgs.data))
+  }, []);
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://images.ctfassets.net/hrltx12pl8hq/6bi6wKIM5DDM5U1PtGVFcP/1c7fce6de33bb6575548a646ff9b03aa/nature-photography-pictures.jpg?fit=fill&w=800&h=300"
+          image={organization.image_url}
         />
 
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" align="left">
-            Organization Name
+            {organization.name}
           </Typography>
           <Typography component="p" align="left">
-            Andy shoes are designed to keeping in mind durability as well as
-            trends, the most stylish range of shoes and sandals
+            {organization.description}
           </Typography>
           <Typography
             variant="body2"
@@ -54,28 +70,28 @@ export default function OrganizationInfo() {
                 <ListItemIcon>
                   <PhoneSharp />
                 </ListItemIcon>
-                <ListItemText primary="604-333-GABE" />
+                <ListItemText primary={organization.primary_phone} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <LocationOnSharp />
                 </ListItemIcon>
-                <ListItemText primary="Vancouver BC" />
+                <ListItemText primary={organization.location} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <MailOutlineSharp />
                 </ListItemIcon>
-                <ListItemText primary="gabe@lighthouselabs.com" />
+                <ListItemText primary={organization.primary_email} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <LanguageSharp />
                 </ListItemIcon>
-                <ListItemText primary="lighthouselabs.com" />
+                <ListItemText primary={organization.website} />
               </ListItem>
             </List>
             <Divider />
@@ -91,7 +107,3 @@ export default function OrganizationInfo() {
   );
 }
 
-// https://pnwraptors.com/wp-content/uploads/2020/05/105-18-048-e1589565999168.jpg"
-// Wildlife organization dedicated to the conservation of birds of
-//             prey. Visitor Centre in Duncan, BC. Bird abatement/wildlife
-//             management across Canada.
