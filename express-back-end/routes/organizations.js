@@ -28,6 +28,14 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
   
+  //Gets all pending approved users for an organization
+  router.get("/:id/users/pending", (req, res) => {
+    db.query(orgQueries.allPendingVolunteers, [req.params.id])
+    .then(volunteers => res.json(volunteers.rows))
+    .catch(err => res.status(500).send(deliverError(err.message)));
+  });
+
+
   // Gets all approved users for an organization
   router.get("/:id/users", (req, res) => {
     db.query(orgQueries.allVolunteers, [req.params.id])

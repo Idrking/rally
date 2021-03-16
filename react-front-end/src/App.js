@@ -5,16 +5,22 @@ import MainRouter from './components/routers/MainRouter';
 import UserContext from './contexts/UserContext';
 
 export default function App() {
-  const [userState, setUserState] = useState({id: null, name: null})
+  const [userState, setUserState] = useState({ id: null, name: null });
   useEffect(() => {
     Axios.get("/api/login/authenticate")
-    .then(res => {
-      setUserState({id: res.data.id, name: res.data.name})
-    })
-    .catch(err => console.error(err));
-  }, [])
+      .then(res => {
+        setUserState({ id: res.data.id, name: res.data.name });
+      })
+      .catch(err => console.error(err));
+  }, []);
+
+
+  
+
   return (
-    <UserContext.Provider value={{userState, setUserState}} >
+
+
+    <UserContext.Provider value={{ userState, setUserState }} >
       <div className="App">
         <MainRouter />
       </div>
