@@ -6,6 +6,7 @@ const formatText = details => {
 
   ${details.name}
   ${details.start_date}
+  ${details.description}
 
   If you're available, or need more details, please visit
   http://rally.com/tasks/${details.id}

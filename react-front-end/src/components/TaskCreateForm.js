@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
 import FormGroup from '@material-ui/core/FormGroup';
 import { TextField, Button } from '@material-ui/core';
 import Axios from 'axios';
 
 
-const TaskCreateForm = () => {
-  const { id } = useParams();
+const TaskCreateForm = ({ org }) => {
   const [taskDetails, setTaskDetails] = useState({
     name: '',
     description: '',
@@ -33,9 +31,12 @@ const TaskCreateForm = () => {
       spots: taskDetails.spots,
       image_url: taskDetails.image_url,
       location: taskDetails.location,
-      organization_id: id
+      organization_id: org.id,
+      organization: org.name
     }
+    console.log("we sending da message")
     Axios.put("/api/tasks", taskData)
+    .then(() =>  console.log("We did it babeh"))
     .catch(err => console.error(err));
   }
 

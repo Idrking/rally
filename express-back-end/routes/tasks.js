@@ -56,22 +56,26 @@ module.exports = (db) => {
       req.body.location
     ];
 
+    console.log(new Date(req.body.start_date).toString())
     const messageDetails = {
       name: req.body.name,
       startDate: req.body.start_date,
-      id: req.body.id,
-      organization: req.body.organization
+      id: req.body.organization_id,
+      organization: req.body.organization,
+      description: req.body.description
     }
     
+    console.log(new Date(req.body.start_date).toLocaleString('en-US', { timeZone: 'America/Vancouver'}))
+
     db.query(taskQueries.newTask, queryParams)
-    .then(() => {
+    .then(taskID => {
       const sms = formatMessage(messageDetails)
       const email = formatEmailObject(messageDetails)
       sendTaskNotification(sms);
       emailTask(email);
-      res.status(201)
+      res.status(201).json(taskID.rows);
     })
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => console.error(err));
   });
 
   // PATCH ROUTES ---------------------------------------------
