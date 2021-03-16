@@ -10,7 +10,7 @@ const TasksRouter = () => {
           return (
             <>
               <Header />
-              <Tasks />
+              <Tasks tasks={[]} />
             </>
           );
         }} />

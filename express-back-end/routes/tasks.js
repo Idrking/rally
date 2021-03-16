@@ -58,18 +58,15 @@ module.exports = (db) => {
       req.body.location
     ];
 
-    console.log(new Date(req.body.start_date).toString())
-    const messageDetails = {
-      name: req.body.name,
-      startDate: new Date(req.body.start_date),
-      id: req.body.organization_id,
-      organization: req.body.organization,
-      description: req.body.description
-    }
-    
-
     db.query(taskQueries.newTask, queryParams)
     .then(taskID => {
+      const messageDetails = {
+        name: req.body.name,
+        startDate: new Date(req.body.start_date),
+        id: taskID.rows[0].id,
+        organization: req.body.organization,
+        description: req.body.description
+      }
       const sms = formatMessage(messageDetails)
       const email = formatEmailObject(messageDetails)
       sendTaskNotification(sms);
