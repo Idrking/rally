@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect, useRef } from 'react';
-import { useHistory } from "react-router-dom"
+import React, {useState, useContext, useEffect } from 'react';
+import { useParams } from "react-router-dom"
 import UserContext from "../../contexts/UserContext";
 import FormGroup from '@material-ui/core/FormGroup';
 import { TextField, Button, Typography } from '@material-ui/core';
@@ -11,6 +11,7 @@ const ApplicationForm = ({ data }) => {
   const questions = data.application_config;
   const { userState } = useContext(UserContext);
   const [formDetails, setFormDetails] = useState({name: '', phone: '', email: '', submitted: false, errors:{}});
+  const { id } = useParams();
   
   //Adds all the questions from an organizations config as keys to state
   useEffect(() => {
@@ -54,18 +55,32 @@ const ApplicationForm = ({ data }) => {
         formData[key] = {question: key, answer: formDetails[key]}
       }
     };
-    console.log("we sendah da data")
-    // Axios.put("/api/tasks", taskData)
-    // .then(res =>  history.push(`/tasks/${res.data[0].id}`))
-    // .catch(err => console.error(err));
+
+    Axios.put(`/api/approveduser/${id}/${userState.id}`, {application: JSON.stringify(formData)})
+    .catch(err => console.error(err));
   }
+
+  const setErrorStatus = (errorArray, key) => {
+    errorArray.push(true);
+    setFormDetails(prev => { return { ...prev, errors: {...prev.errors, [key]:true }}});
+  };
 
   const setErrors = () => {
     const errorArray = [];
     setFormDetails(prev => { return { ...prev, errors: {}} });
-    !formDetails.name && setFormDetails(prev => { errorArray.push(true); return {...prev, errors: {...prev.errors, name: true}}});
-    !formDetails.phone && setFormDetails(prev => { errorArray.push(true); return {...prev, errors: {...prev.errors, phone: true}}});
-    !formDetails.email && setFormDetails(prev => { errorArray.push(true); return {...prev, errors: {...prev.errors, email: true}}});
+
+    if (!formDetails.name) {
+      setErrorStatus(errorArray, 'name');
+    }
+
+    if (!formDetails.phone) {
+      setErrorStatus(errorArray, 'phone');
+    }
+    
+    if (!formDetails.email) {
+      setErrorStatus(errorArray, 'email');
+    }
+
     return errorArray;
   };
 
@@ -94,6 +109,8 @@ const ApplicationForm = ({ data }) => {
         value={formDetails.phone}
         onChange={event => updateDetails(event.target.value, 'phone')}
         margin="normal"
+        error={formDetails.errors.phone ? true : false }
+        helperText={formDetails.errors.phone ? "Phone can't be blank" : ''}
       />
         <TextField 
         id="email"
@@ -101,6 +118,8 @@ const ApplicationForm = ({ data }) => {
         value={formDetails.email}
         onChange={event => updateDetails(event.target.value, 'email')}
         margin="normal"
+        error={formDetails.errors.email ? true : false }
+        helperText={formDetails.errors.email ? "Email can't be blank" : ''}
       />
       {inputs}
   
