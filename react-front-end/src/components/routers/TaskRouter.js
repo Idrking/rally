@@ -1,22 +1,26 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Header from '../Header/Header';
-import Tasks from '../Tasks/Tasks';
+import Header from "../Header/Header";
+import TaskInfo from "../Tasks/TaskInfo";
+import Tasks from "../Tasks/Tasks";
 
 const TasksRouter = () => {
   return (
-      <Switch>
-        <Route path="/tasks/:id" render={() => {
+    <Switch>
+      <Route
+        path="/tasks/:id"
+        render={() => {
           return (
             <>
               <Header />
-              <Tasks tasks={[]} />
+              <TaskInfo />
             </>
           );
-        }} />
-        <Route path="/tasks" render={() => <Redirect to="/" />} />
-      </Switch>
-  )
+        }}
+      />
+      <Route path="/tasks" render={() => <Redirect to="/" />} />
+    </Switch>
+  );
 };
 
 export default TasksRouter;

@@ -14,29 +14,18 @@ import {
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import { useParams } from "react-router-dom";
 
 export default function TaskCard({ task }) {
   const classes = organizationsCardsStyles();
-  return (
-    // <Card className={classes.root}>
-    //   <CardContent>
-    //     <Typography className={classes.title} color="textSecondary" gutterBottom>
-    //       {task && task.name}
-    //     </Typography>
-    //     <Typography variant="body2" component="p">
-    //       {task && task.description}
-    //     </Typography>
-    //   </CardContent>
-    //   <CardActions>
-    //     <Button size="small" >Mark Complete</Button>
-    //   </CardActions>
-    // </Card>
+  const { id } = useParams();
 
+  return (
     <Card className={classes.root}>
-      <CardActionArea href={`/tasks/${task.id}`}>
+      <CardActionArea href={`/tasks/${id}`}>
         <CardMedia
           className={classes.media}
-          image={task.image_url}
+          image={task.image_url || " "}
           title={task.name}
         />
         <CardContent>
@@ -74,14 +63,6 @@ export default function TaskCard({ task }) {
       <CardActions>
         <Button size="medium" color="primary">
           Join
-        </Button>
-        <Button
-          target="_blank"
-          href={task.website}
-          size="medium"
-          color="primary"
-        >
-          Learn More
         </Button>
       </CardActions>
     </Card>
