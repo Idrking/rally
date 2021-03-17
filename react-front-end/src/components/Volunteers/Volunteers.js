@@ -1,7 +1,7 @@
 import React from "react";
 import VolunteerCard from "./VolunteerCard"
 
-export default function Organizations() {
+export default function Volunteers() {
 
   return (
    <div>

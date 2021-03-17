@@ -31,7 +31,7 @@ export default function OrganizationDashboard() {
 
       <div>
       <br />
-        <Button type="submit" variant="contained" color="primary" href="/organizations/:id/manage_volunteers">
+        <Button type="submit" variant="contained" color="primary" href={`/organizations/${id}/manage_volunteers`}>
           Manage Volunteers
         </Button>
       </div>

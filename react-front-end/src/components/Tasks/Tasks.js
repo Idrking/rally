@@ -4,7 +4,7 @@ import TaskContent from "./TaskContent";
 export default function Tasks({ tasks }) {
   return (
     <div>
-      <TaskContent tasks={tasks} />
+      <TaskContent  tasks={tasks} />
     </div>
   );
 }

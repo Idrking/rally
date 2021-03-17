@@ -6,7 +6,7 @@ const appUserQueries    = require("../db/queries/approved_users/appUsersQueries"
 module.exports = (db) => {
 
   // GET ROUTES ---------------------------------------------
-  
+
   
   // PUT ROUTES ---------------------------------------------
   

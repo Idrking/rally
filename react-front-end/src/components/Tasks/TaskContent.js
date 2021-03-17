@@ -9,7 +9,14 @@ export default function TaskContent({ tasks }) {
         console.log('this is task id', task.id)
         console.log('this is task', task)
         return (
+<<<<<<< HEAD
             <TaskCard key={task.id} task={task}/>
+=======
+          <div key={task.id}>
+            <TaskCard key={task.id}   task={task}/>
+            <br />
+          </div>
+>>>>>>> master
         );
       })}
     </div>
