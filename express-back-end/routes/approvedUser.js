@@ -20,8 +20,11 @@ module.exports = (db) => {
     ];
 
     db.query(appUserQueries.initialApplication, queryParams)
-    .then(() => res.status(201))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .then(() => res.status(201).json(res.rows))
+    .catch(err => {
+      console.error(err)
+      res.status(500).send("Internal Server Error");
+    })
   });
 
   // PATCH ROUTES ---------------------------------------------

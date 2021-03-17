@@ -40,25 +40,50 @@ const TaskCreateForm = ({ data }) => {
     .then(res =>  history.push(`/tasks/${res.data[0].id}`))
     .catch(err => console.error(err));
   }
+  
+  const setErrorStatus = (errorArray, key) => {
+    errorArray.push(true);
+    setTaskDetails(prev => { return { ...prev, errors: {...prev.errors, [key]:true }}});
+  }
 
   //Checks all the inputs on the create task for an passes the needed error props to each input
-  const validate = () => {
+  const setErrors = () => {
+    const errorArray = [];
     setTaskDetails(prev => { return { ...prev, errors: {}} });
-    !taskDetails.name && setTaskDetails(prev => { return {...prev, errors: {...prev.errors, name: true}}});
-    !taskDetails.description && setTaskDetails(prev=> { return {...prev, errors: {...prev.errors, description: true}}});
-    Date.parse(taskDetails.start_date) < Date.now() && setTaskDetails(prev => { return {...prev, errors: {...prev.errors, start_date: true}}});
-    Date.parse(taskDetails.end_date) < Date.parse(taskDetails.start_date) && setTaskDetails(prev => { return {...prev, errors: {...prev.errors, end_date: true}}});
-    (taskDetails.spots === "0" || taskDetails.spots === "") && setTaskDetails(prev => { return { ...prev, errors: {...prev.errors, spots: true}}});
-    !taskDetails.location && setTaskDetails(prev => { return { ...prev, errors: {...prev.errors, location: true }}});
-
-    for (const error in taskDetails.errors) {
-      if (!taskDetails.errors[error]) {
-        return false
-      }
+    
+    if (!taskDetails.name) {
+      setErrorStatus(errorArray, 'name');
     }
 
-    sendData();
+    if (!taskDetails.description) {
+      setErrorStatus(errorArray, 'description')
+    }
+
+    if (!taskDetails.location) {
+      setErrorStatus(errorArray, 'location')
+    }
+
+    if (Date.parse(taskDetails.start_date) < Date.now()) {
+      setErrorStatus(errorArray, 'start_date')
+    }
+    
+    if (Date.parse(taskDetails.end_date) < Date.parse(taskDetails.start_date)) {
+      setErrorStatus(errorArray, 'end_date')
+    }
+
+    if (taskDetails.spots === "0" || taskDetails.spots === "") {
+      setErrorStatus(errorArray, 'spots')
+    }
+    
+    return errorArray;
+
   };
+
+  const validate = () => {
+    if(!setErrors()[0]) {
+      sendData();
+    }
+  }
 
   return (
     <FormGroup>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import FormModal from "../helperComponents/FormModal";
+import ApplicationForm from "./ApplicationForm";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import {
   CardActionArea,
@@ -40,13 +42,13 @@ export default function OrganizationInfo() {
   useEffect(() => {
     axios.get(`/api/organizations/${id}`)
     .then(orgs => setOrganization(orgs.data))
-  }, []);
+  }, [id]);
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={organization.image_url}
+          image={organization.image_url ? organization.image_url : "http://placeimg.com/640/480"}
         />
 
         <CardContent>
@@ -99,9 +101,13 @@ export default function OrganizationInfo() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="medium" color="primary">
-          Join
-        </Button>
+        <FormModal 
+          data={organization} 
+          FormComponent={ApplicationForm}
+          details={{task: "Apply to volunteer", description: "Fill in all the fields and submit your application, and the organization will respond as soon as they're able"}}
+          >
+          Volunteer with {organization.name}
+        </FormModal>
       </CardActions>
     </Card>
   );
