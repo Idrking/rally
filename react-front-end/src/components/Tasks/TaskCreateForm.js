@@ -42,23 +42,32 @@ const TaskCreateForm = ({ data }) => {
   }
 
   //Checks all the inputs on the create task for an passes the needed error props to each input
-  const validate = () => {
+  const setErrors = () => {
+    const errorArray = [];
     setTaskDetails(prev => { return { ...prev, errors: {}} });
-    !taskDetails.name && setTaskDetails(prev => { return {...prev, errors: {...prev.errors, name: true}}});
-    !taskDetails.description && setTaskDetails(prev=> { return {...prev, errors: {...prev.errors, description: true}}});
-    Date.parse(taskDetails.start_date) < Date.now() && setTaskDetails(prev => { return {...prev, errors: {...prev.errors, start_date: true}}});
-    Date.parse(taskDetails.end_date) < Date.parse(taskDetails.start_date) && setTaskDetails(prev => { return {...prev, errors: {...prev.errors, end_date: true}}});
-    (taskDetails.spots === "0" || taskDetails.spots === "") && setTaskDetails(prev => { return { ...prev, errors: {...prev.errors, spots: true}}});
-    !taskDetails.location && setTaskDetails(prev => { return { ...prev, errors: {...prev.errors, location: true }}});
 
-    for (const error in taskDetails.errors) {
-      if (!taskDetails.errors[error]) {
-        return false
-      }
-    }
+    !taskDetails.name && setTaskDetails(prev => { errorArray.push(true); return {...prev, errors: {...prev.errors, name: true}}});
+    
+    !taskDetails.description && setTaskDetails(prev=> { errorArray.push(true); return {...prev, errors: {...prev.errors, description: true}}});
+    
+    Date.parse(taskDetails.start_date) < Date.now() && setTaskDetails(prev => { errorArray.push(true); return {...prev, errors: {...prev.errors, 
+    start_date: true}}});
+    
+    Date.parse(taskDetails.end_date) < Date.parse(taskDetails.start_date) && setTaskDetails(prev => { errorArray.push(true); return {...prev, errors: {...prev.errors, end_date: true}}});
+    
+    (taskDetails.spots === "0" || taskDetails.spots === "") && setTaskDetails(prev => { errorArray.push(true); return { ...prev, errors: {...prev.errors, spots: true}}});
+    
+    !taskDetails.location && setTaskDetails(prev => { errorArray.push(true); return { ...prev, errors: {...prev.errors, location: true }}});
+    
+    return errorArray;
 
-    sendData();
   };
+
+  const validate = () => {
+    if(!setErrors()[0]) {
+      sendData();
+    }
+  }
 
   return (
     <FormGroup>
