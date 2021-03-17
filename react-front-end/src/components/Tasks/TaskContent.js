@@ -6,8 +6,8 @@ export default function TaskContent({ tasks }) {
     <div>
       {tasks.map(task => {
         return (
-          <div>
-            <TaskCard task={task}/>
+          <div key={task.id}>
+            <TaskCard key={task.id}   task={task}/>
             <br />
           </div>
         );
