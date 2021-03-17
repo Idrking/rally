@@ -18,9 +18,9 @@ const ApplicationForm = ({ data }) => {
     setFormDetails(prev => {
       const qObject = {}
       Object.keys(questions).forEach(key => qObject[key] = '');
-      return {...prev, ...qObject}
+      return {...prev, submitted: false, ...qObject}
     })
-  },[])
+  },[id])
 
   const updateDetails = (value, property) => {
     setFormDetails(prev => {
@@ -57,6 +57,7 @@ const ApplicationForm = ({ data }) => {
     };
 
     Axios.put(`/api/approveduser/${id}/${userState.id}`, {application: JSON.stringify(formData)})
+    .then(() => setFormDetails(prev => { return {...prev, submitted: true}}))
     .catch(err => console.error(err));
   }
 
@@ -89,11 +90,9 @@ const ApplicationForm = ({ data }) => {
       sendData();
     }
   }
-
   const inputs = generateInputs(questions)
-  return (
+  const body = (
     <FormGroup>
-      {!userState.id && <Typography component="h2" color="error">You need to be logged in to submit an application</Typography> }
       <TextField 
         id="name"
         label="Name" 
@@ -129,6 +128,19 @@ const ApplicationForm = ({ data }) => {
 
 
     </FormGroup>
+  );
+
+  return (
+    <>
+    {!userState.id && <Typography component="h2" color="error">You need to be logged in to submit an application</Typography> }
+    {(userState.id && !formDetails.submitted) && body}
+    {formDetails.submitted && (
+      <Typography component="h2" color="primary">
+        Thank you for your application!
+        The organization will be in contact shortly.
+      </Typography>
+    )}
+    </>
   );
 }
 
