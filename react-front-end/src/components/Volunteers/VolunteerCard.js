@@ -6,7 +6,6 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { 
   ListItem,
   ListItemIcon,
@@ -22,10 +21,6 @@ import VolunteerApplication from "../Volunteers/VolunteerApplication";
 export default function VolunteerCard({ volunteer, pending }) {
   // card animation
   const classes = volunteerCardStyles();
-  const [expanded, setExpanded] = React.useState(false);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const appFormButton = (clickHandler) => {
     return (
