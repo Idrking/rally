@@ -15,7 +15,7 @@ module.exports = (db) => {
     const queryParams = [
       req.params.userid,
       req.params.orgid,
-      false,
+      'pending',
       JSON.stringify(req.body.application)
     ];
 

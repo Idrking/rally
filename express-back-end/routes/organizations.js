@@ -32,7 +32,9 @@ module.exports = (db) => {
   router.get("/:id/users/pending", (req, res) => {
     db.query(orgQueries.allPendingVolunteers, [req.params.id])
     .then(volunteers => res.json(volunteers.rows))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => {
+      console.error(err);
+      res.status(500).send(deliverError(err.message))});
   });
 
 
