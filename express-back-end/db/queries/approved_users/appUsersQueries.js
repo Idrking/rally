@@ -16,13 +16,20 @@ module.exports = {
 
   //03_approved_user_by_task_and_user.sql
   canSignUp:`
-  SELECT approved_users.id
-  FROM approved_users
-  WHERE organization_id = (
-    SELECT organization_id
-    FROM tasks
-    WHERE task.id = $1;)
-  AND user_id = $2
-  AND approved = 'true';
+    SELECT approved_users.id
+    FROM approved_users
+    WHERE organization_id = (
+      SELECT organization_id
+      FROM tasks
+      WHERE task.id = $1;)
+    AND user_id = $2
+    AND approved = 'true';
+  `,
+
+  specific:`
+    SELECT *
+    FROM approved_users
+    WHERE user_id = $1 AND organization_id = $2
+    AND approved = 'pending';
   `
 }

@@ -48,7 +48,7 @@ export default function OrganizationInfo() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={organization.image_url ? organization.image_url : "http://placeimg.com/640/480"}
+          image={organization.image_url || "http://placeimg.com/640/480"}
         />
 
         <CardContent>

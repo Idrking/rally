@@ -6,7 +6,11 @@ const appUserQueries    = require("../db/queries/approved_users/appUsersQueries"
 module.exports = (db) => {
 
   // GET ROUTES ---------------------------------------------
-
+  router.get("/:orgid/:userid/application", (req, res) => {
+    db.query(appUserQueries.specific, [req.params.userid, req.params.orgid])
+    .then(entry => res.status(200).json(entry.rows))
+    .catch(err => console.error(err));
+  });
   
   // PUT ROUTES ---------------------------------------------
   

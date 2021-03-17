@@ -15,6 +15,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
 import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
 import ContentModal from "../helperComponents/ContentModal";
+import VolunteerApplication from "../Volunteers/VolunteerApplication";
 
 export default function VolunteerCard({ volunteer, pending }) {
   // card animation
@@ -59,8 +60,8 @@ export default function VolunteerCard({ volunteer, pending }) {
       </CardContent>
       <CardActions disableSpacing>
         {pending && <ContentModal 
-          data={[]}
-          FormComponent={Button}
+          data={volunteer}
+          FormComponent={VolunteerApplication}
           buttonFunc={appFormButton}
         />}
         <IconButton
