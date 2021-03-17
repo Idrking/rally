@@ -14,6 +14,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Badge,
+  withStyles,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Add, MailOutlineSharp } from "@material-ui/icons/";
@@ -31,9 +33,21 @@ export default function VolunteerCard({ volunteer }) {
   return (
     <Card className={classes.root}>
       <div className={classes.flex}>
-
         <div className="avatardiv">
-          <Avatar className={classes.media} src={volunteer.profile_image_url} />
+          <Badge
+            overlap="circle"
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            badgeContent={4}
+            color="primary"
+          >
+            <Avatar
+              className={classes.media}
+              src={volunteer.profile_image_url}
+            />
+          </Badge>
         </div>
 
         <div className="textdiv">

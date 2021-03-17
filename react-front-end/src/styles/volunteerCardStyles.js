@@ -7,6 +7,7 @@ const volunteerCardStyles = makeStyles((theme) => ({
     maxWidth: 500,
     margin: "auto",
     marginTop: "100",
+    marginBottom: 30,
     display: "wrap",
   },
   media: {
@@ -25,7 +26,6 @@ const volunteerCardStyles = makeStyles((theme) => ({
     paddingTop: 20,
     paddingLeft: 20,
   }
-
 }));
 
 export default volunteerCardStyles;
