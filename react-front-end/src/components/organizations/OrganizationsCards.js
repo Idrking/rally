@@ -9,13 +9,17 @@ import {
   Typography,
   Card,
 } from "@material-ui/core";
+import { useParams } from 'react-router-dom';
 
 export default function OrganizationsCards({ details }) {
   const classes = organizationsCardsStyles();
 
+  const { id } = useParams();
+
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea
+      href={`/organizations/${details.id}`}>
         <CardMedia
           className={classes.media}
           image={details.image_url}

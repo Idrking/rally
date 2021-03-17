@@ -43,6 +43,7 @@ export default function OrganizationInfo() {
     axios.get(`/api/organizations/${id}`)
     .then(orgs => setOrganization(orgs.data))
   }, [id]);
+  
   return (
     <Card className={classes.root}>
       <CardActionArea>
