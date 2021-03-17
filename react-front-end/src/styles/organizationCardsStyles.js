@@ -9,6 +9,12 @@ const organizationsCardsStyles = makeStyles({
   media: {
     height: 140,
   },
+  calendaricon: {
+    color: "green"
+  },
+  calendaricon2: {
+    color: "blue"
+  }
 });
 
 export default organizationsCardsStyles;
