@@ -3,7 +3,8 @@ module.exports = {
   //01_add.sql
   initialApplication:`
     INSERT INTO approved_users (user_id, organization_id, approved, application)
-    VALUES ($1, $2, $3, $4);
+    VALUES ($1, $2, $3, $4)
+    RETURNING id;
   `,
 
   //02_approve.sql
