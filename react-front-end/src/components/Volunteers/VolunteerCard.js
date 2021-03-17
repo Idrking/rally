@@ -1,12 +1,21 @@
-import React from 'react';
-import Collapse from '@material-ui/core/Collapse';
-import { Card,  CardHeader, CardContent, CardActions, Avatar, IconButton, Typography  } from '@material-ui/core';
-import clsx from 'clsx';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Add from '@material-ui/icons/Add';
+import React from "react";
+import clsx from "clsx";
+import {
+  Collapse,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Avatar,
+  IconButton,
+  Typography,
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Add from "@material-ui/icons/Add";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
 
-export default function VolunteerCard() {
+export default function VolunteerCard({ volunteer }) {
+  // card animation
   const classes = volunteerCardStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -18,16 +27,21 @@ export default function VolunteerCard() {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar className={classes.avatar}
-          src="https://material-ui.com/static/images/avatar/1.jpg">
-          </Avatar>
+          <Avatar
+            className={classes.avatar}
+            src={volunteer.profile_image_url}
+          ></Avatar>
         }
-        title="Larry Labber"
-        subheader="Completed tasks: 5"
+        title={volunteer.first_name}
+        subheader={volunteer.last_name}
       />
+
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Experienced volunteer!
+        <Typography variant="h6" color="textSecondary" component="h4">
+          {volunteer.first_name} {volunteer.last_name}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="h4">
+          {"Email: "} {volunteer.email}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -49,7 +63,7 @@ export default function VolunteerCard() {
         <CardContent>
           <Typography paragraph>Details</Typography>
           <Typography paragraph>
-            Biography: did a lot of volunteer things
+            {"Email: "} {volunteer.email}
           </Typography>
         </CardContent>
       </Collapse>
