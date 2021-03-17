@@ -7,11 +7,16 @@ import {
   CardContent,
   CardActions,
   Avatar,
+  CardMedia,
   IconButton,
   Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Add from "@material-ui/icons/Add";
+import { Add, MailOutlineSharp } from "@material-ui/icons/";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
 
 export default function VolunteerCard({ volunteer }) {
@@ -25,48 +30,32 @@ export default function VolunteerCard({ volunteer }) {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar
-            className={classes.avatar}
-            src={volunteer.profile_image_url}
-          ></Avatar>
-        }
-        title={volunteer.first_name}
-        subheader={volunteer.last_name}
-      />
+      <div className={classes.flex}>
 
-      <CardContent>
-        <Typography variant="h6" color="textSecondary" component="h4">
-          {volunteer.first_name} {volunteer.last_name}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="h4">
-          {"Email: "} {volunteer.email}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add">
-          <Add />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Details</Typography>
-          <Typography paragraph>
-            {"Email: "} {volunteer.email}
-          </Typography>
-        </CardContent>
-      </Collapse>
+        <div className="avatardiv">
+          <Avatar className={classes.media} src={volunteer.profile_image_url} />
+        </div>
+
+        <div className="textdiv">
+          <CardContent>
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="h4"
+              align="left"
+            >
+              {volunteer.first_name} {volunteer.last_name}
+            </Typography>
+
+            <ListItem button>
+              <ListItemIcon>
+                <MailOutlineSharp />
+              </ListItemIcon>
+              <ListItemText primary={volunteer.email} />
+            </ListItem>
+          </CardContent>
+        </div>
+      </div>
     </Card>
   );
 }
