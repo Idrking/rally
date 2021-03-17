@@ -25,7 +25,7 @@ export default function TaskCard({ task }) {
       <CardActionArea href={`/tasks/${id}`}>
         <CardMedia
           className={classes.media}
-          image={task.image_url || " "}
+          image={task.image_url ? task.image_url : "http://placeimg.com/640/480"}
           title={task.name}
         />
         <CardContent>
@@ -34,14 +34,6 @@ export default function TaskCard({ task }) {
           </Typography>
           <Typography color="primary" component="h3" align="left">
             {task.location}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            align="left"
-          >
-            {task.description}
           </Typography>
 
           <ListItem button>
