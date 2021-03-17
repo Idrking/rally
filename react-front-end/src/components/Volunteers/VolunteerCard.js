@@ -1,19 +1,21 @@
 import React from "react";
-import clsx from "clsx";
 import {
-  Collapse,
   Card,
-  CardHeader,
   CardContent,
-  CardActions,
   Avatar,
-  IconButton,
   Typography,
   Button,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { 
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Badge,
+} from "@material-ui/core";
+import { MailOutlineSharp } from "@material-ui/icons/";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
-import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import ContentModal from "../helperComponents/ContentModal";
 import VolunteerApplication from "../Volunteers/VolunteerApplication";
 
@@ -30,7 +32,7 @@ export default function VolunteerCard({ volunteer, pending }) {
       <Button
         variant="contained"
         color="primary"
-        startIcon={<MailOutlineRoundedIcon />}
+        startIcon={<EmojiPeopleIcon />}
         onClick={clickHandler}
       >
         View application
@@ -39,50 +41,50 @@ export default function VolunteerCard({ volunteer, pending }) {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar
-            className={classes.avatar}
-            src={volunteer.profile_image_url}
-          ></Avatar>
-        }
-        title={volunteer.first_name}
-        subheader={volunteer.last_name}
-      />
+      <div className={classes.flex}>
+        <div className="avatardiv">
+          <Badge
+            overlap="circle"
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            badgeContent={4}
+            color="primary"
+          >
+            <Avatar
+              className={classes.media}
+              src={volunteer.profile_image_url}
+            />
+          </Badge>
+        </div>
 
-      <CardContent>
-        <Typography variant="h6" color="textSecondary" component="h4">
-          {volunteer.first_name} {volunteer.last_name}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="h4">
-          {"Email: "} {volunteer.email}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        {pending && <ContentModal 
-          data={volunteer}
-          FormComponent={VolunteerApplication}
-          buttonFunc={appFormButton}
-        />}
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Details</Typography>
-          <Typography paragraph>
-            {"Email: "} {volunteer.email}
-          </Typography>
-        </CardContent>
-      </Collapse>
+        <div className="textdiv">
+          <CardContent>
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="h4"
+              align="left"
+            >
+              {volunteer.first_name} {volunteer.last_name}
+            </Typography>
+
+            <ListItem button>
+              <ListItemIcon>
+                <MailOutlineSharp />
+              </ListItemIcon>
+              <ListItemText primary={volunteer.email} />
+            </ListItem>
+            {pending && <ContentModal 
+              data={volunteer}
+              FormComponent={VolunteerApplication}
+              buttonFunc={appFormButton}
+            />}
+          </CardContent>
+        </div>
+      </div>
     </Card>
   );
 }
+
