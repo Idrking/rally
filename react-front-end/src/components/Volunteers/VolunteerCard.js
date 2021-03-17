@@ -1,35 +1,20 @@
 import React from "react";
-import clsx from "clsx";
 import {
-  Collapse,
   Card,
-  CardHeader,
   CardContent,
-  CardActions,
   Avatar,
-  CardMedia,
-  IconButton,
   Typography,
-  List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Badge,
-  withStyles,
 } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Add, MailOutlineSharp } from "@material-ui/icons/";
+import { MailOutlineSharp } from "@material-ui/icons/";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
 
 export default function VolunteerCard({ volunteer }) {
   // card animation
   const classes = volunteerCardStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
   return (
     <Card className={classes.root}>
       <div className={classes.flex}>
