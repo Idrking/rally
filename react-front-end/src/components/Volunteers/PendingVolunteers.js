@@ -46,7 +46,7 @@ export default function PendingVolunteers() {
 
       {pendingVolunteers.map(volunteer => {
         return (
-          <VolunteerCard key={volunteer.id} volunteer={volunteer} />
+          <VolunteerCard pending key={volunteer.id} volunteer={volunteer} />
         );
       })}
     </div>

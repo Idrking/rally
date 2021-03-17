@@ -9,16 +9,17 @@ import {
   Avatar,
   IconButton,
   Typography,
+  Button,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Add from "@material-ui/icons/Add";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
+import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
 
-export default function VolunteerCard({ volunteer }) {
+export default function VolunteerCard({ volunteer, pending }) {
   // card animation
   const classes = volunteerCardStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  console.log(volunteer);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -45,9 +46,11 @@ export default function VolunteerCard({ volunteer }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add">
-          <Add />
-        </IconButton>
+        {pending && <Button
+          variant="contained"
+          color="primary"
+          startIcon={<MailOutlineRoundedIcon />}
+        > View Application </Button>}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
