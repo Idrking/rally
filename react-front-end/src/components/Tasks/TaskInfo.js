@@ -12,13 +12,19 @@ import {
   ListItemIcon,
   Badge,
   Button,
+  ButtonGroup,
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { PeopleSharp } from "@material-ui/icons/";
+import ListIcon from "@material-ui/icons/List";
 
 export default function TaskInfo() {
   const { id } = useParams();
   const classes = organizationsCardsStyles();
+
+  const [count, setCount] = useState(0);
+
+  const [showJoin, setShowJoin] = useState(true);
 
   const [task, setTasks] = useState({
     name: null,
@@ -58,7 +64,6 @@ export default function TaskInfo() {
         <Typography color="inherit" variant="body1" component="p" align="left">
           {task.description}
         </Typography>
-
         <List>
           {/* Counter */}
           <ListItem>
@@ -70,7 +75,7 @@ export default function TaskInfo() {
                   horizontal: "right",
                 }}
                 // COUNTER HERE!
-                badgeContent={4}
+                badgeContent={count}
                 color="primary"
               >
                 <PeopleSharp />
@@ -83,12 +88,34 @@ export default function TaskInfo() {
 
           <ListItem>
             <ListItemIcon>
-              <PeopleSharp />
+              <ListIcon />
             </ListItemIcon>
             <ListItemText primary={"list of all people signed"} />
           </ListItem>
         </List>
-
+        {showJoin ? (
+          <Button
+            variant="contained"
+            aria-label="increase"
+            onClick={() => {
+              setShowJoin(!showJoin);
+              setCount(count + 1);
+            }}
+          >
+            Join Task
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            aria-label="reduce"
+            onClick={() => {
+              setShowJoin(!showJoin);
+              setCount(Math.max(count - 1, 0));
+            }}
+          >
+            Cancel Task
+          </Button>
+        )}{" "}
         <Button
           size="medium"
           color="primary"
