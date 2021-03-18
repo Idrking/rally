@@ -23,11 +23,11 @@ const applicationStyles = makeStyles((theme) => ({
     marginTop: "10px",
     fontWeight: 'bold',
     padding: '0.5em',
-    color: "#F6F7EB",
-    backgroundColor: "#30BCED",
+    color: theme.palette.base.main,
+    backgroundColor: theme.palette.accent.main,
     "&:hover": {
-      color: "#30BCED",
-      backgroundColor: '#e4f6fd'
+      color: theme.palette.accent.main,
+      backgroundColor: theme.palette.base.main
     }
   },
 
@@ -37,14 +37,17 @@ const applicationStyles = makeStyles((theme) => ({
     marginTop: "10px",
     fontWeight: 'bold',
     padding: '0.5em',
-    color: "#F6F7EB",
-    backgroundColor: "#942911",
+    color: theme.palette.base.main,
+    backgroundColor: theme.palette.primary.main,
     "&:hover": {
-      color: "#942911",
-      backgroundColor: '#fce8e3'
+      color: theme.palette.primary.main,
+      backgroundColor: theme.palette.base.main
     }
   }
 
 }));
 
 export default applicationStyles;
+
+// #942911"
+// #fce8e3
