@@ -12,13 +12,22 @@ import {
   ListItemIcon,
   Badge,
   Button,
+  ButtonGroup,
+
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { PeopleSharp } from "@material-ui/icons/";
+import ListIcon from '@material-ui/icons/List';
+
 
 export default function TaskInfo() {
   const { id } = useParams();
   const classes = organizationsCardsStyles();
+
+
+  const [count, setCount] = useState(0);
+
+  const [invisible, setInvisible] = useState(false);
 
   const [task, setTasks] = useState({
     name: null,
@@ -41,6 +50,10 @@ export default function TaskInfo() {
         console.error(err);
       });
   }, [id]);
+
+  const handleButtonVisibility = () => {
+    setInvisible(!invisible);
+  };
 
   return (
     <Card className={classes.root}>
@@ -71,7 +84,7 @@ export default function TaskInfo() {
                   horizontal: "right",
                 }}
                 // COUNTER HERE!
-                badgeContent={4}
+                badgeContent={count}
                 color="primary"
               >
                 <PeopleSharp />
@@ -84,12 +97,31 @@ export default function TaskInfo() {
 
           <ListItem>
             <ListItemIcon>
-              <PeopleSharp />
+              <ListIcon />
             </ListItemIcon>
             <ListItemText primary={"list of all people signed"} />
           </ListItem>
         </List>
-
+        <ButtonGroup>
+          <Button
+            aria-label="reduce"
+            invisible={!invisible}
+            onClick={() => {
+              setCount(Math.max(count - 1, 0));
+            }}
+          >
+            Cancel Task
+          </Button>
+          <Button
+            aria-label="increase"
+            onChange = {handleButtonVisibility}
+            onClick={() => {
+              setCount(count + 1);
+            }}
+          >
+            Join Task
+          </Button>
+        </ButtonGroup>
         <Button
           size="medium"
           color="primary"
@@ -98,6 +130,7 @@ export default function TaskInfo() {
         >
           Back to Dashboard
         </Button>
+
       </CardContent>
     </Card>
   );
