@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import VolunteerCard from "./VolunteerCard";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, Badge } from "@material-ui/core";
 import { useParams, Link } from 'react-router-dom';
 import axios from "axios";
 
 
 export default function ManagingVolunteers() {
   const { id } = useParams();
-  const [volunteers, setVolunteers] = useState([])
+  const [volunteers, setVolunteers] = useState({volunteers: [], pending: 0})
   useEffect(() => {
     axios.get(`/api/organizations/${id}/users/`)
       .then(res => {
-        setVolunteers(res.data);
+        setVolunteers({volunteers: res.data.info, pending: res.data.pending});
       })
       .catch(err => {
         console.error(err);
       });
   }, []);
+
   return (
     <div>
       <br />
@@ -26,13 +27,14 @@ export default function ManagingVolunteers() {
       <br />
       <div>
         <Link to={`/organizations/${id}/pending_volunteers`}>
-          <Button
-            size="medium"
-            color="primary"
-            variant="contained"
-          >
-            Pending Volunteers
-          </Button></Link>{" "}
+          <Badge color="secondary" badgeContent={volunteers.pending} anchorOrigin={{vertical:'top', horizontal: 'left'}}>
+            <Button
+              size="medium"
+              color="primary"
+              variant="contained"
+            >
+              Pending Volunteers
+          </Button></Badge></Link>{" "}
           
         <Link to={`/organizations/${id}/dashboard`}>
           <Button
@@ -45,7 +47,7 @@ export default function ManagingVolunteers() {
         </Link>
       </div>
       <br />
-      {volunteers.map(volunteer => {
+      {volunteers.volunteers.map(volunteer => {
         return (
           <VolunteerCard key={volunteer.id} volunteer={volunteer} />
         );
