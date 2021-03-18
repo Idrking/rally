@@ -32,7 +32,7 @@ module.exports = (db) => {
   // Creates a signup for a task with a certain user
   router.put("/:taskid/:userid", (req, res) => {
     db.query(signupQueries.signUp, [req.params.userid, req.params.taskid])
-    .then(() => res.status(201))
+    .then((res) => res.status(201).json(res.rows))
     .catch(err => res.status(500).send(deliverError(err.message)))
   });
 
