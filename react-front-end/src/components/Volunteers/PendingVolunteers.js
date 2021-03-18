@@ -3,10 +3,12 @@ import VolunteerCard from "./VolunteerCard";
 import { Button, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import VolunteerContext from '../../contexts/VolunteerContext';
 
 export default function PendingVolunteers() {
   const { id } = useParams();
   const [pendingVolunteers, setPendingVolunteers] = useState([]);
+
   useEffect(() => {
     axios.get(`/api/organizations/${id}/users/pending`)
       .then(res => {
@@ -17,38 +19,41 @@ export default function PendingVolunteers() {
       });
   }, []);
 
-  return (
-    <div>
-      <br />
-      <Typography variant="h5" component="h2">
-        Pending Volunteers
-      </Typography>
-      <br />
-      <div>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          href={`/organizations/${id}/manage_volunteers`}
-        >
-          Manage Volunteers
-        </Button>{" "}
-        <Button
-          size="medium"
-          color="primary"
-          variant="contained"
-          href={`/organizations/${id}/dashboard`}
-        >
-          Back to Dashboard
-        </Button>
-      </div>
-      <br />
 
-      {pendingVolunteers.map(volunteer => {
-        return (
-          <VolunteerCard key={volunteer.id} volunteer={volunteer} />
-        );
-      })}
-    </div>
+  return (
+    <VolunteerContext.Provider value={{pendingVolunteers, setPendingVolunteers}} >
+      <div>
+        <br />
+        <Typography variant="h5" component="h2">
+          Pending Volunteers
+        </Typography>
+        <br />
+        <div>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            href={`/organizations/${id}/manage_volunteers`}
+          >
+            Manage Volunteers
+          </Button>{" "}
+          <Button
+            size="medium"
+            color="primary"
+            variant="contained"
+            href={`/organizations/${id}/dashboard`}
+          >
+            Back to Dashboard
+          </Button>
+        </div>
+        <br />
+
+        {pendingVolunteers.map(volunteer => {
+          return (
+            <VolunteerCard pending key={volunteer.id} volunteer={volunteer} />
+          );
+        })}
+      </div>
+    </VolunteerContext.Provider>
   );
 }

@@ -6,7 +6,11 @@ const appUserQueries    = require("../db/queries/approved_users/appUsersQueries"
 module.exports = (db) => {
 
   // GET ROUTES ---------------------------------------------
-
+  router.get("/:orgid/:userid/application", (req, res) => {
+    db.query(appUserQueries.specific, [req.params.userid, req.params.orgid])
+    .then(entry => res.status(200).json(entry.rows))
+    .catch(err => console.error(err));
+  });
   
   // PUT ROUTES ---------------------------------------------
   
@@ -15,7 +19,7 @@ module.exports = (db) => {
     const queryParams = [
       req.params.userid,
       req.params.orgid,
-      false,
+      'pending',
       JSON.stringify(req.body.application)
     ];
 
@@ -29,11 +33,11 @@ module.exports = (db) => {
 
   // PATCH ROUTES ---------------------------------------------
 
-  // Edits details of an approved user (used to set approved to True)
+  // Edits details of an approved user (used to set approved to True/False)
   router.patch("/:orgid/:userid", (req, res) => {
-    db.query(appUserQueries.approveVolunteer, [req.params.userid, req.params.orgid])
-    .then(() => res.status(201))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    db.query(appUserQueries.approveVolunteer, [req.body.set, req.params.userid, req.params.orgid])
+    .then(() => res.status(201).end())
+    .catch(err => console.error(err));
   });
   // DELETE ROUTES ---------------------------------------------
 

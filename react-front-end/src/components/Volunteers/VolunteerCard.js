@@ -4,6 +4,9 @@ import {
   CardContent,
   Avatar,
   Typography,
+  Button,
+} from "@material-ui/core";
+import { 
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -11,10 +14,26 @@ import {
 } from "@material-ui/core";
 import { MailOutlineSharp } from "@material-ui/icons/";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import ContentModal from "../helperComponents/ContentModal";
+import VolunteerApplication from "../Volunteers/VolunteerApplication";
 
-export default function VolunteerCard({ volunteer }) {
+export default function VolunteerCard({ volunteer, pending }) {
   // card animation
   const classes = volunteerCardStyles();
+
+  const appFormButton = (clickHandler) => {
+    return (
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={<EmojiPeopleIcon />}
+        onClick={clickHandler}
+      >
+        View application
+      </Button>
+    )};
+
   return (
     <Card className={classes.root}>
       <div className={classes.flex}>
@@ -52,9 +71,15 @@ export default function VolunteerCard({ volunteer }) {
               </ListItemIcon>
               <ListItemText primary={volunteer.email} />
             </ListItem>
+            {pending && <ContentModal 
+              data={volunteer}
+              FormComponent={VolunteerApplication}
+              buttonFunc={appFormButton}
+            />}
           </CardContent>
         </div>
       </div>
     </Card>
   );
 }
+

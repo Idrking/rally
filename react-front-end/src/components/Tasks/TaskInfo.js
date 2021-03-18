@@ -40,7 +40,6 @@ export default function TaskInfo() {
     axios
       .get(`/api/tasks/${id}`)
       .then((res) => {
-        console.log("this is res", res);
         setTasks(res.data[0]);
       })
       .catch((err) => {
