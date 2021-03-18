@@ -1,0 +1,1 @@
+-- A user can submit an application to an organization they're a part of, and if that application is rejected they are removed from the list of approved volunteers
