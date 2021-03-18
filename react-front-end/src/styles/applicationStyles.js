@@ -1,12 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const applicationButtonStyles = makeStyles({
+const applicationStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+  },
+
+  avatar: {
+    alignSelf: "center",
+    width: theme.spacing(12),
+    height: theme.spacing(12),
+  },
+
+  buttonContainer: {
+    display: "flex",
+    marginTop: "20px"
+  },
 
   accept: {
     maxWidth: 800,
     margin: "auto",
     marginTop: "10px",
-    marginRight: "15px",
     fontWeight: 'bold',
     padding: '0.5em',
     color: "#F6F7EB",
@@ -31,6 +45,6 @@ const applicationButtonStyles = makeStyles({
     }
   }
 
-});
+}));
 
-export default applicationButtonStyles;
+export default applicationStyles;
