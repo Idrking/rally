@@ -42,8 +42,8 @@ const VolunteerApplication = ({ data, modalClose }) => {
     return layoutItems;
   }
 
-  const accept = () => {
-    Axios.patch(`/api/approveduser/${id}/${data.id}`)
+  const send = (status) => {
+    Axios.patch(`/api/approveduser/${id}/${data.id}`, {set: status})
     .then(() => {
       modalClose();
       setPendingVolunteers(prev => {
@@ -53,12 +53,8 @@ const VolunteerApplication = ({ data, modalClose }) => {
     .catch(err => console.error(err));
   };
 
-  const reject = () => {
-    console.log("rejected")
-  };
   
   const confirm = () => {
-    console.log("I clicked confirm")
     setApplication(prev => { return {...prev, confirm: !prev.confirm}});
   };
   const answers = generateAnswers();
@@ -70,7 +66,7 @@ const VolunteerApplication = ({ data, modalClose }) => {
     />
     {answers}
     {!application.confirm && <div className={buttonClasses.buttonContainer}>
-      <Button className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />} onClick={accept}>
+      <Button className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />} onClick={() => send('true')}>
         Accept
       </Button>
       <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>
@@ -80,7 +76,7 @@ const VolunteerApplication = ({ data, modalClose }) => {
     {application.confirm && <Typography variant="h5" color="error">Are you sure you want to reject this applicant?</Typography>}
     {application.confirm && 
       <div className={buttonClasses.buttonContainer}>
-        <Button className={buttonClasses.reject} size="large" startIcon={<CheckCircleIcon />} onClick={reject}>
+        <Button className={buttonClasses.reject} size="large" startIcon={<CheckCircleIcon />} onClick={() => send('false')}>
           Confirm
         </Button>
         <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>

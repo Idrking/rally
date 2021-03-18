@@ -33,9 +33,9 @@ module.exports = (db) => {
 
   // PATCH ROUTES ---------------------------------------------
 
-  // Edits details of an approved user (used to set approved to True)
+  // Edits details of an approved user (used to set approved to True/False)
   router.patch("/:orgid/:userid", (req, res) => {
-    db.query(appUserQueries.approveVolunteer, [req.params.userid, req.params.orgid])
+    db.query(appUserQueries.approveVolunteer, [req.body.set, req.params.userid, req.params.orgid])
     .then(() => res.status(201).end())
     .catch(err => console.error(err));
   });
