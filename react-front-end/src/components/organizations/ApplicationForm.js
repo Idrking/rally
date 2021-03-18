@@ -52,11 +52,11 @@ const ApplicationForm = ({ data }) => {
     const formData = {};
     for (const key in formDetails) {
       if (key !== 'errors' && key !== 'submitted') {
-        formData[key] = {question: key, answer: formDetails[key]}
+        formData[key] = {question: questions[key] || key, answer: formDetails[key]}
       }
     };
-
-    Axios.put(`/api/approveduser/${id}/${userState.id}`, {application: JSON.stringify(formData)})
+    console.log(formData)
+    Axios.put(`/api/approveduser/${id}/${userState.id}`, {application: formData })
     .then(() => setFormDetails(prev => { return {...prev, submitted: true}}))
     .catch(err => console.error(err));
   }

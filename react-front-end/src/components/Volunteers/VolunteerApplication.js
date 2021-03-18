@@ -1,24 +1,26 @@
-import { Container, Typography, Avatar } from '@material-ui/core';
+import { Container, Typography, Avatar, Button } from '@material-ui/core';
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
-
+import applicationButtonStyles from "../../styles/applicationButtonStyles";
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const VolunteerApplication = ({ data }) => {
   const classes = volunteerCardStyles();
+  const buttonClasses = applicationButtonStyles();
   const { id } = useParams();
   const [application, setApplication] = useState({userID: null, organizationID: null, answers: {}});
 
   useEffect(() => {
     Axios.get(`/api/approveduser/${id}/${data.id}/application`)
     .then(res => {
-      console.log(res.data)
-      setApplication(prev => {
+      setApplication(() => {
         return {
           userID: res.data[0].user_id,
           organizationID: res.data[0].organizationID,
-          answers: JSON.parse(res.data[0].application)
+          answers: res.data[0].application
         }
       })
     })
@@ -48,6 +50,12 @@ const VolunteerApplication = ({ data }) => {
       src={data.profile_image_url}
     />
     {answers}
+    <Button className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />}>
+      Accept
+    </Button>
+    <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />}>
+      Reject
+    </Button>
   </Container>);
 };
 
