@@ -13,11 +13,11 @@ import {
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function TaskCard({ task }) {
   const classes = organizationsCardsStyles();
-  const { id } = useParams();
+
 
   return (
     <Card className={classes.root}>
