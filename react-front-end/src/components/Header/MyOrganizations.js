@@ -1,9 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import Axios from 'axios';
 import UserContext from '../../contexts/UserContext';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Button, Menu, MenuItem, Grow} from '@material-ui/core';
 import CompactOrgListItem from "./CompactOrgListItem";
 
 export default function MyOrganizations() {
@@ -39,6 +37,7 @@ export default function MyOrganizations() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        TransitionComponent={Grow}
       >
       {orgs.map(org => {
         return (
