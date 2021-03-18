@@ -1,6 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
-import { WrapText } from '@material-ui/icons';
 
 const volunteerCardStyles = makeStyles((theme) => ({
   root: {

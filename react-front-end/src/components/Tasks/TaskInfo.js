@@ -12,7 +12,6 @@ import {
   ListItemIcon,
   Badge,
   Button,
-  ButtonGroup,
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { PeopleSharp } from "@material-ui/icons/";
@@ -65,6 +64,7 @@ export default function TaskInfo() {
           {task.description}
         </Typography>
         <List>
+
           {/* Counter */}
           <ListItem>
             <ListItemIcon>
@@ -85,7 +85,6 @@ export default function TaskInfo() {
           </ListItem>
 
           {/* List of people */}
-
           <ListItem>
             <ListItemIcon>
               <ListIcon />
