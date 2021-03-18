@@ -40,16 +40,32 @@ module.exports = (db) => {
 
   // Gets all approved users for an organization
   router.get("/:id/users", (req, res) => {
-    db.query(orgQueries.allVolunteers, [req.params.id])
-    .then(volunteers => res.json(volunteers.rows))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    Promise.all([
+      db.query(orgQueries.allVolunteers, [req.params.id]),
+      db.query(orgQueries.allPendingVolunteers, [req.params.id])
+    ])
+      .then(all => {
+        res.status(200).json({ info: [...all[0].rows], pending: all[1].rows.length});
+      })
+      .catch(err => console.error(err));
+
+
+    // db.query(orgQueries.allVolunteers, [req.params.id])
+    // .then(volunteers => res.json(volunteers.rows))
+    // .catch(err => res.status(500).send(deliverError(err.message)));
   });
   
   // Gets a specific organization
   router.get("/:id", (req, res) => {
-    db.query(orgQueries.specificOrg, [req.params.id])
-    .then(org => res.json(org.rows[0]))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    
+    Promise.all([
+      db.query(orgQueries.specificOrg, [req.params.id]),
+      db.query(orgQueries.allPendingVolunteers, [req.params.id])
+    ])
+      .then(all => {
+        res.status(200).json({ info: [...all[0].rows], pending: all[1].rows.length});
+      })
+      .catch(err => console.error(err));
   });
   
   // Gets all organizations

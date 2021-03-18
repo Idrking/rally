@@ -42,7 +42,6 @@ export default function PendingVolunteers() {
               size="medium"
               color="primary"
               variant="contained"
-              href={`/organizations/${id}/dashboard`}
             >
               Back to Dashboard
             </Button>

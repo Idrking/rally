@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
-import HeaderOrgDashboard from "../Header/HeaderOrgDashboard";
 import ManagingVolunteers from "../Volunteers/ManagingVolunteers";
 import PendingVolunteers from "../Volunteers/PendingVolunteers";
 import OrganizationDashboard from "../organizations/OrganizationDashboard";
@@ -30,7 +29,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <HeaderOrgDashboard />
+              <Header />
               <OrganizationDashboard />
             </>
           );
