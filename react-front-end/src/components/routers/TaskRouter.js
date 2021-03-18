@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "../Header/Header";
 import TaskInfo from "../Tasks/TaskInfo";
-import Tasks from "../Tasks/Tasks";
 
 const TasksRouter = () => {
   return (

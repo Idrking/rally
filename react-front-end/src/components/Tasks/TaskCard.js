@@ -8,7 +8,6 @@ import {
   CardActionArea,
   CardMedia,
   ListItemIcon,
-  List,
   ListItem,
   ListItemText
 } from "@material-ui/core";

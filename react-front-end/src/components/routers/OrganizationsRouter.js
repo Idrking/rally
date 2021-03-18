@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
 import HeaderOrgDashboard from "../Header/HeaderOrgDashboard";
 import ManagingVolunteers from "../Volunteers/ManagingVolunteers";
