@@ -27,7 +27,7 @@ export default function TaskInfo() {
 
   const [count, setCount] = useState(0);
 
-  const [invisible, setInvisible] = useState(false);
+  const [showJoin, setShowJoin] = useState(true);
 
   const [task, setTasks] = useState({
     name: null,
@@ -51,9 +51,6 @@ export default function TaskInfo() {
       });
   }, [id]);
 
-  const handleButtonVisibility = () => {
-    setInvisible(!invisible);
-  };
 
   return (
     <Card className={classes.root}>
@@ -103,24 +100,27 @@ export default function TaskInfo() {
           </ListItem>
         </List>
         <ButtonGroup>
+          { !showJoin ? 
           <Button
             aria-label="reduce"
-            invisible={!invisible}
             onClick={() => {
+              setShowJoin(!showJoin);
               setCount(Math.max(count - 1, 0));
             }}
           >
             Cancel Task
           </Button>
+          :
           <Button
             aria-label="increase"
-            onChange = {handleButtonVisibility}
             onClick={() => {
+              setShowJoin(!showJoin);
               setCount(count + 1);
             }}
           >
             Join Task
           </Button>
+          }
         </ButtonGroup>
         <Button
           size="medium"
