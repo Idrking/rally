@@ -35,7 +35,7 @@ export default function ContentModal(props) {
 
   const body = (
       <div className={classes.paper}>
-        <props.FormComponent data={props.data} />
+        <props.FormComponent data={props.data} modalClose={handleClose}/>
       </div>
     );
 

@@ -1,17 +1,17 @@
 import { Container, Typography, Avatar, Button } from '@material-ui/core';
 import Axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import VolunteerContext from "../../contexts/VolunteerContext";
 import { useParams } from 'react-router-dom';
-import volunteerCardStyles from "../../styles/volunteerCardStyles";
 import applicationStyles from "../../styles/applicationStyles";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-const VolunteerApplication = ({ data }) => {
-  const classes = volunteerCardStyles();
+const VolunteerApplication = ({ data, modalClose }) => {
   const buttonClasses = applicationStyles();
+  const { setPendingVolunteers } = useContext(VolunteerContext);
   const { id } = useParams();
-  const [application, setApplication] = useState({userID: null, organizationID: null, answers: {}});
+  const [application, setApplication] = useState({userID: null, organizationID: null, confirm: false, answers: {}});
 
   useEffect(() => {
     Axios.get(`/api/approveduser/${id}/${data.id}/application`)
@@ -42,6 +42,25 @@ const VolunteerApplication = ({ data }) => {
     return layoutItems;
   }
 
+  const accept = () => {
+    Axios.patch(`/api/approveduser/${id}/${data.id}`)
+    .then(() => {
+      modalClose();
+      setPendingVolunteers(prev => {
+        return prev.filter(volunteer => volunteer.id === data.id ? false : true)
+      })
+    })
+    .catch(err => console.error(err));
+  };
+
+  const reject = () => {
+    console.log("rejected")
+  };
+  
+  const confirm = () => {
+    console.log("I clicked confirm")
+    setApplication(prev => { return {...prev, confirm: !prev.confirm}});
+  };
   const answers = generateAnswers();
 
   return (<Container className={buttonClasses.container}>
@@ -50,14 +69,27 @@ const VolunteerApplication = ({ data }) => {
       src={data.profile_image_url}
     />
     {answers}
-    <div className={buttonClasses.buttonContainer}>
-    <Button className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />}>
-      Accept
-    </Button>
-    <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />}>
-      Reject
-    </Button>
-    </div>
+    {!application.confirm && <div className={buttonClasses.buttonContainer}>
+      <Button className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />} onClick={accept}>
+        Accept
+      </Button>
+      <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>
+        Reject
+      </Button>
+    </div>}
+    {application.confirm && <Typography variant="h5" color="error">Are you sure you want to reject this applicant?</Typography>}
+    {application.confirm && 
+      <div className={buttonClasses.buttonContainer}>
+        <Button className={buttonClasses.reject} size="large" startIcon={<CheckCircleIcon />} onClick={reject}>
+          Confirm
+        </Button>
+        <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>
+          Cancel
+        </Button>
+      </div>
+    }
+    
+
   </Container>);
 };
 

@@ -10,7 +10,7 @@ module.exports = {
   //02_approve.sql
   approveVolunteer:`
     UPDATE approved_users
-    SET approved = "true"
+    SET approved = 'true'
     WHERE user_id = $1 AND organization_id = $2;
   `,
 
