@@ -1,19 +1,19 @@
 module.exports = {
 
   //01_all.sql
-  allTasks:`
+  allTasks: `
     SELECT * FROM tasks;
   `,
 
   //02_specific.sql
-  specificTask:`
+  specificTask: `
     SELECT *
     FROM tasks
     WHERE id = $1;
   `,
 
   //03_all_signups.sql
-  allSignups:`
+  allSignups: `
     SELECT users.*
     FROM users
     JOIN approved_users ON users.id = user_id
@@ -22,24 +22,24 @@ module.exports = {
   `,
 
   //04_count.sql
-  countSignups:`
+  countSignups: `
     SELECT COUNT(*)
     FROM signups
     WHERE task_id = $1;
   `,
 
   //05_new_task.sql
-  newTask:`
+  newTask: `
     INSERT INTO tasks (name, description, start_date, end_date, spots, image_url, organization_id, location)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING id;
   `,
 
   //06_edit_task.sql
-  editTask:``,
+  editTask: ``,
 
   //07_delete_task.sql
-  deleteTask:`
+  deleteTask: `
     DELETE FROM tasks
     WHERE id = $1;
   `

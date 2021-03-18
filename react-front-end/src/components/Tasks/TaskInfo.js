@@ -36,17 +36,27 @@ export default function TaskInfo() {
     image_url: null,
     organization_id: null,
     location: null,
+    signups: []
   });
   useEffect(() => {
     axios
       .get(`/api/tasks/${id}`)
       .then((res) => {
-        setTasks(res.data[0]);
+        setTasks(res.data);
       })
       .catch((err) => {
         console.error(err);
       });
   }, [id]);
+
+
+const createSignUp = function () {
+
+}
+//create function that posts a signup
+// returns update state
+//  
+
 
   return (
     <Card className={classes.root}>
@@ -77,7 +87,7 @@ export default function TaskInfo() {
                   horizontal: "right",
                 }}
                 // COUNTER HERE!
-                badgeContent={count}
+                badgeContent={`${task.signups.length}/${task.spots}`}
                 color="primary"
               >
                 <PeopleSharp />
