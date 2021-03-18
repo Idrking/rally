@@ -48,6 +48,3 @@ const applicationStyles = makeStyles((theme) => ({
 }));
 
 export default applicationStyles;
-
-// #942911"
-// #fce8e3

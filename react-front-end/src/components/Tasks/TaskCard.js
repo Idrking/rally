@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function TaskCard({ task }) {
   const classes = organizationsCardsStyles();
@@ -21,7 +21,8 @@ export default function TaskCard({ task }) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea href={`/tasks/${id}`}>
+      <Link to={`/tasks/${task.id}`}>
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={task.image_url ? task.image_url : "http://placeimg.com/640/480"}
@@ -50,7 +51,7 @@ export default function TaskCard({ task }) {
           </ListItem>
 
         </CardContent>
-      </CardActionArea>
+      </CardActionArea></Link>
       <CardActions>
         <Button size="medium" color="primary">
           Join

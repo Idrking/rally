@@ -4,7 +4,7 @@ import Tasks from "../Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
 import TaskCreateForm from "../Tasks/TaskCreateForm";
 import FormModal from "../helperComponents/FormModal";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function OrganizationDashboard() {
   const { id } = useParams();
@@ -31,9 +31,11 @@ export default function OrganizationDashboard() {
 
       <div>
       <br />
-        <Button type="submit" variant="contained" color="primary" href={`/organizations/${id}/manage_volunteers`}>
-          Manage Volunteers
-        </Button>
+        <Link to={`/organizations/${id}/manage_volunteers`}>
+          <Button type="submit" variant="contained" color="primary">
+            Manage Volunteers
+          </Button>
+        </Link>
       </div>
     </div>
   );

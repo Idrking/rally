@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
+import MyOrganizations from "./MyOrganizations";
 
 
 export default function Header() {
@@ -11,6 +12,7 @@ export default function Header() {
       <Typography>
         Rally header
       </Typography>
+      <MyOrganizations />
     </Toolbar>
   </AppBar>
 }

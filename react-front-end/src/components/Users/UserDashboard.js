@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Tasks from "../Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
 import Axios from "axios";
@@ -32,9 +32,11 @@ export default function UserDashboard() {
       </Typography>
       <Tasks tasks={tasks.active}/>
       <br />
-      <Button type="submit" variant="contained" color="primary" href="/organizations/">
-        Find Organizations
-      </Button>
+      <Link to="/organizations">
+        <Button type="submit" variant="contained" color="primary" href="/organizations/">
+          Find Organizations
+        </Button>
+      </Link>
     </div>
   );
 }
