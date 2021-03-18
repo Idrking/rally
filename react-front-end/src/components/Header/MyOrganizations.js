@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import Axios from 'axios';
+import UserContext from '../../contexts/UserContext';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import CompactOrgListItem from "./CompactOrgListItem";
 
 export default function MyOrganizations() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [orgs, setOrgs] = useState([]);
+  const { userState } = useContext(UserContext);
+
+  useEffect(() => {
+
+    if (userState.id) {
+      Axios.get(`/api/users/${userState.id}/organizations/owns`)
+      .then(res => setOrgs(res.data))
+      .catch(err => console.error(err));
+    }
+  }, [userState])
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -17,18 +31,22 @@ export default function MyOrganizations() {
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Open Menu
+        My Organizations
       </Button>
       <Menu
-        id="simple-menu"
+        id="my-organizations"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}><img src="https://i.imgur.com/pFTopaV.jpeg"/></MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      {orgs.map(org => {
+        return (
+          <MenuItem key={org.id} onClick={handleClick}>
+            <CompactOrgListItem org={org} />
+          </MenuItem>
+        );
+      })}
       </Menu>
     </div>
   );

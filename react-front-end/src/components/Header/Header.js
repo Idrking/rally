@@ -12,7 +12,7 @@ export default function Header() {
       <Typography>
         Rally header
       </Typography>
-      <MyOrganizations />
+      {userState.id && <MyOrganizations />}
     </Toolbar>
   </AppBar>
 }

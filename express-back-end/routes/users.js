@@ -14,7 +14,10 @@ module.exports = (db) => {
   router.get("/:id/organizations/owns", (req, res) => {
     db.query(userQueries.ownedOrganizations, [req.params.id])
     .then(orgs => res.json(orgs.rows))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => {
+      console.error(err)
+      res.status(500).send();
+    });
   });
   
   //returns all organizations user with :id is a part of
