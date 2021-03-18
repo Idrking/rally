@@ -32,7 +32,7 @@ export default function UserDashboard() {
       </Typography>
       <Tasks tasks={tasks.active}/>
       <br />
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" variant="contained" color="primary" href="/organizations/">
         Find Organizations
       </Button>
     </div>
