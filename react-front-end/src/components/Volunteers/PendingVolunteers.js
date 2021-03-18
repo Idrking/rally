@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import VolunteerCard from "./VolunteerCard";
 import { Button, Typography } from "@material-ui/core";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import VolunteerContext from '../../contexts/VolunteerContext';
 
 export default function PendingVolunteers() {
@@ -29,22 +29,24 @@ export default function PendingVolunteers() {
         </Typography>
         <br />
         <div>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            href={`/organizations/${id}/manage_volunteers`}
-          >
-            Manage Volunteers
-          </Button>{" "}
-          <Button
-            size="medium"
-            color="primary"
-            variant="contained"
-            href={`/organizations/${id}/dashboard`}
-          >
-            Back to Dashboard
-          </Button>
+          <Link to={`/organizations/${id}/manage_volunteers`}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Manage Volunteers
+            </Button></Link>{" "}
+          <Link to={`/organizations/${id}/dashboard`}>
+            <Button
+              size="medium"
+              color="primary"
+              variant="contained"
+              href={`/organizations/${id}/dashboard`}
+            >
+              Back to Dashboard
+            </Button>
+          </Link>
         </div>
         <br />
 

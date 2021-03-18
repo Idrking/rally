@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import {
   Card,
@@ -16,8 +16,10 @@ import {
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { PeopleSharp } from "@material-ui/icons/";
 import ListIcon from "@material-ui/icons/List";
+import UserContext from "../../contexts/UserContext";
 
 export default function TaskInfo() {
+  const { userState } = useContext(UserContext);
   const { id } = useParams();
   const classes = organizationsCardsStyles();
 
@@ -115,14 +117,15 @@ export default function TaskInfo() {
             Cancel Task
           </Button>
         )}{" "}
-        <Button
-          size="medium"
-          color="primary"
-          variant="contained"
-          href={`/users/${id}`}
-        >
-          Back to Dashboard
-        </Button>
+        <Link to={`/users/${userState.id}`}>
+          <Button
+            size="medium"
+            color="primary"
+            variant="contained"
+          >
+            Back to Dashboard
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );
