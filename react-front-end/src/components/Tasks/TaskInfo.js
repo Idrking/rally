@@ -13,17 +13,14 @@ import {
   Badge,
   Button,
   ButtonGroup,
-
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { PeopleSharp } from "@material-ui/icons/";
-import ListIcon from '@material-ui/icons/List';
-
+import ListIcon from "@material-ui/icons/List";
 
 export default function TaskInfo() {
   const { id } = useParams();
   const classes = organizationsCardsStyles();
-
 
   const [count, setCount] = useState(0);
 
@@ -51,7 +48,6 @@ export default function TaskInfo() {
       });
   }, [id]);
 
-
   return (
     <Card className={classes.root}>
       <CardMedia
@@ -69,7 +65,6 @@ export default function TaskInfo() {
         <Typography color="inherit" variant="body1" component="p" align="left">
           {task.description}
         </Typography>
-
         <List>
           {/* Counter */}
           <ListItem>
@@ -99,19 +94,9 @@ export default function TaskInfo() {
             <ListItemText primary={"list of all people signed"} />
           </ListItem>
         </List>
-        <ButtonGroup>
-          { !showJoin ? 
+        {showJoin ? (
           <Button
-            aria-label="reduce"
-            onClick={() => {
-              setShowJoin(!showJoin);
-              setCount(Math.max(count - 1, 0));
-            }}
-          >
-            Cancel Task
-          </Button>
-          :
-          <Button
+            variant="contained"
             aria-label="increase"
             onClick={() => {
               setShowJoin(!showJoin);
@@ -120,8 +105,18 @@ export default function TaskInfo() {
           >
             Join Task
           </Button>
-          }
-        </ButtonGroup>
+        ) : (
+          <Button
+            variant="contained"
+            aria-label="reduce"
+            onClick={() => {
+              setShowJoin(!showJoin);
+              setCount(Math.max(count - 1, 0));
+            }}
+          >
+            Cancel Task
+          </Button>
+        )}{" "}
         <Button
           size="medium"
           color="primary"
@@ -130,7 +125,6 @@ export default function TaskInfo() {
         >
           Back to Dashboard
         </Button>
-
       </CardContent>
     </Card>
   );
