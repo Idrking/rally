@@ -27,10 +27,17 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
 
-  // Gets a specific task
+  // Gets a specific task w/ signups
   router.get("/:id", (req, res) => {
-    db.query(taskQueries.specificTask, [req.params.id])
-    .then(tasks => res.json(tasks.rows))
+    Promise.all([
+      db.query(taskQueries.specificTask, [req.params.id]),
+      db.query(taskQueries.allSignups, [req.params.id])
+    ])
+    .then(([taskQueryResult, signupsQueryResult]) => {
+      let task = taskQueryResult.rows[0];
+      task.signups = signupsQueryResult.rows
+      res.json(task)
+    })
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
 
