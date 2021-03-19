@@ -1,1 +1,65 @@
-@import "styles/variables.scss"
+.background-div {
+  background-color: #b6c7c3;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  position: absolute;
+  margin: 0;
+  z-index: 999;
+}
+
+.rally-title,
+.rally-subtitle {
+  color: white;
+  line-height: 21px;
+}
+
+.title-div {
+  padding: 15vh 25vw 0 15vw;
+}
+
+.title-button {
+  color: white;
+  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: 300;
+  background-color: transparent;
+  border: none;
+  z-index: 9999;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: #ffa945;
+  width: 45px;
+  height: 45px;
+  position: absolute;
+}
+
+.megaphone {
+  position: fixed;
+  width: 120%;
+  margin-left: -4vw;
+  margin-right: -4vw;
+  bottom: 0px;
+  overflow: hidden;
+  z-index: -1;
+}
+
+@media screen and (min-width: 620px) {
+  .megaphone {
+    width: 80%;
+    margin-left: 10vw;
+    bottom: 0px;
+    left: 0px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .megaphone {
+    width: 50%;
+    bottom: 0px;
+    background-position: right;
+  }
+}
