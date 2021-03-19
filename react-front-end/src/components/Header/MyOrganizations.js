@@ -41,7 +41,7 @@ export default function MyOrganizations() {
       >
       {orgs.map(org => {
         return (
-          <MenuItem key={org.id} onClick={handleClick}>
+          <MenuItem key={org.id} onClick={handleClose}>
             <CompactOrgListItem org={org} />
           </MenuItem>
         );
