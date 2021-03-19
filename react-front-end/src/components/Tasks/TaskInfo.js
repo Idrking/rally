@@ -22,9 +22,6 @@ export default function TaskInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
   const classes = organizationsCardsStyles();
-
-  const [count, setCount] = useState(0);
-
   const [showJoin, setShowJoin] = useState(true);
 
   const [task, setTasks] = useState({
@@ -50,13 +47,28 @@ export default function TaskInfo() {
   }, [id]);
 
 
-const createSignUp = function () {
+  const createSignUp = function () {
 
-}
-//create function that posts a signup
-// returns update state
-//  
+    const url = `/api/signup/${id}/${userState.id}`;
+    return axios.put(url)
+      .then((res) => {
+        setTasks(prevState => {
+          return {...prevState, signups: [...prevState.signups, res.data] };
+        });
+      })
+      .catch(err =>(console.error(err)));
+  };
 
+  const cancelSignUp = function () {
+
+    const url = `/api/signup/${id}/1`;
+    return axios.delete(url)
+      .then((res) => {
+        setTasks(prevState => {
+          return { ...prevState, signups: [...prevState.signups.slice(0,-1) ]};
+        });
+      });
+  };
 
   return (
     <Card className={classes.root}>
@@ -110,7 +122,7 @@ const createSignUp = function () {
             aria-label="increase"
             onClick={() => {
               setShowJoin(!showJoin);
-              setCount(count + 1);
+              createSignUp();
             }}
           >
             Join Task
@@ -121,7 +133,7 @@ const createSignUp = function () {
             aria-label="reduce"
             onClick={() => {
               setShowJoin(!showJoin);
-              setCount(Math.max(count - 1, 0));
+              cancelSignUp()
             }}
           >
             Cancel Task

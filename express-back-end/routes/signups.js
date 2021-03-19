@@ -38,8 +38,8 @@ module.exports = (db) => {
   // Creates a signup for a task with a certain user
   router.put("/:taskid/:userid", (req, res) => {
     db.query(signupQueries.signUp, [req.params.userid, req.params.taskid])
-    .then((res) => res.status(201).json(res.rows))
-    .catch(err => res.status(500).send(deliverError(err.message)))
+    .then((signups) => res.status(201).json(signups.rows))
+    .catch(err => console.error(err));
   });
 
   // PATCH ROUTES ---------------------------------------------
@@ -49,7 +49,7 @@ module.exports = (db) => {
   // Cancels a signup
   router.delete("/:taskid/:userid", (req, res) => {
     db.query(signupQueries.cancel, [req.params.userid, req.params.taskid])
-    .then(() => res.status(200))
+    .then(() => res.status(200).end())
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
 

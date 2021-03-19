@@ -33,7 +33,7 @@ export default function UserDashboard() {
       <Tasks tasks={tasks.active}/>
       <br />
       <Link to="/organizations">
-        <Button type="submit" variant="contained" color="primary" href="/organizations/">
+        <Button type="submit" variant="contained" color="primary" >
           Find Organizations
         </Button>
       </Link>
