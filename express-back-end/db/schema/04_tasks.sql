@@ -8,6 +8,7 @@ CREATE TABLE tasks (
   spots INTEGER,
   image_url VARCHAR(255) NOT NULL,
   organization_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
-  location VARCHAR(255)
+  location VARCHAR(255),
+  complete BOOLEAN default false
 );
 ALTER TABLE tasks OWNER TO labber;
