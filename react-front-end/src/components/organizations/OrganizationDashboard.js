@@ -9,12 +9,24 @@ import { useParams, Link } from "react-router-dom";
 export default function OrganizationDashboard() {
   const { id } = useParams();
   const [organization, setOrganization] = useState({info: {}, pending: 0});
+  const [tasks, setTasks] = useState({active: {}, past: {}});
   useEffect(() => {
     axios.get(`/api/organizations/${id}`)
     .then(res => {
       setOrganization({info: res.data.info[0], pending: res.data.pending});
     })
   }, [id]);
+
+  useEffect(() => {
+    axios.get(`/api/organizations/${id}/tasks`)
+    .then(res => {
+      setTasks({
+        // These are placeholders until actual schema gets changed
+        active: res.data.filter(task => task.id ? true : false ),
+        past: {}
+      })
+    })
+  },[organization])
 
   console.log(organization)
 
