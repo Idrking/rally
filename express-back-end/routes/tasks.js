@@ -1,4 +1,6 @@
 const express           = require("express");
+const dayjs             = require ('dayjs');
+const localizedFormat   = require('dayjs/plugin/localizedFormat');
 const router            = express.Router();
 const { deliverError }  = require("./helpers/routeHelpers");
 const taskQueries       = require("../db/queries/tasks/taskQueries");
@@ -6,6 +8,8 @@ const { sendTaskNotification } = require("../notifications/sms/send-sms");
 const { formatMessage } = require("../notifications/sms/formatMessage");
 const { formatEmailObject } = require("../notifications/email/emailFormatters")
 const { emailTask }     = require("../notifications/email/sendEmail")
+
+dayjs.extend(localizedFormat);
 
 
 module.exports = (db) => {
@@ -34,11 +38,16 @@ module.exports = (db) => {
       db.query(taskQueries.allSignups, [req.params.id])
     ])
     .then(([taskQueryResult, signupsQueryResult]) => {
-      let task = taskQueryResult.rows[0];
+      // const StartTime = dayjs(taskQueryResult.rows[0].start_date).format('LLLL');
+      // console.log(StartTime);
+      const task = taskQueryResult.rows[0];
       task.signups = signupsQueryResult.rows
       res.json(task)
     })
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => {
+      console.error(err);
+      res.status(500).send(deliverError(err.message))
+    });
   });
 
   // Gets all tasks
