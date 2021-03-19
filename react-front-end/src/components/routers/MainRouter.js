@@ -5,7 +5,7 @@ import UsersRouter from './UsersRouter';
 import OrganizationsRouter from './OrganizationsRouter';
 import TaskRouter from './TaskRouter';
 import LoginRouter from './LoginRouter';
-import Header from "../Header/Header"
+
 
 const MainRouter = () => {
   return (
@@ -15,7 +15,7 @@ const MainRouter = () => {
         <Route path="/organizations" render={() => <OrganizationsRouter />} />
         <Route path="/tasks" render={() => <TaskRouter />} />
         <Route path="/login" render={() => <LoginRouter />} />
-        <Route path="/" render={() => <><Header /><Landing /></>} />
+        <Route path="/" render={() =><Landing />} />
       </Switch>
     </Router>
   )
