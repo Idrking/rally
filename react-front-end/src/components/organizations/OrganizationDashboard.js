@@ -14,7 +14,7 @@ export default function OrganizationDashboard() {
     .then(res => {
       setOrganization({info: res.data.info[0], pending: res.data.pending});
     })
-  }, []);
+  }, [id]);
 
   console.log(organization)
 
