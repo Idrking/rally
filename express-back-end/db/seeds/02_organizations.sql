@@ -6,4 +6,7 @@ INSERT INTO organizations (name, description, primary_email, primary_phone, loca
 
 INSERT INTO organizations (name, description, primary_email, primary_phone, location, image_url, website, application_config) VALUES ('Doctor Daves Book Emporium', 'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals', 'Susana48@hotmail.com', '233-644-5245', 'Fadelshire', 'http://placeimg.com/640/480', 'https://ezequiel.com', '{"question1": "Do you like hats?", "question2": "Are you open to reconsidering that position?"}');
 
+INSERT INTO organizations (name, description, primary_email, primary_phone, location, image_url, website, application_config) VALUES ('Pacific Cinematheque', 'The Cinematheque is a film institute and media education centre devoted to understanding the art and history of Canadian and international cinema and the impact in our lives.', 'theatre@​theCinematheque.​ca', '604 688 8202', 'Vancouver', 'https://thecinematheque.ca/assets/images/films/_small169/Cinematheque1.jpg', 'https://thecinematheque.ca/', '{"question1": "Do you like films?", "question2": "Are you open to reconsidering that position?", "question3":"Are you willing to provide a criminal record check?", "question4": "Do you own or have access to a vehicle, and a valid Drivers license?"}');
+
+
 
