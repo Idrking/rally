@@ -1,4 +1,7 @@
 import React from "react";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone'
 import {
   Card,
   CardActions,
@@ -15,6 +18,11 @@ import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+
+//dayjs config
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 
 export default function TaskCard({ task, orgView }) {
   const classes = organizationsCardsStyles();
@@ -56,14 +64,14 @@ export default function TaskCard({ task, orgView }) {
             <ListItemIcon >
               <CalendarTodayIcon className={classes.calendaricon} />
             </ListItemIcon>
-            <ListItemText primary={"Start date"}  secondary={task.start_date}  />
+            <ListItemText primary={"Start date"}  secondary={dayjs.tz(task.start_date).format('h:mm A ddd, MMM D')}  />
           </ListItem>
 
           <ListItem button>
             <ListItemIcon>
               <CalendarTodayIcon className={classes.calendaricon2}/>
             </ListItemIcon>
-            <ListItemText primary={"End date"} secondary={task.end_date} />
+            <ListItemText primary={"End date"} secondary={dayjs.tz(task.end_date).format('h:mm A ddd, MMM D')} />
           </ListItem>
 
         </CardContent>

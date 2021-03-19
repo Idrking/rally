@@ -1,4 +1,7 @@
 const express           = require("express");
+const dayjs             = require ('dayjs');
+const utc               = require('dayjs/plugin/utc');
+const timezone          = require('dayjs/plugin/timezone');
 const router            = express.Router();
 const { deliverError }  = require("./helpers/routeHelpers");
 const taskQueries       = require("../db/queries/tasks/taskQueries");
@@ -6,6 +9,9 @@ const { sendTaskNotification } = require("../notifications/sms/send-sms");
 const { formatMessage } = require("../notifications/sms/formatMessage");
 const { formatEmailObject } = require("../notifications/email/emailFormatters")
 const { emailTask }     = require("../notifications/email/sendEmail")
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 
 module.exports = (db) => {
@@ -34,11 +40,14 @@ module.exports = (db) => {
       db.query(taskQueries.allSignups, [req.params.id])
     ])
     .then(([taskQueryResult, signupsQueryResult]) => {
-      let task = taskQueryResult.rows[0];
+      const task = taskQueryResult.rows[0];
       task.signups = signupsQueryResult.rows
       res.json(task)
     })
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => {
+      console.error(err);
+      res.status(500).send(deliverError(err.message))
+    });
   });
 
   // Gets all tasks
@@ -69,7 +78,7 @@ module.exports = (db) => {
     .then(taskID => {
       const messageDetails = {
         name: req.body.name,
-        startDate: new Date(req.body.start_date),
+        startDate: dayjs.tz(req.body.start_date).format('h:mm A ddd, MMM D'),
         id: taskID.rows[0].id,
         organization: req.body.organization,
         description: req.body.description
