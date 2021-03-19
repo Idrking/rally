@@ -16,6 +16,12 @@ module.exports = (db) => {
       res.status(500).send(deliverError(err.message))
     });
   });
+
+  router.get('/:userid/history', (req, res) => {
+    db.query(signupQueries.history, [req.params.userid])
+    .then(count => res.status(200).json(count.rows[0]))
+    .catch(err => console.error(err));
+  })
   
   // Gets all tasks a user is signed up for
   router.get("/:userid", (req, res) => {

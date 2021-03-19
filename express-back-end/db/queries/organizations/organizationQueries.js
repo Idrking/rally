@@ -19,7 +19,8 @@ module.exports =  {
     FROM users
     JOIN approved_users ON users.id = user_id
     JOIN organizations ON organizations.id = organization_id
-    WHERE organizations.id = $1 AND approved = 'true';
+    WHERE organizations.id = $1 AND approved = 'true'
+    ORDER BY users.last_name;
   `,
 
   //04_all_tasks.sql
