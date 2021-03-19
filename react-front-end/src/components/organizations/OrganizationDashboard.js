@@ -9,7 +9,7 @@ import { useParams, Link } from "react-router-dom";
 export default function OrganizationDashboard() {
   const { id } = useParams();
   const [organization, setOrganization] = useState({info: {}, pending: 0});
-  const [tasks, setTasks] = useState({active: {}, past: {}});
+  const [tasks, setTasks] = useState({active: [], past: []});
   useEffect(() => {
     axios.get(`/api/organizations/${id}`)
     .then(res => {
@@ -21,14 +21,11 @@ export default function OrganizationDashboard() {
     axios.get(`/api/organizations/${id}/tasks`)
     .then(res => {
       setTasks({
-        // These are placeholders until actual schema gets changed
-        active: res.data.filter(task => task.id ? true : false ),
-        past: {}
+        active: res.data.filter(task => task.complete ? false : true ),
+        past: res.data.filter(task => task.complete ? true : false )
       })
     })
   },[organization])
-
-  console.log(organization)
 
   return (
     <div>
@@ -54,7 +51,20 @@ export default function OrganizationDashboard() {
         </Badge>
         </Link>
       </div>
+      <div>
+        <Typography variant="h5" component="h2">
+          Active Tasks
+        </Typography>
+        <Tasks orgView={setTasks} tasks={tasks.active}/>
+      </div>
+      <div>
+      <Typography variant="h5" component="h2">
+        Past Tasks
+      </Typography>
+      <Tasks tasks={tasks.past}/>
     </div>
+  </div>
+    
   );
 }
 

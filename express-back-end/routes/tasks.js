@@ -84,20 +84,20 @@ module.exports = (db) => {
   });
 
   // PATCH ROUTES ---------------------------------------------
+  // Marks a task as complete
+  router.patch("/:id/complete", (req, res) => {
+    db.query(taskQueries.completeTask, [req.params.id])
+    .then(() => res.status(200).end())
+    .catch(err => console.error(err));
+  });
+  
 
   // Edits a task
   router.patch("/:id", (req, res) => {
     //TODO
   });
 
-  // DELETE ROUTES ---------------------------------------------
-  
-  // Deletes a task
-  router.delete("/:id", (req, res) => {
-    db.query(taskQueries.deleteTask, [req.params.id])
-    .then(() => res.status(200))
-    .catch(err => res.status(500).send(deliverError(err.message)))
-  });
+
   
   return router;
 }
