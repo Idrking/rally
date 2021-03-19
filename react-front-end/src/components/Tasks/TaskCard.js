@@ -14,9 +14,25 @@ import {
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, orgView }) {
   const classes = organizationsCardsStyles();
+  
+  const markComplete = () => {
+    Axios.patch(`/api/tasks/${task.id}/complete`)
+    .then(() => {
+      orgView(prev => {
+        const taskCompleted = prev.active.find(ele => {
+          return ( ele.id === task.id)});
+        return { ...prev,
+          active: [...prev.active.filter(ele => ele.id === task.id ? false : true)],
+          past: [...prev.past, taskCompleted]
+        };
+      })
+    })
+    .catch(err => console.error(err));
+  }
 
 
   return (
@@ -52,11 +68,12 @@ export default function TaskCard({ task }) {
 
         </CardContent>
       </CardActionArea></Link>
+      {orgView && 
       <CardActions>
-        <Button size="medium" color="primary">
-          Join
+        <Button size="medium" color="primary" onClick={markComplete}>
+          Mark Completed
         </Button>
-      </CardActions>
+      </CardActions>}
     </Card>
   );
 }

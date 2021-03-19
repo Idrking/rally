@@ -38,9 +38,10 @@ module.exports = {
   //06_edit_task.sql
   editTask: ``,
 
-  //07_delete_task.sql
-  deleteTask: `
-    DELETE FROM tasks
+  //07_complete_task.sql
+  completeTask: `
+    UPDATE tasks
+    SET complete = true
     WHERE id = $1;
   `
 };
