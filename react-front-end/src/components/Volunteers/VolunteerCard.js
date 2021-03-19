@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import {
   Card,
   CardContent,
@@ -21,6 +22,12 @@ import VolunteerApplication from "../Volunteers/VolunteerApplication";
 export default function VolunteerCard({ volunteer, pending }) {
   // card animation
   const classes = volunteerCardStyles();
+  const [experience, setExperience] = useState(0);
+  useEffect(() => {
+    axios.get(`/api/signup/${volunteer.id}/history`)
+    .then(res => setExperience(res.data.count))
+    .catch(err => console.error(err));
+  })
 
   const appFormButton = (clickHandler) => {
     return (
@@ -44,7 +51,7 @@ export default function VolunteerCard({ volunteer, pending }) {
               vertical: "bottom",
               horizontal: "right",
             }}
-            badgeContent={4}
+            badgeContent={experience}
             color="primary"
           >
             <Avatar

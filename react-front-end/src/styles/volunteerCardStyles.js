@@ -23,7 +23,7 @@ const volunteerCardStyles = makeStyles((theme) => ({
     gridTemplateColumns: "1fr 2fr",
     paddingTop: 20,
     paddingLeft: 20,
-  }
+  },
 }));
 
 export default volunteerCardStyles;

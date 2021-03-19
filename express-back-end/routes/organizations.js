@@ -48,11 +48,6 @@ module.exports = (db) => {
         res.status(200).json({ info: [...all[0].rows], pending: all[1].rows.length});
       })
       .catch(err => console.error(err));
-
-
-    // db.query(orgQueries.allVolunteers, [req.params.id])
-    // .then(volunteers => res.json(volunteers.rows))
-    // .catch(err => res.status(500).send(deliverError(err.message)));
   });
   
   // Gets a specific organization
