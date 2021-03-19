@@ -1,90 +1,60 @@
-import React from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import React from "react";
+import {
+  Button,
+  Link,
+  InputBase,
+} from "@material-ui/core";
 import registerStyles from "../../styles/registerStyles";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Rally
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import "../Landing/Landing.scss";
+import Hero from "../Landing/Hero";
+import "./Register.scss";
 
 export default function Register() {
   const classes = registerStyles();
 
   return (
+    <div className={"background-div"}>
+      <div className={"title-div"}>
+        <Hero />
 
-    <Container component="main">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Register
-        </Typography>
         <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
-          </Grid>
+          <InputBase
+            placeholder="First name"
+            required
+            fullWidth
+            id="standard-basic"
+            autoComplete="lname"
+            className={classes.inputBase}
+          />
+
+          <InputBase
+            placeholder="Last name"
+            required
+            fullWidth
+            id="standard-basic"
+            name="lastName"
+            autoComplete="lname"
+            className={classes.inputBase}
+          />
+
+          <InputBase
+            placeholder="Email"
+            required
+            fullWidth
+            id="standard-basic"
+            autoComplete="lname"
+            className={classes.inputBase}
+          />
+
+          <InputBase
+            placeholder="Password"
+            required
+            fullWidth
+            id="standard-basic"
+            autoComplete="lname"
+            className={classes.inputBase}
+          />
+
           <Button
             type="submit"
             fullWidth
@@ -94,18 +64,11 @@ export default function Register() {
           >
             Register
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/login/" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+          <Link href="/login/" variant="body1" className={classes.regQuestion}>
+            Already have an account? <span style={{color: "#6D7E73", fontWeight: 700}}>Sign in</span>
+          </Link>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+    </div>
   );
 }

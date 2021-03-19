@@ -37,7 +37,7 @@ export default function LogIn() {
   };
   
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
