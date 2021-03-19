@@ -1,16 +1,15 @@
 import React from "react";
 import Button from "@material-ui/core/button";
-import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "./Landing.scss";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
-import LandingHero from "./LandingHero";
+import Hero from "./Hero";
 
 export default function Landing() {
   return (
     <div className={"background-div"}>
       <div className={"title-div"}>
-        <LandingHero />
+        <Hero />
         <br />
         <br />
         <div className={"circle"}></div>
