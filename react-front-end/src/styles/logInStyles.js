@@ -8,7 +8,6 @@ const logInStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   avatar: {
-    margin: theme.spacing(1),
     backgroundColor: theme.palette.primary.main,
   },
   form: {

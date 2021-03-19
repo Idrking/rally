@@ -11,7 +11,6 @@ const LoginRouter = () => {
         <Route path="/login/register" render={() => {
           return (
           <>
-            <Header />
             <Register />
           </>
           )
