@@ -13,11 +13,11 @@
 .rally-title,
 .rally-subtitle {
   color: white;
-  line-height: 21px;
+  line-height: 0;
 }
 
 .title-div {
-  padding: 15vh 25vw 0 15vw;
+  padding: 7vh 25vw 0 15vw;
 }
 
 .title-button {
@@ -48,17 +48,19 @@
   z-index: -1;
 }
 
-@media screen and (min-width: 620px) {
+// @media screen and (min-width: 620px) {
+//   .megaphone {
+//     width: 80%;
+//     margin-left: 10vw;
+//     bottom: 0px;
+//     left: 0px;
+//   }
+// }
+@media screen and (min-width: 800px) {
   .megaphone {
-    width: 80%;
-    margin-left: 10vw;
-    bottom: 0px;
-    left: 0px;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .megaphone {
-    width: 50%;
+    margin-left: 4vw;
+
+    width: 90%;
     bottom: 0px;
     background-position: right;
   }
