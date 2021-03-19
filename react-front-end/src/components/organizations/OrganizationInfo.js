@@ -27,7 +27,7 @@ import {
 export default function OrganizationInfo() {
   const { id } = useParams();
   const classes = organizationsCardsStyles();
-  const [organization, setOrganization] = useState({
+  const [organization, setOrganization] = useState({info: {
     name: null, 
     description: null, 
     primary_phone: null, 
@@ -36,11 +36,16 @@ export default function OrganizationInfo() {
     image_url: null,
     website: null,
     application_config: null
-  });
+  }, pending: 0});
 
   useEffect(() => {
     axios.get(`/api/organizations/${id}`)
-    .then(orgs => setOrganization(orgs.data))
+    .then(orgs => setOrganization(prev => { 
+      return {
+        info: orgs.data.info[0],
+        pending: orgs.data.pending
+      }}))
+    .catch(err => console.error(err));
   }, [id]);
   
   return (
@@ -48,15 +53,15 @@ export default function OrganizationInfo() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={organization.image_url || "http://placeimg.com/640/480"}
+          image={organization.info.image_url || "http://placeimg.com/640/480"}
         />
 
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" align="left">
-            {organization.name}
+            {organization.info.name}
           </Typography>
           <Typography component="p" align="left">
-            {organization.description}
+            {organization.info.description}
           </Typography>
           <Typography
             variant="body2"
@@ -72,28 +77,28 @@ export default function OrganizationInfo() {
                 <ListItemIcon>
                   <PhoneSharp />
                 </ListItemIcon>
-                <ListItemText primary={organization.primary_phone} />
+                <ListItemText primary={organization.info.primary_phone} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <LocationOnSharp />
                 </ListItemIcon>
-                <ListItemText primary={organization.location} />
+                <ListItemText primary={organization.info.location} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <MailOutlineSharp />
                 </ListItemIcon>
-                <ListItemText primary={organization.primary_email} />
+                <ListItemText primary={organization.info.primary_email} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <LanguageSharp />
                 </ListItemIcon>
-                <ListItemText primary={organization.website} />
+                <ListItemText primary={organization.info.website} />
               </ListItem>
             </List>
             <Divider />
@@ -102,11 +107,11 @@ export default function OrganizationInfo() {
       </CardActionArea>
       <CardActions>
         <FormModal 
-          data={organization} 
+          data={organization.info} 
           FormComponent={ApplicationForm}
           details={{task: "Apply to volunteer", description: "Fill in all the fields and submit your application, and the organization will respond as soon as they're able"}}
           >
-          Volunteer with {organization.name}
+          Volunteer with {organization.info.name}
         </FormModal>
       </CardActions>
     </Card>
