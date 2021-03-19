@@ -21,7 +21,7 @@ export default function Register() {
 
   return (
 
-    <Container component="main" style={{backgroundColor: "blue"}}>
+    <Container component="main">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
