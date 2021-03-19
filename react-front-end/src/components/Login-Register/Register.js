@@ -20,7 +20,8 @@ export default function Register() {
   const classes = registerStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+
+    <Container component="main" style={{backgroundColor: "blue"}}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
