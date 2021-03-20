@@ -56,7 +56,9 @@ export default function TaskInfo() {
         });
       }
       if (message.type === "delete") {
-        console.log("we takeh the thingy away")
+        setTasks(prev => {
+          return {...prev, signups: [...prev.signups.slice(0, -1)]}
+        });
       }
     };
     return function () { WebSocket.close() };

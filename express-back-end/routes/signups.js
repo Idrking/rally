@@ -53,7 +53,11 @@ module.exports = (db, updateSignups) => {
   // Cancels a signup
   router.delete("/:taskid/:userid", (req, res) => {
     db.query(signupQueries.cancel, [req.params.userid, req.params.taskid])
-    .then(() => res.status(200).end())
+    .then(() => {
+      const wsResponse = {type: 'delete', info: []}
+      updateSignups(wsResponse);
+      res.status(200).end();
+    })
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
 
