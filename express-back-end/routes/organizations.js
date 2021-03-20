@@ -1,6 +1,7 @@
 const express           = require("express");
 const router            = express.Router();
 const orgQueries        = require("../db/queries/organizations/organizationQueries");
+const ownerQueries      = require("../db/queries/owners/ownerQueries");
 const { deliverError }  = require("./helpers/routeHelpers");
 
 module.exports = (db) => {
@@ -77,17 +78,24 @@ module.exports = (db) => {
     const queryParams = [
       req.body.name,
       req.body.description,
-      req.body.email,
-      req.body.phone,
+      req.body.primary_email,
+      req.body.primary_phone,
       req.body.location,
       req.body.image_url,
       req.body.website,
-      JSON.stringify({default: true})
+      JSON.stringify({})
     ];
     
+    //Second query automatically adds the creator as an owner of the organization
     db.query(orgQueries.addOrg, queryParams)
-    .then(() => res.status(201))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .then( id => {
+      return db.query(ownerQueries.addOwner, [req.body.userID, id.rows[0].id])
+    })
+    .then(orgID => {
+      console.log("added owner successfully")
+      res.status(201).json(orgID.rows[0]);
+    })
+    .catch(err => console.error(err));
   });
 
   // PATCH ROUTES ---------------------------------------------
