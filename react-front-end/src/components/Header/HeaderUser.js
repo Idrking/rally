@@ -8,6 +8,7 @@ import {
   MenuItem,
   Menu,
   makeStyles,
+  Avatar
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
@@ -24,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  menuitem: {
+    fontSize: 17
+  }
 }));
 
 export default function Header() {
@@ -59,6 +63,7 @@ export default function Header() {
 
           {auth && (
             <div>
+            <Avatar src="../../images/user-avatar.jpg" className={classes.large} />
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -67,6 +72,7 @@ export default function Header() {
               >
                 <AccountCircle style={{ color: "#94A8A3", fontSize: 35 }} />
               </IconButton>
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -82,8 +88,8 @@ export default function Header() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>My Organizations</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose} className={classes.menuitem}>My Account</MenuItem>
+                <MenuItem onClick={handleClose} className={classes.menuitem}>My Organizations</MenuItem>
               </Menu>
             </div>
           )}
