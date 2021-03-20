@@ -5,6 +5,7 @@ const bodyParser    = require('body-parser');
 const PORT          = 8080;
 const cookieSession = require('cookie-session');
 const morgan        = require('morgan');
+const ws            = require('ws');
 
 //Importing Routes
 const usersRoutes   = require("./routes/users");
@@ -55,7 +56,7 @@ App.get('*', (req, res) => {
   res.status(404).json({error: "Resource not found"})
 });
 
-App.listen(PORT, () => {
+const server = App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on port 8080`)
 });
