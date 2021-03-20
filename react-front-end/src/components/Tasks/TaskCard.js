@@ -10,10 +10,7 @@ import {
   Typography,
   CardActionArea,
   CardMedia,
-  ListItem,
-  ListItemIcon,
-  Badge,
-  ListItemText
+
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { Link } from "react-router-dom";
