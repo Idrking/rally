@@ -8,7 +8,7 @@ import {
   MenuItem,
   Menu,
   makeStyles,
-  Avatar
+  Avatar,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuitem: {
-    fontSize: 17
-  }
+    fontSize: 17,
+  },
 }));
 
 export default function Header() {
@@ -54,19 +54,23 @@ export default function Header() {
     <div>
       <AppBar
         position="static"
-        style={{ background: "#F5F5F5", boxShadow: "none", padding: 15}}
+        style={{ background: "#F5F5F5", boxShadow: "none", padding: 15 }}
       >
         <Toolbar>
-          <IconButton edge="start" aria-label="menu" >
+          <IconButton edge="start" aria-label="menu">
             <MenuIcon style={{ color: "#94A8A3", fontSize: 35 }} />
           </IconButton>
 
           {auth && (
             <div>
-            <Avatar src="../../images/user-avatar.jpg" className={classes.large} aria-label="account of current user"
+              <Avatar
+                src={
+                  "/../../images/user-avatar.jpg"
+                }
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu} />
+                onClick={handleMenu}
+              />
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -82,8 +86,12 @@ export default function Header() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose} className={classes.menuitem}>My Account</MenuItem>
-                <MenuItem onClick={handleClose} className={classes.menuitem}>My Organizations</MenuItem>
+                <MenuItem onClick={handleClose} className={classes.menuitem}>
+                  My Account
+                </MenuItem>
+                <MenuItem onClick={handleClose} className={classes.menuitem}>
+                  My Organizations
+                </MenuItem>
               </Menu>
             </div>
           )}
