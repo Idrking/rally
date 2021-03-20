@@ -2,9 +2,10 @@ const express           = require("express");
 const router            = express.Router();
 const { deliverError }  = require("./helpers/routeHelpers");
 const signupQueries     = require("../db/queries/signups/signupQueries");
+const taskQueries       = require('../db/queries/tasks/taskQueries');
 
 
-module.exports = (db) => {
+module.exports = (db, updateSignups) => {
 
   // GET ROUTES ---------------------------------------------
   
@@ -37,9 +38,17 @@ module.exports = (db) => {
   
   // Creates a signup for a task with a certain user
   router.put("/:taskid/:userid", (req, res) => {
-    db.query(signupQueries.signUp, [req.params.userid, req.params.taskid])
-    .then((signups) => res.status(201).json(signups.rows))
-    .catch(err => console.error(err));
+
+      db.query(signupQueries.signUp, [req.params.userid, req.params.taskid])
+      .then(() => {
+        db.query(taskQueries.allSignups, [req.params.taskid])
+        .then(signups => {
+          const wsResponse = {type: 'add', signup: signups.rows}
+          updateSignups(wsResponse);
+          res.status(201).json(signups.rows)
+        })
+        .catch(err => console.error(err));
+      })
   });
 
   // PATCH ROUTES ---------------------------------------------
@@ -49,7 +58,11 @@ module.exports = (db) => {
   // Cancels a signup
   router.delete("/:taskid/:userid", (req, res) => {
     db.query(signupQueries.cancel, [req.params.userid, req.params.taskid])
-    .then(() => res.status(200).end())
+    .then(() => {
+      const wsResponse = {type: 'delete', signup: []}
+      updateSignups(wsResponse);
+      res.status(200).end();
+    })
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
 
