@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Tasks from "../Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
 import Axios from "axios";
+import "./UserDashboard.scss"
 
 export default function UserDashboard() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export default function UserDashboard() {
   }, []);
   
   return (
-    <div>
+    <div className={"backgrounduser"}>
       <br />
       <Typography variant="h4" component="h2">
         Your tasks

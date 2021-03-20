@@ -52,7 +52,7 @@ export default function TaskCard({ task, orgView }) {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{ border: "none", boxShadow: "none" }}>
       <Link to={`/tasks/${task.id}`}>
 
         <CardActionArea className={classes.cardgrid}>

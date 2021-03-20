@@ -5,7 +5,8 @@ const taskCardStyles = makeStyles({
   root: {
     maxWidth: 800,
     margin: "auto",
-    marginTop: "100"
+    marginTop: "100",
+    backgroundColor: "white"
   },
 });
 
