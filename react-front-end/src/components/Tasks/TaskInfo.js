@@ -52,44 +52,36 @@ export default function TaskInfo() {
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "add") {
-        if (task.signups.find(signup => !(signup.id === message.signup.approved_user_id))) {
+        if (task.signups.find(signup => !(signup.id === message.id))) {
           setTasks(prev => {
-            return {...prev, signups: [...prev.signups, message.info]}
+            return {...prev, signups: [...message.signup]}
           });
         }      
       }
 
       if (message.type === "delete") {
         setTasks(prev => {
-          return {...prev, signups: [...prev.signups.slice(0, -1)]}
+          return {...prev, signups: [...prev.signups.filter(signup => userState.id !== signup.id)]}
         });
       }
     };
     return function () { webSocket.close() };
   }, [task]);
 
+  const joinShouldShow = (userID, task) => {
+    const currentSignupIDs = task.signups.map(signup => signup.id);    
+    return !currentSignupIDs.includes(userID)
+  }
 
-  const createSignUp = function () {
 
+  const createSignUp = function () {  
     const url = `/api/signup/${id}/${userState.id}`;
-    return axios.put(url)
-      // .then((res) => {
-      //   setTasks(prevState => {
-      //     return {...prevState, signups: [...prevState.signups, res.data] };
-      //   });
-      // })
-      // .catch(err =>(console.error(err)));
+    axios.put(url)
   };
 
   const cancelSignUp = function () {
-
     const url = `/api/signup/${id}/1`;
-    return axios.delete(url)
-      // .then((res) => {
-      //   setTasks(prevState => {
-      //     return { ...prevState, signups: [...prevState.signups.slice(0,-1) ]};
-      //   });
-      // });
+    axios.delete(url)
   };
 
   return (
@@ -138,12 +130,13 @@ export default function TaskInfo() {
             <ListItemText primary={"list of all people signed"} />
           </ListItem>
         </List>
-        {showJoin ? (
+        {showJoin && joinShouldShow(userState.id, task) ? (
           <Button
             variant="contained"
             aria-label="increase"
+            disabled={ task.signups.length === task.spots}
             onClick={() => {
-              setShowJoin(!showJoin);
+              setShowJoin(false);
               createSignUp();
             }}
           >
@@ -154,7 +147,7 @@ export default function TaskInfo() {
             variant="contained"
             aria-label="reduce"
             onClick={() => {
-              setShowJoin(!showJoin);
+              setShowJoin(true);
               cancelSignUp()
             }}
           >
