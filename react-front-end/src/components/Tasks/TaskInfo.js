@@ -47,7 +47,6 @@ export default function TaskInfo() {
   }, [id]);
 
 
-
   const createSignUp = function () {
 
     const url = `/api/signup/${id}/${userState.id}`;
@@ -88,9 +87,6 @@ export default function TaskInfo() {
         <Typography color="inherit" variant="body1" component="p" align="left">
           {task.description}
         </Typography>
-
-
-
         <List>
 
           {/* Counter */}
@@ -112,8 +108,6 @@ export default function TaskInfo() {
             <ListItemText primary={"number of signups"} />
           </ListItem>
 
-
-
           {/* List of people */}
           <ListItem>
             <ListItemIcon>
@@ -122,8 +116,6 @@ export default function TaskInfo() {
             <ListItemText primary={"list of all people signed"} />
           </ListItem>
         </List>
-
-
         {showJoin ? (
           <Button
             variant="contained"
