@@ -1,22 +1,41 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { mergeClasses } from '@material-ui/styles';
+
 
 const logInStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+  root: {
+    borderColor: "white",
   },
-  avatar: {
-    backgroundColor: theme.palette.primary.main,
+  textField: {
+    borderBottom: '2px solid white',
+    height: '6vh',
+    color: 'white',
+    marginTop: '2vh',
+    fontSize: '1.4rem'
   },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+  submit2: {
+    marginTop: '5vh',
+    marginBottom: '3vh',
+    padding: '1rem',
+    backgroundColor: '#6D7E73',
+    textTransform: 'capitalize',
+    fontSize: '1.4rem',
+    fontWeight: 300
   },
+  
+  noAccount: {
+    color: '#2B2B2B',
+    fontSize: '1.3rem'
+  },
+  regQuestion2: {
+    color: '#CFCFCF',
+    fontSize: '1.3rem'
+  },
+  
 }));
 
 export default logInStyles;

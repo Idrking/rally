@@ -1,65 +1,58 @@
-import React, { useContext } from 'react';
-import axios from "axios"
-import { useHistory } from "react-router-dom"; 
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import React, { useContext } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { Button, TextField, Link, Typography } from "@material-ui/core";
 import logInStyles from "../../styles/logInStyles.js";
 import UserContext from "../../contexts/UserContext";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/Idrking/rally">
-        Rally
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import "../Landing/Landing.scss";
+import "./login.scss";
 
 export default function LogIn() {
   const classes = logInStyles();
-  const history = useHistory()
+  const history = useHistory();
   const { setUserState } = useContext(UserContext);
-  
+
   const loginFaker = (event) => {
     event.preventDefault();
-    axios.get("/api/login/1")
-    .then(() => {
-      setUserState(prev => {
-        return { ...prev, id: 1, name: "Gabe" };
+    axios
+      .get("/api/login/1")
+      .then(() => {
+        setUserState((prev) => {
+          return { ...prev, id: 1, name: "Gabe" };
+        });
+        history.push("/users/1");
       })
-      history.push("/users/1")
-    })
-    .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
-  
+
   return (
-    <Container component="main">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
+    <div>
+      <div className={"title-div"}>
+        <div>
+          <Typography variant="h1" className="rally-title2">
+            Rally
+          </Typography>
+          <Typography variant="body1" className="rally-subtitle2">
+            Building community
+          </Typography>
+          <Typography variant="body1" className="rally-subtitle2">
+            through volunteering
+          </Typography>
+        </div>
+
         <form className={classes.form} noValidate>
           <TextField
-            variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
             autoComplete="email"
-            autoFocus
+            className={classes.textField}
           />
           <TextField
-            variant="outlined"
             margin="normal"
             required
             fullWidth
@@ -68,38 +61,30 @@ export default function LogIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            className={classes.textField}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={classes.submit2}
             onClick={(event) => loginFaker(event)}
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/login/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+          <Link
+            href="/login/register"
+            variant="body1"
+            className={classes.regQuestion2}
+          >
+            Don't have an account? <span style={{ color: "#6D7E73", fontWeight: 700 }}>
+              Register here.
+            </span>
+          </Link>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+    </div>
   );
 }

@@ -18,7 +18,7 @@ const registerStyles = makeStyles((theme) => ({
     fontSize: '1.4rem'
   },
   submit: {
-    marginTop: '6vh',
+    marginTop: '5vh',
     marginBottom: '3vh',
     padding: '1rem',
     color: 'white',
