@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import TaskCard from "../Tasks/TaskCard";
 import Tasks from "../Tasks/Tasks";
+import PropTypes from 'prop-types';
+import Box from "@material-ui/core/Box"
+
+
 
 
 
@@ -63,26 +66,76 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CustomizedTabs() {
+
+
+export default function TaskTabs({ tasks }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState('one');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`wrapped-tabpanel-${index}`}
+        aria-labelledby={`wrapped-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box p={3}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+  };
+  
+  function a11yProps(index) {
+    return {
+      id: `wrapped-tab-${index}`,
+      'aria-controls': `wrapped-tabpanel-${index}`,
+    };
+  }
   return (
+
     <div className={classes.root}>
       <div className={classes.demo1}>
         <AntTabs value={value} onChange={handleChange} aria-label="ant example" variant="fullWidth">
-          <AntTab label="Available"> OKKKKK 
-          
-            </AntTab>
-          <AntTab label="Upcoming" />
-          <AntTab label="Completed" />
+          <AntTab label="Available" value="one"  {...a11yProps('one')}>
+
+          </AntTab>
+          <AntTab label="Upcoming" value="two"  {...a11yProps('two')}/>
+          <AntTab label="Completed" value="three"  {...a11yProps('three')}/>
         </AntTabs>
         <Typography className={classes.padding} />
       </div>
+      <TabPanel value={value} index="one">
+        <Tasks tasks={tasks.available} />
+      </TabPanel>
+
+      <TabPanel value={value} index="two">
+        <Tasks tasks={tasks.active} />
+      </TabPanel>
+
+
+      <TabPanel value={value} index="three">
+        These are completed
+      </TabPanel>
     </div>
+
+
   );
+
 }

@@ -4,7 +4,7 @@ import Tasks from "../Tasks/Tasks";
 import { Typography, Button } from "@material-ui/core";
 import Axios from "axios";
 import "./UserDashboard.scss";
-import TaskTabs from "./TaskTabs"
+import TaskTabs from "./TaskTabs";
 
 export default function UserDashboard() {
   const { id } = useParams();
@@ -36,21 +36,14 @@ export default function UserDashboard() {
 
       
       <br />
-      <TaskTabs />
+      <TaskTabs tasks={tasks}/>
 
 
 
 
 
-      <Tasks tasks={tasks.available} />
+      
 
-      <br />
-      <Typography variant="h4" component="h2">
-        Active <b>tasks</b>
-      </Typography>
-
-
-      <Tasks tasks={tasks.active} />
 
 
       <br />
@@ -60,5 +53,11 @@ export default function UserDashboard() {
         </Button>
       </Link>
     </div>
+
+
+
+     
+
+
   );
 }
