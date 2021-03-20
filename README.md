@@ -4,6 +4,9 @@ Volunteer management app for de-centralized non-profits.
 ## Dependencies
 * [Twilio](https://github.com/twilio)
 * [Material UI](https://github.com/mui-org)
+* [Dayjs](https://github.com/iamkun/dayjs)
+* [Node-sass](https://github.com/sass/node-sass) ^4.14.1
+* [Axios](https://github.com/axios)
 
 ## Running the project
 
