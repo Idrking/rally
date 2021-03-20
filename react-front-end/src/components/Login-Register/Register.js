@@ -15,6 +15,7 @@ export default function Register() {
   return (
     <div className={"background-div"}>
       <div className={"title-div"}>
+
         <Hero />
 
         <form className={classes.form} noValidate>
@@ -65,7 +66,7 @@ export default function Register() {
             Register
           </Button>
           <Link href="/login/" variant="body1" className={classes.regQuestion}>
-            Already have an account? <span style={{color: "#6D7E73", fontWeight: 700}}>Sign in</span>
+            Already have an account? <span style={{color: "#6D7E73", fontWeight: 700}}>Sign in here.</span>
           </Link>
         </form>
       </div>
