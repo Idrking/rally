@@ -101,6 +101,9 @@ export default function TaskInfo() {
         <Typography color="inherit" variant="body1" component="p" align="left">
           {task.description}
         </Typography>
+
+
+
         <List>
 
           {/* Counter */}
@@ -121,6 +124,8 @@ export default function TaskInfo() {
             </ListItemIcon>
             <ListItemText primary={"number of signups"} />
           </ListItem>
+
+
 
           {/* List of people */}
           <ListItem>

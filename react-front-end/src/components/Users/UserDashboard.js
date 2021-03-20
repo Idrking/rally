@@ -23,14 +23,17 @@ export default function UserDashboard() {
     <div>
       <br />
       <Typography variant="h4" component="h2">
-        Available tasks
+        Your tasks
       </Typography>
-      <Tasks tasks={tasks.available}/>
+      <Tasks tasks={tasks.available} />
+      
       <br />
       <Typography variant="h4" component="h2">
         Active tasks
       </Typography>
-      <Tasks tasks={tasks.active}/>
+
+      <Tasks tasks={tasks.active} />
+
       <br />
       <Link to="/organizations">
         <Button type="submit" variant="contained" color="primary" >

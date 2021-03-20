@@ -7,19 +7,6 @@ const taskCardStyles = makeStyles({
     margin: "auto",
     marginTop: "100"
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  
-  title: {
-    fontSize: 30,
-  },
-
-  pos: {
-    marginBottom: 12,
-  },
 });
 
 export default taskCardStyles;
