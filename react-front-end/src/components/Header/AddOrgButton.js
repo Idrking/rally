@@ -1,51 +1,60 @@
-import React from 'react';
-import { Card, CardContent,  } from '@material-ui/core'
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import {Modal, IconButton, Backdrop, Fade } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-
-
-const useStyles = makeStyles(theme => {
-  return {
-  root: {
-    minWidth: 275,
-  },
-  content: {
-    display: 'flex'
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    alignSelf: "center"
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  media: {
-    width: theme.spacing(12),
-    height: theme.spacing(12),
-    marginRight: '20px'
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    left: '50%', 
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    outline: 0
   }
-}});
+}))
 
 
-const AddOrgButton = () => {
+export default function AddOrgModal(props) {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const body = (
+    <div className={classes.paper}>
+      <props.FormComponent data={props.data} />
+    </div>
+  );
 
   return (
-    <Card className={classes.root}>
-      <CardContent className={classes.content}>
-        <IconButton aria-label="add">
-          <AddCircleIcon />
-        </IconButton>
-      </CardContent>
-  </Card>
+    <div>
+      <IconButton type="button" variant="contained" color="primary" onClick={handleOpen}>
+        <AddCircleIcon />
+      </IconButton>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-modal"
+        aria-describedby="form"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          {body}
+        </Fade>
+      </Modal>
+    </div>
   );
 }
-
-export default AddOrgButton;
