@@ -46,6 +46,22 @@ export default function TaskInfo() {
       });
   }, [id]);
 
+  useEffect(() => {
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    webSocket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type === "add") {
+        setTasks(prev => {
+          return {...prev, signups: [...prev.signups, message.info]}
+        });
+      }
+      if (message.type === "delete") {
+        console.log("we takeh the thingy away")
+      }
+    };
+    return function () { WebSocket.close() };
+  }, []);
+
 
   const createSignUp = function () {
 

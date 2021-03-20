@@ -39,18 +39,8 @@ App.use("/api/organizations", orgRoutes(db));
 App.use("/api/tasks", taskRoutes(db));
 App.use("/api/approveduser", appUserRoutes(db));
 App.use("/api/owners", ownerRoutes(db));
-App.use("/api/signup", signupRoutes(db));
+App.use("/api/signup", signupRoutes(db, updateSignups));
 App.use("/api/login", loginRoutes(db));
-
-//testing, if I forget to delete this slap me
-const queries = require("./db/queries/users/userQueries")
-
-// Sample GET route
-App.get('/api/data', async (req, res) => {
-  const data = await db.query(queries.allUsers)
-  res.json({message: data.rows[0].first_name})
-
-});
 
 App.get('*', (req, res) => {
   res.status(404).json({error: "Resource not found"})
@@ -60,3 +50,15 @@ const server = App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on port 8080`)
 });
+
+const wss = new ws.Server({ server });
+
+function updateSignups (signup) {
+  wss.clients.forEach(client => {
+    if (client.readyState === ws.OPEN) {
+      client.send(
+        JSON.stringify(signup)
+      )
+    }
+  });
+};

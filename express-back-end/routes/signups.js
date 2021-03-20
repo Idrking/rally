@@ -4,7 +4,7 @@ const { deliverError }  = require("./helpers/routeHelpers");
 const signupQueries     = require("../db/queries/signups/signupQueries");
 
 
-module.exports = (db) => {
+module.exports = (db, updateSignups) => {
 
   // GET ROUTES ---------------------------------------------
   
@@ -38,7 +38,11 @@ module.exports = (db) => {
   // Creates a signup for a task with a certain user
   router.put("/:taskid/:userid", (req, res) => {
     db.query(signupQueries.signUp, [req.params.userid, req.params.taskid])
-    .then((signups) => res.status(201).json(signups.rows))
+    .then((signups) => {
+      const wsResponse = {type: 'add', signup: signups.rows}
+      updateSignups(wsResponse);
+      res.status(201).json(signups.rows)
+    })
     .catch(err => console.error(err));
   });
 
