@@ -63,7 +63,7 @@ export default function TaskCard({ task, orgView }) {
             <Typography
               className={classes.title}
               gutterBottom
-              variant="h5"
+              variant="h3"
               component="h2"
               align="left"
             >
