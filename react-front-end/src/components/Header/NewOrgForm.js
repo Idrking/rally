@@ -47,7 +47,7 @@ const NewOrgForm = ({ data }) => {
     Axios.put("/api/organizations", taskData)
     .then(res =>  {
       console.log(res);
-      history.push(`/organizations/${res.data[0].id}`)
+      history.push(`/organizations/${res.data.organization_id}`)
     })
     .catch(err => console.error(err));
   }
