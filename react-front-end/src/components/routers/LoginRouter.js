@@ -1,30 +1,29 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from '../Header/Header';
 import LogIn from "../Login-Register/LogIn";
 import Register from "../Login-Register/Register";
 
 
 const LoginRouter = () => {
   return (
-      <Switch>
-        <Route path="/login/register" render={() => {
-          return (
+    <Switch>
+      <Route path="/login/register" render={() => {
+        return (
           <>
             <Register />
           </>
-          )
-        }} />
-        <Route path="/login" render ={() => {
-          return (
+        );
+      }} />
+      <Route path="/login" render={() => {
+        return (
           <>
-            <Header />
+
             <LogIn />
           </>
-          )
-        }} />
-      </Switch>
-  )
+        );
+      }} />
+    </Switch>
+  );
 };
 
 export default LoginRouter;
