@@ -46,6 +46,9 @@ export default function MyOrganizations() {
           </MenuItem>
         );
       })}
+      <MenuItem key="add">
+        Here be the add button
+      </MenuItem>
       </Menu>
     </div>
   );
