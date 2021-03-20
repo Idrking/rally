@@ -15,6 +15,7 @@ import "../../styles/HeaderUser.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -63,10 +64,7 @@ export default function Header() {
 
           {auth && (
             <div>
-              <Avatar
-                src={
-                  "/../../images/user-avatar.jpg"
-                }
+            <Avatar src="../../images" className={classes.large} aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
