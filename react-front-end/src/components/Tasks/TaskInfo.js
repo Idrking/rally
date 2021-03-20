@@ -18,6 +18,7 @@ import { PeopleSharp } from "@material-ui/icons/";
 import ListIcon from "@material-ui/icons/List";
 import UserContext from "../../contexts/UserContext";
 
+
 export default function TaskInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
@@ -51,41 +52,44 @@ export default function TaskInfo() {
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "add") {
-        setTasks(prev => {
-          return {...prev, signups: [...prev.signups, message.info]}
-        });
+        if (task.signups.find(signup => !(signup.id === message.signup.approved_user_id))) {
+          setTasks(prev => {
+            return {...prev, signups: [...prev.signups, message.info]}
+          });
+        }      
       }
+
       if (message.type === "delete") {
         setTasks(prev => {
           return {...prev, signups: [...prev.signups.slice(0, -1)]}
         });
       }
     };
-    return function () { WebSocket.close() };
-  }, []);
+    return function () { webSocket.close() };
+  }, [task]);
 
 
   const createSignUp = function () {
 
     const url = `/api/signup/${id}/${userState.id}`;
     return axios.put(url)
-      .then((res) => {
-        setTasks(prevState => {
-          return {...prevState, signups: [...prevState.signups, res.data] };
-        });
-      })
-      .catch(err =>(console.error(err)));
+      // .then((res) => {
+      //   setTasks(prevState => {
+      //     return {...prevState, signups: [...prevState.signups, res.data] };
+      //   });
+      // })
+      // .catch(err =>(console.error(err)));
   };
 
   const cancelSignUp = function () {
 
     const url = `/api/signup/${id}/1`;
     return axios.delete(url)
-      .then((res) => {
-        setTasks(prevState => {
-          return { ...prevState, signups: [...prevState.signups.slice(0,-1) ]};
-        });
-      });
+      // .then((res) => {
+      //   setTasks(prevState => {
+      //     return { ...prevState, signups: [...prevState.signups.slice(0,-1) ]};
+      //   });
+      // });
   };
 
   return (
