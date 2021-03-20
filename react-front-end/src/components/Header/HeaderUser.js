@@ -64,7 +64,7 @@ export default function Header() {
 
           {auth && (
             <div>
-            <Avatar src="../../images" className={classes.large} aria-label="account of current user"
+            <Avatar src="../../images"aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
