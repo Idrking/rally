@@ -18,6 +18,7 @@ import { PeopleSharp } from "@material-ui/icons/";
 import ListIcon from "@material-ui/icons/List";
 import UserContext from "../../contexts/UserContext";
 
+
 export default function TaskInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
@@ -46,29 +47,41 @@ export default function TaskInfo() {
       });
   }, [id]);
 
+  useEffect(() => {
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    webSocket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type === "add") {
+        if (task.signups.find(signup => !(signup.id === message.id))) {
+          setTasks(prev => {
+            return {...prev, signups: [...message.signup]}
+          });
+        }      
+      }
 
-
-  const createSignUp = function () {
-
-    const url = `/api/signup/${id}/${userState.id}`;
-    return axios.put(url)
-      .then((res) => {
-        setTasks(prevState => {
-          return {...prevState, signups: [...prevState.signups, res.data] };
+      if (message.type === "delete") {
+        setTasks(prev => {
+          return {...prev, signups: [...prev.signups.filter(signup => userState.id !== signup.id)]}
         });
-      })
-      .catch(err =>(console.error(err)));
+      }
+    };
+    return function () { webSocket.close() };
+  }, [task]);
+
+  const joinShouldShow = (userID, task) => {
+    const currentSignupIDs = task.signups.map(signup => signup.id);    
+    return !currentSignupIDs.includes(userID)
+  }
+
+
+  const createSignUp = function () {  
+    const url = `/api/signup/${id}/${userState.id}`;
+    axios.put(url)
   };
 
   const cancelSignUp = function () {
-
     const url = `/api/signup/${id}/1`;
-    return axios.delete(url)
-      .then((res) => {
-        setTasks(prevState => {
-          return { ...prevState, signups: [...prevState.signups.slice(0,-1) ]};
-        });
-      });
+    axios.delete(url)
   };
 
   return (
@@ -122,14 +135,13 @@ export default function TaskInfo() {
             <ListItemText primary={"list of all people signed"} />
           </ListItem>
         </List>
-
-
-        {showJoin ? (
+        {showJoin && joinShouldShow(userState.id, task) ? (
           <Button
             variant="contained"
             aria-label="increase"
+            disabled={ task.signups.length === task.spots}
             onClick={() => {
-              setShowJoin(!showJoin);
+              setShowJoin(false);
               createSignUp();
             }}
           >
@@ -140,7 +152,7 @@ export default function TaskInfo() {
             variant="contained"
             aria-label="reduce"
             onClick={() => {
-              setShowJoin(!showJoin);
+              setShowJoin(true);
               cancelSignUp()
             }}
           >
