@@ -63,16 +63,10 @@ export default function Header() {
 
           {auth && (
             <div>
-            <Avatar src="../../images/user-avatar.jpg" className={classes.large} />
-              <IconButton
-                aria-label="account of current user"
+            <Avatar src="../../images/user-avatar.jpg" className={classes.large} aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
-              >
-                <AccountCircle style={{ color: "#94A8A3", fontSize: 35 }} />
-              </IconButton>
-
+                onClick={handleMenu} />
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
