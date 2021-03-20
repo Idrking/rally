@@ -8,7 +8,7 @@ export default function TaskContent({ tasks, orgView }) {
       {tasks.map(task => {
         return (
           <div key={task.id}>
-            <TaskCard orgView={orgView} key={task.id}   task={task}/>
+            <TaskCard orgView={orgView} key={task.id} task={task}/>
             <br />
           </div>
         );
