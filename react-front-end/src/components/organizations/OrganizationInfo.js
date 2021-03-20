@@ -42,8 +42,8 @@ export default function OrganizationInfo() {
     axios.get(`/api/organizations/${id}`)
     .then(orgs => setOrganization(prev => { 
       return {
-        info: orgs.data.info[0],
-        pending: orgs.data.pending
+        info: orgs.data.info[0] || {...prev.info},
+        pending: orgs.data.pending || 0
       }}))
     .catch(err => console.error(err));
   }, [id]);

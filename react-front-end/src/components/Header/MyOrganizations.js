@@ -3,6 +3,8 @@ import Axios from 'axios';
 import UserContext from '../../contexts/UserContext';
 import { Button, Menu, MenuItem, Grow} from '@material-ui/core';
 import CompactOrgListItem from "./CompactOrgListItem";
+import AddOrgButton from './AddOrgButton';
+import NewOrgForm from './NewOrgForm';
 
 export default function MyOrganizations() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -46,6 +48,9 @@ export default function MyOrganizations() {
           </MenuItem>
         );
       })}
+      <MenuItem key="add">
+        <AddOrgButton FormComponent={NewOrgForm} />
+      </MenuItem>
       </Menu>
     </div>
   );
