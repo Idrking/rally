@@ -27,8 +27,6 @@ dayjs.extend(timezone);
 
 export default function TaskCard({ task, orgView }) {
 
-  
-
 
   const classes = organizationsCardsStyles();
 
@@ -78,25 +76,6 @@ export default function TaskCard({ task, orgView }) {
             <Typography className={classes.date}>
               {dayjs.tz(task.start_date).format("h:mm A ddd, MMM D")}
             </Typography>
-
-
-            <ListItem>
-            <ListItemIcon>
-              <Badge
-                overlap="circle"
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                // COUNTER HERE!
-                badgeContent={`${task.signups.length}/${task.spots}`}
-                color="primary"
-              >
-                <PeopleSharp />
-              </Badge>
-            </ListItemIcon>
-            <ListItemText primary={"number of signups"} />
-          </ListItem>
 
 
 
