@@ -14,7 +14,7 @@ import {
   IconButton,
   Divider,
 } from "@material-ui/core";
-import taskInfoStyles from "../../styles/taskInfoStyles";
+import InfoStyles from "../../styles/InfoStyles";
 import { PeopleSharp } from "@material-ui/icons/";
 import UserContext from "../../contexts/UserContext";
 import "./TaskInfo.scss";
@@ -29,7 +29,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 export default function TaskInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
-  const classes = taskInfoStyles();
+  const classes = InfoStyles();
   const [showJoin, setShowJoin] = useState(true);
 
   const [task, setTasks] = useState({
@@ -101,7 +101,7 @@ export default function TaskInfo() {
     <div className={classes.root}>
       <Link to={`/users/${userState.id}`}>
         <IconButton className={classes.backButton}>
-          <ArrowBackIosIcon style={{ color: "white", fontSize: 20 }} />
+          <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
       </Link>
       <img src={task.image_url} className={classes.orgTaskImage}></img>

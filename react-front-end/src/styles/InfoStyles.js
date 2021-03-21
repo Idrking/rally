@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import zIndex from "@material-ui/core/styles/zIndex";
 import { Autorenew } from "@material-ui/icons";
 
-const taskInfoStyles = makeStyles({
+const InfoStyles = makeStyles({
   root: {
     backgroundColor: "#94A8A3",
     margin: 0,
@@ -64,6 +64,7 @@ const taskInfoStyles = makeStyles({
     left: 10,
     color: "white",
     zIndex: 99,
+    fontSize: "26px"
   },
   buttonRound: {
     borderRadius: 50,
@@ -79,4 +80,4 @@ const taskInfoStyles = makeStyles({
   }
 });
 
-export default taskInfoStyles;
+export default InfoStyles;
