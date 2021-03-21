@@ -9,6 +9,7 @@ import { useParams, Link } from "react-router-dom";
 
 export default function OrganizationDashboard() {
   const { id } = useParams();
+  const [configUpdated, setConfigUpdated] = useState(false);
   const [organization, setOrganization] = useState({info: {}, pending: 0});
   const [tasks, setTasks] = useState({active: [], past: []});
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function OrganizationDashboard() {
     .then(res => {
       setOrganization({info: res.data.info[0], pending: res.data.pending});
     })
-  }, [id]);
+  }, [id, configUpdated]);
 
   useEffect(() => {
     axios.get(`/api/organizations/${id}/tasks`)
@@ -39,7 +40,7 @@ export default function OrganizationDashboard() {
         <FormModal data={organization.info} FormComponent={TaskCreateForm} details={{task: "Create a Task", description: "Enter the details below"}}>
           Create a Task
         </FormModal>
-        <FormModal data={organization.info.application_config} FormComponent={EditApplicationForm} details={{task: "Edit your application", description: "These are the questions potential volunteers will answer when applying to your organization"}}>
+        <FormModal data={organization.info.application_config} FormComponent={EditApplicationForm} details={{task: "Edit your application", description: "These are the questions potential volunteers will answer when applying to your organization"}} stateChanger={setConfigUpdated}>
           Edit Application
         </FormModal>
 

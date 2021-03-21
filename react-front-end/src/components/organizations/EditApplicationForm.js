@@ -9,10 +9,10 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 
 
-const EditApplicationForm = ({ data }) => {
+const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
   const questions = data;
   const { userState } = useContext(UserContext);
-  const [formDetails, setFormDetails] = useState({ submitted: false, errors:{}});
+  const [formDetails, setFormDetails] = useState({ submitted: false, errors:{}, questions: {}});
   const { id } = useParams();
   
   //Adds all the questions from an organizations config as keys to state
@@ -20,13 +20,13 @@ const EditApplicationForm = ({ data }) => {
     setFormDetails(prev => {
       const qObject = {}
       Object.keys(questions).forEach(key => qObject[key] = questions[key]);
-      return {...prev, submitted: false, ...qObject}
+      return {...prev, submitted: false, questions: {...qObject}}
     })
   },[id])
 
   const updateDetails = (value, property) => {
     setFormDetails(prev => {
-      return { ...prev, [property]: value}
+      return { ...prev, questions: {...prev.questions, [property]: value}};
     })
   }
 
@@ -38,15 +38,15 @@ const EditApplicationForm = ({ data }) => {
           <TextField
           key={`${question}`}
           id={`${question}`}
-          value={formDetails[question]}
+          value={formDetails.questions[question]}
           multiline
           InputLabelProps={{shrink: true}}
           onChange={event => updateDetails(event.target.value, question)}
           margin="normal"
           InputProps={{
-            endAdornment: <InputAdornment color="secondary" position="end">
-              <IconButton color="secondary">
-                <DeleteForeverIcon color="secondary" />
+            endAdornment: <InputAdornment position="end">
+              <IconButton onClick={() => removeInput(question)}>
+                <DeleteForeverIcon  />
               </IconButton>
             </InputAdornment>
           }}
@@ -56,58 +56,60 @@ const EditApplicationForm = ({ data }) => {
     return inputArray;
   }
 
-  // const sendData = () => {
-  //   const formData = {};
-  //   for (const key in formDetails) {
-  //     if (key !== 'errors' && key !== 'submitted') {
-  //       formData[key] = {question: questions[key] || key, answer: formDetails[key]}
-  //     }
-  //   };
-  //   console.log(formData)
-  //   Axios.put(`/api/approveduser/${id}/${userState.id}`, {application: formData })
-  //   .then(() => setFormDetails(prev => { return {...prev, submitted: true}}))
-  //   .catch(err => console.error(err));
-  // }
+  const addBlankInput = () => {
+    const nextNumber = Object.keys(formDetails.questions).length + 1;
+    const newKey = `question${nextNumber}`
+    setFormDetails(prev => {
+      return {...prev, questions: {...prev.questions, [newKey]: ''}};
+    });
+  }
 
-  // const setErrorStatus = (errorArray, key) => {
-  //   errorArray.push(true);
-  //   setFormDetails(prev => { return { ...prev, errors: {...prev.errors, [key]:true }}});
-  // };
+  const removeInput = (question) => {
 
-  // const setErrors = () => {
-  //   const errorArray = [];
-  //   setFormDetails(prev => { return { ...prev, errors: {}} });
+    setFormDetails(prev => {
+      const newDetails = {...prev, questions: {...prev.questions}};
+      delete newDetails.questions[question];
+      let numberOfQuestions = 1;
+      const orderedQuestions = {};
+      for (const question in newDetails.questions) {
+        const newKeyName = `question${numberOfQuestions}`;
+        orderedQuestions[newKeyName] = newDetails.questions[question];
+        numberOfQuestions++;
+      }
+      console.log(orderedQuestions)
+      return {...prev, questions: {...orderedQuestions}};
+    })
+  }
 
-  //   if (!formDetails.name) {
-  //     setErrorStatus(errorArray, 'name');
-  //   }
+  const sendData = () => {
+    const formData = {};
+    for (const key in formDetails.questions) {
+      formData[key] = formDetails.questions[key];
+    };
 
-  //   if (!formDetails.phone) {
-  //     setErrorStatus(errorArray, 'phone');
-  //   }
-    
-  //   if (!formDetails.email) {
-  //     setErrorStatus(errorArray, 'email');
-  //   }
+    Axios.patch(`/api/organizations/${id}/application`, {newConfig: formData })
+    .then(() => {
+      setConfigUpdated(prev => !prev);
+      setTimeout(() => {
+        setOpen(false);
+      }, 2500);
+      setFormDetails(prev => { 
+      return {...prev, submitted: true}
+      })
+    })
+    .catch(err => console.error(err));
+  }
 
-  //   return errorArray;
-  // };
-
-  // const validate = () => {
-  //   if (!setErrors()[0]) {
-  //     sendData();
-  //   }
-  // }
-  const inputs = generateInputs(questions)
+  const inputs = generateInputs(formDetails.questions)
   const body = (
     <FormGroup>
       {inputs}
 
-      <Button style={{marginBottom:'20px', marginTop:'20px'}} startIcon={<AddCircleIcon />} variant="contained" color="primary" onClick={() =>console.log('addy')}>
+      <Button style={{marginBottom:'20px', marginTop:'20px'}} startIcon={<AddCircleIcon />} variant="contained" color="primary" onClick={addBlankInput}>
         Add a new question
       </Button>
   
-      <Button type="submit" variant="contained" color="primary" onClick={() => console.log('clicky')}>
+      <Button type="submit" variant="contained" color="primary" onClick={sendData}>
         Save changes
       </Button>
 
@@ -121,8 +123,7 @@ const EditApplicationForm = ({ data }) => {
     {(userState.id && !formDetails.submitted) && body}
     {formDetails.submitted && (
       <Typography component="h2" color="primary">
-        Thank you for your application!
-        The organization will be in contact shortly.
+        Changes saved successfully!
       </Typography>
     )}
     </>
