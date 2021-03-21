@@ -18,6 +18,12 @@ module.exports = (db, updateSignups) => {
     });
   });
 
+  router.get("/:userid/completed", (req, res) => {
+    db.query(signupQueries.completed, [req.params.userid])
+    .then(tasks => res.status(200).json(tasks.rows))
+    .catch(err => console.error(err));
+  })
+
   router.get('/:userid/history', (req, res) => {
     db.query(signupQueries.history, [req.params.userid])
     .then(count => res.status(200).json(count.rows[0]))
