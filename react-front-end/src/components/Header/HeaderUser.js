@@ -9,12 +9,12 @@ import {
   Menu,
   makeStyles,
   Avatar,
+  Link,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,7 +64,9 @@ export default function Header() {
 
           {auth && (
             <div>
-            <Avatar src="../../images"aria-label="account of current user"
+              <Avatar
+                src="../../images"
+                aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
@@ -89,6 +91,15 @@ export default function Header() {
                 </MenuItem>
                 <MenuItem onClick={handleClose} className={classes.menuitem}>
                   My Organizations
+                </MenuItem>
+
+                <MenuItem
+                  onClick={handleClose}
+                  className={classes.menuitem}
+                  component={Link}
+                  to="/organizations"
+                >
+                  Find Organizations
                 </MenuItem>
               </Menu>
             </div>
