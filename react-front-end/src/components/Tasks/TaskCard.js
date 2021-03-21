@@ -10,21 +10,18 @@ import {
   Typography,
   CardActionArea,
   CardMedia,
-
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { Link } from "react-router-dom";
 import { PeopleSharp } from "@material-ui/icons/";
 import Axios from "axios";
-import TaskInfo from "./TaskInfo"
+import TaskInfo from "./TaskInfo";
 
 //dayjs config
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export default function TaskCard({ task, orgView }) {
-
-
   const classes = organizationsCardsStyles();
 
   const markComplete = () => {
@@ -49,13 +46,12 @@ export default function TaskCard({ task, orgView }) {
   };
 
   return (
-    <Card className={classes.root} style={{ border: "none", boxShadow: "none" }}>
+    <Card
+      className={classes.root}
+      style={{ border: "none", boxShadow: "none" }}
+    >
       <Link to={`/tasks/${task.id}`}>
-
         <CardActionArea className={classes.cardgrid}>
-
-
-
           <CardContent className={classes.cardflex}>
             <Typography
               className={classes.title}
@@ -66,20 +62,12 @@ export default function TaskCard({ task, orgView }) {
             >
               {task.name}
             </Typography>
-            <br />
-            
-
 
             <Typography className={classes.date}>
-              {dayjs.tz(task.start_date).format("h:mm A ddd, MMM D")}
+              {dayjs.tz(task.start_date).format("MMM D")}
+              {/* {dayjs.tz(task.start_date).format("h:mm A ddd, MMM D")} */}
             </Typography>
-
-
-
           </CardContent>
-
-
-
           <CardMedia
             className={classes.media}
             image={

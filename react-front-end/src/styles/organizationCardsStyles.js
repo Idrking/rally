@@ -7,33 +7,30 @@ const organizationsCardsStyles = makeStyles({
     // marginTop: 30,
     // display: "flex",
     // flexDirection: "row"
-    height: "110px"
+    height: "140px"
   },
-
   cardgrid: {
     display: "grid",
-    gridTemplateColumns: "4fr 3fr"
+    gridTemplateColumns: "1fr 140px"
 
   },
 
   cardflex: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-    flex: '1 0 auto',
-    // padding: "10px 0 0 20px"
-    paddingLeft: "30px"
+    // justifyContent: "space-evenly",
+    paddingLeft: "30px",
+    gap: 20
   },
   media: {
-    height: "110px",
+    height: "140px"
   },
   calendaricon: {
     color: "green"
   },
   calendaricon2: {
     color: "blue"
-  },
-    
+  }, 
   title: {
     fontSize: "18px",
   },
