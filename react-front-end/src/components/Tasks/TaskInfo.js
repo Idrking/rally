@@ -112,11 +112,16 @@ export default function TaskInfo() {
             <Typography className={classes.cardSubtitle} gutterBottom>
               Organization Name
             </Typography>
-            <Typography color="primary" variant="h2" component="h2" className={classes.cardName}>
+            <Typography
+              color="primary"
+              variant="h2"
+              component="h2"
+              className={classes.cardName}
+            >
               {task.name}
             </Typography>
 
-            <Divider style={{ margin: "2vh 0" }} />
+            <Divider style={{ margin: "3vh 0" }} />
 
             {/* * * * HACKY SOLUTION TO ADD BACKGROUND * * * */}
             {/* <ListItem>
@@ -134,7 +139,7 @@ export default function TaskInfo() {
               </ListItem> */}
 
             <List>
-              <ListItem>
+              {/* <ListItem>
                 <ListItemIcon>
                   <DateRangeIcon className={classes.infoIcons} />
                 </ListItemIcon>
@@ -143,27 +148,45 @@ export default function TaskInfo() {
                     .tz(task.end_date)
                     .format("ddd MMM D, h:mm A")}
                 />
-              </ListItem>
+              </ListItem> */}
 
-              <ListItem>
+              <ListItem disableGutters>
                 <ListItemIcon>
-                  <CalendarTodayIcon className={classes.infoIcons} />
+                  <DateRangeIcon className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText
-                  secondary={dayjs
-                    .tz(task.start_date)
-                    .format("ddd MMM D, h:mm A")}
-                />
+                <ListItemText>
+                  <Typography
+                    style={{
+                      fontSize: 14,
+                      color: "#CFCFCF",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    {/* <b style={{color: "#787878"}}>{dayjs.tz(task.start_date).format("ddd, MMM D ")}</b>
+                    {dayjs.tz(task.start_date).format("hh:mmA")}
+                    {" - "}
+                    <b style={{color: "#787878"}}>{dayjs.tz(task.end).format("ddd, MMM D ")}</b>
+                    {dayjs.tz(task.end).format("hh:mmA")} */}
+
+                    <span style={{ color: "#787878" }}>
+                      {dayjs.tz(task.start_date).format("ddd, MMM D, hh:mmA ")}
+                    </span>
+                    {" to  "}
+                    <span style={{ color: "#787878" }}>
+                      {dayjs.tz(task.end_date).format("ddd, MMM D, hh:mmA")}
+                    </span>
+                  </Typography>
+                </ListItemText>
               </ListItem>
 
-              <ListItem>
+              <ListItem disableGutters>
                 <ListItemIcon>
                   <LocationOnIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText color="primary" secondary={task.location} />
               </ListItem>
 
-              <ListItem>
+              <ListItem disableGutters>
                 <ListItemIcon>
                   <Badge
                     overlap="circle"
@@ -191,36 +214,35 @@ export default function TaskInfo() {
               {task.description}
             </Typography>
           </section>
-         
         </CardContent>
       </Card>
 
       {showJoin && joinShouldShow(userState.id, task) ? (
-            <Button
-              variant="contained"
-              aria-label="increase"
-              disabled={task.signups.length === task.spots}
-              onClick={() => {
-                setShowJoin(false);
-                createSignUp();
-              }}
-              className={classes.buttonRound}
-            >
-              <AddIcon fontSize="large" style={{ color: "white" }} />
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              aria-label="reduce"
-              onClick={() => {
-                setShowJoin(true);
-                cancelSignUp();
-              }}
-              className={classes.buttonRound}
-            >
-              <RemoveIcon fontSize="large" style={{ color: "white" }} />
-            </Button>
-          )}
+        <Button
+          variant="contained"
+          aria-label="increase"
+          disabled={task.signups.length === task.spots}
+          onClick={() => {
+            setShowJoin(false);
+            createSignUp();
+          }}
+          className={classes.buttonRound}
+        >
+          <AddIcon fontSize="large" style={{ color: "white" }} />
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          aria-label="reduce"
+          onClick={() => {
+            setShowJoin(true);
+            cancelSignUp();
+          }}
+          className={classes.buttonRound}
+        >
+          <RemoveIcon fontSize="large" style={{ color: "white" }} />
+        </Button>
+      )}
     </div>
   );
 }
