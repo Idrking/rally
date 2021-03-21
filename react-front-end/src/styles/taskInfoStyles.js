@@ -36,7 +36,7 @@ const taskInfoStyles = makeStyles({
   },
   CardContent: {
     padding: "5vh 8vw",
-    // overflow: auto",
+    overflow: "auto",
   },
   taskicons: {
     fontSize: "26px",
@@ -46,7 +46,6 @@ const taskInfoStyles = makeStyles({
     fontSize: "14px",
     fontWeight: 700,
     color: "#B6C7C3",
-    lineHeight: "16px",
   },
   taskName: {
     fontSize: "31px",
@@ -57,7 +56,7 @@ const taskInfoStyles = makeStyles({
     color: "#4B6253",
     fontSize: "16px",
     fontWeight: "bold",
-    paddingTop: "4vh"
+    paddingTop: "1vh"
   },
   backButton: {
     position: "absolute",

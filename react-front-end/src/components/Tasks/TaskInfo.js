@@ -10,21 +10,16 @@ import {
   ListItem,
   ListItemIcon,
   Badge,
-  CardMedia,
   Button,
   IconButton,
-  Avatar,
   Divider,
 } from "@material-ui/core";
 import taskInfoStyles from "../../styles/taskInfoStyles";
 import { PeopleSharp } from "@material-ui/icons/";
-import ListIcon from "@material-ui/icons/List";
 import UserContext from "../../contexts/UserContext";
 import "./TaskInfo.scss";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
