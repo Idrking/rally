@@ -4,25 +4,33 @@ import axios from "axios";
 import {
   Card,
   Typography,
-  CardMedia,
   CardContent,
   List,
   ListItemText,
   ListItem,
   ListItemIcon,
   Badge,
+  CardMedia,
   Button,
 } from "@material-ui/core";
-import organizationsCardsStyles from "../../styles/organizationCardsStyles";
+import taskInfoStyles from "../../styles/taskInfoStyles";
 import { PeopleSharp } from "@material-ui/icons/";
 import ListIcon from "@material-ui/icons/List";
 import UserContext from "../../contexts/UserContext";
+import "./TaskInfo.scss";
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
+
 
 
 export default function TaskInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
-  const classes = organizationsCardsStyles();
+  const classes = taskInfoStyles();
   const [showJoin, setShowJoin] = useState(true);
 
   const [task, setTasks] = useState({
@@ -54,56 +62,77 @@ export default function TaskInfo() {
       if (message.type === "add") {
         if (task.signups.find(signup => !(signup.id === message.id))) {
           setTasks(prev => {
-            return {...prev, signups: [...message.signup]}
+            return { ...prev, signups: [...message.signup] };
           });
-        }      
+        }
       }
 
       if (message.type === "delete") {
         setTasks(prev => {
-          return {...prev, signups: [...prev.signups.filter(signup => userState.id !== signup.id)]}
+          return { ...prev, signups: [...prev.signups.filter(signup => userState.id !== signup.id)] };
         });
       }
     };
-    return function () { webSocket.close() };
+    return function () { webSocket.close(); };
   }, [task]);
 
   const joinShouldShow = (userID, task) => {
-    const currentSignupIDs = task.signups.map(signup => signup.id);    
-    return !currentSignupIDs.includes(userID)
-  }
+    const currentSignupIDs = task.signups.map(signup => signup.id);
+    return !currentSignupIDs.includes(userID);
+  };
 
 
-  const createSignUp = function () {  
+  const createSignUp = function () {
     const url = `/api/signup/${id}/${userState.id}`;
-    axios.put(url)
+    axios.put(url);
   };
 
   const cancelSignUp = function () {
     const url = `/api/signup/${id}/1`;
-    axios.delete(url)
+    axios.delete(url);
   };
 
   return (
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={task.image_url ? task.image_url : "http://placeimg.com/640/480"}
-        title={task.name}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2" align="left">
+   
+    <div className={classes.root}>
+     {/* <img
+        src={task.image_url}
+        className={classes.orgTaskImage}
+      ></img> */}
+
+    <Card className={classes.TaskCard1} >
+      <CardContent >
+      <Typography gutterBottom variant="h5" color="primary" component="h2" align="left">
+          Organization Name to pull
+        </Typography>
+        <Typography color="primary" gutterBottom variant="h4" component="h2" align="left">
           {task.name}
         </Typography>
-        <Typography color="primary" component="h3" align="left">
-          {task.location}
+        <Typography color="primary" gutterBottom variant="h4" component="h2" align="left">
+          Description:
         </Typography>
         <Typography color="inherit" variant="body1" component="p" align="left">
           {task.description}
         </Typography>
         <List>
+          <ListItem>
+            <ListItemIcon>
+              <DateRangeIcon className={classes.dateRange}>
 
-          {/* Counter */}
+              </DateRangeIcon>
+            </ListItemIcon>
+            <ListItemText  color="primary" primary={dayjs.tz(task.start_date).format('h:mm A ddd, MMM D')}/>
+
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <LocationOnIcon className={classes.locationIcon}/>
+
+            </ListItemIcon>
+            <ListItemText  color="primary" primary={task.location}/>
+
+          </ListItem>
+        
           <ListItem>
             <ListItemIcon>
               <Badge
@@ -122,25 +151,19 @@ export default function TaskInfo() {
             <ListItemText primary={"number of signups"} />
           </ListItem>
 
-          {/* List of people */}
-          <ListItem>
-            <ListItemIcon>
-              <ListIcon />
-            </ListItemIcon>
-            <ListItemText primary={"list of all people signed"} />
-          </ListItem>
         </List>
         {showJoin && joinShouldShow(userState.id, task) ? (
           <Button
             variant="contained"
             aria-label="increase"
-            disabled={ task.signups.length === task.spots}
+            disabled={task.signups.length === task.spots}
             onClick={() => {
               setShowJoin(false);
               createSignUp();
             }}
           >
             Join Task
+            
           </Button>
         ) : (
           <Button
@@ -148,7 +171,7 @@ export default function TaskInfo() {
             aria-label="reduce"
             onClick={() => {
               setShowJoin(true);
-              cancelSignUp()
+              cancelSignUp();
             }}
           >
             Cancel Task
@@ -165,5 +188,6 @@ export default function TaskInfo() {
         </Link>
       </CardContent>
     </Card>
+</div>
   );
 }
