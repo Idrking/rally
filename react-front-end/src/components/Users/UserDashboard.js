@@ -29,35 +29,13 @@ export default function UserDashboard() {
   return (
     <div className={"backgrounduser"}>
       <br />
-      <Typography variant="h2" component="h2">
+      <Typography variant="h2" component="h2" style={{paddingLeft: 40}}>
         Your <b>tasks</b>
       </Typography>
 
-
-      
       <br />
-      <TaskTabs tasks={tasks}/>
+      <TaskTabs tasks={tasks} />
 
-
-
-
-
-      
-
-
-
-      <br />
-      <Link to="/organizations">
-        <Button type="submit" variant="contained" color="primary">
-          Find Organizations
-        </Button>
-      </Link>
     </div>
-
-
-
-     
-
-
   );
 }
