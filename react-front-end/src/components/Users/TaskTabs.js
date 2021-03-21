@@ -119,8 +119,7 @@ export default function TaskTabs({ tasks }) {
       </TabPanel>
 
       <TabPanel value={value} index="three">
-        These are completed
-        {/* <Tasks tasks={tasks.completed} /> */}
+        <Tasks tasks={tasks.completed} />
       </TabPanel>
 
     </div>
