@@ -32,10 +32,8 @@ export default function UserDashboard() {
       <Typography variant="h2" component="h2" style={{paddingLeft: 40}}>
         Your <b>tasks</b>
       </Typography>
-
       <br />
       <TaskTabs tasks={tasks} />
-
     </div>
   );
 }
