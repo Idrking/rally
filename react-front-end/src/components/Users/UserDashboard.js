@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Typography } from "@material-ui/core";
 import Axios from "axios";
-import "./UserDashboard.scss";
+import "./Dashboard.scss";
 import TaskTabs from "./TaskTabs";
 
 export default function UserDashboard() {

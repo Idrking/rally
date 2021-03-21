@@ -3,7 +3,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Button,
   IconButton,
   MenuItem,
   Menu,
@@ -14,7 +13,6 @@ import {
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import SortIcon from "@material-ui/icons/Sort";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -23,8 +23,10 @@ const AntTab = withStyles((theme) => ({
     minWidth: 72,
     fontWeight: 600,
     fontSize: "14px",
-    marginRight: theme.spacing(3.5),
-    marginLeft: theme.spacing(3.5),
+    marginLeft: theme.spacing(6),
+    marginRight: theme.spacing(6),
+    paddingLeft: theme.spacing(7),
+    paddingRight: theme.spacing(7),
     color: "#CFCFCF",
     "&:hover": {
       color: "#B6C7C3",
@@ -53,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TaskTabs({ tasks }) {
+export default function OrgTaskTabs({ tasks }) {
   const classes = useStyles();
   const [value, setValue] = useState("one");
 
@@ -103,22 +105,17 @@ export default function TaskTabs({ tasks }) {
           aria-label="ant example"
           centered
         >
-          <AntTab label="Available" value="one" {...a11yProps("one")}></AntTab>
-          <AntTab label="Upcoming" value="two" {...a11yProps("two")} />
-          <AntTab label="Completed" value="three" {...a11yProps("three")} />
+          <AntTab label="Active" value="one" {...a11yProps("one")}></AntTab>
+          <AntTab label="Past" value="two" {...a11yProps("two")} />
         </AntTabs>
-        
+
       </div>
       <TabPanel value={value} index="one">
-        <Tasks tasks={tasks.available} />
-      </TabPanel>
-
-      <TabPanel value={value} index="two">
         <Tasks tasks={tasks.active} />
       </TabPanel>
 
-      <TabPanel value={value} index="three">
-        <Tasks tasks={tasks.completed} />
+      <TabPanel value={value} index="two">
+        <Tasks tasks={tasks.past} />
       </TabPanel>
     </div>
   );
