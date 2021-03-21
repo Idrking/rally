@@ -28,11 +28,9 @@ export default function UserDashboard() {
 
   return (
     <div className={"backgrounduser"}>
-      <br />
-      <Typography variant="h2" component="h2" style={{paddingLeft: 40}}>
+      <Typography variant="h2" component="h2" className={"yourtasks"}>
         Your <b>tasks</b>
       </Typography>
-      <br />
       <TaskTabs tasks={tasks} />
     </div>
   );

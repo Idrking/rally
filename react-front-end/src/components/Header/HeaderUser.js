@@ -59,13 +59,12 @@ export default function Header() {
       >
         <Toolbar>
           <IconButton edge="start" aria-label="menu">
-            <MenuIcon style={{ color: "#94A8A3", fontSize: 35 }} />
+            <MenuIcon style={{ color: "#6D7E73", fontSize: 35 }} />
           </IconButton>
 
-          {auth && (
             <div>
               <Avatar
-                src="../../images"
+                src="../../images/2.jpg"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
@@ -103,7 +102,6 @@ export default function Header() {
                 </MenuItem>
               </Menu>
             </div>
-          )}
         </Toolbar>
       </AppBar>
     </div>
