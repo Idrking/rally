@@ -169,11 +169,11 @@ export default function TaskInfo() {
                     {dayjs.tz(task.end).format("hh:mmA")} */}
 
                     <span style={{ color: "#787878" }}>
-                      {dayjs.tz(task.start_date).format("ddd, MMM D, hh:mmA ")}
+                      {dayjs.tz(task.start_date).format("hh:mma, ddd, MMM D")}
                     </span>
                     {" to  "}
                     <span style={{ color: "#787878" }}>
-                      {dayjs.tz(task.end_date).format("ddd, MMM D, hh:mmA")}
+                      {dayjs.tz(task.end_date).format("hh:mma, ddd, MMM D")}
                     </span>
                   </Typography>
                 </ListItemText>
