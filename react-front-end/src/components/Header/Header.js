@@ -11,7 +11,7 @@ export default function Header() {
     <AppBar
       position="static"
       style={{
-        backgroundColor: "transparent",
+        backgroundColor: "#F5F5F5",
         color: "#4B6253",
         boxShadow: "none",
         padding: 15,
@@ -20,13 +20,17 @@ export default function Header() {
       <Toolbar>
         {/* {userState.id && <p>{userState.name}</p>} */}
         {userState.id && <MyOrganizations />}
-        {userState.id && <Link to={`/users/${userState.id}`}>        <Avatar
-          src="https://i.ibb.co/2ssp8r7/2.jpg"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          style={{ border: "3px solid #B6C7C3" }}
-        /></Link>}
+        {userState.id && (
+          <Link to={`/users/${userState.id}`}>
+            <Avatar
+              src="https://i.ibb.co/2ssp8r7/2.jpg"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              style={{ border: "3px solid #B6C7C3", opacity: 0.8 }}
+            />
+          </Link>
+        )}
       </Toolbar>
     </AppBar>
   );
