@@ -30,13 +30,13 @@ const taskInfoStyles = makeStyles({
     top: "30vh",
     margin: "auto 0",
     backgroundColor: "#F5F5F5",
-    borderRadius: "52px",
+    borderRadius: 52,
     zIndex: 999,
 
   },
   CardContent: {
-    padding: "5vh 7vw",
-    // overflow: "auto",
+    padding: "5vh 8vw",
+    overflow: "auto",
   },
   taskicons: {
     fontSize: "26px",
@@ -46,16 +46,15 @@ const taskInfoStyles = makeStyles({
     fontSize: "14px",
     fontWeight: 700,
     color: "#B6C7C3",
-    lineHeight: "16px",
   },
   taskName: {
-    fontSize: "28px",
+    fontSize: "31px",
     fontWeight: 500,
     color: "#4B6253"
   },
   description: {
     color: "#4B6253",
-    fontSize: "14px",
+    fontSize: "16px",
     fontWeight: "bold",
     paddingTop: "1vh"
   },

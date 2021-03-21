@@ -10,25 +10,21 @@ import {
   ListItem,
   ListItemIcon,
   Badge,
-  CardMedia,
   Button,
   IconButton,
-  Avatar,
+  Divider,
 } from "@material-ui/core";
 import taskInfoStyles from "../../styles/taskInfoStyles";
 import { PeopleSharp } from "@material-ui/icons/";
-import ListIcon from "@material-ui/icons/List";
 import UserContext from "../../contexts/UserContext";
 import "./TaskInfo.scss";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 
 export default function TaskInfo() {
   const { userState } = useContext(UserContext);
@@ -102,7 +98,7 @@ export default function TaskInfo() {
   };
 
   return (
-    <div className={classes.root} >
+    <div className={classes.root}>
       <Link to={`/users/${userState.id}`}>
         <IconButton className={classes.backButton}>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 20 }} />
@@ -111,87 +107,89 @@ export default function TaskInfo() {
       <img src={task.image_url} className={classes.orgTaskImage}></img>
 
       <Card className={classes.InfoCard}>
-
         <CardContent className={classes.CardContent}>
           <section>
-          <Typography className={classes.orgName} gutterBottom>Organization Name</Typography>
-          <Typography color="primary" className={classes.taskName}>
-            {task.name}
-          </Typography>
-          <List>
+            <Typography className={classes.orgName} gutterBottom>
+              Organization Name
+            </Typography>
+            <Typography color="primary" className={classes.taskName}>
+              {task.name}
+            </Typography>
 
+            <Divider style={{ margin: "2vh 0" }} />
 
-            
-        {/* * * * HACKY SOLUTION TO ADD BACKGROUND * * * */}
+            {/* * * * HACKY SOLUTION TO ADD BACKGROUND * * * */}
             {/* <ListItem>
               <ListItemIcon>
-                <Avatar>
+              <Avatar>
+              <CalendarTodayIcon className={classes.taskicons} />
+              </Avatar>
+              </ListItemIcon>
+              
+              <ListItemText
+              secondary={dayjs
+                .tz(task.start_date)
+                .format("ddd MMM D - h:mm A")}
+                />
+              </ListItem> */}
+
+            <List>
+              <ListItem>
+                <ListItemIcon>
+                  <DateRangeIcon className={classes.taskicons} />
+                </ListItemIcon>
+                <ListItemText
+                  secondary={dayjs
+                    .tz(task.end_date)
+                    .format("ddd MMM D, h:mm A")}
+                />
+              </ListItem>
+
+              <ListItem>
+                <ListItemIcon>
                   <CalendarTodayIcon className={classes.taskicons} />
-                </Avatar>
-              </ListItemIcon>
+                </ListItemIcon>
+                <ListItemText
+                  secondary={dayjs
+                    .tz(task.start_date)
+                    .format("ddd MMM D, h:mm A")}
+                />
+              </ListItem>
 
-              <ListItemText
-                secondary={dayjs
-                  .tz(task.start_date)
-                  .format("ddd MMM D - h:mm A")}
-              />
-            </ListItem> */}
+              <ListItem>
+                <ListItemIcon>
+                  <LocationOnIcon className={classes.taskicons} />
+                </ListItemIcon>
+                <ListItemText color="primary" secondary={task.location} />
+              </ListItem>
 
+              <ListItem>
+                <ListItemIcon>
+                  <Badge
+                    overlap="circle"
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    // COUNTER HERE!
+                    badgeContent={`${task.signups.length}/${task.spots}`}
+                    color="secondary"
+                  >
+                    <PeopleSharp className={classes.taskicons} />
+                  </Badge>
+                </ListItemIcon>
+                <ListItemText secondary={"Volunteers signed up"} />
+              </ListItem>
+            </List>
 
+            {/* <Divider style={{margin: "2vh 0"}} /> */}
 
-            <ListItem>
-              <ListItemIcon>
-                <DateRangeIcon className={classes.taskicons} />
-              </ListItemIcon>
-              <ListItemText
-                secondary={dayjs.tz(task.end_date).format("ddd MMM D, h:mm A")}
-              />
-            </ListItem>
-
-            <ListItem>
-              <ListItemIcon>
-                  <CalendarTodayIcon className={classes.taskicons} />
-              </ListItemIcon>
-              <ListItemText
-                secondary={dayjs
-                  .tz(task.start_date)
-                  .format("ddd MMM D, h:mm A")}
-              />
-            </ListItem>
-
-            <ListItem>
-              <ListItemIcon>
-                <LocationOnIcon className={classes.taskicons} />
-              </ListItemIcon>
-              <ListItemText color="primary" secondary={task.location} />
-            </ListItem>
-
-            <ListItem>
-              <ListItemIcon>
-                <Badge
-                  overlap="circle"
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  // COUNTER HERE!
-                  badgeContent={`${task.signups.length}/${task.spots}`}
-                  color="secondary"
-                >
-                  <PeopleSharp className={classes.taskicons} />
-                </Badge>
-              </ListItemIcon>
-              <ListItemText secondary={"Volunteers signed up"} />
-            </ListItem>
-          </List>
-          <Typography gutterBottom className={classes.description}>
-            Description:
-          </Typography>
-          <Typography variant="body2" component="p">
-            {task.description}
-          </Typography>
-          
-   
+            <Typography gutterBottom className={classes.description}>
+              Description:
+            </Typography>
+            <Typography variant="body2" component="p">
+              {task.description}
+            </Typography>
           </section>
           {showJoin && joinShouldShow(userState.id, task) ? (
             <Button
@@ -204,7 +202,7 @@ export default function TaskInfo() {
               }}
               className={classes.buttonRound}
             >
-              <AddIcon fontSize="large" style={{color: "white"}} />
+              <AddIcon fontSize="large" style={{ color: "white" }} />
             </Button>
           ) : (
             <Button
@@ -216,7 +214,7 @@ export default function TaskInfo() {
               }}
               className={classes.buttonRound}
             >
-              <RemoveIcon fontSize="large" style={{color: "white"}} />
+              <RemoveIcon fontSize="large" style={{ color: "white" }} />
             </Button>
           )}
         </CardContent>
