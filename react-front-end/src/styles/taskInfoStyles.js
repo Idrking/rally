@@ -9,9 +9,6 @@ const taskInfoStyles = makeStyles({
     height: "100%",
     width: "100%",
     position: "absolute",
-    boxShadow: "0px",
-    border: "none",
-    outline: "none"
   },
   "&ListItemText": {
     fontSize: 14,
@@ -32,6 +29,7 @@ const taskInfoStyles = makeStyles({
     backgroundColor: "#F5F5F5",
     borderRadius: 52,
     zIndex: 999,
+    boxShadow: "none",
 
   },
   CardContent: {
@@ -75,6 +73,8 @@ const taskInfoStyles = makeStyles({
     bottom: -10,
     left: 0,
     right: 0,
+    overflow: "auto",
+    padding: 20
   }
 });
 
