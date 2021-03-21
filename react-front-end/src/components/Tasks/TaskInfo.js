@@ -112,7 +112,7 @@ export default function TaskInfo() {
             <Typography className={classes.cardSubtitle} gutterBottom>
               Organization Name
             </Typography>
-            <Typography color="primary" variant="h2" component="h2" className={classes.taskName}>
+            <Typography color="primary" variant="h2" component="h2" className={classes.cardName}>
               {task.name}
             </Typography>
 
@@ -136,7 +136,7 @@ export default function TaskInfo() {
             <List>
               <ListItem>
                 <ListItemIcon>
-                  <DateRangeIcon className={classes.taskicons} />
+                  <DateRangeIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText
                   secondary={dayjs
@@ -147,7 +147,7 @@ export default function TaskInfo() {
 
               <ListItem>
                 <ListItemIcon>
-                  <CalendarTodayIcon className={classes.taskicons} />
+                  <CalendarTodayIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText
                   secondary={dayjs
@@ -158,7 +158,7 @@ export default function TaskInfo() {
 
               <ListItem>
                 <ListItemIcon>
-                  <LocationOnIcon className={classes.taskicons} />
+                  <LocationOnIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText color="primary" secondary={task.location} />
               </ListItem>
@@ -175,7 +175,7 @@ export default function TaskInfo() {
                     badgeContent={`${task.signups.length}/${task.spots}`}
                     color="secondary"
                   >
-                    <PeopleSharp className={classes.taskicons} />
+                    <PeopleSharp className={classes.infoIcons} />
                   </Badge>
                 </ListItemIcon>
                 <ListItemText secondary={"Volunteers signed up"} />

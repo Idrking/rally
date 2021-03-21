@@ -37,7 +37,7 @@ const InfoStyles = makeStyles({
     padding: "5vh 8vw",
     overflow: "auto",
   },
-  taskicons: {
+  infoIcons: {
     fontSize: "26px",
     color: "#4B6253",
   },
@@ -46,7 +46,7 @@ const InfoStyles = makeStyles({
     fontWeight: 700,
     color: "#B6C7C3",
   },
-  taskName: {
+  cardName: {
     fontSize: "31px",
     fontWeight: 500,
     color: "#4B6253"
