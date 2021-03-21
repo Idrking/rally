@@ -8,7 +8,7 @@ import Hero from "./Hero";
 export default function Landing() {
   return (
 
-    
+
     <div className={"background-div"}>
       <div className={"title-div"}>
         <Hero />

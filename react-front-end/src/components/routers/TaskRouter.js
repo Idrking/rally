@@ -11,7 +11,6 @@ const TasksRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
               <TaskInfo />
             </>
           );
