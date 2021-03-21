@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import Tasks from "../Tasks/Tasks";
-import { Typography, Button } from "@material-ui/core";
+import { useParams } from "react-router-dom";
+
+import { Typography } from "@material-ui/core";
 import Axios from "axios";
 import "./UserDashboard.scss";
 import TaskTabs from "./TaskTabs";
