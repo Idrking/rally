@@ -32,7 +32,6 @@ export default function UserDashboard() {
         Your <b>tasks</b>
       </Typography>
       <TaskTabs tasks={tasks} />
-
     </div>
   );
 }
