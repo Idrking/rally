@@ -62,7 +62,6 @@ export default function TaskCard({ task, orgView }) {
             >
               {task.name}
             </Typography>
-            <br />
 
             <Typography className={classes.date}>
               {dayjs.tz(task.start_date).format("MMM D")}

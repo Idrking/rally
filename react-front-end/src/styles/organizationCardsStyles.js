@@ -9,7 +9,6 @@ const organizationsCardsStyles = makeStyles({
     // flexDirection: "row"
     height: "140px"
   },
-
   cardgrid: {
     display: "grid",
     gridTemplateColumns: "1fr 140px"
@@ -19,10 +18,9 @@ const organizationsCardsStyles = makeStyles({
   cardflex: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-    flex: '1 0 auto',
-    // padding: "10px 0 0 20px"
-    paddingLeft: "30px"
+    // justifyContent: "space-evenly",
+    paddingLeft: "30px",
+    gap: 20
   },
   media: {
     height: "140px"
