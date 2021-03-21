@@ -61,47 +61,47 @@ export default function Header() {
           <IconButton edge="start" aria-label="menu">
             <MenuIcon style={{ color: "#6D7E73", fontSize: 35 }} />
           </IconButton>
+          <div>
+            <Avatar
+              src="https://i.ibb.co/2ssp8r7/2.jpg"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              style={{border: "3px solid #B6C7C3"}}
+            />
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose} className={classes.menuitem}>
+                My Account
+              </MenuItem>
+              <MenuItem onClick={handleClose} className={classes.menuitem}>
+                My Organizations
+              </MenuItem>
 
-            <div>
-              <Avatar
-                src="../../images/2.jpg"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-              />
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={open}
-                onClose={handleClose}
+              <MenuItem
+                onClick={handleClose}
+                className={classes.menuitem}
+                component={Link}
+                to="/organizations"
               >
-                <MenuItem onClick={handleClose} className={classes.menuitem}>
-                  My Account
-                </MenuItem>
-                <MenuItem onClick={handleClose} className={classes.menuitem}>
-                  My Organizations
-                </MenuItem>
-
-                <MenuItem
-                  onClick={handleClose}
-                  className={classes.menuitem}
-                  component={Link}
-                  to="/organizations"
-                >
-                  Find Organizations
-                </MenuItem>
-              </Menu>
-            </div>
+                Find Organizations
+              </MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
