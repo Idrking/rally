@@ -93,6 +93,7 @@ export default function TaskTabs({ tasks }) {
       "aria-controls": `wrapped-tabpanel-${index}`,
     };
   }
+  
   return (
     <div className={classes.root}>
       <div className={classes.demo1}>
@@ -108,6 +109,7 @@ export default function TaskTabs({ tasks }) {
         </AntTabs>
         <Typography className={classes.padding} />
       </div>
+
       <TabPanel value={value} index="one">
         <Tasks tasks={tasks.available} />
       </TabPanel>
@@ -115,9 +117,12 @@ export default function TaskTabs({ tasks }) {
       <TabPanel value={value} index="two">
         <Tasks tasks={tasks.active} />
       </TabPanel>
+
       <TabPanel value={value} index="three">
         These are completed
+        {/* <Tasks tasks={tasks.completed} /> */}
       </TabPanel>
+
     </div>
   );
 }
