@@ -3,6 +3,7 @@ import axios from 'axios';
 import Tasks from "../Tasks/Tasks";
 import { Typography, Button, Badge } from "@material-ui/core";
 import TaskCreateForm from "../Tasks/TaskCreateForm";
+import EditApplicationForm from "../organizations/EditApplicationForm";
 import FormModal from "../helperComponents/FormModal";
 import { useParams, Link } from "react-router-dom";
 
@@ -38,7 +39,10 @@ export default function OrganizationDashboard() {
         <FormModal data={organization.info} FormComponent={TaskCreateForm} details={{task: "Create a Task", description: "Enter the details below"}}>
           Create a Task
         </FormModal>
-        <Tasks tasks={[]}/>
+        <FormModal data={organization.info.application_config} FormComponent={EditApplicationForm} details={{task: "Edit your application", description: "These are the questions potential volunteers will answer when applying to your organization"}}>
+          Edit Application
+        </FormModal>
+
       </div>
 
       <div>

@@ -104,8 +104,8 @@ module.exports = (db) => {
   router.patch("/:id/application", (req, res) => {
     const newConfig = req.body.newConfig;
     db.query(orgQueries.editAppConfig, [newConfig])
-    .then(() => res.status(201))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .then(() => res.status(201).end())
+    .catch(err => console.error(err));
   });
 
   // Edits an organizations details
