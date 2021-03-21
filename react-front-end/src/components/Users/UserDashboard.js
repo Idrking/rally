@@ -32,19 +32,9 @@ export default function UserDashboard() {
       <Typography variant="h2" component="h2">
         Your <b>tasks</b>
       </Typography>
-
-
       
       <br />
       <TaskTabs tasks={tasks}/>
-
-
-
-
-
-      
-
-
 
       <br />
       <Link to="/organizations">
@@ -53,11 +43,5 @@ export default function UserDashboard() {
         </Button>
       </Link>
     </div>
-
-
-
-     
-
-
   );
 }
