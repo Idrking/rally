@@ -100,6 +100,8 @@ export default function Header() {
               <MenuItem
                 onClick={handleClose}
                 className={classes.menuitem}
+                // component={Link}
+                // to="/organizations"
               >
                 <Link to="/organizations" className={classes.menuLink}>   
                 Find Organizations

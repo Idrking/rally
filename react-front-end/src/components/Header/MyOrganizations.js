@@ -3,8 +3,9 @@ import Axios from 'axios';
 import UserContext from '../../contexts/UserContext';
 import {  Menu, MenuItem, Grow, makeStyles} from '@material-ui/core';
 import CompactOrgListItem from "./CompactOrgListItem";
-import AddOrgButton from './AddOrgButton';
-import NewOrgForm from './NewOrgForm';
+import AddOrgButton from "./AddOrgButton";
+import NewOrgForm from "./NewOrgForm";
+import SortIcon from "@material-ui/icons/Sort";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,13 +30,12 @@ export default function MyOrganizations() {
   const classes = useStyles();
 
   useEffect(() => {
-
     if (userState.id) {
       Axios.get(`/api/users/${userState.id}/organizations/owns`)
-      .then(res => setOrgs(res.data))
-      .catch(err => console.error(err));
+        .then((res) => setOrgs(res.data))
+        .catch((err) => console.error(err));
     }
-  }, [userState])
+  }, [userState]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -58,16 +58,16 @@ export default function MyOrganizations() {
         onClose={handleClose}
         TransitionComponent={Grow}
       >
-      {orgs.map(org => {
-        return (
-          <MenuItem key={org.id} onClick={handleClose}>
-            <CompactOrgListItem org={org} />
-          </MenuItem>
-        );
-      })}
-      <MenuItem key="add">
-        <AddOrgButton FormComponent={NewOrgForm} />
-      </MenuItem>
+        {orgs.map((org) => {
+          return (
+            <MenuItem key={org.id} onClick={handleClose}>
+              <CompactOrgListItem org={org} />
+            </MenuItem>
+          );
+        })}
+        <MenuItem key="add">
+          <AddOrgButton FormComponent={NewOrgForm} />
+        </MenuItem>
       </Menu>
     </div>
   );
