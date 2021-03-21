@@ -191,7 +191,11 @@ export default function TaskInfo() {
               {task.description}
             </Typography>
           </section>
-          {showJoin && joinShouldShow(userState.id, task) ? (
+         
+        </CardContent>
+      </Card>
+
+      {showJoin && joinShouldShow(userState.id, task) ? (
             <Button
               variant="contained"
               aria-label="increase"
@@ -217,8 +221,6 @@ export default function TaskInfo() {
               <RemoveIcon fontSize="large" style={{ color: "white" }} />
             </Button>
           )}
-        </CardContent>
-      </Card>
     </div>
   );
 }
