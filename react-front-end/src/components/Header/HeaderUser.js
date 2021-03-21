@@ -2,20 +2,17 @@ import React, { useContext } from "react";
 import {
   AppBar,
   Toolbar,
-  Typography,
-  Button,
   IconButton,
   MenuItem,
   Menu,
   makeStyles,
   Avatar,
-  Link,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import SortIcon from "@material-ui/icons/Sort";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import MyOrganizations from './MyOrganizations';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,7 +70,7 @@ export default function Header() {
 
           <div>
             <Avatar
-              src="https://i.ibb.co/2ssp8r7/2.jpg"
+              src={userState.profile_image}
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -103,10 +100,8 @@ export default function Header() {
               <MenuItem
                 onClick={handleClose}
                 className={classes.menuitem}
-                // component={Link}
-                // to="/organizations"
               >
-                <Link className={classes.menuLink}>   
+                <Link to="/organizations" className={classes.menuLink}>   
                 Find Organizations
                 </Link>
               </MenuItem>

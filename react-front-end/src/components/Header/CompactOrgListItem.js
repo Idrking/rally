@@ -18,16 +18,15 @@ const useStyles = makeStyles(theme => {
     transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 17,
     alignSelf: "center"
   },
   pos: {
     marginBottom: 12,
   },
   media: {
-    width: theme.spacing(12),
-    height: theme.spacing(12),
+    width: theme.spacing(8),
+    height: theme.spacing(8),
     marginRight: '20px'
   }
 }});
