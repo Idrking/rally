@@ -1,15 +1,32 @@
 import React, {useState, useContext, useEffect} from 'react';
 import Axios from 'axios';
 import UserContext from '../../contexts/UserContext';
-import { Button, Menu, MenuItem, Grow} from '@material-ui/core';
+import { Button, Menu, MenuItem, Grow, makeStyles} from '@material-ui/core';
 import CompactOrgListItem from "./CompactOrgListItem";
 import AddOrgButton from './AddOrgButton';
 import NewOrgForm from './NewOrgForm';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  menuitem: {
+    fontSize: 17,
+  },
+}));
 
 export default function MyOrganizations() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [orgs, setOrgs] = useState([]);
   const { userState } = useContext(UserContext);
+  const classes = useStyles();
 
   useEffect(() => {
 
@@ -30,9 +47,9 @@ export default function MyOrganizations() {
 
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        My Organizations
-      </Button>
+       <MenuItem onClick={handleClick} className={classes.menuitem} >
+          My Organizations
+        </MenuItem>
       <Menu
         id="my-organizations"
         anchorEl={anchorEl}

@@ -15,6 +15,7 @@ import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import SortIcon from "@material-ui/icons/Sort";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import MyOrganizations from './MyOrganizations';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,19 +30,25 @@ const useStyles = makeStyles((theme) => ({
   menuitem: {
     fontSize: 17,
   },
+  menuLink: {
+    fontSize: 'inherit',
+    color: 'inherit',
+    textDecoration: 'none',
+    "&:hover": {
+      textDecoration: 'none'
+    }
+  }
+  
 }));
 
 export default function Header() {
   const { userState } = useContext(UserContext);
 
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,17 +97,18 @@ export default function Header() {
               {/* <MenuItem onClick={handleClose} className={classes.menuitem}>
                 My Account
               </MenuItem> */}
-              <MenuItem onClick={handleClose} className={classes.menuitem}>
-                My Organizations
-              </MenuItem>
+
+              <MyOrganizations />
 
               <MenuItem
                 onClick={handleClose}
                 className={classes.menuitem}
-                component={Link}
-                to="/organizations"
+                // component={Link}
+                // to="/organizations"
               >
-                Find Organization
+                <Link className={classes.menuLink}>   
+                Find Organizations
+                </Link>
               </MenuItem>
             </Menu>
           </div>
