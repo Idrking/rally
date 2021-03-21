@@ -14,7 +14,7 @@ import {
   IconButton,
   Divider,
 } from "@material-ui/core";
-import taskInfoStyles from "../../styles/taskInfoStyles";
+import InfoStyles from "../../styles/InfoStyles";
 import { PeopleSharp } from "@material-ui/icons/";
 import UserContext from "../../contexts/UserContext";
 import "./TaskInfo.scss";
@@ -29,7 +29,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 export default function TaskInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
-  const classes = taskInfoStyles();
+  const classes = InfoStyles();
   const [showJoin, setShowJoin] = useState(true);
 
   const [task, setTasks] = useState({
@@ -101,18 +101,18 @@ export default function TaskInfo() {
     <div className={classes.root}>
       <Link to={`/users/${userState.id}`}>
         <IconButton className={classes.backButton}>
-          <ArrowBackIosIcon style={{ color: "white", fontSize: 20 }} />
+          <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
       </Link>
-      <img src={task.image_url} className={classes.orgTaskImage}></img>
+      <img src={task.image_url} className={classes.bkgImage}></img>
 
       <Card className={classes.InfoCard}>
         <CardContent className={classes.CardContent}>
           <section>
-            <Typography className={classes.orgName} gutterBottom>
+            <Typography className={classes.cardSubtitle} gutterBottom>
               Organization Name
             </Typography>
-            <Typography color="primary" className={classes.taskName}>
+            <Typography color="primary" variant="h2" component="h2" className={classes.cardName}>
               {task.name}
             </Typography>
 
@@ -136,7 +136,7 @@ export default function TaskInfo() {
             <List>
               <ListItem>
                 <ListItemIcon>
-                  <DateRangeIcon className={classes.taskicons} />
+                  <DateRangeIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText
                   secondary={dayjs
@@ -147,7 +147,7 @@ export default function TaskInfo() {
 
               <ListItem>
                 <ListItemIcon>
-                  <CalendarTodayIcon className={classes.taskicons} />
+                  <CalendarTodayIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText
                   secondary={dayjs
@@ -158,7 +158,7 @@ export default function TaskInfo() {
 
               <ListItem>
                 <ListItemIcon>
-                  <LocationOnIcon className={classes.taskicons} />
+                  <LocationOnIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText color="primary" secondary={task.location} />
               </ListItem>
@@ -175,7 +175,7 @@ export default function TaskInfo() {
                     badgeContent={`${task.signups.length}/${task.spots}`}
                     color="secondary"
                   >
-                    <PeopleSharp className={classes.taskicons} />
+                    <PeopleSharp className={classes.infoIcons} />
                   </Badge>
                 </ListItemIcon>
                 <ListItemText secondary={"Volunteers signed up"} />
@@ -191,7 +191,11 @@ export default function TaskInfo() {
               {task.description}
             </Typography>
           </section>
-          {showJoin && joinShouldShow(userState.id, task) ? (
+         
+        </CardContent>
+      </Card>
+
+      {showJoin && joinShouldShow(userState.id, task) ? (
             <Button
               variant="contained"
               aria-label="increase"
@@ -217,8 +221,6 @@ export default function TaskInfo() {
               <RemoveIcon fontSize="large" style={{ color: "white" }} />
             </Button>
           )}
-        </CardContent>
-      </Card>
     </div>
   );
 }

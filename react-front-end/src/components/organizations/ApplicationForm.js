@@ -145,6 +145,3 @@ const ApplicationForm = ({ data }) => {
 }
 
 export default ApplicationForm;
-
-// error={'lemon' ? true : false }
-// helperText={'lemon' ? "Name can't be blank" : ''}

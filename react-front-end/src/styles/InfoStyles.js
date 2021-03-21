@@ -2,22 +2,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import zIndex from "@material-ui/core/styles/zIndex";
 import { Autorenew } from "@material-ui/icons";
 
-const taskInfoStyles = makeStyles({
+const InfoStyles = makeStyles({
   root: {
     backgroundColor: "#94A8A3",
     margin: 0,
     height: "100%",
     width: "100%",
     position: "absolute",
-    boxShadow: "0px",
-    border: "none",
-    outline: "none"
   },
   "&ListItemText": {
     fontSize: 14,
   },
 
-  orgTaskImage: {
+  bkgImage: {
     position: "absolute",
     width: "100%",
     opacity: 0.8,
@@ -32,22 +29,24 @@ const taskInfoStyles = makeStyles({
     backgroundColor: "#F5F5F5",
     borderRadius: 52,
     zIndex: 999,
+    boxShadow: "none",
+    overflowX: 'unset'
 
   },
   CardContent: {
     padding: "5vh 8vw",
     overflow: "auto",
   },
-  taskicons: {
+  infoIcons: {
     fontSize: "26px",
     color: "#4B6253",
   },
-  orgName: {
+  cardSubtitle: {
     fontSize: "14px",
     fontWeight: 700,
     color: "#B6C7C3",
   },
-  taskName: {
+  cardName: {
     fontSize: "31px",
     fontWeight: 500,
     color: "#4B6253"
@@ -65,6 +64,7 @@ const taskInfoStyles = makeStyles({
     left: 10,
     color: "white",
     zIndex: 99,
+    fontSize: "26px"
   },
   buttonRound: {
     borderRadius: 50,
@@ -72,10 +72,12 @@ const taskInfoStyles = makeStyles({
     position: "absolute",
     margin: "auto",
     zIndex: 1000,
-    bottom: -10,
+    bottom: 50,
     left: 0,
     right: 0,
+    padding: 20,
+    boxShadow: "none"
   }
 });
 
-export default taskInfoStyles;
+export default InfoStyles;

@@ -102,10 +102,10 @@ module.exports = (db) => {
 
   //Edits details for an organizations application
   router.patch("/:id/application", (req, res) => {
-    const newConfig = req.body.newConfig;
-    db.query(orgQueries.editAppConfig, [newConfig])
-    .then(() => res.status(201))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    const newConfig = JSON.stringify(req.body.newConfig);
+    db.query(orgQueries.editAppConfig, [newConfig, req.params.id])
+    .then(() => res.status(201).end())
+    .catch(err => console.error(err));
   });
 
   // Edits an organizations details
