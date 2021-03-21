@@ -32,12 +32,12 @@ const useStyles = makeStyles(theme => {
 }});
 
 
-const CompactOrgListItem = ({ org }) => {
+const CompactOrgListItem = ({ org, owner }) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-    <Link to={`/organizations/${org.id}/dashboard`}>
+    <Link to={`/organizations/${org.id}/${owner ? 'dashboard' : ''}`}>
       <CardContent className={classes.content}>
         <Avatar
           className={classes.media}

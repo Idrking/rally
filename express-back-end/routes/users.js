@@ -25,7 +25,7 @@ module.exports = (db) => {
   router.get("/:id/organizations", (req, res) => {
     db.query(userQueries.joinedOrganizations, [req.params.id])
     .then(orgs => res.json(orgs.rows))
-    .catch(err => res.status(500).send(deliverError(err.message)));
+    .catch(err => console.error(err));
   });
   
   

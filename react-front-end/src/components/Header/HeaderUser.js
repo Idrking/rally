@@ -12,6 +12,7 @@ import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import SortIcon from "@material-ui/icons/Sort";
 import MyOrganizations from './MyOrganizations';
+import OrganizationsJoined from './OrganizationsJoined';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -90,23 +91,14 @@ export default function Header() {
               }}
               open={open}
               onClose={handleClose}
-            >
-              {/* <MenuItem onClick={handleClose} className={classes.menuitem}>
-                My Account
-              </MenuItem> */}
+            > 
+              {/* For some reason, removing this MenuItem causes an error 
+                  It's pretty ugly, but it works */}
+              <MenuItem style={{display: 'none'}} />
 
               <MyOrganizations />
+              <OrganizationsJoined />
 
-              <MenuItem
-                onClick={handleClose}
-                className={classes.menuitem}
-                // component={Link}
-                // to="/organizations"
-              >
-                <Link to="/organizations" className={classes.menuLink}>   
-                Find Organizations
-                </Link>
-              </MenuItem>
             </Menu>
           </div>
 
