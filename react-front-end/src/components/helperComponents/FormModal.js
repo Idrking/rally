@@ -38,7 +38,7 @@ export default function FormModal(props) {
       <p id="simple-modal-description">
         {props.details.description}
       </p>
-      <props.FormComponent data={props.data} />
+      <props.FormComponent setOpen={setOpen} setConfigUpdated={props.stateChanger} data={props.data} />
     </div>
   );
 
