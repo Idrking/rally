@@ -6,7 +6,7 @@ const theme = createMuiTheme({
       main: '#6D7E73',
     },
     secondary: {
-      main: '#4B6253'
+      main: '#FFA945'
     },
     accent: {
       main: '#6D7E73'
@@ -36,6 +36,11 @@ const theme = createMuiTheme({
     body1: {
       fontWeight: 300,
       fontSize: "24px"
+    },
+    body2: {
+      fontWeight: 400,
+      fontSize: "14px",
+      color: "#787878"
     }
   }
 })
