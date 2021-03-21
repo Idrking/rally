@@ -104,15 +104,15 @@ export default function TaskInfo() {
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
       </Link>
-      <img src={task.image_url} className={classes.orgTaskImage}></img>
+      <img src={task.image_url} className={classes.bkgImage}></img>
 
       <Card className={classes.InfoCard}>
         <CardContent className={classes.CardContent}>
           <section>
-            <Typography className={classes.orgName} gutterBottom>
+            <Typography className={classes.cardSubtitle} gutterBottom>
               Organization Name
             </Typography>
-            <Typography color="primary" className={classes.taskName}>
+            <Typography color="primary" variant="h2" component="h2" className={classes.taskName}>
               {task.name}
             </Typography>
 

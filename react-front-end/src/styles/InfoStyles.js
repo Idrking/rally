@@ -14,7 +14,7 @@ const InfoStyles = makeStyles({
     fontSize: 14,
   },
 
-  orgTaskImage: {
+  bkgImage: {
     position: "absolute",
     width: "100%",
     opacity: 0.8,
@@ -41,7 +41,7 @@ const InfoStyles = makeStyles({
     fontSize: "26px",
     color: "#4B6253",
   },
-  orgName: {
+  cardSubtitle: {
     fontSize: "14px",
     fontWeight: 700,
     color: "#B6C7C3",
