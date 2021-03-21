@@ -55,7 +55,7 @@ const InfoStyles = makeStyles({
     color: "#4B6253",
     fontSize: "16px",
     fontWeight: "bold",
-    paddingTop: "1vh"
+    paddingTop: "2vh"
   },
   backButton: {
     position: "absolute",
@@ -77,7 +77,7 @@ const InfoStyles = makeStyles({
     right: 0,
     padding: 20,
     boxShadow: "none"
-  }
+  },
 });
 
 export default InfoStyles;
