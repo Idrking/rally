@@ -9,12 +9,12 @@ import {
   Menu,
   makeStyles,
   Avatar,
+  Link,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,40 +59,49 @@ export default function Header() {
       >
         <Toolbar>
           <IconButton edge="start" aria-label="menu">
-            <MenuIcon style={{ color: "#94A8A3", fontSize: 35 }} />
+            <MenuIcon style={{ color: "#6D7E73", fontSize: 35 }} />
           </IconButton>
+          <div>
+            <Avatar
+              src="https://i.ibb.co/2ssp8r7/2.jpg"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              style={{border: "3px solid #B6C7C3"}}
+            />
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose} className={classes.menuitem}>
+                My Account
+              </MenuItem>
+              <MenuItem onClick={handleClose} className={classes.menuitem}>
+                My Organizations
+              </MenuItem>
 
-          {auth && (
-            <div>
-            <Avatar src="../../images"aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-              />
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={open}
-                onClose={handleClose}
+              <MenuItem
+                onClick={handleClose}
+                className={classes.menuitem}
+                component={Link}
+                to="/organizations"
               >
-                <MenuItem onClick={handleClose} className={classes.menuitem}>
-                  My Account
-                </MenuItem>
-                <MenuItem onClick={handleClose} className={classes.menuitem}>
-                  My Organizations
-                </MenuItem>
-              </Menu>
-            </div>
-          )}
+                Find Organizations
+              </MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
