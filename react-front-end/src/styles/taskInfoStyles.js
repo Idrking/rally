@@ -30,6 +30,7 @@ const taskInfoStyles = makeStyles({
     borderRadius: 52,
     zIndex: 999,
     boxShadow: "none",
+    overflowX: 'unset'
 
   },
   CardContent: {
@@ -70,11 +71,11 @@ const taskInfoStyles = makeStyles({
     position: "absolute",
     margin: "auto",
     zIndex: 1000,
-    bottom: -10,
+    bottom: 50,
     left: 0,
     right: 0,
-    overflow: "auto",
-    padding: 20
+    padding: 20,
+    boxShadow: "none"
   }
 });
 
