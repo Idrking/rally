@@ -12,9 +12,6 @@ const AntTabs = withStyles({
     borderBottom: "1px solid #e8e8e8",
     marginTop: 20
   },
-  "&:focus": {
-    borderBottom: "3px solid #FFA945",
-  },
   indicator: {
     backgroundColor: "#FFA945",
   },
@@ -26,11 +23,11 @@ const AntTab = withStyles((theme) => ({
     minWidth: 72,
     fontWeight: 600,
     fontSize: "14px",
-    marginRight: theme.spacing(4),
-    marginLeft: theme.spacing(4),
+    marginRight: theme.spacing(3.5),
+    marginLeft: theme.spacing(3.5),
     color: "#CFCFCF",
     "&:hover": {
-      color: "#FFA945",
+      color: "#B6C7C3",
       opacity: 1,
     },
     "&$selected": {
