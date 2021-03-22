@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Tasks from "../Tasks/Tasks";
-import { Typography, Button, Badge } from "@material-ui/core";
+import { Typography, Button, Badge, makeStyles } from "@material-ui/core";
 import TaskCreateForm from "../Tasks/TaskCreateForm";
 import EditApplicationForm from "../organizations/EditApplicationForm";
 import FormModal from "../helperComponents/FormModal";
 import { useParams, Link } from "react-router-dom";
-import OrgTaskTabs from "./OrgTaskTabs"
-import TaskTabs from "../Users/TaskTabs"
+import OrgTaskTabs from "./OrgTaskTabs";
+import TaskTabs from "../Users/TaskTabs";
 import "../Users/Dashboard.scss";
+import PeopleIcon from "@material-ui/icons/People";
+import OrgDashStyles from "../../styles/OrgDashStyles"
 
 export default function OrganizationDashboard() {
+  const classes = OrgDashStyles();
   const { id } = useParams();
   const [configUpdated, setConfigUpdated] = useState(false);
   const [organization, setOrganization] = useState({ info: {}, pending: 0 });
@@ -32,50 +35,62 @@ export default function OrganizationDashboard() {
 
   return (
     <div className={"backgrounduser"}>
-      <div>
-        <br />
-        <Typography variant="h2" component="h2" className={"yourtasks"}>
+      <section className={"dashboardsection"}>
+        <Typography variant="h2" component="h2">
           <b>{organization.info.name}</b>
           <br />
           Dashboard
         </Typography>
-        <br />
+        <div style={{display: "flex", flexDirection: "column", gap: 20, paddingTop: 30}}>
+          <FormModal
+            className={"dashboardButtons"}
+            data={organization.info}
+            FormComponent={TaskCreateForm}
+            details={{
+              task: "Create a Task",
+              description: "Enter the details below",
+            }}
+          >
+            Create a Task
+          </FormModal>
 
-        <FormModal
-          data={organization.info}
-          FormComponent={TaskCreateForm}
-          details={{
-            task: "Create a Task",
-            description: "Enter the details below",
-          }}
-        >
-          Create a Task
-        </FormModal>
-        <FormModal
-          data={organization.info.application_config}
-          FormComponent={EditApplicationForm}
-          details={{
-            task: "Edit your application",
-            description:
-              "These are the questions potential volunteers will answer when applying to your organization",
-          }}
-          stateChanger={setConfigUpdated}
-        >
-          Edit Application
-        </FormModal>
-      </div>
+          <FormModal
+            data={organization.info.application_config}
+            FormComponent={EditApplicationForm}
+            details={{
+              task: "Edit your application",
+              description:
+                "These are the questions potential volunteers will answer when applying to your organization",
+            }}
+            stateChanger={setConfigUpdated}
+          >
+            <PeopleIcon /> {" Edit Application"}
+          </FormModal>
 
-      <div>
-        <br />
-        <Link to={`/organizations/${id}/manage_volunteers`}>
-          <Badge color="secondary" badgeContent={organization.pending}>
-            <Button type="submit" variant="contained" color="primary">
-              Manage Volunteers
-            </Button>
-          </Badge>
-        </Link>
-      </div>
-
+          <Link
+            to={`/organizations/${id}/manage_volunteers`}
+            justifyContent="start"
+          >
+            <Badge
+              edge="start"
+              color="secondary"
+              badgeContent={organization.pending}
+              className={classes.badge}
+            >
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                size="large"
+                startIcon={<PeopleIcon />}
+                className={classes.buttons}
+              >
+                Manage Volunteers
+              </Button>
+            </Badge>
+          </Link>
+        </div>
+      </section>
       <OrgTaskTabs tasks={tasks} />
     </div>
   );
