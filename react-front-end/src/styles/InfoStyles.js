@@ -13,9 +13,9 @@ const InfoStyles = makeStyles({
   root2: {
     backgroundColor: "#F5F5F5",
     margin: 0,
-    height: "100%",
     width: "100%",
-    position: "absolute",
+    height: "100%",
+    overflow: "scroll"
   },
 
   bkgImage: {
@@ -34,9 +34,22 @@ const InfoStyles = makeStyles({
     borderRadius: 52,
     zIndex: 999,
     boxShadow: "none",
-    
+  },
+
+  InfoCard2: {
+    position: "relative",
+    width: "100%",
+    // top: "30vh",
+    margin: "auto 0",
+    color: "#F5F5F5",
+    borderRadius: 52,
+    border: "2px red solid",
+    zIndex: 999,
+    boxShadow: "none",
+
 
   },
+
   CardContent: {
     padding: "5vh 8vw",
     overflow: "auto",
@@ -87,7 +100,9 @@ const InfoStyles = makeStyles({
     fontWeight: "normal",
     color: "#787878"
   },
-
+  buttonApply: {
+    padding: 20
+  }
 });
 
 export default InfoStyles;
