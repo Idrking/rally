@@ -32,14 +32,11 @@ import InfoStyles from "../../styles/InfoStyles";
 const useStyles = makeStyles((theme) => ({
   buttons: {
     color: "#fff",
-    textAlign: "left",
-    padding: 25,
-    backgroundColor: "#B6C7C3",
+    padding: 10,
+    backgroundColor: "#FFA945",
     boxShadow: "none",
-    boxSizing: "border-box",
-    borderRadius: "14px",
     fontSize: 18,
-    textTransform: "capitalize",
+    marginTop: 10
   },
 }));
 

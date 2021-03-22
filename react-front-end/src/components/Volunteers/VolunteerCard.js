@@ -52,7 +52,7 @@ export default function VolunteerCard({ volunteer, pending }) {
               horizontal: "right",
             }}
             badgeContent={experience}
-            color="primary"
+            color="secondary"
           >
             <Avatar
               className={classes.media}
