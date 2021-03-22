@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/button";
 import { Link } from "react-router-dom";
 import "./Landing.scss";
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import {ArrowRightAlt} from "@material-ui/icons";
 import Hero from "./Hero";
 
 export default function Landing() {
@@ -24,10 +24,10 @@ export default function Landing() {
               paddingTop: "0px",
               fontSize: "24px",
               textTransform: "capitalize",
-              fontWeight: "300",
+              fontWeight: 300
             }}
             className={"title-button"}
-            endIcon={<ArrowRightAltIcon />}
+            endIcon={<ArrowRightAlt />}
           >
             Enter
           </Button>

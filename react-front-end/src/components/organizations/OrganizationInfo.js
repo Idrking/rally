@@ -143,11 +143,11 @@ export default function OrganizationInfo() {
                 </ListItemText>
               </ListItem>
 
-              <ListItem button disableGutters>
+              <ListItem disableGutters button component="a" href={organization.info.website}>
                 <ListItemIcon>
                   <LanguageSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText>
+                <ListItemText >
                   <Typography className={classes.listItemText}>
                     {organization.info.website}
                   </Typography>

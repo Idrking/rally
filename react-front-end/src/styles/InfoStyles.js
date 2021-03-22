@@ -19,8 +19,10 @@ const InfoStyles = makeStyles({
   },
 
   bkgImage: {
-    position: "absolute",
+    position: "fixed",
     width: "100%",
+    height: "40%",
+    objectFit: "cover",
     opacity: 0.8,
   },
 
