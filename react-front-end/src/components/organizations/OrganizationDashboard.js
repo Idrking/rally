@@ -54,7 +54,7 @@ export default function OrganizationDashboard() {
               task: "Create a Task",
               description: "Enter the details below",
             }}
-            ModalButton={onClick => makeModalButton('Create a Task', <FormatListBulletedIcon />, classes.buttons, onClick )}
+            ModalButton={onClick => makeModalButton('Create a Task', <FormatListBulletedIcon />, classes.createButton, onClick )}
           >
             Create a Task
           </FormModal>
@@ -68,7 +68,7 @@ export default function OrganizationDashboard() {
                 "These are the questions potential volunteers will answer when applying to your organization",
             }}
             stateChanger={setConfigUpdated}
-            ModalButton={onClick => makeModalButton('Edit Application', <CreateIcon />, classes.buttons , onClick )}
+            ModalButton={onClick => makeModalButton('Edit Application', <CreateIcon />, classes.editButton , onClick )}
           >
             <PeopleIcon /> {" Edit Application"}
           </FormModal>

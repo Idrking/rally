@@ -60,17 +60,7 @@ export default function FormModal(props) {
     <div>
       
       {props.ModalButton(handleOpen)}
-      {/* <Button
-        type="button"
-        variant="contained"
-        fullWidth
-        color="secondary"
-        size="large"
-        onClick={handleOpen}
-        className={classes.buttons}
-      >
-        {props.children}
-      </Button> */}
+
       <Modal
         open={open}
         onClose={handleClose}

@@ -17,6 +17,31 @@ const OrgDashStyles = makeStyles({
     width: "100%",
     fontSize: 15,
   },
+  createButton: {
+    backgroundColor: "#B6C7C3",
+    color: "#fff",
+    textAlign: "left",
+    padding: 25,
+    boxShadow: "none",
+    border: "1px solid #CFCFCF",
+    boxSizing: "border-box",
+    borderRadius: "14px",
+    fontSize: 18,
+    textTransform: "capitalize",
+  },
+  editButton: {
+    backgroundColor: "#F9D4A9",
+    color: "#787878",
+    textAlign: "left",
+    padding: 25,
+    boxShadow: "none",
+    border: "1px solid #CFCFCF",
+    boxSizing: "border-box",
+    borderRadius: "14px",
+    fontSize: 18,
+    textTransform: "capitalize",
+  }
+
 });
 
 export default OrgDashStyles;
