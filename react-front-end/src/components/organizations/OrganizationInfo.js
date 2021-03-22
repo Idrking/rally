@@ -5,6 +5,9 @@ import FormModal from "../helperComponents/FormModal";
 import ApplicationForm from "./ApplicationForm";
 import UserContext from "../../contexts/UserContext";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import makeModalButton from "../helperComponents/madeModalButton";
+import {makeStyles} from '@material-ui/core';
 import {
   CardActions,
   CardContent,
@@ -27,10 +30,27 @@ import {
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import InfoStyles from "../../styles/InfoStyles";
 
+const useStyles = makeStyles((theme) => ({
+  buttons: {
+    color: "#fff",
+    textAlign: "left",
+    padding: 25,
+    backgroundColor: "#B6C7C3",
+    boxShadow: "none",
+    boxSizing: "border-box",
+    borderRadius: "14px",
+    fontSize: 18,
+    textTransform: "capitalize",
+  },
+}));
+
+
+
 export default function OrganizationInfo() {
   const { userState } = useContext(UserContext);
   const { id } = useParams();
   const classes = InfoStyles();
+  const buttonClasses = useStyles();
   const [organization, setOrganization] = useState({
     info: {
       name: null,
@@ -178,6 +198,7 @@ export default function OrganizationInfo() {
                 description:
                   "Fill in all the fields and submit your application, and the organization will respond as soon as they're able",
               }}
+              ModalButton={onClick => makeModalButton('Submit Application', <AssignmentIndIcon/>, buttonClasses.buttons, onClick )}
             >
               Submit application
             </FormModal>
