@@ -2,17 +2,18 @@ import React, { useContext } from "react";
 import {
   AppBar,
   Toolbar,
-  Typography,
   IconButton,
   MenuItem,
   Menu,
   makeStyles,
   Avatar,
-  Link,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
 import SortIcon from "@material-ui/icons/Sort";
+import MyOrganizations from './MyOrganizations';
+import OrganizationsJoined from './OrganizationsJoined';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,19 +28,25 @@ const useStyles = makeStyles((theme) => ({
   menuitem: {
     fontSize: 17,
   },
+  menuLink: {
+    fontSize: 'inherit',
+    color: 'inherit',
+    textDecoration: 'none',
+    "&:hover": {
+      textDecoration: 'none'
+    }
+  }
+  
 }));
 
 export default function Header() {
   const { userState } = useContext(UserContext);
 
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -64,7 +71,7 @@ export default function Header() {
 
           <div>
             <Avatar
-              src="https://i.ibb.co/2ssp8r7/2.jpg"
+              src={userState.profile_image}
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -84,22 +91,14 @@ export default function Header() {
               }}
               open={open}
               onClose={handleClose}
-            >
-              {/* <MenuItem onClick={handleClose} className={classes.menuitem}>
-                My Account
-              </MenuItem> */}
-              <MenuItem onClick={handleClose} className={classes.menuitem}>
-                My Organizations
-              </MenuItem>
+            > 
+              {/* For some reason, removing this MenuItem causes an error 
+                  It's pretty ugly, but it works */}
+              <MenuItem style={{display: 'none'}} />
 
-              <MenuItem
-                onClick={handleClose}
-                className={classes.menuitem}
-                component={Link}
-                to="/organizations"
-              >
-                Find Organization
-              </MenuItem>
+              <MyOrganizations />
+              <OrganizationsJoined />
+
             </Menu>
           </div>
 

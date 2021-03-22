@@ -60,7 +60,7 @@ export default function OrganizationInfo() {
   }, [id]);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root2}>
       <Link to={`/users/${userState.id}`}>
         <IconButton className={classes.backButton}>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
@@ -90,28 +90,36 @@ export default function OrganizationInfo() {
                 <ListItemIcon>
                   <PhoneSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText color="primary" secondary={organization.info.primary_phone} />
+                <ListItemText>
+                <Typography className={classes.listItemText}>{organization.info.primary_phone}</Typography>
+                </ListItemText>
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <LocationOnSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText color="primary" secondary={organization.info.location} />
+                <ListItemText > 
+                <Typography className={classes.listItemText}>{organization.info.location}</Typography>
+                </ListItemText>
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <MailOutlineSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText color="primary" secondary={organization.info.primary_email} />
+                <ListItemText>
+                  <Typography className={classes.listItemText}>{organization.info.primary_email}</Typography>
+                </ListItemText>
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
                   <LanguageSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText color="primary" secondary={organization.info.website} />
+                <ListItemText > 
+                <Typography className={classes.listItemText}>{organization.info.website}</Typography>
+                </ListItemText>
               </ListItem>
             </List>
             <Divider />

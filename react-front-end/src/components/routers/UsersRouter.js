@@ -10,7 +10,7 @@ const UsersRouter = () => {
         <Route path="/users/:id" render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <UserDashboard />
             </>
           );

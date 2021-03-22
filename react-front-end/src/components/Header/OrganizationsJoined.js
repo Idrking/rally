@@ -1,11 +1,12 @@
 import React, {useState, useContext, useEffect} from 'react';
 import Axios from 'axios';
 import UserContext from '../../contexts/UserContext';
-import {  Menu, MenuItem, Grow, makeStyles} from '@material-ui/core';
+import {  Button, Menu, MenuItem, Grow, makeStyles} from '@material-ui/core';
 import CompactOrgListItem from "./CompactOrgListItem";
-import AddOrgButton from "./AddOrgButton";
-import NewOrgForm from "./NewOrgForm";
-import SortIcon from "@material-ui/icons/Sort";
+import { Link } from 'react-router-dom';
+import SearchIcon from '@material-ui/icons/Search';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,9 +22,17 @@ const useStyles = makeStyles((theme) => ({
   menuitem: {
     fontSize: 17,
   },
+  menuLink: {
+    fontSize: 'inherit',
+    color: 'inherit',
+    textDecoration: 'none',
+    "&:hover": {
+      textDecoration: 'none'
+    }
+  }
 }));
 
-export default function MyOrganizations() {
+export default function OrganizationsJoined() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [orgs, setOrgs] = useState([]);
   const { userState } = useContext(UserContext);
@@ -31,8 +40,8 @@ export default function MyOrganizations() {
 
   useEffect(() => {
     if (userState.id) {
-      Axios.get(`/api/users/${userState.id}/organizations/owns`)
-        .then((res) => setOrgs(res.data))
+        Axios.get(`/api/users/${userState.id}/organizations/`)
+        .then(org => setOrgs(org.data))
         .catch((err) => console.error(err));
     }
   }, [userState]);
@@ -48,8 +57,8 @@ export default function MyOrganizations() {
   return (
     <div>
        <MenuItem onClick={handleClick} className={classes.menuitem} >
-          Managed Organizations
-        </MenuItem> 
+          My Organizations
+        </MenuItem>
       <Menu
         id="my-organizations"
         anchorEl={anchorEl}
@@ -58,16 +67,23 @@ export default function MyOrganizations() {
         onClose={handleClose}
         TransitionComponent={Grow}
       >
-        {orgs.map((org) => {
+        {orgs.map((org, index) => {
           return (
-            <MenuItem key={0 + parseInt(org.id)} onClick={handleClose}>
-              <CompactOrgListItem owner org={org} />
+            <MenuItem key={20 + org.id + index} onClick={handleClose}>
+              <CompactOrgListItem org={org} />
             </MenuItem>
           );
         })}
-        <MenuItem >
-          <AddOrgButton FormComponent={NewOrgForm} />
-        </MenuItem>
+      <MenuItem
+        onClick={handleClose}
+        className={classes.menuitem}
+      >
+      <Button size="medium" type="button" variant="contained" color="primary"  startIcon={<SearchIcon/>}>
+        <Link to="/organizations" className={classes.menuLink}>   
+        Find Organizations
+        </Link>
+      </Button>
+      </MenuItem>
       </Menu>
     </div>
   );
