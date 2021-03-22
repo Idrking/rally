@@ -14,7 +14,7 @@ export default function OrganizationsCards({ details }) {
   const classes = organizationsCardsStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root2}>
       <CardActionArea
         className={classes.cardgrid}
         href={`/organizations/${details.id}`}
