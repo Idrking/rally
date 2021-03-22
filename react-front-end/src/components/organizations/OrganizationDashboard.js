@@ -74,11 +74,8 @@ export default function OrganizationDashboard() {
           </FormModal>
 
           <Link
-            to={`/organizations/${id}/manage_volunteers`}
-            justifyContent="start"
-          >
+            to={`/organizations/${id}/manage_volunteers`}>
             <Badge
-              edge="start"
               color="secondary"
               badgeContent={organization.pending}
               className={classes.badge}
@@ -96,6 +93,8 @@ export default function OrganizationDashboard() {
               </Button> */}
             </Badge>
           </Link>
+
+
         </div>
       </section>
       <OrgTaskTabs tasks={tasks} />

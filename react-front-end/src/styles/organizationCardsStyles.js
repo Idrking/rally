@@ -18,7 +18,6 @@ const organizationsCardsStyles = makeStyles({
   cardflex: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-evenly",
     paddingLeft: "30px",
     gap: 20
   },

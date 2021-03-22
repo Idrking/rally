@@ -24,7 +24,7 @@ export default function ManagingVolunteers() {
     <div className={"backgrounduser"}>
       <section className={"dashboardsection"}>
         <Typography variant="h2" component="h2">
-          <b>Managing</b> Volunteers
+          <b>Manage</b> Volunteers
         </Typography>
 
         <div className={classes.buttonflex}>
