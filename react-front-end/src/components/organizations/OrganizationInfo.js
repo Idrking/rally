@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import FormModal from "../helperComponents/FormModal";
 import ApplicationForm from "./ApplicationForm";
+import UserContext from "../../contexts/UserContext";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import {
-  CardActionArea,
+
   CardActions,
   CardContent,
-  CardMedia,
+  IconButton,
   Typography,
   Card,
   List,
@@ -23,98 +24,112 @@ import {
   LocationOnSharp,
   LanguageSharp,
 } from "@material-ui/icons/";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import InfoStyles from "../../styles/InfoStyles";
+
+
+
+
 
 export default function OrganizationInfo() {
+  const { userState } = useContext(UserContext);
   const { id } = useParams();
-  const classes = organizationsCardsStyles();
-  const [organization, setOrganization] = useState({info: {
-    name: null, 
-    description: null, 
-    primary_phone: null, 
-    primary_email: null, 
-    location: null,
-    image_url: null,
-    website: null,
-    application_config: null
-  }, pending: 0});
+  const classes = InfoStyles();
+  const [organization, setOrganization] = useState({
+    info: {
+      name: null,
+      description: null,
+      primary_phone: null,
+      primary_email: null,
+      location: null,
+      image_url: null,
+      website: null,
+      application_config: null
+    }, pending: 0
+  });
 
   useEffect(() => {
     axios.get(`/api/organizations/${id}`)
-    .then(orgs => setOrganization(prev => { 
-      return {
-        info: orgs.data.info[0] || {...prev.info},
-        pending: orgs.data.pending || 0
-      }}))
-    .catch(err => console.error(err));
+      .then(orgs => setOrganization(prev => {
+        return {
+          info: orgs.data.info[0] || { ...prev.info },
+          pending: orgs.data.pending || 0
+        };
+      }))
+      .catch(err => console.error(err));
   }, [id]);
-  
+
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={organization.info.image_url || "http://placeimg.com/640/480"}
-        />
+    <div className={classes.root}>
+      <Link to={`/users/${userState.id}`}>
+        <IconButton className={classes.backButton}>
+          <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
+        </IconButton>
+      </Link>
+      <img src={organization.image_url} className={classes.bkgImage}></img>
+      <Card className={classes.InfoCard}>
 
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2" align="left">
-            {organization.info.name}
+        <CardContent className={classes.CardContent}>
+          <section>
+            <Typography className={classes.cardName} color="primary" variant="h1" component="h2">
+              {organization.info.name}
+            </Typography>
+            <Typography className={classes.cardSubtitle} gutterBottom>
+              About Us
           </Typography>
-          <Typography component="p" align="left">
-            {organization.info.description}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            align="left"
-          ></Typography>
+            <Typography className={classes.description}>
+              {organization.info.description}
+            </Typography>
 
-          <div className={classes.root}>
-            <Divider />
+            <Divider style={{ margin: "2vh 0" }} />
+
+
+
             <List component="nav" aria-label="main mailbox folders">
               <ListItem button>
                 <ListItemIcon>
-                  <PhoneSharp />
+                  <PhoneSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText primary={organization.info.primary_phone} />
+                <ListItemText color="primary" secondary={organization.info.primary_phone} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
-                  <LocationOnSharp />
+                  <LocationOnSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText primary={organization.info.location} />
+                <ListItemText color="primary" secondary={organization.info.location} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
-                  <MailOutlineSharp />
+                  <MailOutlineSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText primary={organization.info.primary_email} />
+                <ListItemText color="primary" secondary={organization.info.primary_email} />
               </ListItem>
 
               <ListItem button>
                 <ListItemIcon>
-                  <LanguageSharp />
+                  <LanguageSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText primary={organization.info.website} />
+                <ListItemText color="primary" secondary={organization.info.website} />
               </ListItem>
             </List>
             <Divider />
-          </div>
+          
+            </section>
         </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <FormModal 
-          data={organization.info} 
-          FormComponent={ApplicationForm}
-          details={{task: "Apply to volunteer", description: "Fill in all the fields and submit your application, and the organization will respond as soon as they're able"}}
+      </Card>
+        <CardActions>
+          <FormModal className={classes.buttonRound}
+            data={organization.info}
+            FormComponent={ApplicationForm}
+            details={{ task: "Apply to volunteer", description: "Fill in all the fields and submit your application, and the organization will respond as soon as they're able" }}
           >
-          Volunteer with {organization.info.name}
-        </FormModal>
-      </CardActions>
-    </Card>
+            Interested In Volunteering {organization.info.name}
+          </FormModal>
+        </CardActions>
+    
+    </div>
   );
 }
 
