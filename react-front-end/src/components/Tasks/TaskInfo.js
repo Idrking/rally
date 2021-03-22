@@ -155,26 +155,17 @@ export default function TaskInfo() {
                   <DateRangeIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText>
-                  <Typography
-                    style={{
-                      fontSize: 14,
-                      color: "#CFCFCF",
-                      fontWeight: "normal",
-                    }}
-                  >
+                  <Typography className={classes.listItemText}>
                     {/* <b style={{color: "#787878"}}>{dayjs.tz(task.start_date).format("ddd, MMM D ")}</b>
                     {dayjs.tz(task.start_date).format("hh:mmA")}
                     {" - "}
                     <b style={{color: "#787878"}}>{dayjs.tz(task.end).format("ddd, MMM D ")}</b>
                     {dayjs.tz(task.end).format("hh:mmA")} */}
 
-                    <span style={{ color: "#787878" }}>
-                      {dayjs.tz(task.start_date).format("hh:mma, ddd, MMM D")}
-                    </span>
-                    {" to  "}
-                    <span style={{ color: "#787878" }}>
-                      {dayjs.tz(task.end_date).format("hh:mma, ddd, MMM D")}
-                    </span>
+                    {dayjs.tz(task.start_date).format("hh:mma, ddd, MMM D")}
+
+                    <span style={{ color: "#CFCFCF", fontWeight: 300 }}> to </span>
+                    {dayjs.tz(task.end_date).format("hh:mma, ddd, MMM D")}
                   </Typography>
                 </ListItemText>
               </ListItem>
@@ -183,7 +174,11 @@ export default function TaskInfo() {
                 <ListItemIcon>
                   <LocationOnIcon className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText color="primary" secondary={task.location} />
+                <ListItemText>
+                  <Typography className={classes.listItemText}>
+                    {task.location}
+                  </Typography>
+                </ListItemText>
               </ListItem>
 
               <ListItem disableGutters>
@@ -201,7 +196,11 @@ export default function TaskInfo() {
                     <PeopleSharp className={classes.infoIcons} />
                   </Badge>
                 </ListItemIcon>
-                <ListItemText secondary={"Volunteers signed up"} />
+                <ListItemText>
+                  <Typography className={classes.listItemText}>
+                    {"Volunteers signed up"}
+                  </Typography>
+                </ListItemText>
               </ListItem>
             </List>
 
