@@ -4,8 +4,8 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import PeopleIcon from '@material-ui/icons/People';
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import PeopleIcon from "@material-ui/icons/People";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -19,9 +19,17 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
     outline: 0,
   },
-  modal: {
-
-  }
+  buttons: {
+    color: "#fff",
+    textAlign: "left",
+    padding: 25,
+    backgroundColor: "#B6C7C3",
+    boxShadow: "none",
+    boxSizing: "border-box",
+    borderRadius: "14px",
+    fontSize: 18,
+    textTransform: "capitalize",
+  },
 }));
 
 // Component renders a button with the text=children of the component
@@ -58,7 +66,7 @@ export default function FormModal(props) {
         color="secondary"
         size="large"
         onClick={handleOpen}
-        className={classes.modal}
+        className={classes.buttons}
       >
         {props.children}
       </Button>

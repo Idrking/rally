@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Tasks from "../Tasks/Tasks";
-import { Typography, Button, Badge } from "@material-ui/core";
+import { Typography, Button, Badge, makeStyles } from "@material-ui/core";
 import TaskCreateForm from "../Tasks/TaskCreateForm";
 import EditApplicationForm from "../organizations/EditApplicationForm";
 import FormModal from "../helperComponents/FormModal";
@@ -10,8 +10,10 @@ import OrgTaskTabs from "./OrgTaskTabs";
 import TaskTabs from "../Users/TaskTabs";
 import "../Users/Dashboard.scss";
 import PeopleIcon from "@material-ui/icons/People";
+import OrgDashStyles from "../../styles/OrgDashStyles"
 
 export default function OrganizationDashboard() {
+  const classes = OrgDashStyles();
   const { id } = useParams();
   const [configUpdated, setConfigUpdated] = useState(false);
   const [organization, setOrganization] = useState({ info: {}, pending: 0 });
@@ -39,46 +41,55 @@ export default function OrganizationDashboard() {
           <br />
           Dashboard
         </Typography>
+        <div style={{display: "flex", flexDirection: "column", gap: 20, paddingTop: 30}}>
+          <FormModal
+            className={"dashboardButtons"}
+            data={organization.info}
+            FormComponent={TaskCreateForm}
+            details={{
+              task: "Create a Task",
+              description: "Enter the details below",
+            }}
+          >
+            Create a Task
+          </FormModal>
 
-        <FormModal
-          className={"dashboardButtons"}
-          data={organization.info}
-          FormComponent={TaskCreateForm}
-          details={{
-            task: "Create a Task",
-            description: "Enter the details below",
-          }}
-        >
-          Create a Task
-        </FormModal>
+          <FormModal
+            data={organization.info.application_config}
+            FormComponent={EditApplicationForm}
+            details={{
+              task: "Edit your application",
+              description:
+                "These are the questions potential volunteers will answer when applying to your organization",
+            }}
+            stateChanger={setConfigUpdated}
+          >
+            <PeopleIcon /> {" Edit Application"}
+          </FormModal>
 
-        <FormModal
-          data={organization.info.application_config}
-          FormComponent={EditApplicationForm}
-          details={{
-            task: "Edit your application",
-            description:
-              "These are the questions potential volunteers will answer when applying to your organization",
-          }}
-          stateChanger={setConfigUpdated}
-        >
-          <PeopleIcon /> {" Edit Application"}
-        </FormModal>
-
-        <Link to={`/organizations/${id}/manage_volunteers`}>
-          <Badge color="secondary" badgeContent={organization.pending} style={{width: '100%'}}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-              size="large"
-              startIcon={<PeopleIcon />}
+          <Link
+            to={`/organizations/${id}/manage_volunteers`}
+            justifyContent="start"
+          >
+            <Badge
+              edge="start"
+              color="secondary"
+              badgeContent={organization.pending}
+              className={classes.badge}
             >
-              Manage Volunteers
-            </Button>
-          </Badge>
-        </Link>
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                size="large"
+                startIcon={<PeopleIcon />}
+                className={classes.buttons}
+              >
+                Manage Volunteers
+              </Button>
+            </Badge>
+          </Link>
+        </div>
       </section>
       <OrgTaskTabs tasks={tasks} />
     </div>
