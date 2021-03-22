@@ -6,9 +6,10 @@ import TaskCreateForm from "../Tasks/TaskCreateForm";
 import EditApplicationForm from "../organizations/EditApplicationForm";
 import FormModal from "../helperComponents/FormModal";
 import { useParams, Link } from "react-router-dom";
-import OrgTaskTabs from "./OrgTaskTabs"
-import TaskTabs from "../Users/TaskTabs"
+import OrgTaskTabs from "./OrgTaskTabs";
+import TaskTabs from "../Users/TaskTabs";
 import "../Users/Dashboard.scss";
+import PeopleIcon from "@material-ui/icons/People";
 
 export default function OrganizationDashboard() {
   const { id } = useParams();
@@ -32,16 +33,15 @@ export default function OrganizationDashboard() {
 
   return (
     <div className={"backgrounduser"}>
-      <div>
-        <br />
-        <Typography variant="h2" component="h2" className={"yourtasks"}>
+      <section className={"dashboardsection"}>
+        <Typography variant="h2" component="h2">
           <b>{organization.info.name}</b>
           <br />
           Dashboard
         </Typography>
-        <br />
 
         <FormModal
+          className={"dashboardButtons"}
           data={organization.info}
           FormComponent={TaskCreateForm}
           details={{
@@ -51,6 +51,7 @@ export default function OrganizationDashboard() {
         >
           Create a Task
         </FormModal>
+
         <FormModal
           data={organization.info.application_config}
           FormComponent={EditApplicationForm}
@@ -61,21 +62,24 @@ export default function OrganizationDashboard() {
           }}
           stateChanger={setConfigUpdated}
         >
-          Edit Application
+          <PeopleIcon /> {" Edit Application"}
         </FormModal>
-      </div>
 
-      <div>
-        <br />
         <Link to={`/organizations/${id}/manage_volunteers`}>
-          <Badge color="secondary" badgeContent={organization.pending}>
-            <Button type="submit" variant="contained" color="primary">
+          <Badge color="secondary" badgeContent={organization.pending} style={{width: '100%'}}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              size="large"
+              startIcon={<PeopleIcon />}
+            >
               Manage Volunteers
             </Button>
           </Badge>
         </Link>
-      </div>
-
+      </section>
       <OrgTaskTabs tasks={tasks} />
     </div>
   );
