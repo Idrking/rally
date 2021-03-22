@@ -44,7 +44,7 @@ export default function VolunteerCard({ volunteer, pending }) {
   return (
     <Card className={classes.root}>
       <div className={classes.flex}>
-        <div className="avatardiv">
+        <div className={classes.avatardiv}>
           <Badge
             overlap="circle"
             anchorOrigin={{
@@ -52,7 +52,7 @@ export default function VolunteerCard({ volunteer, pending }) {
               horizontal: "right",
             }}
             badgeContent={experience}
-            color="primary"
+            color="secondary"
           >
             <Avatar
               className={classes.media}
