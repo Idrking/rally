@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const volunteerCardStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 500,
     margin: "auto",
     marginTop: "100",
     marginBottom: 30,
