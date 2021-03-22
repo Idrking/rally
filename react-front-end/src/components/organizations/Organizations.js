@@ -11,8 +11,8 @@ export default function Organizations() {
     })
   }, [])
   return (
-    <>
+    <div>
       {organizations.map(org =>  <OrganizationsCards key={org.id} details={org} /> )}
-    </>
+    </div>
   );
 }

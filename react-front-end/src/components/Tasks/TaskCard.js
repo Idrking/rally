@@ -74,29 +74,25 @@ export default function TaskCard({ task, orgView, signups }) {
               badgeContent={`${signups}/${task.spots}`}
               color="secondary"
             >
-            <Typography className={classes.date}>
-              <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
-              {dayjs.tz(task.start_date).format("h:mm A")}
-            </Typography>
- 
+              <Typography className={classes.date}>
+                <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
+                {dayjs.tz(task.start_date).format("h:mm A")}
+              </Typography>
             </Badge>
 
-              {orgView && (
-                  <Button size="medium" color="primary" onClick={markComplete}>
-                    Mark Completed
-                  </Button>
-              )}
-
+            {orgView && (
+              <Button size="medium" color="primary" onClick={markComplete}>
+                Mark Completed
+              </Button>
+            )}
           </CardContent>
-    
+
           <CardMedia
             className={classes.media}
             image={
               task.image_url ? task.image_url : "http://placeimg.com/640/480"
             }
           />
-       
-
         </CardActionArea>
       </Link>
     </Card>
