@@ -2,12 +2,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const organizationsCardsStyles = makeStyles({
   root: {
-    // maxWidth: 400,
-    // margin: "auto",
-    // marginTop: 30,
-    // display: "flex",
-    // flexDirection: "row"
     height: "140px",
+  },
+
+  root2: {
+    paddingTop: 2,
   },
   cardgrid: {
     display: "grid",
@@ -19,7 +18,6 @@ const organizationsCardsStyles = makeStyles({
     paddingLeft: "30px",
     gap: 10,
   },
-
   sectionflex: {
     display: "flex",
     flexDirection: "row",
