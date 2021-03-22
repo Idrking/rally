@@ -20,7 +20,7 @@ const InfoStyles = makeStyles({
 
   bkgImage: {
     position: "absolute",
-    width: "100%",
+    width: "140%",
     opacity: 0.8,
   },
 
@@ -39,11 +39,10 @@ const InfoStyles = makeStyles({
   InfoCard2: {
     position: "relative",
     width: "100%",
-    // top: "30vh",
+    top: "30vh",
     margin: "auto 0",
     color: "#F5F5F5",
     borderRadius: 52,
-    border: "2px red solid",
     zIndex: 999,
     boxShadow: "none",
 

@@ -86,7 +86,7 @@ export default function OrganizationInfo() {
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
       </Link>
-      <img src="{organization.image_url}" className={classes.bkgImage}></img>
+      <img src={organization.info.image_url} className={classes.bkgImage}></img>
       <Card className={classes.InfoCard2}>
         <CardContent className={classes.CardContent}>
           <section>
@@ -101,42 +101,8 @@ export default function OrganizationInfo() {
             <Typography className={classes.cardSubtitle} gutterBottom>
               About Us
             </Typography>
-            <Typography className={classes.description}>
+            <Typography variant="body2" component="p">
               {organization.info.description}
-              Git Fetch | Atlassian Git Tutorialwww.atlassian.com › git ›
-              tutorials › syncing › git-fetch In review, git fetch is a primary
-              command used to download contents from a remote repository. git
-              fetch is used in conjunction with git remote , git branch , git
-              checkout , and git reset to update a local repository to the state
-              of a remote. The git fetch command is a critical piece of
-              collaborative git work flows. What's the difference between "git
-              fetch" and "git pull"? | Learn ...www.git-tower.com › learn › git
-              › faq › difference-bet... Git Fetch | Atlassian Git
-              Tutorialwww.atlassian.com › git › tutorials › syncing › git-fetch
-              In review, git fetch is a primary command used to download
-              contents from a remote repository. git fetch is used in
-              conjunction with git remote , git branch , git checkout , and git
-              reset to update a local repository to the state of a remote. The
-              git fetch command is a critical piece of collaborative git work
-              flows. What's the difference between "git fetch" and "git pull"? |
-              Learn ...www.git-tower.com › learn › git › faq › difference-bet...
-              git fetch really only downloads new data from a remote repository
-              - but it doesn't integrate any of this new data into your working
-              files. Fetch is great for getting a ... Git Fetch | Atlassian Git
-              Tutorialwww.atlassian.com › git › tutorials › syncing › git-fetch
-              In review, git fetch is a primary command used to download
-              contents from a remote repository. git fetch is used in
-              conjunction with git remote , git branch , git checkout , and git
-              reset to update a local repository to the state of a remote. The
-              git fetch command is a critical piece of collaborative git work
-              flows. What's the difference between "git fetch" and "git pull"? |
-              Learn ...www.git-tower.com › learn › git › faq › difference-bet...
-              git fetch really only downloads new data from a remote repository
-              - but it doesn't integrate any of this new data into your working
-              files. Fetch is great for getting a ... git fetch really only
-              downloads new data from a remote repository - but it doesn't
-              integrate any of this new data into your working files. Fetch is
-              great for getting a ...
             </Typography>
 
             <Divider style={{ margin: "2vh 0" }} />
@@ -188,8 +154,7 @@ export default function OrganizationInfo() {
             </List>
             <Divider />
           </section>
-          <Button>
-            {" "}
+          
             <FormModal
               data={organization.info}
               FormComponent={ApplicationForm}
@@ -202,7 +167,6 @@ export default function OrganizationInfo() {
             >
               Submit application
             </FormModal>
-          </Button>
         </CardContent>
       </Card>
     </div>
