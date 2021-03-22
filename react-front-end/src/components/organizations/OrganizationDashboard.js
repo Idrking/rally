@@ -10,7 +10,10 @@ import OrgTaskTabs from "./OrgTaskTabs";
 import TaskTabs from "../Users/TaskTabs";
 import "../Users/Dashboard.scss";
 import PeopleIcon from "@material-ui/icons/People";
+import CreateIcon from '@material-ui/icons/Create';
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import OrgDashStyles from "../../styles/OrgDashStyles"
+import makeModalButton from "../helperComponents/madeModalButton";
 
 export default function OrganizationDashboard() {
   const classes = OrgDashStyles();
@@ -33,6 +36,7 @@ export default function OrganizationDashboard() {
     });
   }, [organization]);
 
+  
   return (
     <div className={"backgrounduser"}>
       <section className={"dashboardsection"}>
@@ -50,6 +54,7 @@ export default function OrganizationDashboard() {
               task: "Create a Task",
               description: "Enter the details below",
             }}
+            ModalButton={onClick => makeModalButton('Create a Task', <FormatListBulletedIcon />, classes.createButton, onClick )}
           >
             Create a Task
           </FormModal>
@@ -63,6 +68,7 @@ export default function OrganizationDashboard() {
                 "These are the questions potential volunteers will answer when applying to your organization",
             }}
             stateChanger={setConfigUpdated}
+            ModalButton={onClick => makeModalButton('Edit Application', <CreateIcon />, classes.editButton , onClick )}
           >
             <PeopleIcon /> {" Edit Application"}
           </FormModal>
@@ -74,7 +80,8 @@ export default function OrganizationDashboard() {
               badgeContent={organization.pending}
               className={classes.badge}
             >
-              <Button
+              {makeModalButton('Manage Volunteers', <PeopleIcon />, classes.buttons)}
+              {/* <Button
                 type="submit"
                 variant="contained"
                 fullWidth
@@ -83,7 +90,7 @@ export default function OrganizationDashboard() {
                 className={classes.buttons}
               >
                 Manage Volunteers
-              </Button>
+              </Button> */}
             </Badge>
           </Link>
 
