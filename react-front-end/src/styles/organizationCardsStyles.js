@@ -7,36 +7,34 @@ const organizationsCardsStyles = makeStyles({
     // marginTop: 30,
     // display: "flex",
     // flexDirection: "row"
-    height: "140px"
+    height: "140px",
   },
   cardgrid: {
     display: "grid",
-    gridTemplateColumns: "1fr 140px"
-
+    gridTemplateColumns: "1fr 140px",
   },
-
   cardflex: {
     display: "flex",
     flexDirection: "column",
     paddingLeft: "30px",
-    gap: 20
+    gap: 20,
   },
   media: {
-    height: "140px"
+    height: "140px",
   },
   calendaricon: {
-    color: "green"
+    color: "green",
   },
   calendaricon2: {
-    color: "blue"
-  }, 
+    color: "blue",
+  },
   title: {
     fontSize: "18px",
   },
   date: {
     fontSize: "14px",
-    color: "#8E8E8E"
-  }
+    color: "#8E8E8E",
+  },
 });
 
 export default organizationsCardsStyles;
