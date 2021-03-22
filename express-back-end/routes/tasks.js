@@ -26,6 +26,25 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(deliverError(err.message)));
   });
 
+  // Returns a count of the current signups for each task issued by orgid
+  router.get('/:orgid/signups/all', (req, res) => {
+    db.query(taskQueries.countAll, [req.params.orgid])
+    .then(count => {
+      res.status(200).json(count.rows)
+    })
+    .catch(err => console.error(err));
+  });
+
+  // Returns a count of the current signups for each task a user has available
+  router.get('/:userid/signups/user', (req, res) => {
+    db.query(taskQueries.countAllUser, [req.params.userid])
+    .then(count => {
+      console.log(count)
+      res.status(200).json(count.rows)
+    })
+    .catch(err => console.error(err));
+  });
+
   // Gets all the users signed up for a specific task
   router.get("/:id/signups", (req, res) => {
     db.query(taskQueries.allSignups, [req.params.id])

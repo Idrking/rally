@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Tasks from "../Tasks/Tasks";
-import { Typography, Button, Badge, makeStyles } from "@material-ui/core";
+import { Typography, Badge } from "@material-ui/core";
 import TaskCreateForm from "../Tasks/TaskCreateForm";
 import EditApplicationForm from "../organizations/EditApplicationForm";
 import FormModal from "../helperComponents/FormModal";
 import { useParams, Link } from "react-router-dom";
 import OrgTaskTabs from "./OrgTaskTabs";
-import TaskTabs from "../Users/TaskTabs";
 import "../Users/Dashboard.scss";
 import PeopleIcon from "@material-ui/icons/People";
 import CreateIcon from '@material-ui/icons/Create';
@@ -21,6 +19,7 @@ export default function OrganizationDashboard() {
   const [configUpdated, setConfigUpdated] = useState(false);
   const [organization, setOrganization] = useState({ info: {}, pending: 0 });
   const [tasks, setTasks] = useState({ active: [], past: [] });
+  const [signups, setSignups] = useState([]);
   useEffect(() => {
     axios.get(`/api/organizations/${id}`).then((res) => {
       setOrganization({ info: res.data.info[0], pending: res.data.pending });
@@ -35,6 +34,12 @@ export default function OrganizationDashboard() {
       });
     });
   }, [organization]);
+
+  useEffect(() => {
+    axios.get(`/api/tasks/${id}/signups/all`)
+    .then(counts => setSignups(counts.data))
+    .catch(err => console.error(err));
+  },[organization]);
 
   
   return (
@@ -81,23 +86,14 @@ export default function OrganizationDashboard() {
               className={classes.badge}
             >
               {makeModalButton('Manage Volunteers', <PeopleIcon />, classes.buttons)}
-              {/* <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                size="large"
-                startIcon={<PeopleIcon />}
-                className={classes.buttons}
-              >
-                Manage Volunteers
-              </Button> */}
+
             </Badge>
           </Link>
 
 
         </div>
       </section>
-      <OrgTaskTabs tasks={tasks} />
+      <OrgTaskTabs signups={signups} tasks={tasks} />
     </div>
   );
 }
