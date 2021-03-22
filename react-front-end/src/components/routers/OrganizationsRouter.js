@@ -66,7 +66,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
+              {/* <Header /> */}
               <OrganizationInfo />
             </>
           );

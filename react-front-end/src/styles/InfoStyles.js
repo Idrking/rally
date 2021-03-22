@@ -10,8 +10,12 @@ const InfoStyles = makeStyles({
     width: "100%",
     position: "absolute",
   },
-  "&ListItemText": {
-    fontSize: 14,
+  root2: {
+    backgroundColor: "#F5F5F5",
+    margin: 0,
+    height: "100%",
+    width: "100%",
+    position: "absolute",
   },
 
   bkgImage: {
@@ -30,7 +34,8 @@ const InfoStyles = makeStyles({
     borderRadius: 52,
     zIndex: 999,
     boxShadow: "none",
-    overflowX: "unset",
+    
+
   },
   CardContent: {
     padding: "5vh 8vw",
@@ -82,6 +87,7 @@ const InfoStyles = makeStyles({
     fontWeight: "normal",
     color: "#787878"
   },
+
 });
 
 export default InfoStyles;
