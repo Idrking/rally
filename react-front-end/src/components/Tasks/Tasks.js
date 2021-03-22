@@ -1,10 +1,10 @@
 import React from "react";
 import TaskContent from "./TaskContent";
 
-export default function Tasks({ tasks, orgView }) {
+export default function Tasks(props) {
   return (
     <div>
-      { orgView ? <TaskContent orgView={orgView} tasks={tasks} /> : <TaskContent tasks={tasks} />}
+      { props.orgView ? <TaskContent orgView={props.orgView} tasks={props.tasks} signups={props.signups} /> : <TaskContent tasks={props.tasks} signups={props.signups} />}
     </div>
   );
 }
