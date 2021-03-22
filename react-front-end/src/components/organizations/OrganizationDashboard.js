@@ -45,7 +45,7 @@ export default function OrganizationDashboard() {
           <br />
           Dashboard
         </Typography>
-        <div style={{display: "flex", flexDirection: "column", gap: 20, paddingTop: 30}}>
+        <div className={classes.buttonflex}>
           <FormModal
             className={"dashboardButtons"}
             data={organization.info}

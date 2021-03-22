@@ -7,6 +7,7 @@ const volunteerCardStyles = makeStyles((theme) => ({
     marginTop: "100",
     marginBottom: 30,
     display: "wrap",
+    boxShadow: "none"
   },
   media: {
     width: theme.spacing(12),

@@ -13,7 +13,7 @@ import {
   ListItemText,
   Badge,
 } from "@material-ui/core";
-import { MailOutlineSharp } from "@material-ui/icons/";
+import EmailIcon from '@material-ui/icons/Email';
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import ContentModal from "../helperComponents/ContentModal";
@@ -72,11 +72,11 @@ export default function VolunteerCard({ volunteer, pending }) {
               {volunteer.first_name} {volunteer.last_name}
             </Typography>
 
-            <ListItem button>
+            <ListItem button disableGutters>
               <ListItemIcon>
-                <MailOutlineSharp />
+                <EmailIcon />
               </ListItemIcon>
-              <ListItemText primary={volunteer.email} />
+              <ListItemText secondary={volunteer.email} />
             </ListItem>
             {pending && <ContentModal 
               data={volunteer}
