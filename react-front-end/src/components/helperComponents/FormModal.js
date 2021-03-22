@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 0
-  }
+  },
+
 }))
 
 // Component renders a button with the text=children of the component
@@ -44,7 +45,7 @@ export default function FormModal(props) {
 
   return (
     <div>
-      <Button type="button" variant="contained" color="primary" onClick={handleOpen}>
+      <Button type="button" variant="contained" color="secondary" size="large" onClick={handleOpen}>
           {props.children}
       </Button>
       <Modal
