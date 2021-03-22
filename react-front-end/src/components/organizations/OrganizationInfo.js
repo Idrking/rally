@@ -177,7 +177,7 @@ export default function OrganizationInfo() {
                 task: "Apply to volunteer",
                 description:
                   "Fill in all the fields and submit your application, and the organization will respond as soon as they're able",
-              }}Ф
+              }}
             >
               Submit application
             </FormModal>
