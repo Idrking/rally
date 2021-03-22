@@ -16,6 +16,7 @@ const OrgDashStyles = makeStyles({
   badge: {
     width: "100%",
     fontSize: "30px",
+    color: "#fff"
   },
   buttonflex: {
     display: "flex",
@@ -29,7 +30,6 @@ const OrgDashStyles = makeStyles({
     textAlign: "left",
     padding: 25,
     boxShadow: "none",
-    border: "1px solid #CFCFCF",
     boxSizing: "border-box",
     borderRadius: "14px",
     fontSize: 18,
@@ -41,7 +41,6 @@ const OrgDashStyles = makeStyles({
     textAlign: "left",
     padding: 25,
     boxShadow: "none",
-    border: "1px solid #CFCFCF",
     boxSizing: "border-box",
     borderRadius: "14px",
     fontSize: 18,

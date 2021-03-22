@@ -15,12 +15,12 @@ const InfoStyles = makeStyles({
     margin: 0,
     width: "100%",
     height: "100%",
-    overflow: "scroll"
+    // overflow: "scroll"
   },
 
   bkgImage: {
     position: "absolute",
-    width: "140%",
+    width: "100%",
     opacity: 0.8,
   },
 
@@ -41,12 +41,10 @@ const InfoStyles = makeStyles({
     width: "100%",
     top: "30vh",
     margin: "auto 0",
-    color: "#F5F5F5",
+    backgroundColor: "#F5F5F5",
     borderRadius: 52,
     zIndex: 999,
     boxShadow: "none",
-
-
   },
 
   CardContent: {

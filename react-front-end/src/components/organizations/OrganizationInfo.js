@@ -5,9 +5,9 @@ import FormModal from "../helperComponents/FormModal";
 import ApplicationForm from "./ApplicationForm";
 import UserContext from "../../contexts/UserContext";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import makeModalButton from "../helperComponents/madeModalButton";
-import {makeStyles} from '@material-ui/core';
+import { makeStyles } from "@material-ui/core";
 import {
   CardActions,
   CardContent,
@@ -19,11 +19,10 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
-  Button,
 } from "@material-ui/core";
 import {
   PhoneSharp,
-  MailOutlineSharp,
+  Email,
   LocationOnSharp,
   LanguageSharp,
 } from "@material-ui/icons/";
@@ -43,8 +42,6 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
   },
 }));
-
-
 
 export default function OrganizationInfo() {
   const { userState } = useContext(UserContext);
@@ -86,7 +83,7 @@ export default function OrganizationInfo() {
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
       </Link>
-      <img src={organization.info.image_url} className={classes.bkgImage}></img>
+      <img src={organization.info.image_url} className={classes.bkgImage} />
       <Card className={classes.InfoCard2}>
         <CardContent className={classes.CardContent}>
           <section>
@@ -95,20 +92,25 @@ export default function OrganizationInfo() {
               color="primary"
               variant="h1"
               component="h2"
+              gutterBottom
             >
               {organization.info.name}
             </Typography>
-            <Typography className={classes.cardSubtitle} gutterBottom>
+            <Typography
+              className={classes.cardSubtitle}
+              gutterBottom
+              style={{ marginTop: 25 }}
+            >
               About Us
             </Typography>
             <Typography variant="body2" component="p">
               {organization.info.description}
             </Typography>
 
-            <Divider style={{ margin: "2vh 0" }} />
+            <Divider style={{ margin: "3vh 0 2vh 0" }} />
 
             <List component="nav" aria-label="main mailbox folders">
-              <ListItem button>
+              <ListItem button disableGutters>
                 <ListItemIcon>
                   <PhoneSharp className={classes.infoIcons} />
                 </ListItemIcon>
@@ -119,7 +121,7 @@ export default function OrganizationInfo() {
                 </ListItemText>
               </ListItem>
 
-              <ListItem button>
+              <ListItem disableGutters>
                 <ListItemIcon>
                   <LocationOnSharp className={classes.infoIcons} />
                 </ListItemIcon>
@@ -130,9 +132,9 @@ export default function OrganizationInfo() {
                 </ListItemText>
               </ListItem>
 
-              <ListItem button>
+              <ListItem button disableGutters>
                 <ListItemIcon>
-                  <MailOutlineSharp className={classes.infoIcons} />
+                  <Email className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText>
                   <Typography className={classes.listItemText}>
@@ -141,7 +143,7 @@ export default function OrganizationInfo() {
                 </ListItemText>
               </ListItem>
 
-              <ListItem button>
+              <ListItem button disableGutters>
                 <ListItemIcon>
                   <LanguageSharp className={classes.infoIcons} />
                 </ListItemIcon>
@@ -152,21 +154,30 @@ export default function OrganizationInfo() {
                 </ListItemText>
               </ListItem>
             </List>
-            <Divider />
           </section>
-          
-            <FormModal
-              data={organization.info}
-              FormComponent={ApplicationForm}
-              details={{
-                task: "Apply to volunteer",
-                description:
-                  "Fill in all the fields and submit your application, and the organization will respond as soon as they're able",
-              }}
-              ModalButton={onClick => makeModalButton('Submit Application', <AssignmentIndIcon/>, buttonClasses.buttons, onClick )}
-            >
-              Submit application
-            </FormModal>
+
+          <Typography variant="body2" style={{ marginTop: 15 }}>
+            Interested in volunteering for us?
+          </Typography>
+          <FormModal
+            data={organization.info}
+            FormComponent={ApplicationForm}
+            details={{
+              task: "Apply to volunteer",
+              description:
+                "Fill in all the fields and submit your application, and the organization will respond as soon as they're able",
+            }}
+            ModalButton={(onClick) =>
+              makeModalButton(
+                "Submit Application",
+                <AssignmentIndIcon />,
+                buttonClasses.buttons,
+                onClick
+              )
+            }
+          >
+            Submit application
+          </FormModal>
         </CardContent>
       </Card>
     </div>
