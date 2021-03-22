@@ -30,8 +30,7 @@ const InfoStyles = makeStyles({
     borderRadius: 52,
     zIndex: 999,
     boxShadow: "none",
-    overflowX: 'unset'
-
+    overflowX: "unset",
   },
   CardContent: {
     padding: "5vh 8vw",
@@ -49,13 +48,13 @@ const InfoStyles = makeStyles({
   cardName: {
     fontSize: "31px",
     fontWeight: 500,
-    color: "#4B6253"
+    color: "#4B6253",
   },
   description: {
     color: "#4B6253",
     fontSize: "16px",
     fontWeight: "bold",
-    paddingTop: "2vh"
+    paddingTop: "2vh",
   },
   backButton: {
     position: "absolute",
@@ -64,7 +63,7 @@ const InfoStyles = makeStyles({
     left: 10,
     color: "white",
     zIndex: 99,
-    fontSize: "26px"
+    fontSize: "26px",
   },
   buttonRound: {
     borderRadius: 50,
@@ -76,7 +75,12 @@ const InfoStyles = makeStyles({
     left: 0,
     right: 0,
     padding: 20,
-    boxShadow: "none"
+    boxShadow: "none",
+  },
+  listItemText: {
+    fontSize: 14,
+    fontWeight: "normal",
+    color: "#787878"
   },
 });
 
