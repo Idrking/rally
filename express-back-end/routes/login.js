@@ -13,7 +13,7 @@ module.exports = (db) => {
       return;
     }
 
-    res.status(202).json({id: req.session.userID, name: req.session.userName})
+    res.status(202).json({id: req.session.userID, name: req.session.userName, profile_image: "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"})
   })
 
   //Fake login routes for demo - don't you dare use this in production

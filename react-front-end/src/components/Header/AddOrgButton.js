@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Modal, IconButton, Backdrop, Fade, Typography } from '@material-ui/core';
+import {Modal, Button, Backdrop, Fade, Typography } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,9 +38,9 @@ export default function AddOrgModal(props) {
 
   return (
     <div>
-      <IconButton size="medium" type="button" variant="contained" color="primary" onClick={handleOpen}>
-        <AddCircleIcon />
-      </IconButton>
+      <Button size="medium" type="button" variant="contained" color="primary" onClick={handleOpen} startIcon={<AddCircleIcon/>}>
+        Add a new Organization
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
