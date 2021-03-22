@@ -4,8 +4,7 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
-import PeopleIcon from "@material-ui/icons/People";
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,7 +58,9 @@ export default function FormModal(props) {
 
   return (
     <div>
-      <Button
+      
+      {props.ModalButton(handleOpen)}
+      {/* <Button
         type="button"
         variant="contained"
         fullWidth
@@ -69,7 +70,7 @@ export default function FormModal(props) {
         className={classes.buttons}
       >
         {props.children}
-      </Button>
+      </Button> */}
       <Modal
         open={open}
         onClose={handleClose}
