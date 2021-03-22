@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TaskTabs({ tasks }) {
+export default function TaskTabs({ tasks, signups }) {
   const classes = useStyles();
   const [value, setValue] = useState("one");
 
@@ -110,15 +110,15 @@ export default function TaskTabs({ tasks }) {
         
       </div>
       <TabPanel value={value} index="one">
-        <Tasks tasks={tasks.available} />
+        <Tasks signups={signups} tasks={tasks.available} />
       </TabPanel>
 
       <TabPanel value={value} index="two">
-        <Tasks tasks={tasks.active} />
+        <Tasks signups={signups} tasks={tasks.active} />
       </TabPanel>
 
       <TabPanel value={value} index="three">
-        <Tasks tasks={tasks.completed} />
+        <Tasks signups={signups} tasks={tasks.completed} />
       </TabPanel>
     </div>
   );

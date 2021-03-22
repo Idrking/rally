@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function OrgTaskTabs({ tasks }) {
+export default function OrgTaskTabs({ tasks, signups }) {
   const classes = useStyles();
   const [value, setValue] = useState("one");
 
@@ -111,11 +111,11 @@ export default function OrgTaskTabs({ tasks }) {
 
       </div>
       <TabPanel value={value} index="one">
-        <Tasks tasks={tasks.active} />
+        <Tasks orgView signups={signups} tasks={tasks.active} />
       </TabPanel>
 
       <TabPanel value={value} index="two">
-        <Tasks tasks={tasks.past} />
+        <Tasks orgView tasks={tasks.past} />
       </TabPanel>
     </div>
   );

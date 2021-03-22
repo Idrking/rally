@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import {
+  Badge,
   Card,
   CardActions,
   CardContent,
@@ -21,9 +22,8 @@ import TaskInfo from "./TaskInfo";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export default function TaskCard({ task, orgView }) {
+export default function TaskCard({ task, orgView, signups }) {
   const classes = organizationsCardsStyles();
-
   const markComplete = () => {
     Axios.patch(`/api/tasks/${task.id}/complete`)
       .then(() => {
@@ -63,28 +63,43 @@ export default function TaskCard({ task, orgView }) {
               {task.name}
             </Typography>
 
+            <Badge
+              invisible={signups ? false : true}
+              overlap="circle"
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              // COUNTER HERE!
+              badgeContent={`${signups}/${task.spots}`}
+              color="secondary"
+            >
             <Typography className={classes.date}>
               <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
               {/* {dayjs.tz(task.start_date).format("h:mm A ddd, MMM D")} */}
               {dayjs.tz(task.start_date).format("h:mm A")}
             </Typography>
+ 
+            </Badge>
+
+              {orgView && (
+                  <Button size="medium" color="primary" onClick={markComplete}>
+                    Mark Completed
+                  </Button>
+              )}
+
           </CardContent>
+    
           <CardMedia
             className={classes.media}
             image={
               task.image_url ? task.image_url : "http://placeimg.com/640/480"
             }
           />
+       
+
         </CardActionArea>
       </Link>
-
-      {orgView && (
-        <CardActions>
-          <Button size="medium" color="primary" onClick={markComplete}>
-            Mark Completed
-          </Button>
-        </CardActions>
-      )}
     </Card>
   );
 }

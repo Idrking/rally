@@ -9,6 +9,7 @@ import TaskTabs from "./TaskTabs";
 export default function UserDashboard() {
   const { id } = useParams();
   const [tasks, setTasks] = useState({ active: [], available: [], completed:[] });
+  const [signups, setSignups] = useState([]);
 
   useEffect(() => {
     Promise.all([
@@ -24,12 +25,18 @@ export default function UserDashboard() {
       .catch((err) => console.error(err));
   }, []);
 
+  useEffect(() => {
+    Axios.get(`/api/tasks/${id}/signups/user`)
+    .then(counts => setSignups(counts.data))
+    .catch(err => console.error(err));
+  },[id]);
+
   return (
     <div className={"backgrounduser"}>
       <Typography variant="h2" component="h2" className={"dashboardsection"}>
         Your <b>tasks</b>
       </Typography>
-      <TaskTabs tasks={tasks} />
+      <TaskTabs signups={signups} tasks={tasks} />
     </div>
   );
 }
