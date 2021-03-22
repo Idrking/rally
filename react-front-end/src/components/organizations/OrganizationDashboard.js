@@ -39,7 +39,7 @@ export default function OrganizationDashboard() {
     axios.get(`/api/tasks/${id}/signups/all`)
     .then(counts => setSignups(counts.data))
     .catch(err => console.error(err));
-  },[]);
+  },[organization]);
 
   
   return (

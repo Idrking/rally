@@ -30,6 +30,15 @@ module.exports = (db) => {
   router.get('/:orgid/signups/all', (req, res) => {
     db.query(taskQueries.countAll, [req.params.orgid])
     .then(count => {
+      res.status(200).json(count.rows)
+    })
+    .catch(err => console.error(err));
+  });
+
+  // Returns a count of the current signups for each task a user has available
+  router.get('/:userid/signups/user', (req, res) => {
+    db.query(taskQueries.countAllUser, [req.params.userid])
+    .then(count => {
       console.log(count)
       res.status(200).json(count.rows)
     })
