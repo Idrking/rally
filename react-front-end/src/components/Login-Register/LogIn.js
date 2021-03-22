@@ -44,17 +44,21 @@ export default function LogIn() {
         <form className={classes.form} noValidate>
           <TextField
             margin="normal"
-            required
             fullWidth
             id="email"
             label="Email"
             name="email"
             autoComplete="email"
             className={classes.textField}
+            InputLabelProps={{
+              style: {
+                fontSize: '1.4rem',
+                color: '#CFCFCF'
+              },
+            }}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"
@@ -62,6 +66,12 @@ export default function LogIn() {
             id="password"
             autoComplete="current-password"
             className={classes.textField}
+            InputLabelProps={{
+              style: {
+                fontSize: '1.4rem',
+                color: '#CFCFCF',
+              }
+            }}
           />
 
           <Button

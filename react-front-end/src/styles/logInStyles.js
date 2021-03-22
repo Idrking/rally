@@ -21,10 +21,10 @@ const logInStyles = makeStyles((theme) => ({
     marginTop: '5vh',
     marginBottom: '3vh',
     padding: '1rem',
-    backgroundColor: '#6D7E73',
     textTransform: 'capitalize',
     fontSize: '1.4rem',
-    fontWeight: 300
+    fontWeight: 300,
+    color: 'white'
   },
   
   noAccount: {

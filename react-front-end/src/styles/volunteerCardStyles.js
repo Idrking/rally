@@ -20,10 +20,13 @@ const volunteerCardStyles = makeStyles((theme) => ({
   },
   flex: {
     display: "grid",
-    gridTemplateColumns: "1fr 2fr",
-    paddingTop: 20,
-    paddingLeft: 20,
+    gridTemplateColumns: "2fr 4fr",
+    // paddingTop: 20,
+    // paddingLeft: 20,
   },
+  avatardiv: {
+    margin: "auto"
+  }
 }));
 
 export default volunteerCardStyles;

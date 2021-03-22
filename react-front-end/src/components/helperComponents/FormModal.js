@@ -17,18 +17,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 0,
-  },
-  buttons: {
-    color: "#fff",
-    textAlign: "left",
-    padding: 25,
-    backgroundColor: "#B6C7C3",
-    boxShadow: "none",
-    boxSizing: "border-box",
-    borderRadius: "14px",
-    fontSize: 18,
-    textTransform: "capitalize",
-  },
+  }
 }));
 
 // Component renders a button with the text=children of the component
