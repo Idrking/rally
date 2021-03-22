@@ -17,7 +17,14 @@ const organizationsCardsStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     paddingLeft: "30px",
-    gap: 20,
+    gap: 10,
+  },
+
+  sectionflex: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingRight: 40
   },
   media: {
     height: "140px",

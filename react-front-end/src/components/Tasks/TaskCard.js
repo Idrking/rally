@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { Link } from "react-router-dom";
-import { PeopleSharp } from "@material-ui/icons/";
+import { People } from "@material-ui/icons/";
 import Axios from "axios";
 import TaskInfo from "./TaskInfo";
 
@@ -51,9 +51,10 @@ export default function TaskCard({ task, orgView, signups }) {
       style={{ border: "none", boxShadow: "none" }}
     >
       <Link to={`/tasks/${task.id}`}>
+        
         <CardActionArea className={classes.cardgrid}>
           <CardContent className={classes.cardflex}>
-            <Typography
+          <Typography
               className={classes.title}
               gutterBottom
               variant="h3"
@@ -62,7 +63,12 @@ export default function TaskCard({ task, orgView, signups }) {
             >
               {task.name}
             </Typography>
+            <section className={classes.sectionflex}>
 
+            <Typography className={classes.date}>
+                <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
+                {dayjs.tz(task.start_date).format("h:mm A")}
+              </Typography>
             <Badge
               invisible={signups ? false : true}
               overlap="circle"
@@ -74,17 +80,17 @@ export default function TaskCard({ task, orgView, signups }) {
               badgeContent={`${signups}/${task.spots}`}
               color="secondary"
             >
-              <Typography className={classes.date}>
-                <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
-                {dayjs.tz(task.start_date).format("h:mm A")}
-              </Typography>
+              <People color="primary" fontSize="large" />
+ 
             </Badge>
+            </section>
 
             {orgView && (
               <Button size="medium" color="primary" onClick={markComplete}>
                 Mark Completed
               </Button>
             )}
+            
           </CardContent>
 
           <CardMedia
