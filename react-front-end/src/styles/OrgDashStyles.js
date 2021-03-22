@@ -15,7 +15,13 @@ const OrgDashStyles = makeStyles({
   },
   badge: {
     width: "100%",
-    fontSize: 15,
+    fontSize: "30px",
+  },
+  buttonflex: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 20,
+    paddingTop: 30,
   },
 });
 
