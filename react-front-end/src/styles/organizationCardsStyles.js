@@ -17,6 +17,17 @@ const organizationsCardsStyles = makeStyles({
     paddingLeft: "25px",
     gap: 10,
   },
+  cardorggrid: {
+    display: "grid",
+    gridTemplateRows: "1fr 1fr",
+    padding: "10px 0"
+  },
+  cardtaskgrid2: {
+    display: "grid",
+    gridTemplateRows: "2fr 1fr",
+    padding: 0
+
+  },
   sectionflex: {
     display: "flex",
     flexDirection: "row",
@@ -24,6 +35,7 @@ const organizationsCardsStyles = makeStyles({
   },
   media: {
     height: "140px",
+    opacity: "0.9"
   },
   media2: {
     height: "160px",

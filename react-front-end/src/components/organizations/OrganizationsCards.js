@@ -16,9 +16,9 @@ export default function OrganizationsCards({ details }) {
   return (
     <Card className={classes.root2}>
       <section className={classes.cardgrid}>
-        <div>
+        <div className={classes.cardorggrid}>
           <CardActionArea href={`/organizations/${details.id}`}>
-            <CardContent className={classes.cardflex}>
+            <CardContent>
               <Typography
                 className={classes.title}
                 gutterBottom
@@ -33,6 +33,7 @@ export default function OrganizationsCards({ details }) {
               </Typography>
             </CardContent>
           </CardActionArea>
+
           <CardActions>
             <Button size="medium" color="secondary">
               Join
