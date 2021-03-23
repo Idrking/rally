@@ -16,7 +16,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <Volunteers />
             </>
           );
@@ -29,7 +29,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <OrganizationDashboard />
             </>
           );
@@ -41,7 +41,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <ManagingVolunteers />
             </>
           );
@@ -53,7 +53,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <PendingVolunteers />
             </>
           );
@@ -78,7 +78,7 @@ const OrganizationsRouter = () => {
         render={() => {
           return (
             <>
-              <Header />
+              <HeaderUser />
               <Organizations />
             </>
           );
