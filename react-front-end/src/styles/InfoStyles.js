@@ -21,8 +21,8 @@ const InfoStyles = makeStyles({
   bkgImage: {
     position: "fixed",
     width: "100%",
-    height: "40%",
-    objectFit: "cover",
+    // height: "40%",
+    // objectFit: "cover",
     opacity: 0.8,
   },
 
@@ -36,6 +36,7 @@ const InfoStyles = makeStyles({
     borderRadius: 52,
     zIndex: 999,
     boxShadow: "none",
+    // overflow: "scroll"
   },
 
   InfoCard2: {
@@ -44,7 +45,7 @@ const InfoStyles = makeStyles({
     top: "30vh",
     margin: "auto 0",
     backgroundColor: "#F5F5F5",
-    borderRadius: 52,
+    borderRadius: "52px 52px 0 0",
     zIndex: 999,
     boxShadow: "none",
   },

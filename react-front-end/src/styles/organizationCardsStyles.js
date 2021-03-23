@@ -22,7 +22,6 @@ const organizationsCardsStyles = makeStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingRight: 40
   },
   media: {
     height: "140px",
