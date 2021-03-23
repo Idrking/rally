@@ -121,7 +121,7 @@ export default function TaskInfo() {
               {task.name}
             </Typography>
 
-            <Divider style={{ margin: "3vh 0" }} />
+            <Divider style={{ margin: "2vh 0" }} />
 
             {/* * * * HACKY SOLUTION TO ADD BACKGROUND * * * */}
             {/* <ListItem>

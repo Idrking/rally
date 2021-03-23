@@ -80,13 +80,13 @@ export default function TaskCard({ task, orgView, signups }) {
               badgeContent={`${signups}/${task.spots}`}
               color="secondary"
             >
-              <People color="primary" fontSize="large" />
+              <People color="primary" />
  
             </Badge>
             </section>
 
             {orgView && (
-              <Button size="medium" color="primary" onClick={markComplete}>
+              <Button size="small" color="primary" onClick={markComplete}>
                 Mark Completed
               </Button>
             )}
