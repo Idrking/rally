@@ -5,7 +5,6 @@ export default function TaskContent({ tasks, orgView, signups }) {
   return (
     <div>
       {tasks.map(task => {
-        console.log('signups',signups);
         let signupCount = 0;
         if (signups) {
           signupCount = signups.find(count => count.id === task.id);

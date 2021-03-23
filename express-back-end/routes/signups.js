@@ -36,7 +36,6 @@ module.exports = (db, updateSignups) => {
   router.get("/:userid", (req, res) => {
     db.query(signupQueries.tasks, [req.params.userid])
     .then(tasks => {
-      console.log(tasks.rows)
       res.json(tasks.rows)
     })
     .catch(err => {
