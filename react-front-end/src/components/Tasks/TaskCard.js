@@ -51,58 +51,57 @@ export default function TaskCard({ task, orgView, signups }) {
       className={classes.root}
       style={{ border: "none", boxShadow: "none" }}
     >
-      <Link to={`/tasks/${task.id}`}>
-        <CardActionArea className={classes.cardgrid}>
-          <div className={classes.cardflex}>
-          <CardContent >
-            <Typography
-              className={classes.title}
-              gutterBottom
-              variant="h3"
-              component="h2"
-              align="left"
-            >
-              {task.name}
-            </Typography>
-            <section className={classes.sectionflex}>
-              <Typography className={classes.date}>
-                <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
-                {dayjs.tz(task.start_date).format("h:mma")}
-              </Typography>
-              <Badge
-                invisible={signups ? false : true}
-                overlap="circle"
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                // COUNTER HERE!
-                badgeContent={`${signups}/${task.spots}`}
-                color="secondary"
-                style={{ marginRight: 10 }}
+      <section className={classes.cardgrid}>
+        <div className={classes.cardflex}>
+          <CardContent>
+            <Link to={`/tasks/${task.id}`}>
+              <Typography
+                className={classes.title}
+                gutterBottom
+                variant="h3"
+                component="h2"
+                align="left"
               >
-                <People color="primary" />
-              </Badge>
-            </section>
-
-
+                {task.name}
+              </Typography>
+              <div className={classes.sectionflex}>
+                <Typography className={classes.date}>
+                  <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
+                  {dayjs.tz(task.start_date).format("h:mma")}
+                </Typography>
+                <Badge
+                  invisible={signups ? false : true}
+                  overlap="circle"
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  // COUNTER HERE!
+                  badgeContent={`${signups}/${task.spots}`}
+                  color="secondary"
+                  style={{ marginRight: 10 }}
+                >
+                  <People color="primary" />
+                </Badge>
+              </div>
+            </Link>
           </CardContent>
-          <CardActions>
+
           {orgView && (
+            <CardActions style={{ paddingLeft: "12px" }}>
               <Button size="small" color="primary" onClick={markComplete}>
                 Mark Completed
               </Button>
-            )}
             </CardActions>
-          </div>
-          <CardMedia
-            className={classes.media}
-            image={
-              task.image_url ? task.image_url : "http://placeimg.com/640/480"
-            }
-          />
-        </CardActionArea>
-      </Link>
+          )}
+        </div>
+        <CardMedia
+          className={classes.media}
+          image={
+            task.image_url ? task.image_url : "http://placeimg.com/640/480"
+          }
+        />
+      </section>
     </Card>
   );
 }

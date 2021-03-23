@@ -3,6 +3,7 @@ html, .App, #root {
   width: 100%;
   font-size: 14px;
   /* overflow: hidden; */
+  background-color: #F5F5F5;
 }
 
 .App {
