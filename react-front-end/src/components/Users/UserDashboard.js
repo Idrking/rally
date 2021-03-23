@@ -20,7 +20,6 @@ export default function UserDashboard() {
       Axios.get(`/api/signup/${id}/completed`)
     ])
       .then((all) => {
-        console.log(all)
         setTasks((prev) => {
           return { 
             ...prev,
