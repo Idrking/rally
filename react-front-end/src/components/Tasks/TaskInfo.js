@@ -123,21 +123,6 @@ export default function TaskInfo() {
 
             <Divider style={{ margin: "2vh 0" }} />
 
-            {/* * * * HACKY SOLUTION TO ADD BACKGROUND * * * */}
-            {/* <ListItem>
-              <ListItemIcon>
-              <Avatar>
-              <CalendarTodayIcon className={classes.taskicons} />
-              </Avatar>
-              </ListItemIcon>
-              
-              <ListItemText
-              secondary={dayjs
-                .tz(task.start_date)
-                .format("ddd MMM D - h:mm A")}
-                />
-              </ListItem> */}
-
             <List>
               {/* <ListItem>
                 <ListItemIcon>
@@ -150,27 +135,23 @@ export default function TaskInfo() {
                 />
               </ListItem> */}
 
-              <ListItem disableGutters>
+              <ListItem disableGutters dense>
                 <ListItemIcon>
                   <DateRangeIcon className={classes.infoIcons} />
                 </ListItemIcon>
                 <ListItemText>
                   <Typography className={classes.listItemText}>
-                    {/* <b style={{color: "#787878"}}>{dayjs.tz(task.start_date).format("ddd, MMM D ")}</b>
-                    {dayjs.tz(task.start_date).format("hh:mmA")}
-                    {" - "}
-                    <b style={{color: "#787878"}}>{dayjs.tz(task.end).format("ddd, MMM D ")}</b>
-                    {dayjs.tz(task.end).format("hh:mmA")} */}
-
                     {dayjs.tz(task.start_date).format("hh:mma, ddd, MMM D")}
-
-                    <span style={{ color: "#CFCFCF", fontWeight: 300 }}> to </span>
+                    <span style={{ color: "#CFCFCF", fontWeight: 300 }}>
+                      {" "}
+                      to{" "}
+                    </span>
                     {dayjs.tz(task.end_date).format("hh:mma, ddd, MMM D")}
                   </Typography>
                 </ListItemText>
               </ListItem>
 
-              <ListItem disableGutters>
+              <ListItem disableGutters dense>
                 <ListItemIcon>
                   <LocationOnIcon className={classes.infoIcons} />
                 </ListItemIcon>
@@ -181,7 +162,7 @@ export default function TaskInfo() {
                 </ListItemText>
               </ListItem>
 
-              <ListItem disableGutters>
+              <ListItem disableGutters dense>
                 <ListItemIcon>
                   <Badge
                     overlap="circle"
@@ -203,8 +184,6 @@ export default function TaskInfo() {
                 </ListItemText>
               </ListItem>
             </List>
-
-            {/* <Divider style={{margin: "2vh 0"}} /> */}
 
             <Typography gutterBottom className={classes.description}>
               Description:
