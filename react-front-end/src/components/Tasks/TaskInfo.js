@@ -40,7 +40,7 @@ export default function TaskInfo() {
     end_date: null,
     spots: null,
     image_url: null,
-    organization_id: null,
+    organization_id: 1,
     location: null,
     signups: [],
   });
@@ -66,11 +66,7 @@ export default function TaskInfo() {
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "add") {
-        if (!task.signups.find((signup) => !(signup.id === message.id))) {
-          setTasks((prev) => {
-            return { ...prev, signups: [...message.signup] };
-          });
-        }
+        setTasks((prev) => { return { ...prev, signups: [...message.signup] }})
       }
 
       if (message.type === "delete") {
