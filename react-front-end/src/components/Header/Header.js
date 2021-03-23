@@ -13,7 +13,7 @@ export default function Header() {
         backgroundColor: "#F5F5F5",
         color: "#4B6253",
         boxShadow: "none",
-        padding: 15,
+        // padding: 15,
       }}
     >
       <Toolbar>
