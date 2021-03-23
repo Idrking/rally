@@ -59,7 +59,7 @@ export default function TaskInfo() {
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "add") {
-        if (task.signups.find((signup) => !(signup.id === message.id))) {
+        if (!task.signups.find((signup) => !(signup.id === message.id))) {
           setTasks((prev) => {
             return { ...prev, signups: [...message.signup] };
           });
