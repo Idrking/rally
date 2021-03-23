@@ -64,7 +64,7 @@ const InfoStyles = makeStyles({
     color: "#B6C7C3",
   },
   cardName: {
-    fontSize: "31px",
+    fontSize: "28px",
     fontWeight: 500,
     color: "#4B6253",
   },

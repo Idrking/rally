@@ -121,7 +121,7 @@ export default function TaskInfo() {
               {task.name}
             </Typography>
 
-            <Divider style={{ margin: "2vh 0" }} />
+            <Divider style={{ margin: "1vh 0" }} />
 
             <List>
               {/* <ListItem>
