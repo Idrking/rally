@@ -78,7 +78,7 @@ export default function OrganizationsJoined() {
         onClick={handleClose}
         className={classes.menuitem}
       >
-      <Button size="medium" type="button" variant="contained" color="primary"  startIcon={<SearchIcon/>}>
+      <Button size="medium" type="button" variant="contained" color="primary" startIcon={<SearchIcon/>} style={{boxShadow: "none"}}>
         <Link to="/organizations" className={classes.menuLink}>   
         Find Organizations
         </Link>

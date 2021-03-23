@@ -1,1 +1,12 @@
--- A user can submit an application to an organization they're a part of, and if that application is rejected they are removed from the list of approved volunteers
+-- A user can submit an application to an organization they're a part of,
+  and if that application is rejected they are removed from the list of approved volunteers
+
+-- Tasks are not sorted by date
+
+-- Mark completed goes to tasks individual info page (unless that's intended?)
+
+-- Managed / pending pages: does a user need "managed volunteers" button in the header & avatar,
+    or is the "back to dashboard" enough?
+
+-- In /organizations/ do we need both join + learn more buttons?
+

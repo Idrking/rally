@@ -101,6 +101,12 @@ const ApplicationForm = ({ data }) => {
         margin="normal"
         error={formDetails.errors.name ? true : false }
         helperText={formDetails.errors.name ? "Name can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
         <TextField 
         id="phone"
@@ -110,6 +116,12 @@ const ApplicationForm = ({ data }) => {
         margin="normal"
         error={formDetails.errors.phone ? true : false }
         helperText={formDetails.errors.phone ? "Phone can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
         <TextField 
         id="email"
@@ -119,10 +131,16 @@ const ApplicationForm = ({ data }) => {
         margin="normal"
         error={formDetails.errors.email ? true : false }
         helperText={formDetails.errors.email ? "Email can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
       {inputs}
   
-      <Button type="submit" variant="contained" color="primary" onClick={validate}>
+      <Button type="submit" variant="contained" color="primary" onClick={validate} style={{boxShadow: "none"}}>
         Submit Application
       </Button>
 

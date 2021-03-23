@@ -9,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: "70%",
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
+    boxShadow: "primary",
     padding: theme.spacing(2, 4, 3),
     outline: 0,
   },
@@ -30,7 +30,7 @@ export default function AddOrgModal(props) {
 
   const body = (
     <div className={classes.paper}>
-      <Typography>Add a new Organization</Typography>
+      <Typography variant="h3">Add a new Organization</Typography>
       <props.FormComponent data={props.data} />
     </div>
   );
@@ -43,6 +43,7 @@ export default function AddOrgModal(props) {
         variant="contained"
         color="primary"
         onClick={handleOpen}
+        style={{boxShadow: "none"}}
         startIcon={<AddCircleIcon />}
       >
         Add a new Organization

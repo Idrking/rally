@@ -110,6 +110,12 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.name ? true : false }
         helperText={newOrg.errors.name ? "Name can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
        <TextField 
         id="description"
@@ -120,6 +126,12 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.description ? true : false }
         helperText={newOrg.errors.description ? "Description can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
       <TextField 
         id="location"
@@ -131,6 +143,12 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.location ? true : false }
         helperText={newOrg.errors.location ? "Location can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
       <TextField 
         id="primary_phone"
@@ -142,6 +160,12 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.primary_phone ? true : false }
         helperText={newOrg.errors.primary_phone ? "Phone can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
        <TextField 
         id="primary_email"
@@ -153,6 +177,12 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.primary_email ? true : false }
         helperText={newOrg.errors.primary_email ? "Email can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
        <TextField 
         id="website"
@@ -164,6 +194,12 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.website ? true : false }
         helperText={newOrg.errors.website ? "Website can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
       <TextField 
         id="image_url"
@@ -175,8 +211,14 @@ const NewOrgForm = ({ data }) => {
         margin="normal"
         error={newOrg.errors.image_url ? true : false }
         helperText={newOrg.errors.image_url ? "Image URL can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: '1.4rem',
+            color: '#CFCFCF'
+          },
+        }}
       />
-      <Button type="submit" variant="contained" color="primary" onClick={validate}>
+      <Button type="submit" variant="contained" color="primary" onClick={validate} style={{boxShadow: "none"}}>
         Create Organization
       </Button>
 
