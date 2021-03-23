@@ -14,19 +14,23 @@ const organizationsCardsStyles = makeStyles({
   cardflex: {
     display: "flex",
     flexDirection: "column",
-    paddingLeft: "6 px",
-    gap: 0,
+    justifyContent: "space-evenly",
+    gap: 2,
   },
   cardorggrid: {
-    display: "grid",
-    gridTemplateRows: "1fr 1fr",
-    padding: "10px 0"
+    // display: "grid",
+    // gridTemplateRows: "1fr 1fr",
+    padding: "10px 16px"
   },
   cardtaskgrid2: {
     display: "grid",
     gridTemplateRows: "2fr 1fr",
     padding: 0
-
+  },
+  titleAndDate: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 20,
   },
   sectionflex: {
     display: "flex",

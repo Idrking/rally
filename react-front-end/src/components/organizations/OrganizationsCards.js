@@ -15,9 +15,9 @@ export default function OrganizationsCards({ details }) {
 
   return (
     <Card className={classes.root2}>
-      <section className={classes.cardgrid}>
-        <div className={classes.cardorggrid}>
-          <CardActionArea href={`/organizations/${details.id}`}>
+      <CardActionArea href={`/organizations/${details.id}`}>
+        <section className={classes.cardgrid}>
+          <div className={classes.cardorggrid}>
             <CardContent>
               <Typography
                 className={classes.title}
@@ -32,14 +32,14 @@ export default function OrganizationsCards({ details }) {
                 {details.location}
               </Typography>
             </CardContent>
-          </CardActionArea>
-        </div>
-        <CardMedia
-          className={classes.media2}
-          image={details.image_url}
-          title={details.name}
-        />
-      </section>
+          </div>
+          <CardMedia
+            className={classes.media2}
+            image={details.image_url}
+            title={details.name}
+          />
+        </section>
+      </CardActionArea>
     </Card>
   );
 }
