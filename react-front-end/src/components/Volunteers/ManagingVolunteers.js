@@ -39,9 +39,9 @@ export default function ManagingVolunteers() {
           <Link to={`/organizations/${id}/pending_volunteers`}>
             <Button
               size="small"
-              color="primary"
+              color="secondary"
               variant="contained"
-              style={{ boxShadow: "none" }}
+              style={{ boxShadow: "none"}}
             >
               Pending Volunteers
             </Button>

@@ -42,7 +42,7 @@ const InfoStyles = makeStyles({
   InfoCard2: {
     position: "relative",
     width: "100%",
-    top: "30vh",
+    top: "25vh",
     margin: "auto 0",
     backgroundColor: "#F5F5F5",
     borderRadius: "52px 52px 0 0",

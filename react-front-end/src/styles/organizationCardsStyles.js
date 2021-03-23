@@ -18,9 +18,9 @@ const organizationsCardsStyles = makeStyles({
     gap: 0,
   },
   cardorggrid: {
-    display: "grid",
-    gridTemplateRows: "1fr 1fr",
-    padding: "10px 0"
+    // display: "grid",
+    // gridTemplateRows: "1fr 1fr",
+    padding: "10px 16px"
   },
   cardtaskgrid2: {
     display: "grid",
