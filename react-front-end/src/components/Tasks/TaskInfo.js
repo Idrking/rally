@@ -31,6 +31,7 @@ export default function TaskInfo() {
   const { id } = useParams();
   const classes = InfoStyles();
   const [showJoin, setShowJoin] = useState(true);
+  const [org, setOrg] = useState({});
 
   const [task, setTasks] = useState({
     name: null,
@@ -53,6 +54,12 @@ export default function TaskInfo() {
         console.error(err);
       });
   }, [id]);
+
+  useEffect(() => {
+    axios.get(`/api/organizations/${task.organization_id}`)
+    .then(res => setOrg(res.data.info[0]))
+    .catch(err => console.error(err));
+  }, [task]);
 
   useEffect(() => {
     const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
@@ -110,7 +117,7 @@ export default function TaskInfo() {
         <CardContent className={classes.CardContent}>
           <section>
             <Typography className={classes.cardSubtitle} gutterBottom>
-              Organization Name
+              {org.name}
             </Typography>
             <Typography
               color="primary"
