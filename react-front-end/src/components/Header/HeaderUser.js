@@ -10,10 +10,9 @@ import {
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import "../../styles/HeaderUser.css";
-import SortIcon from "@material-ui/icons/Sort";
+import {Sort} from "@material-ui/icons";
 import MyOrganizations from './MyOrganizations';
 import OrganizationsJoined from './OrganizationsJoined';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none'
     }
   }
-  
 }));
 
 export default function Header() {
@@ -65,7 +63,7 @@ export default function Header() {
         <Toolbar>
 
           <IconButton edge="start" aria-label="menu" onClick={handleMenu}>
-            <SortIcon
+            <Sort
               style={{ color: "#6D7E73", fontSize: 35 }} />
           </IconButton>
 

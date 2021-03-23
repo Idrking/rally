@@ -4,10 +4,8 @@ const organizationsCardsStyles = makeStyles({
   root: {
     height: "140px",
   },
-
   root2: {
-    paddingTop: 2,
-
+    height: "160px",
   },
   cardgrid: {
     display: "grid",
@@ -26,6 +24,9 @@ const organizationsCardsStyles = makeStyles({
   },
   media: {
     height: "140px",
+  },
+  media2: {
+    height: "160px",
   },
   calendaricon: {
     color: "green",
