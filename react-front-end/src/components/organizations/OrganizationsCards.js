@@ -33,20 +33,6 @@ export default function OrganizationsCards({ details }) {
               </Typography>
             </CardContent>
           </CardActionArea>
-
-          <CardActions>
-            <Button size="medium" color="secondary">
-              Join
-            </Button>
-            <Button
-              target="_blank"
-              href={details.website}
-              size="medium"
-              color="primary"
-            >
-              Learn More
-            </Button>
-          </CardActions>
         </div>
         <CardMedia
           className={classes.media2}
