@@ -1,12 +1,17 @@
-import React, {useState, useContext, useEffect} from 'react';
-import Axios from 'axios';
-import UserContext from '../../contexts/UserContext';
-import {  Menu, MenuItem, Grow, makeStyles} from '@material-ui/core';
+import React, { useState, useContext, useEffect } from "react";
+import Axios from "axios";
+import UserContext from "../../contexts/UserContext";
+import {
+  Menu,
+  MenuItem,
+  Grow,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import CompactOrgListItem from "./CompactOrgListItem";
 import AddOrgButton from "./AddOrgButton";
 import NewOrgForm from "./NewOrgForm";
 import SortIcon from "@material-ui/icons/Sort";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,9 +52,9 @@ export default function MyOrganizations() {
 
   return (
     <div>
-       <MenuItem onClick={handleClick} className={classes.menuitem} >
-          Managed Organizations
-        </MenuItem> 
+      <MenuItem onClick={handleClick} className={classes.menuitem}>
+        Managed Organizations
+      </MenuItem>
       <Menu
         id="my-organizations"
         anchorEl={anchorEl}
@@ -65,7 +70,7 @@ export default function MyOrganizations() {
             </MenuItem>
           );
         })}
-        <MenuItem >
+        <MenuItem>
           <AddOrgButton FormComponent={NewOrgForm} />
         </MenuItem>
       </Menu>

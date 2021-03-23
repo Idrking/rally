@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { AppBar, Toolbar, IconButton, Avatar } from "@material-ui/core";
+import { AppBar, Toolbar, Avatar } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
 import MyOrganizations from "./MyOrganizations";
 import { Link } from "react-router-dom";
-import SortIcon from "@material-ui/icons/Sort";
 
 export default function Header() {
   const { userState } = useContext(UserContext);

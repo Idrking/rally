@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {Modal, Button, Backdrop, Fade, Typography } from '@material-ui/core';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { Modal, Button, Backdrop, Fade, Typography } from "@material-ui/core";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
-    left: '50%', 
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    outline: 0
-  }
-}))
-
+    outline: 0,
+  },
+}));
 
 export default function AddOrgModal(props) {
   const classes = useStyles();
@@ -38,7 +37,14 @@ export default function AddOrgModal(props) {
 
   return (
     <div>
-      <Button size="medium" type="button" variant="contained" color="primary" onClick={handleOpen} startIcon={<AddCircleIcon/>}>
+      <Button
+        size="medium"
+        type="button"
+        variant="contained"
+        color="primary"
+        onClick={handleOpen}
+        startIcon={<AddCircleIcon />}
+      >
         Add a new Organization
       </Button>
       <Modal
@@ -52,9 +58,7 @@ export default function AddOrgModal(props) {
           timeout: 500,
         }}
       >
-        <Fade in={open}>
-          {body}
-        </Fade>
+        <Fade in={open}>{body}</Fade>
       </Modal>
     </div>
   );
