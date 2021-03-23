@@ -23,12 +23,15 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export default function TaskCard({ task, orgView, signups }) {
+  console.log(`${task.name}`, task);
+  console.log('signups', signups)
   const classes = organizationsCardsStyles();
   const markComplete = () => {
     Axios.patch(`/api/tasks/${task.id}/complete`)
       .then(() => {
         orgView((prev) => {
-          const taskCompleted = prev.active.find((ele) => {
+        console.log('does this ever run?')  
+        const taskCompleted = prev.active.find((ele) => {
             return ele.id === task.id;
           });
           return {

@@ -40,7 +40,7 @@ export default function TaskInfo() {
     end_date: null,
     spots: null,
     image_url: null,
-    organization_id: null,
+    organization_id: 1,
     location: null,
     signups: [],
   });
