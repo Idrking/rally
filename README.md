@@ -1,12 +1,22 @@
 # Rally App
-Volunteer management app for de-centralized non-profits.
 
-## Dependencies
-* [Twilio](https://github.com/twilio)
-* [Material UI](https://github.com/mui-org)
-* [Dayjs](https://github.com/iamkun/dayjs)
-* [Node-sass](https://github.com/sass/node-sass) ^4.14.1
-* [Axios](https://github.com/axios)
+
+`Rally: Building Communities Through Volunteering`
+
+
+Rall is a volunteer management app for de-centralized non-profits.
+
+Users are able to join Organizations and volunteer by filling out the Organzation's apllication forms. 
+
+If users are owners they can also manage their volunteers. 
+
+
+Rally is a quick and easy application that anyone can pick up and use.
+
+
+```ScreenShots & GIFS```
+```
+```
 
 ## Running the project
 
@@ -16,6 +26,16 @@ In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to ins
 In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
 
 In the browser, you can click on the button and see the data get loaded.
+
+
+## Dependencies
+* [Twilio](https://github.com/twilio)
+* [Material UI](https://github.com/mui-org)
+* [Dayjs](https://github.com/iamkun/dayjs)
+* [Node-sass](https://github.com/sass/node-sass) ^4.14.1
+* [Axios](https://github.com/axios)
+
+
 
 
 ## Contributors
