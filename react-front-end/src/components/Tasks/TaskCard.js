@@ -52,7 +52,8 @@ export default function TaskCard({ task, orgView, signups }) {
     >
       <Link to={`/tasks/${task.id}`}>
         <CardActionArea className={classes.cardgrid}>
-          <CardContent className={classes.cardflex}>
+          <div className={classes.cardflex}>
+          <CardContent >
             <Typography
               className={classes.title}
               gutterBottom
@@ -77,23 +78,22 @@ export default function TaskCard({ task, orgView, signups }) {
                 // COUNTER HERE!
                 badgeContent={`${signups}/${task.spots}`}
                 color="secondary"
-                style={{marginRight: 10}}
+                style={{ marginRight: 10 }}
               >
                 <People color="primary" />
               </Badge>
             </section>
 
-            {orgView && (
-              <Button
-                size="small"
-                color="primary"
-                onClick={markComplete}
-              >
+
+          </CardContent>
+          <CardActions>
+          {orgView && (
+              <Button size="small" color="primary" onClick={markComplete}>
                 Mark Completed
               </Button>
             )}
-          </CardContent>
-
+            </CardActions>
+          </div>
           <CardMedia
             className={classes.media}
             image={

@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const organizationsCardsStyles = makeStyles({
   root: {
-    height: "140px",
+    height: "144px",
   },
   root2: {
     height: "160px",
@@ -14,8 +14,8 @@ const organizationsCardsStyles = makeStyles({
   cardflex: {
     display: "flex",
     flexDirection: "column",
-    paddingLeft: "25px",
-    gap: 10,
+    paddingLeft: "6 px",
+    gap: 0,
   },
   cardorggrid: {
     display: "grid",
@@ -34,7 +34,7 @@ const organizationsCardsStyles = makeStyles({
     justifyContent: "space-between",
   },
   media: {
-    height: "140px",
+    height: "144px",
     opacity: "0.9"
   },
   media2: {
