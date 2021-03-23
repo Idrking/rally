@@ -103,19 +103,20 @@ export default function TaskTabs({ tasks, signups }) {
           aria-label="ant example"
           centered
         >
-          <AntTab label="Available" value="one" {...a11yProps("one")}></AntTab>
-          <AntTab label="Upcoming" value="two" {...a11yProps("two")} />
+          <AntTab label="Upcoming" value="one" {...a11yProps("one")}></AntTab>
+          <AntTab label="Available" value="two" {...a11yProps("two")} />
           <AntTab label="Completed" value="three" {...a11yProps("three")} />
         </AntTabs>
         
       </div>
       <TabPanel value={value} index="one">
+        <Tasks signups={signups} tasks={tasks.active} />
+      </TabPanel>
+      
+      <TabPanel value={value} index="two">
         <Tasks signups={signups} tasks={tasks.available} />
       </TabPanel>
 
-      <TabPanel value={value} index="two">
-        <Tasks signups={signups} tasks={tasks.active} />
-      </TabPanel>
 
       <TabPanel value={value} index="three">
         <Tasks signups={signups} tasks={tasks.completed} />
