@@ -6,7 +6,8 @@ const volunteerCardStyles = makeStyles((theme) => ({
     marginTop: "100",
     marginBottom: 30,
     display: "wrap",
-    boxShadow: "none"
+    boxShadow: "none",
+    minWidth: 0
   },
   media: {
     width: theme.spacing(12),
@@ -26,6 +27,10 @@ const volunteerCardStyles = makeStyles((theme) => ({
   },
   avatardiv: {
     margin: "auto"
+  },
+  listitemicon: {
+    minWidth: 0,
+    marginRight: 3
   }
 }));
 
