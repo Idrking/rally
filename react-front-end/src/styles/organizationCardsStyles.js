@@ -7,6 +7,7 @@ const organizationsCardsStyles = makeStyles({
 
   root2: {
     paddingTop: 2,
+
   },
   cardgrid: {
     display: "grid",
@@ -15,7 +16,7 @@ const organizationsCardsStyles = makeStyles({
   cardflex: {
     display: "flex",
     flexDirection: "column",
-    paddingLeft: "30px",
+    paddingLeft: "25px",
     gap: 10,
   },
   sectionflex: {

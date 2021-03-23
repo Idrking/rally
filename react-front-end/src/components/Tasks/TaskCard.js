@@ -51,10 +51,9 @@ export default function TaskCard({ task, orgView, signups }) {
       style={{ border: "none", boxShadow: "none" }}
     >
       <Link to={`/tasks/${task.id}`}>
-        
         <CardActionArea className={classes.cardgrid}>
           <CardContent className={classes.cardflex}>
-          <Typography
+            <Typography
               className={classes.title}
               gutterBottom
               variant="h3"
@@ -64,33 +63,35 @@ export default function TaskCard({ task, orgView, signups }) {
               {task.name}
             </Typography>
             <section className={classes.sectionflex}>
-
-            <Typography className={classes.date}>
+              <Typography className={classes.date}>
                 <b>{dayjs.tz(task.start_date).format("ddd MMM D, ")}</b>
-                {dayjs.tz(task.start_date).format("h:mm A")}
+                {dayjs.tz(task.start_date).format("h:mma")}
               </Typography>
-            <Badge
-              invisible={signups ? false : true}
-              overlap="circle"
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              // COUNTER HERE!
-              badgeContent={`${signups}/${task.spots}`}
-              color="secondary"
-            >
-              <People color="primary" />
- 
-            </Badge>
+              <Badge
+                invisible={signups ? false : true}
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                // COUNTER HERE!
+                badgeContent={`${signups}/${task.spots}`}
+                color="secondary"
+                style={{marginRight: 10}}
+              >
+                <People color="primary" />
+              </Badge>
             </section>
 
             {orgView && (
-              <Button size="small" color="primary" onClick={markComplete}>
+              <Button
+                size="small"
+                color="primary"
+                onClick={markComplete}
+              >
                 Mark Completed
               </Button>
             )}
-            
           </CardContent>
 
           <CardMedia
