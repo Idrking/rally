@@ -11,7 +11,9 @@ module.exports = (db, updateSignups) => {
   
   router.get("/:userid/available", (req, res) => {
     db.query(signupQueries.available, [req.params.userid])
-    .then(tasks => res.json(tasks.rows))
+    .then(tasks => {
+      res.json(tasks.rows)
+    })
     .catch(err => {
       console.error(err);
       res.status(500).send(deliverError(err.message))
@@ -33,7 +35,9 @@ module.exports = (db, updateSignups) => {
   // Gets all tasks a user is signed up for
   router.get("/:userid", (req, res) => {
     db.query(signupQueries.tasks, [req.params.userid])
-    .then(tasks => res.json(tasks.rows))
+    .then(tasks => {
+      res.json(tasks.rows)
+    })
     .catch(err => {
       console.error(err)
       res.status(500).send(deliverError(err.message))})

@@ -39,7 +39,6 @@ module.exports = (db) => {
   router.get('/:userid/signups/user', (req, res) => {
     db.query(taskQueries.countAllUser, [req.params.userid])
     .then(count => {
-      console.log(count)
       res.status(200).json(count.rows)
     })
     .catch(err => console.error(err));
