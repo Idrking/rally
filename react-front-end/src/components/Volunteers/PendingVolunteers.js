@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import VolunteerCard from "./VolunteerCard";
-import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import VolunteerContext from "../../contexts/VolunteerContext";
