@@ -13,6 +13,7 @@ import "../../styles/HeaderUser.css";
 import { Sort } from "@material-ui/icons";
 import MyOrganizations from "./MyOrganizations";
 import OrganizationsJoined from "./OrganizationsJoined";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,13 +66,15 @@ export default function Header() {
           </IconButton>
 
           <div>
-            <Avatar
-              src={userState.profile_image}
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              style={{ border: "3px solid #B6C7C3" }}
-            />
+            <Link to={`/users/${userState.id}`}>
+              <Avatar
+                src={userState.profile_image}
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                style={{ border: "3px solid #B6C7C3" }}
+              />
+            </Link>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
