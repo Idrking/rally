@@ -28,7 +28,8 @@ module.exports =  {
     SELECT tasks.*
     FROM tasks
     WHERE organization_id = $1
-    AND end_date > CURRENT_DATE;
+    AND end_date > CURRENT_DATE
+    ORDER BY start_date;
   `,
 
   //05_app_config.sql

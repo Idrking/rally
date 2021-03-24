@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import {
   Card,
@@ -32,6 +32,7 @@ export default function TaskInfo() {
   const classes = InfoStyles();
   const [showJoin, setShowJoin] = useState(true);
   const [org, setOrg] = useState({});
+  const history = useHistory();
 
   const [task, setTasks] = useState({
     name: null,
@@ -102,11 +103,9 @@ export default function TaskInfo() {
 
   return (
     <div className={classes.root}>
-      <Link to={`/users/${userState.id}`}>
-        <IconButton className={classes.backButton}>
+        <IconButton className={classes.backButton} onClick={() => history.goBack() }>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
-      </Link>
       <img src={task.image_url} className={classes.bkgImage}></img>
 
       <Card className={classes.InfoCard}>

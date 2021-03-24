@@ -28,7 +28,6 @@ export default function TaskCard({ task, orgView, signups }) {
     Axios.patch(`/api/tasks/${task.id}/complete`)
       .then(() => {
         orgView((prev) => {
-        console.log('does this ever run?')  
         const taskCompleted = prev.active.find((ele) => {
             return ele.id === task.id;
           });

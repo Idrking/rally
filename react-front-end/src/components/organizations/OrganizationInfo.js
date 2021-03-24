@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import FormModal from "../helperComponents/FormModal";
 import ApplicationForm from "./ApplicationForm";
@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function OrganizationInfo() {
   const { userState } = useContext(UserContext);
+  const history = useHistory();
   const { id } = useParams();
   const classes = InfoStyles();
   const buttonClasses = useStyles();
@@ -75,11 +76,9 @@ export default function OrganizationInfo() {
 
   return (
     <div className={classes.root2}>
-      <Link to={`/users/${userState.id}`}>
-        <IconButton className={classes.backButton}>
+        <IconButton className={classes.backButton} onClick={() => history.goBack()}>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
-      </Link>
       <img src={organization.info.image_url} className={classes.bkgImage} />
       <Card className={classes.InfoCard2}>
         <CardContent className={classes.CardContent}>

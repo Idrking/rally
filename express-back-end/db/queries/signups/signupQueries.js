@@ -18,7 +18,8 @@ module.exports = {
     SELECT tasks.*
     FROM tasks
     JOIN signups ON tasks.id = task_id
-    WHERE approved_user_id = $1 AND complete = false;
+    WHERE approved_user_id = $1 AND complete = false
+    ORDER BY start_date;
   `,
 
   //04_available.sql
@@ -27,7 +28,8 @@ module.exports = {
     FROM tasks
     JOIN organizations ON organizations.id = tasks.organization_id
     JOIN approved_users ON approved_users.organization_id = organizations.id
-    WHERE approved_users.user_id = $1 and approved = 'true' AND complete = false;
+    WHERE approved_users.user_id = $1 and approved = 'true' AND complete = false
+    ORDER BY start_date;
   `,
 
   //05_history.sql
@@ -43,6 +45,7 @@ module.exports = {
     FROM tasks
     JOIN organizations ON organizations.id = tasks.organization_id
     JOIN approved_users ON approved_users.organization_id = organizations.id
-    WHERE approved_users.user_id = $1 AND approved = 'true' AND tasks.complete = true;
+    WHERE approved_users.user_id = $1 AND approved = 'true' AND tasks.complete = true
+    ORDER BY start_date;
   `
 };
