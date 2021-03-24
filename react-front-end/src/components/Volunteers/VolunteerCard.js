@@ -36,6 +36,7 @@ export default function VolunteerCard({ volunteer, pending }) {
         color="primary"
         startIcon={<EmojiPeopleIcon />}
         onClick={clickHandler}
+        style={{boxShadow: "none"}}
       >
         View application
       </Button>

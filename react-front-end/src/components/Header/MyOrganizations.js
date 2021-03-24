@@ -17,7 +17,7 @@ import SortIcon from "@material-ui/icons/Sort";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    boxShadow: "none"
+    boxShadow: "none",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -72,7 +72,6 @@ export default function MyOrganizations() {
             </MenuItem>
           );
         })}
-                      <Divider></Divider>
         <MenuItem>
           <AddOrgButton FormComponent={NewOrgForm} />
         </MenuItem>
