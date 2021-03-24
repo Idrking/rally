@@ -20,6 +20,7 @@ const logInStyles = makeStyles((theme) => ({
     fontSize: "1.4rem",
     fontWeight: 300,
     color: "white",
+    boxShadow: "none"
   },
 
   noAccount: {
