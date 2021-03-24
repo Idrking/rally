@@ -7,11 +7,8 @@ const logInStyles = makeStyles((theme) => ({
     borderColor: "white",
   },
   textField: {
-    borderBottom: '2px solid white',
-    height: '6vh',
-    color: 'white',
-    marginTop: '2vh',
-    fontSize: '1.4rem'
+    // marginTop: '2vh',
+    // fontSize: '1.4rem'
   },
   form: {
     width: '100%', // Fix IE 11 issue.

@@ -27,11 +27,6 @@ const organizationsCardsStyles = makeStyles({
     gridTemplateRows: "2fr 1fr",
     padding: 0
   },
-  titleAndDate: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 20,
-  },
   sectionflex: {
     display: "flex",
     flexDirection: "row",
