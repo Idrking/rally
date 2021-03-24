@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { Container, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,15 +33,16 @@ export default function FormModal(props) {
   };
 
   const body = (
-    <div className={classes.paper}>
-      <h2 id="simple-modal-title">{props.details.task}</h2>
-      <p id="simple-modal-description">{props.details.description}</p>
+    <Container className={classes.paper}>
+      <Typography variant="h3" color="primary" gutterBottom id="simple-modal-title">{props.details.task}</Typography>
+      <Typography variant="body2" id="simple-modal-description">{props.details.description}</Typography>
       <props.FormComponent
         setOpen={setOpen}
         setConfigUpdated={props.stateChanger}
         data={props.data}
       />
-    </div>
+      <br/>
+    </Container>
   );
 
   return (

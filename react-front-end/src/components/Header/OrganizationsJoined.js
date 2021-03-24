@@ -1,10 +1,17 @@
-import React, {useState, useContext, useEffect} from 'react';
-import Axios from 'axios';
-import UserContext from '../../contexts/UserContext';
-import {  Button, Menu, MenuItem, Grow, makeStyles, Container} from '@material-ui/core';
+import React, { useState, useContext, useEffect } from "react";
+import Axios from "axios";
+import UserContext from "../../contexts/UserContext";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  Grow,
+  makeStyles,
+  Container,
+} from "@material-ui/core";
 import CompactOrgListItem from "./CompactOrgListItem";
-import { Link } from 'react-router-dom';
-import SearchIcon from '@material-ui/icons/Search';
+import { Link } from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +27,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 17,
   },
   menuLink: {
-    fontSize: 'inherit',
-    color: 'inherit',
-    textDecoration: 'none',
+    fontSize: "inherit",
+    color: "inherit",
+    textDecoration: "none",
     "&:hover": {
-      textDecoration: 'none'
-    }
-  }
+      textDecoration: "none",
+    },
+  },
 }));
 
 export default function OrganizationsJoined() {
@@ -37,8 +44,8 @@ export default function OrganizationsJoined() {
 
   useEffect(() => {
     if (userState.id) {
-        Axios.get(`/api/users/${userState.id}/organizations/`)
-        .then(org => setOrgs(org.data))
+      Axios.get(`/api/users/${userState.id}/organizations/`)
+        .then((org) => setOrgs(org.data))
         .catch((err) => console.error(err));
     }
   }, [userState]);
@@ -53,9 +60,9 @@ export default function OrganizationsJoined() {
 
   return (
     <div>
-       <MenuItem onClick={handleClick} className={classes.menuitem} >
-          My Organizations
-        </MenuItem>
+      <MenuItem onClick={handleClick} className={classes.menuitem}>
+        My Organizations
+      </MenuItem>
       <Menu
         id="my-organizations"
         anchorEl={anchorEl}
@@ -71,16 +78,20 @@ export default function OrganizationsJoined() {
             </MenuItem>
           );
         })}
-      <MenuItem
-        onClick={handleClose}
-        className={classes.menuitem}
-      >
-      <Button size="medium" type="button" variant="contained" color="primary" startIcon={<SearchIcon/>} style={{boxShadow: "none"}}>
-        <Link to="/organizations" className={classes.menuLink}>   
-        Find Organizations
-        </Link>
-      </Button>
-      </MenuItem>
+        <MenuItem onClick={handleClose} className={classes.menuitem}>
+          <Button
+            size="medium"
+            type="button"
+            variant="contained"
+            color="primary"
+            startIcon={<SearchIcon />}
+            style={{ boxShadow: "none", marginLeft: "10px" }}
+          >
+            <Link to="/organizations" className={classes.menuLink}>
+              Find Organizations
+            </Link>
+          </Button>
+        </MenuItem>
       </Menu>
     </div>
   );

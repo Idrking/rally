@@ -58,6 +58,7 @@ const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
           InputProps={{
             style: {
               fontSize: "18px",
+              color: '#CFCFCF'
             },
             endAdornment: (
               <InputAdornment position="end">
@@ -130,7 +131,6 @@ const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
       >
         Add a new question
       </Button>
-
       <Button
         type="submit"
         variant="contained"
