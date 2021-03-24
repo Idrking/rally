@@ -7,6 +7,7 @@ import {
   Grow,
   makeStyles,
   Typography,
+  Divider,
 } from "@material-ui/core";
 import CompactOrgListItem from "./CompactOrgListItem";
 import AddOrgButton from "./AddOrgButton";
@@ -16,6 +17,7 @@ import SortIcon from "@material-ui/icons/Sort";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    boxShadow: "none"
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -70,6 +72,7 @@ export default function MyOrganizations() {
             </MenuItem>
           );
         })}
+                      <Divider></Divider>
         <MenuItem>
           <AddOrgButton FormComponent={NewOrgForm} />
         </MenuItem>

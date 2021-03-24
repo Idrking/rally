@@ -5,8 +5,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import { TextField, Button, Typography } from '@material-ui/core';
 import Axios from 'axios';
 
-
-
 const ApplicationForm = ({ data }) => {
   const questions = data.application_config;
   const { userState } = useContext(UserContext);
@@ -27,6 +25,8 @@ const ApplicationForm = ({ data }) => {
       return { ...prev, [property]: value}
     })
   }
+
+
 
   //Generates a text input for each question in an organizations config file
   const generateInputs = (questions) => {
