@@ -12,7 +12,7 @@ import "../../styles/HeaderUser.css";
 import { Sort } from "@material-ui/icons";
 import MyOrganizations from "./MyOrganizations";
 import OrganizationsJoined from "./OrganizationsJoined";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const { userState } = useContext(UserContext);

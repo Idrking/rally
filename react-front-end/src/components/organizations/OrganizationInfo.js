@@ -1,4 +1,4 @@
-import React, { useState, useEffect,  } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import FormModal from "../helperComponents/FormModal";
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#FFA945",
     boxShadow: "none",
     fontSize: 18,
-    marginTop: 10
+    marginTop: 10,
   },
 }));
 
@@ -72,10 +72,17 @@ export default function OrganizationInfo() {
 
   return (
     <div className={classes.root2}>
-        <IconButton className={classes.backButton} onClick={() => history.goBack()}>
-          <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
-        </IconButton>
-      <img src={organization.info.image_url} className={classes.bkgImage} alt="background" />
+      <IconButton
+        className={classes.backButton}
+        onClick={() => history.goBack()}
+      >
+        <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
+      </IconButton>
+      <img
+        src={organization.info.image_url}
+        className={classes.bkgImage}
+        alt="background"
+      />
       <Card className={classes.InfoCard2}>
         <CardContent className={classes.CardContent}>
           <section>
@@ -135,11 +142,16 @@ export default function OrganizationInfo() {
                 </ListItemText>
               </ListItem>
 
-              <ListItem disableGutters button component="a" href={organization.info.website}>
+              <ListItem
+                disableGutters
+                button
+                component="a"
+                href={organization.info.website}
+              >
                 <ListItemIcon>
                   <LanguageSharp className={classes.infoIcons} />
                 </ListItemIcon>
-                <ListItemText >
+                <ListItemText>
                   <Typography className={classes.listItemText}>
                     {organization.info.website}
                   </Typography>

@@ -1,12 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Axios from "axios";
 import UserContext from "../../contexts/UserContext";
-import {
-  Menu,
-  MenuItem,
-  Grow,
-  makeStyles,
-} from "@material-ui/core";
+import { Menu, MenuItem, Grow, makeStyles } from "@material-ui/core";
 import CompactOrgListItem from "./CompactOrgListItem";
 import AddOrgButton from "./AddOrgButton";
 import NewOrgForm from "./NewOrgForm";

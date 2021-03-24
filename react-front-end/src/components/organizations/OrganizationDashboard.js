@@ -8,9 +8,9 @@ import { useParams, Link } from "react-router-dom";
 import OrgTaskTabs from "./OrgTaskTabs";
 import "../Users/Dashboard.scss";
 import PeopleIcon from "@material-ui/icons/People";
-import CreateIcon from '@material-ui/icons/Create';
+import CreateIcon from "@material-ui/icons/Create";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
-import OrgDashStyles from "../../styles/OrgDashStyles"
+import OrgDashStyles from "../../styles/OrgDashStyles";
 import makeModalButton from "../helperComponents/madeModalButton";
 
 export default function OrganizationDashboard() {
@@ -36,12 +36,12 @@ export default function OrganizationDashboard() {
   }, [organization]);
 
   useEffect(() => {
-    axios.get(`/api/tasks/${id}/signups/all`)
-    .then(counts => setSignups(counts.data))
-    .catch(err => console.error(err));
-  },[organization]);
+    axios
+      .get(`/api/tasks/${id}/signups/all`)
+      .then((counts) => setSignups(counts.data))
+      .catch((err) => console.error(err));
+  }, [organization]);
 
-  
   return (
     <div className={"backgrounduser"}>
       <section className={"dashboardsection"}>
@@ -59,7 +59,14 @@ export default function OrganizationDashboard() {
               task: "Create a Task",
               description: "Enter the details below",
             }}
-            ModalButton={onClick => makeModalButton('Create a Task', <FormatListBulletedIcon />, classes.createButton, onClick )}
+            ModalButton={(onClick) =>
+              makeModalButton(
+                "Create a Task",
+                <FormatListBulletedIcon />,
+                classes.createButton,
+                onClick
+              )
+            }
           >
             Create a Task
           </FormModal>
@@ -73,25 +80,31 @@ export default function OrganizationDashboard() {
                 "These are the questions potential volunteers will answer when applying to your organization",
             }}
             stateChanger={setConfigUpdated}
-            ModalButton={onClick => makeModalButton('Edit Application', <CreateIcon />, classes.editButton , onClick )}
+            ModalButton={(onClick) =>
+              makeModalButton(
+                "Edit Application",
+                <CreateIcon />,
+                classes.editButton,
+                onClick
+              )
+            }
           >
             <PeopleIcon /> {" Edit Application"}
           </FormModal>
-          
 
-          <Link
-            to={`/organizations/${id}/manage_volunteers`}>
+          <Link to={`/organizations/${id}/manage_volunteers`}>
             <Badge
               color="secondary"
               badgeContent={organization.pending}
               className={classes.badge}
             >
-              {makeModalButton('Manage Volunteers', <PeopleIcon />, classes.buttons)}
-
+              {makeModalButton(
+                "Manage Volunteers",
+                <PeopleIcon />,
+                classes.buttons
+              )}
             </Badge>
           </Link>
-
-
         </div>
       </section>
       <OrgTaskTabs orgView={setTasks} signups={signups} tasks={tasks} />

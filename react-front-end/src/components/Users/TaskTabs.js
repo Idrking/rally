@@ -9,7 +9,7 @@ import Box from "@material-ui/core/Box";
 const AntTabs = withStyles({
   root: {
     borderBottom: "1px solid #e8e8e8",
-    marginTop: 20
+    marginTop: 20,
   },
   indicator: {
     backgroundColor: "#FFA945",
@@ -71,11 +71,7 @@ export default function TaskTabs({ tasks, signups }) {
         aria-labelledby={`wrapped-tab-${index}`}
         {...other}
       >
-        {value === index && (
-          <Box p={3}>
-            {children}
-          </Box>
-        )}
+        {value === index && <Box p={3}>{children}</Box>}
       </div>
     );
   }
@@ -92,7 +88,7 @@ export default function TaskTabs({ tasks, signups }) {
       "aria-controls": `wrapped-tabpanel-${index}`,
     };
   }
-  
+
   return (
     <div className={classes.root}>
       <div className={classes.demo1}>
@@ -106,16 +102,14 @@ export default function TaskTabs({ tasks, signups }) {
           <AntTab label="Available" value="two" {...a11yProps("two")} />
           <AntTab label="Completed" value="three" {...a11yProps("three")} />
         </AntTabs>
-        
       </div>
       <TabPanel value={value} index="one">
         <Tasks signups={signups} tasks={tasks.active} />
       </TabPanel>
-      
+
       <TabPanel value={value} index="two">
         <Tasks signups={signups} tasks={tasks.available} />
       </TabPanel>
-
 
       <TabPanel value={value} index="three">
         <Tasks signups={signups} tasks={tasks.completed} />

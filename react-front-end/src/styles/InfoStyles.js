@@ -96,11 +96,11 @@ const InfoStyles = makeStyles({
   listItemText: {
     fontSize: 14,
     fontWeight: "normal",
-    color: "#787878"
+    color: "#787878",
   },
   buttonApply: {
-    padding: 20
-  }
+    padding: 20,
+  },
 });
 
 export default InfoStyles;

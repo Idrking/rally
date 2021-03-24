@@ -56,9 +56,10 @@ export default function TaskInfo() {
   }, [id]);
 
   useEffect(() => {
-    axios.get(`/api/organizations/${task.organization_id}`)
-    .then(res => setOrg(res.data.info[0]))
-    .catch(err => console.error(err));
+    axios
+      .get(`/api/organizations/${task.organization_id}`)
+      .then((res) => setOrg(res.data.info[0]))
+      .catch((err) => console.error(err));
   }, [task]);
 
   useEffect(() => {
@@ -66,7 +67,9 @@ export default function TaskInfo() {
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "add") {
-        setTasks((prev) => { return { ...prev, signups: [...message.signup] }})
+        setTasks((prev) => {
+          return { ...prev, signups: [...message.signup] };
+        });
       }
 
       if (message.type === "delete") {
@@ -102,10 +105,17 @@ export default function TaskInfo() {
 
   return (
     <div className={classes.root}>
-        <IconButton className={classes.backButton} onClick={() => history.goBack() }>
-          <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
-        </IconButton>
-      <img src={task.image_url || org.image_url} className={classes.bkgImage} alt="Background" />
+      <IconButton
+        className={classes.backButton}
+        onClick={() => history.goBack()}
+      >
+        <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
+      </IconButton>
+      <img
+        src={task.image_url || org.image_url}
+        className={classes.bkgImage}
+        alt="Background"
+      />
 
       <Card className={classes.InfoCard}>
         <CardContent className={classes.CardContent}>

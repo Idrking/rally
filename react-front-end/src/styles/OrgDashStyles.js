@@ -16,7 +16,7 @@ const OrgDashStyles = makeStyles({
   badge: {
     width: "100%",
     fontSize: "30px",
-    color: "#fff"
+    color: "#fff",
   },
   buttonflex: {
     display: "flex",
@@ -45,8 +45,7 @@ const OrgDashStyles = makeStyles({
     borderRadius: "14px",
     fontSize: 18,
     textTransform: "capitalize",
-  }
-
+  },
 });
 
 export default OrgDashStyles;

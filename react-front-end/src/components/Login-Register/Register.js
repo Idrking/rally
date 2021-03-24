@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Link,
-  InputBase,
-} from "@material-ui/core";
+import { Button, Link, InputBase } from "@material-ui/core";
 import registerStyles from "../../styles/registerStyles";
 import "../Landing/Landing.scss";
 import Hero from "../Landing/Hero";
@@ -15,7 +11,6 @@ export default function Register() {
   return (
     <div className={"background-div"}>
       <div className={"title-div"}>
-
         <Hero />
 
         <form className={classes.form} noValidate>
@@ -66,7 +61,10 @@ export default function Register() {
             Register
           </Button>
           <Link href="/login/" variant="body1" className={classes.regQuestion}>
-            Already have an account? <span style={{color: "#6D7E73", fontWeight: 700}}>Sign in here.</span>
+            Already have an account?{" "}
+            <span style={{ color: "#6D7E73", fontWeight: 700 }}>
+              Sign in here.
+            </span>
           </Link>
         </form>
       </div>
