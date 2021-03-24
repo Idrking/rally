@@ -93,7 +93,7 @@ export default function OrganizationDashboard() {
 
         </div>
       </section>
-      <OrgTaskTabs signups={signups} tasks={tasks} />
+      <OrgTaskTabs orgView={setTasks} signups={signups} tasks={tasks} />
     </div>
   );
 }
