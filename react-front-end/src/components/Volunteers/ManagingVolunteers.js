@@ -36,16 +36,21 @@ export default function ManagingVolunteers() {
           <Link to={`/organizations/${id}/dashboard`}>
             <ArrowBackIos />
           </Link>
-          <Link to={`/organizations/${id}/pending_volunteers`}>
-            <Button
-              size="small"
+          <Badge
               color="secondary"
-              variant="contained"
-              style={{ boxShadow: "none"}}
+              badgeContent={volunteers.pending}
             >
-              Pending Volunteers
-            </Button>
-          </Link>
+            <Link to={`/organizations/${id}/pending_volunteers`}>
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                style={{ boxShadow: "none"}}
+              >
+                Pending Volunteers
+              </Button>
+            </Link>
+          </Badge>
         </Toolbar>
       </AppBar>
       <section className={"dashboardsection"}>
