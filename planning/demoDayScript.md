@@ -69,3 +69,15 @@ Turn over to Nat to talk about stretch activites
 
 >Thank you for taking the time to see our app Rally
 
+
+
+- User signs up for tasks
+- User dashboard
+- User submits application
+- Org dashboard
+- Org create a task
+- Notifications
+- Org views task page
+- Org deals pending volunteers
+- Org edits application
+

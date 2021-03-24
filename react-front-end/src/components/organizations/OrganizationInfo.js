@@ -98,7 +98,7 @@ export default function OrganizationInfo() {
             <Typography
               className={classes.cardSubtitle}
               gutterBottom
-              style={{ marginTop: 25 }}
+              style={{ marginTop: 15 }}
             >
               About Us
             </Typography>

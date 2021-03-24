@@ -47,15 +47,26 @@ const ApplicationForm = ({ data }) => {
           margin="normal"
           InputLabelProps={{
             style: {
+<<<<<<< HEAD
               fontSize: "18px",
               color: "#CFCFCF",
               height: 200,
+=======
+              fontSize: "15px",
+              color: '#CFCFCF',
+              // height: 20
+>>>>>>> master
             },
           }}
           InputProps={{
             style: {
+<<<<<<< HEAD
               fontSize: "18px",
               height: 70,
+=======
+              fontSize: "15px",
+              // height: 70
+>>>>>>> master
             },
           }}
         />
@@ -132,13 +143,18 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.name ? "Name can't be blank" : ""}
         InputLabelProps={{
           style: {
+<<<<<<< HEAD
             fontSize: "18px",
             color: "#CFCFCF",
+=======
+            fontSize: "15px",
+            color: '#CFCFCF'
+>>>>>>> master
           },
         }}
         InputProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
           },
         }}
       />
@@ -152,13 +168,18 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.phone ? "Phone can't be blank" : ""}
         InputLabelProps={{
           style: {
+<<<<<<< HEAD
             fontSize: "18px",
             color: "#CFCFCF",
+=======
+            fontSize: "15px",
+            color: '#CFCFCF'
+>>>>>>> master
           },
         }}
         InputProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
           },
         }}
       />
@@ -172,13 +193,18 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.email ? "Email can't be blank" : ""}
         InputLabelProps={{
           style: {
+<<<<<<< HEAD
             fontSize: "18px",
             color: "#CFCFCF",
+=======
+            fontSize: "15px",
+            color: '#CFCFCF'
+>>>>>>> master
           },
         }}
         InputProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
           },
         }}
       />
