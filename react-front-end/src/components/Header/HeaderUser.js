@@ -5,7 +5,6 @@ import {
   IconButton,
   MenuItem,
   Menu,
-  makeStyles,
   Avatar,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
@@ -13,34 +12,10 @@ import "../../styles/HeaderUser.css";
 import { Sort } from "@material-ui/icons";
 import MyOrganizations from "./MyOrganizations";
 import OrganizationsJoined from "./OrganizationsJoined";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  menuitem: {
-    fontSize: 17,
-  },
-  menuLink: {
-    fontSize: "inherit",
-    color: "inherit",
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-    },
-  },
-}));
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const { userState } = useContext(UserContext);
-
-  const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -65,13 +40,15 @@ export default function Header() {
           </IconButton>
 
           <div>
-            <Avatar
-              src={userState.profile_image}
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              style={{ border: "3px solid #B6C7C3" }}
-            />
+            <Link to={`/users/${userState.id}`}>
+              <Avatar
+                src={userState.profile_image}
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                style={{ border: "3px solid #B6C7C3" }}
+              />
+            </Link>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}

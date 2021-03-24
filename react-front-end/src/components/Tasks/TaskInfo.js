@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import {
   Card,
@@ -22,7 +22,6 @@ import DateRangeIcon from "@material-ui/icons/DateRange";
 import dayjs from "dayjs";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
@@ -106,7 +105,7 @@ export default function TaskInfo() {
         <IconButton className={classes.backButton} onClick={() => history.goBack() }>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
-      <img src={task.image_url} className={classes.bkgImage}></img>
+      <img src={task.image_url} className={classes.bkgImage} alt="Background"></img>
 
       <Card className={classes.InfoCard}>
         <CardContent className={classes.CardContent}>

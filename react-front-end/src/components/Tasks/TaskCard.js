@@ -9,14 +9,13 @@ import {
   CardContent,
   Button,
   Typography,
-  CardActionArea,
   CardMedia,
 } from "@material-ui/core";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import { Link } from "react-router-dom";
 import { People } from "@material-ui/icons/";
 import Axios from "axios";
-import TaskInfo from "./TaskInfo";
+
 
 //dayjs config
 dayjs.extend(utc);

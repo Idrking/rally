@@ -2,10 +2,8 @@ import React from "react";
 import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import {
   CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
   Card,
 } from "@material-ui/core";
