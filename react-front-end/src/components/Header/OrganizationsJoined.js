@@ -1,13 +1,10 @@
 import React, {useState, useContext, useEffect} from 'react';
 import Axios from 'axios';
 import UserContext from '../../contexts/UserContext';
-import {  Button, Menu, MenuItem, Grow, makeStyles} from '@material-ui/core';
+import {  Button, Menu, MenuItem, Grow, makeStyles, Container} from '@material-ui/core';
 import CompactOrgListItem from "./CompactOrgListItem";
 import { Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +52,7 @@ export default function OrganizationsJoined() {
   };
 
   return (
-    <div>
+    <Container>
        <MenuItem onClick={handleClick} className={classes.menuitem} >
           My Organizations
         </MenuItem>
@@ -85,6 +82,6 @@ export default function OrganizationsJoined() {
       </Button>
       </MenuItem>
       </Menu>
-    </div>
+    </Container>
   );
 }
