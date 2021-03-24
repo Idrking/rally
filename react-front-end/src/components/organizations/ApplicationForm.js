@@ -26,8 +26,6 @@ const ApplicationForm = ({ data }) => {
     })
   }
 
-
-
   //Generates a text input for each question in an organizations config file
   const generateInputs = (questions) => {
     const inputArray = [];
@@ -39,9 +37,21 @@ const ApplicationForm = ({ data }) => {
           label={`${questions[question]}`}
           value={formDetails[question]}
           multiline
-          InputLabelProps={{shrink: true}}
           onChange={event => updateDetails(event.target.value, question)}
           margin="normal"
+          InputLabelProps={{
+            style: {
+              fontSize: "18px",
+              color: '#CFCFCF',
+              height: 200
+            },
+          }}
+          InputProps={{
+            style: {
+              fontSize: "18px",
+              height: 70
+            },
+          }}
         />
       )
     }
@@ -103,8 +113,13 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.name ? "Name can't be blank" : ''}
         InputLabelProps={{
           style: {
-            fontSize: '1.4rem',
+            fontSize: "18px",
             color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
           },
         }}
       />
@@ -118,8 +133,13 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.phone ? "Phone can't be blank" : ''}
         InputLabelProps={{
           style: {
-            fontSize: '1.4rem',
+            fontSize: "18px",
             color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
           },
         }}
       />
@@ -133,8 +153,13 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.email ? "Email can't be blank" : ''}
         InputLabelProps={{
           style: {
-            fontSize: '1.4rem',
+            fontSize: "18px",
             color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
           },
         }}
       />

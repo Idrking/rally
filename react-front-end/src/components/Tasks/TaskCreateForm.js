@@ -95,6 +95,17 @@ const TaskCreateForm = ({ data }) => {
         margin="normal"
         error={taskDetails.errors.name ? true : false }
         helperText={taskDetails.errors.name ? "Name can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: "20px",
+            color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
+          },
+        }}
       />
        <TextField 
         id="description"
@@ -105,6 +116,17 @@ const TaskCreateForm = ({ data }) => {
         margin="normal"
         error={taskDetails.errors.description ? true : false }
         helperText={taskDetails.errors.description ? "Description can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: "20px",
+            color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
+          },
+        }}
       />
       <TextField 
         id="location"
@@ -116,6 +138,17 @@ const TaskCreateForm = ({ data }) => {
         margin="normal"
         error={taskDetails.errors.location ? true : false }
         helperText={taskDetails.errors.location ? "Location can't be blank" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: "20px",
+            color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
+          },
+        }}
       />
        <TextField 
         id="start_date"
@@ -152,6 +185,17 @@ const TaskCreateForm = ({ data }) => {
         margin="normal"
         error={taskDetails.errors.spots ? true : false }
         helperText={taskDetails.errors.spots ? "Minimum 1 volunteer" : ''}
+        InputLabelProps={{
+          style: {
+            fontSize: "20px",
+            color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
+          },
+        }}
       />
       <TextField 
         id="image_url"
@@ -161,6 +205,17 @@ const TaskCreateForm = ({ data }) => {
           updateDetails(event.target.value, 'image_url')
         }}
         margin="normal"
+        InputLabelProps={{
+          style: {
+            fontSize: "20px",
+            color: '#CFCFCF'
+          },
+        }}
+        InputProps={{
+          style: {
+            fontSize: "18px",
+          },
+        }}
       />
       <Button type="submit" variant="contained" color="primary" onClick={validate}>
         Create Task
