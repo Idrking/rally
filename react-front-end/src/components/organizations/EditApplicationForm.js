@@ -10,8 +10,7 @@ import {
   InputAdornment,
 } from "@material-ui/core";
 import Axios from "axios";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import {AddCircle, DeleteForever} from "@material-ui/icons/";
 
 const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
   const questions = data;
@@ -63,7 +62,7 @@ const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={() => removeInput(question)}>
-                  <DeleteForeverIcon />
+                  <DeleteForever />
                 </IconButton>
               </InputAdornment>
             ),
@@ -124,7 +123,7 @@ const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
 
       <Button
         style={{ marginBottom: "20px", marginTop: "20px", boxShadow: "none" }}
-        startIcon={<AddCircleIcon />}
+        startIcon={<AddCircle />}
         variant="contained"
         color="primary"
         onClick={addBlankInput}
