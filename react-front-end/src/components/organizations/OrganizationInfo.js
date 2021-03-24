@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect,  } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import FormModal from "../helperComponents/FormModal";
 import ApplicationForm from "./ApplicationForm";
-import UserContext from "../../contexts/UserContext";
-import organizationsCardsStyles from "../../styles/organizationCardsStyles";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import makeModalButton from "../helperComponents/madeModalButton";
 import { makeStyles } from "@material-ui/core";
 import {
-  CardActions,
   CardContent,
   IconButton,
   Typography,
@@ -41,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function OrganizationInfo() {
-  const { userState } = useContext(UserContext);
   const history = useHistory();
   const { id } = useParams();
   const classes = InfoStyles();
@@ -79,7 +75,7 @@ export default function OrganizationInfo() {
         <IconButton className={classes.backButton} onClick={() => history.goBack()}>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
-      <img src={organization.info.image_url} className={classes.bkgImage} />
+      <img src={organization.info.image_url} className={classes.bkgImage} alt="background" />
       <Card className={classes.InfoCard2}>
         <CardContent className={classes.CardContent}>
           <section>

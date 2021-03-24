@@ -3,11 +3,10 @@ import VolunteerCard from "./VolunteerCard";
 import { Button, Typography, Badge, AppBar, Toolbar } from "@material-ui/core";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import OrgDashStyles from "../../styles/OrgDashStyles";
 import { ArrowBackIos } from "@material-ui/icons";
 
 export default function ManagingVolunteers() {
-  const classes = OrgDashStyles();
+  // const classes = OrgDashStyles();
   const { id } = useParams();
   const [volunteers, setVolunteers] = useState({ volunteers: [], pending: 0 });
   useEffect(() => {

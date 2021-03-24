@@ -6,13 +6,10 @@ import {
   MenuItem,
   Grow,
   makeStyles,
-  Typography,
-  Divider,
 } from "@material-ui/core";
 import CompactOrgListItem from "./CompactOrgListItem";
 import AddOrgButton from "./AddOrgButton";
 import NewOrgForm from "./NewOrgForm";
-import SortIcon from "@material-ui/icons/Sort";
 
 const useStyles = makeStyles((theme) => ({
   root: {

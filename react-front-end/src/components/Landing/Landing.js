@@ -36,6 +36,7 @@ export default function Landing() {
       <img
         src="https://i.ibb.co/WvYkJGz/megaphone-png-img.png"
         className={"megaphone"}
+        alt="Rally Icon"
       ></img>
 
       {/* <Link to="/login/register">
