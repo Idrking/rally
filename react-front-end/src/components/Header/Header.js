@@ -22,7 +22,7 @@ export default function Header() {
         {userState.id && (
           <Link to={`/users/${userState.id}`}>
             <Avatar
-              src="https://source.unsplash.com/7IRwgbCsqN4/100x100"
+              src="https://source.unsplash.com/ICTKcvnXx_8/200x200"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
