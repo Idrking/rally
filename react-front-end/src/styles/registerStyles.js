@@ -26,6 +26,7 @@ const registerStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     fontSize: "1.4rem",
     fontWeight: 300,
+    boxShadow: "none"
   },
 
   regQuestion: {
