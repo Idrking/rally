@@ -43,7 +43,7 @@ export default function AddOrgModal(props) {
         variant="contained"
         color="primary"
         onClick={handleOpen}
-        style={{boxShadow: "none"}}
+        style={{boxShadow: "none", marginLeft: "10px"}}
         startIcon={<AddCircleIcon />}
       >
         Add a new Organization
