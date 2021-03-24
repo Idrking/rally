@@ -1,4 +1,4 @@
-import { Container, Typography, Avatar, Button } from '@material-ui/core';
+import { Container, Typography, Avatar, Button, Divider } from '@material-ui/core';
 import Axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
 import VolunteerContext from "../../contexts/VolunteerContext";
@@ -33,8 +33,10 @@ const VolunteerApplication = ({ data, modalClose }) => {
     for (const key in answers) {
       const slide = (
         <div key={key}> 
-          <Typography variant="h6" component="h6" color="primary">{answers[key].question.toUpperCase()}</Typography>
-          <Typography component="p" gutterBottom>{answers[key].answer}</Typography>
+          <Typography variant="h4" color="primary" gutterBottom>{answers[key].question.toUpperCase()}</Typography>
+          <Typography variant="body2" component="p" paragraph gutterBottom>{answers[key].answer}</Typography>
+          <Divider/>
+          <br/>
         </div>
       );
       layoutItems.push(slide);
@@ -66,7 +68,7 @@ const VolunteerApplication = ({ data, modalClose }) => {
     />
     {answers}
     {!application.confirm && <div className={buttonClasses.buttonContainer}>
-      <Button className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />} onClick={() => send('true')}>
+      <Button color="secondary" className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />} onClick={() => send('true')}>
         Accept
       </Button>
       <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>

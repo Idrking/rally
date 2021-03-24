@@ -14,7 +14,7 @@ const applicationStyles = makeStyles((theme) => ({
 
   buttonContainer: {
     display: "flex",
-    marginTop: "20px"
+    marginTop: "20px",
   },
 
   accept: {
@@ -22,9 +22,9 @@ const applicationStyles = makeStyles((theme) => ({
     margin: "auto",
     marginTop: "10px",
     fontWeight: 'bold',
-    padding: '0.5em',
-    color: theme.palette.base.main,
-    backgroundColor: theme.palette.accent.main,
+    padding: '0.6em',
+    color: "#fff",
+    backgroundColor: theme.palette.secondary.main,
     "&:hover": {
       color: theme.palette.accent.main,
       backgroundColor: theme.palette.base.main
@@ -36,8 +36,8 @@ const applicationStyles = makeStyles((theme) => ({
     margin: "auto",
     marginTop: "10px",
     fontWeight: 'bold',
-    padding: '0.5em',
-    color: theme.palette.base.main,
+    padding: '0.6em',
+    color: "#fff",
     backgroundColor: theme.palette.primary.main,
     "&:hover": {
       color: theme.palette.primary.main,
