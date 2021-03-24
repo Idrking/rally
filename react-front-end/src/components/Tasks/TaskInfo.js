@@ -105,7 +105,7 @@ export default function TaskInfo() {
         <IconButton className={classes.backButton} onClick={() => history.goBack() }>
           <ArrowBackIosIcon style={{ color: "white", fontSize: 30 }} />
         </IconButton>
-      <img src={task.image_url} className={classes.bkgImage} alt="Background"></img>
+      <img src={task.image_url || org.image_url} className={classes.bkgImage} alt="Background" />
 
       <Card className={classes.InfoCard}>
         <CardContent className={classes.CardContent}>
