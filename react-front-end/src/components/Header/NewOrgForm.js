@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { useHistory } from "react-router-dom"
 import FormGroup from '@material-ui/core/FormGroup';
-import { TextField, Button, Typography } from '@material-ui/core';
+import { TextField, Button, } from '@material-ui/core';
 import Axios from 'axios';
 import UserContext from "../../contexts/UserContext";
 
@@ -23,7 +23,6 @@ const NewOrgForm = ({ data }) => {
     errors: {}
 
   })
- 
 
   const updateDetails = (value, property) => {
     setNewOrg(prev => {

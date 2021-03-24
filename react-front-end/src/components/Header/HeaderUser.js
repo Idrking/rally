@@ -5,7 +5,6 @@ import {
   IconButton,
   MenuItem,
   Menu,
-  makeStyles,
   Avatar,
 } from "@material-ui/core";
 import UserContext from "../../contexts/UserContext";
@@ -14,33 +13,8 @@ import { Sort } from "@material-ui/icons";
 import MyOrganizations from "./MyOrganizations";
 import OrganizationsJoined from "./OrganizationsJoined";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  menuitem: {
-    fontSize: 17,
-  },
-  menuLink: {
-    fontSize: "inherit",
-    color: "inherit",
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "none",
-    },
-  },
-}));
-
 export default function Header() {
   const { userState } = useContext(UserContext);
-
-  const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
