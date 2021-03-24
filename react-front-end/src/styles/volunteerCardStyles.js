@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const volunteerCardStyles = makeStyles((theme) => ({
   root: {
@@ -7,17 +7,17 @@ const volunteerCardStyles = makeStyles((theme) => ({
     marginBottom: 30,
     display: "wrap",
     boxShadow: "none",
-    minWidth: 0
+    minWidth: 0,
   },
   media: {
     width: theme.spacing(12),
     height: theme.spacing(12),
   },
   email: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    verticalAlign: 'middle',
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    verticalAlign: "middle",
   },
   flex: {
     display: "grid",
@@ -26,12 +26,12 @@ const volunteerCardStyles = makeStyles((theme) => ({
     // paddingLeft: 20,
   },
   avatardiv: {
-    margin: "auto"
+    margin: "auto",
   },
   listitemicon: {
     minWidth: 0,
-    marginRight: 3
-  }
+    marginRight: 3,
+  },
 }));
 
 export default volunteerCardStyles;

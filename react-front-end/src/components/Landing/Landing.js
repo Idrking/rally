@@ -2,13 +2,11 @@ import React from "react";
 import Button from "@material-ui/core/button";
 import { Link } from "react-router-dom";
 import "./Landing.scss";
-import {ArrowRightAlt} from "@material-ui/icons";
+import { ArrowRightAlt } from "@material-ui/icons";
 import Hero from "./Hero";
 
 export default function Landing() {
   return (
-
-
     <div className={"background-div"}>
       <div className={"title-div"}>
         <Hero />
@@ -24,7 +22,7 @@ export default function Landing() {
               paddingTop: "0px",
               fontSize: "24px",
               textTransform: "capitalize",
-              fontWeight: 300
+              fontWeight: 300,
             }}
             className={"title-button"}
             endIcon={<ArrowRightAlt />}

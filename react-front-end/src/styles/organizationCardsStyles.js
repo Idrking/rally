@@ -20,12 +20,12 @@ const organizationsCardsStyles = makeStyles({
   cardorggrid: {
     // display: "grid",
     // gridTemplateRows: "1fr 1fr",
-    padding: "10px 16px"
+    padding: "10px 16px",
   },
   cardtaskgrid2: {
     display: "grid",
     gridTemplateRows: "2fr 1fr",
-    padding: 0
+    padding: 0,
   },
   sectionflex: {
     display: "flex",
@@ -34,7 +34,7 @@ const organizationsCardsStyles = makeStyles({
   },
   media: {
     height: "144px",
-    opacity: "0.9"
+    opacity: "0.9",
   },
   media2: {
     height: "160px",

@@ -34,14 +34,23 @@ export default function FormModal(props) {
 
   const body = (
     <Container className={classes.paper}>
-      <Typography variant="h3" color="primary" gutterBottom id="simple-modal-title">{props.details.task}</Typography>
-      <Typography variant="body2" id="simple-modal-description">{props.details.description}</Typography>
+      <Typography
+        variant="h3"
+        color="primary"
+        gutterBottom
+        id="simple-modal-title"
+      >
+        {props.details.task}
+      </Typography>
+      <Typography variant="body2" id="simple-modal-description">
+        {props.details.description}
+      </Typography>
       <props.FormComponent
         setOpen={setOpen}
         setConfigUpdated={props.stateChanger}
         data={props.data}
       />
-      <br/>
+      <br />
     </Container>
   );
 

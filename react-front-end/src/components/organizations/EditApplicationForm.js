@@ -10,7 +10,7 @@ import {
   InputAdornment,
 } from "@material-ui/core";
 import Axios from "axios";
-import {AddCircle, DeleteForever} from "@material-ui/icons/";
+import { AddCircle, DeleteForever } from "@material-ui/icons/";
 
 const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
   const questions = data;
@@ -52,13 +52,13 @@ const EditApplicationForm = ({ data, setConfigUpdated, setOpen }) => {
           InputLabelProps={{
             style: {
               fontSize: "18px",
-              color: '#CFCFCF'
+              color: "#CFCFCF",
             },
           }}
           InputProps={{
             style: {
               fontSize: "18px",
-              color: '#CFCFCF'
+              color: "#CFCFCF",
             },
             endAdornment: (
               <InputAdornment position="end">

@@ -25,5 +25,8 @@
     "pg-native": "^3.0.0",
     "twilio": "^3.57.0",
     "ws": "^7.4.4"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

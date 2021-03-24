@@ -29,7 +29,7 @@ export default function PendingVolunteers() {
           color: "#6D7E73",
           backgroundColor: "transparent",
           boxShadow: "none",
-          padding: 15
+          padding: 15,
         }}
       >
         <Toolbar>
@@ -42,7 +42,12 @@ export default function PendingVolunteers() {
         value={{ pendingVolunteers, setPendingVolunteers }}
       >
         <section className={"dashboardsection"}>
-          <Typography variant="h2" component="h2" gutterBottom style={{paddingBottom: 25}}>
+          <Typography
+            variant="h2"
+            component="h2"
+            gutterBottom
+            style={{ paddingBottom: 25 }}
+          >
             <b>Pending</b> Volunteers
           </Typography>
 

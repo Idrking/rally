@@ -1,9 +1,8 @@
-import React from 'react';
-import { Button } from '@material-ui/core'
+import React from "react";
+import { Button } from "@material-ui/core";
 
 const makeModalButton = (label, icon, classes, onClick) => {
   return (
-
     <Button
       type="submit"
       variant="contained"
@@ -15,9 +14,7 @@ const makeModalButton = (label, icon, classes, onClick) => {
     >
       {label}
     </Button>
-
   );
 };
 
 export default makeModalButton;
-

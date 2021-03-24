@@ -52,8 +52,8 @@ export default function LogIn() {
             className={classes.textField}
             InputLabelProps={{
               style: {
-                fontSize: '1.4rem',
-                color: '#CFCFCF'
+                fontSize: "1.4rem",
+                color: "#CFCFCF",
               },
             }}
           />
@@ -68,9 +68,9 @@ export default function LogIn() {
             className={classes.textField}
             InputLabelProps={{
               style: {
-                fontSize: '1.4rem',
-                color: '#CFCFCF',
-              }
+                fontSize: "1.4rem",
+                color: "#CFCFCF",
+              },
             }}
           />
 
@@ -89,7 +89,8 @@ export default function LogIn() {
             variant="body1"
             className={classes.regQuestion2}
           >
-            Don't have an account? <span style={{ color: "#6D7E73", fontWeight: 700 }}>
+            Don't have an account?{" "}
+            <span style={{ color: "#6D7E73", fontWeight: 700 }}>
               Register here.
             </span>
           </Link>

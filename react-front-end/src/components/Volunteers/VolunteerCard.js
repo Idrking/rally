@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   Card,
   CardContent,
@@ -7,15 +7,10 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import { 
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Badge,
-} from "@material-ui/core";
-import {Email} from '@material-ui/icons';
+import { ListItem, ListItemIcon, ListItemText, Badge } from "@material-ui/core";
+import { Email } from "@material-ui/icons";
 import volunteerCardStyles from "../../styles/volunteerCardStyles";
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import ContentModal from "../helperComponents/ContentModal";
 import VolunteerApplication from "../Volunteers/VolunteerApplication";
 
@@ -24,10 +19,11 @@ export default function VolunteerCard({ volunteer, pending }) {
   const classes = volunteerCardStyles();
   const [experience, setExperience] = useState(0);
   useEffect(() => {
-    axios.get(`/api/signup/${volunteer.id}/history`)
-    .then(res => setExperience(res.data.count))
-    .catch(err => console.error(err));
-  })
+    axios
+      .get(`/api/signup/${volunteer.id}/history`)
+      .then((res) => setExperience(res.data.count))
+      .catch((err) => console.error(err));
+  });
 
   const appFormButton = (clickHandler) => {
     return (
@@ -36,11 +32,12 @@ export default function VolunteerCard({ volunteer, pending }) {
         color="primary"
         startIcon={<EmojiPeopleIcon />}
         onClick={clickHandler}
-        style={{boxShadow: "none"}}
+        style={{ boxShadow: "none" }}
       >
         View application
       </Button>
-    )};
+    );
+  };
 
   return (
     <Card className={classes.root}>
@@ -79,15 +76,16 @@ export default function VolunteerCard({ volunteer, pending }) {
               </ListItemIcon>
               <ListItemText secondary={volunteer.email} />
             </ListItem>
-            {pending && <ContentModal 
-              data={volunteer}
-              FormComponent={VolunteerApplication}
-              buttonFunc={appFormButton}
-            />}
+            {pending && (
+              <ContentModal
+                data={volunteer}
+                FormComponent={VolunteerApplication}
+                buttonFunc={appFormButton}
+              />
+            )}
           </CardContent>
         </div>
       </div>
     </Card>
   );
 }
-

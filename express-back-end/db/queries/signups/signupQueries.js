@@ -1,20 +1,19 @@
 module.exports = {
-
   //01_signup.sql
-  signUp:`
+  signUp: `
     INSERT INTO signups (approved_user_id, task_id)
     VALUES ($1, $2)
     RETURNING *;
   `,
 
   //02_cancel.sql
-  cancel:`
+  cancel: `
     DELETE FROM signups
     WHERE approved_user_id = $1 AND task_id = $2;
   `,
 
   //03_tasks.sql
-  tasks:`
+  tasks: `
     SELECT tasks.*
     FROM tasks
     JOIN signups ON tasks.id = task_id
@@ -23,7 +22,7 @@ module.exports = {
   `,
 
   //04_available.sql
-  available:`
+  available: `
     SELECT tasks.*
     FROM tasks
     JOIN organizations ON organizations.id = tasks.organization_id
@@ -33,19 +32,19 @@ module.exports = {
   `,
 
   //05_history.sql
-  history:`
+  history: `
     SELECT COUNT(*)
     FROM signups
     WHERE approved_user_id = $1;
   `,
 
   //06_completed.sql
-  completed:`
+  completed: `
     SELECT tasks.*
     FROM tasks
     JOIN organizations ON organizations.id = tasks.organization_id
     JOIN approved_users ON approved_users.organization_id = organizations.id
     WHERE approved_users.user_id = $1 AND approved = 'true' AND tasks.complete = true
     ORDER BY start_date;
-  `
+  `,
 };

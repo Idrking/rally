@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 import { People } from "@material-ui/icons/";
 import Axios from "axios";
 
-
 //dayjs config
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -27,7 +26,7 @@ export default function TaskCard({ task, orgView, signups }) {
     Axios.patch(`/api/tasks/${task.id}/complete`)
       .then(() => {
         orgView((prev) => {
-        const taskCompleted = prev.active.find((ele) => {
+          const taskCompleted = prev.active.find((ele) => {
             return ele.id === task.id;
           });
           return {
@@ -96,7 +95,9 @@ export default function TaskCard({ task, orgView, signups }) {
         <CardMedia
           className={classes.media}
           image={
-            task.image_url ? task.image_url : "https://source.unsplash.com/collection/897/500x500"
+            task.image_url
+              ? task.image_url
+              : "https://source.unsplash.com/collection/897/500x500"
           }
         />
       </section>
