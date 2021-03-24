@@ -1,4 +1,3 @@
-
 //Accepts an object with keys: name, startDate, id, organization
 const formatMessage = (details) => {
   return `
@@ -6,7 +5,7 @@ const formatMessage = (details) => {
   ${details.name}
   Starting on: ${details.startDate}
   http://rally.com/tasks/${details.id}
-  `
+  `;
 };
 
-module.exports = { formatMessage }
+module.exports = { formatMessage };

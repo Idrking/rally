@@ -1,5 +1,4 @@
-
-const formatText = details => {
+const formatText = (details) => {
   return `
   Hello volunteer!
   A new task has been issued by ${details.organization}:
@@ -10,10 +9,10 @@ const formatText = details => {
 
   If you're available, or need more details, please visit
   http://rally.com/tasks/${details.id}
-  `
-}
+  `;
+};
 
-const formatHTML = details => {
+const formatHTML = (details) => {
   return `
   <h3>New Task</h3>
   <p> Hello volunteer! </p>
@@ -25,18 +24,17 @@ const formatHTML = details => {
   <p> If you're available, or need more details, please click below
   <br>
   <a href="http://rally.com/tasks/${details.id}"><button>Signup</button></a>
-  `
-}
+  `;
+};
 
-
-const formatEmailObject = details => {
+const formatEmailObject = (details) => {
   return {
     from: '"Rally" <notifications@rally.com>',
     to: "sally@examplevolunteer.com",
     subject: `New Task from ${details.organization}`,
     text: formatText(details),
-    html: formatHTML(details)
+    html: formatHTML(details),
   };
-}
+};
 
 module.exports = { formatEmailObject };
