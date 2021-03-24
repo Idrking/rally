@@ -44,7 +44,7 @@ const theme = createMuiTheme({
     },
     body2: {
       fontWeight: 300,
-      fontSize: "15px",
+      fontSize: "14px",
       color: "#787878"
     }
   }

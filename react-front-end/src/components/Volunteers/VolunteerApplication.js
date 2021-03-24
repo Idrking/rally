@@ -4,8 +4,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import VolunteerContext from "../../contexts/VolunteerContext";
 import { useParams } from 'react-router-dom';
 import applicationStyles from "../../styles/applicationStyles";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
+import {CheckCircle, Cancel} from '@material-ui/icons/';
+import { ArrowBackIos } from "@material-ui/icons";
 
 const VolunteerApplication = ({ data, modalClose }) => {
   const buttonClasses = applicationStyles();
@@ -68,21 +68,22 @@ const VolunteerApplication = ({ data, modalClose }) => {
     />
     {answers}
     {!application.confirm && <div className={buttonClasses.buttonContainer}>
-      <Button color="secondary" className={buttonClasses.accept} size="large" startIcon={<CheckCircleIcon />} onClick={() => send('true')}>
+      <Button color="secondary" className={buttonClasses.accept} size="large" startIcon={<CheckCircle />} onClick={() => send('true')}>
         Accept
       </Button>
-      <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>
+      <Button className={buttonClasses.reject} size="large" startIcon={<Cancel />} onClick={confirm}>
         Reject
       </Button>
     </div>}
-    {application.confirm && <Typography variant="h5" color="error">Are you sure you want to reject this applicant?</Typography>}
+    {application.confirm && <Typography variant="body1" style={{color: "#FF8845"}}>Are you sure you want to reject this applicant?</Typography>}
     {application.confirm && 
       <div className={buttonClasses.buttonContainer}>
-        <Button className={buttonClasses.reject} size="large" startIcon={<CheckCircleIcon />} onClick={() => send('false')}>
-          Confirm
+        <Button className={buttonClasses.back} size="large" startIcon={<ArrowBackIos />} onClick={confirm}>
+          Back
         </Button>
-        <Button className={buttonClasses.reject} size="large" startIcon={<CancelIcon />} onClick={confirm}>
-          Cancel
+
+        <Button className={buttonClasses.reject2} size="large" startIcon={<Cancel />} onClick={() => send('false')}>
+          Reject Volunteer
         </Button>
       </div>
     }

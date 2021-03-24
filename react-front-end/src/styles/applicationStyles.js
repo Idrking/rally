@@ -43,8 +43,36 @@ const applicationStyles = makeStyles((theme) => ({
       color: theme.palette.primary.main,
       backgroundColor: theme.palette.base.main
     }
-  }
+  },
 
+  back: {
+    maxWidth: 800,
+    margin: "auto",
+    marginTop: "10px",
+    fontWeight: 'bold',
+    padding: '0.6em',
+    color: "#C4C4C4",
+    // border: "2px solid #C4C4C4",
+    backgroundColor: "white",
+    "&:hover": {
+      color: theme.palette.accent.main,
+      backgroundColor: theme.palette.base.main
+    }
+  },
+
+  reject2: {
+    maxWidth: 800,
+    margin: "auto",
+    marginTop: "10px",
+    fontWeight: 'bold',
+    padding: '0.6em',
+    color: "white",
+    backgroundColor: "#2B2B2B",
+    "&:hover": {
+      color: theme.palette.accent.main,
+      backgroundColor: theme.palette.base.main
+    }
+  },
 }));
 
 export default applicationStyles;
