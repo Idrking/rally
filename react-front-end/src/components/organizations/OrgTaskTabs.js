@@ -115,7 +115,7 @@ export default function OrgTaskTabs({ tasks, signups, orgView }) {
       </TabPanel>
 
       <TabPanel value={value} index="two">
-        <Tasks orgView tasks={tasks.past} />
+        <Tasks tasks={tasks.past} />
       </TabPanel>
     </div>
   );
