@@ -6,7 +6,7 @@ CREATE TABLE tasks (
   start_date TIMESTAMP,
   end_date TIMESTAMP,
   spots INTEGER,
-  image_url VARCHAR(255) NOT NULL,
+  image_url VARCHAR(500) NOT NULL,
   organization_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
   location VARCHAR(255),
   complete BOOLEAN default false
