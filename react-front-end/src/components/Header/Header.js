@@ -22,11 +22,11 @@ export default function Header() {
         {userState.id && (
           <Link to={`/users/${userState.id}`}>
             <Avatar
-              src="https://i.ibb.co/2ssp8r7/2.jpg"
+              src="https://source.unsplash.com/7IRwgbCsqN4/100x100"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              style={{ border: "3px solid #B6C7C3", opacity: 0.8 }}
+              style={{ border: "3px solid #B6C7C3", opacity: 0.7 }}
             />
           </Link>
         )}
