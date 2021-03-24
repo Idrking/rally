@@ -44,14 +44,13 @@ const VolunteerApplication = ({ data, modalClose }) => {
     for (const key in answers) {
       const slide = (
         <div key={key}>
-          <Typography variant="h4" color="primary" gutterBottom>
-            {answers[key].question.toUpperCase()}
+          <Typography variant="body2" color="primary" gutterBottom>
+           <b>{answers[key].question.toUpperCase()}</b>
           </Typography>
           <Typography variant="body2" component="p" paragraph gutterBottom>
             {answers[key].answer}
           </Typography>
-          <Divider />
-          <br />
+          {/* <Divider /> */}
         </div>
       );
       layoutItems.push(slide);
@@ -105,8 +104,8 @@ const VolunteerApplication = ({ data, modalClose }) => {
         </div>
       )}
       {application.confirm && (
-        <Typography variant="body1" style={{ color: "#FF8845" }}>
-          Are you sure you want to reject this applicant?
+        <Typography variant="body2" style={{ color: "#FF8845" }}>
+          <b>Are you sure you want to reject this applicant?</b>
         </Typography>
       )}
       {application.confirm && (

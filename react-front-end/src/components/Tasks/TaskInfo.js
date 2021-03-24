@@ -125,16 +125,6 @@ export default function TaskInfo() {
             <Divider style={{ margin: "1vh 0" }} />
 
             <List>
-              {/* <ListItem>
-                <ListItemIcon>
-                  <DateRangeIcon className={classes.infoIcons} />
-                </ListItemIcon>
-                <ListItemText
-                  secondary={dayjs
-                    .tz(task.end_date)
-                    .format("ddd MMM D, h:mm A")}
-                />
-              </ListItem> */}
 
               <ListItem disableGutters dense>
                 <ListItemIcon>
@@ -144,8 +134,7 @@ export default function TaskInfo() {
                   <Typography className={classes.listItemText}>
                     {dayjs.tz(task.start_date).format("hh:mma, ddd, MMM D")}
                     <span style={{ color: "#CFCFCF", fontWeight: 300 }}>
-                      {" "}
-                      to{" "}
+                      {" - "}
                     </span>
                     {dayjs.tz(task.end_date).format("hh:mma, ddd, MMM D")}
                   </Typography>

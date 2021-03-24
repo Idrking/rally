@@ -41,15 +41,15 @@ const ApplicationForm = ({ data }) => {
           margin="normal"
           InputLabelProps={{
             style: {
-              fontSize: "18px",
+              fontSize: "15px",
               color: '#CFCFCF',
-              height: 200
+              // height: 20
             },
           }}
           InputProps={{
             style: {
-              fontSize: "18px",
-              height: 70
+              fontSize: "15px",
+              // height: 70
             },
           }}
         />
@@ -113,13 +113,13 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.name ? "Name can't be blank" : ''}
         InputLabelProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
             color: '#CFCFCF'
           },
         }}
         InputProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
           },
         }}
       />
@@ -133,13 +133,13 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.phone ? "Phone can't be blank" : ''}
         InputLabelProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
             color: '#CFCFCF'
           },
         }}
         InputProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
           },
         }}
       />
@@ -153,13 +153,13 @@ const ApplicationForm = ({ data }) => {
         helperText={formDetails.errors.email ? "Email can't be blank" : ''}
         InputLabelProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
             color: '#CFCFCF'
           },
         }}
         InputProps={{
           style: {
-            fontSize: "18px",
+            fontSize: "15px",
           },
         }}
       />
