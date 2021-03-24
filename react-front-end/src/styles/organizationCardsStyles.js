@@ -50,7 +50,7 @@ const organizationsCardsStyles = makeStyles({
   },
   date: {
     fontSize: "14px",
-    color: "#8E8E8E",
+    color: "#C4C4C4",
   },
 });
 

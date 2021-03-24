@@ -52,7 +52,7 @@ export default function OrganizationsJoined() {
   };
 
   return (
-    <Container>
+    <div>
        <MenuItem onClick={handleClick} className={classes.menuitem} >
           My Organizations
         </MenuItem>
@@ -82,6 +82,6 @@ export default function OrganizationsJoined() {
       </Button>
       </MenuItem>
       </Menu>
-    </Container>
+    </div>
   );
 }

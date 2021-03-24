@@ -29,7 +29,7 @@ const InfoStyles = makeStyles({
   InfoCard: {
     position: "relative",
     width: "100%",
-    height: "62vh",
+    height: "59vh",
     top: "30vh",
     margin: "auto 0",
     backgroundColor: "#F5F5F5",
@@ -89,7 +89,7 @@ const InfoStyles = makeStyles({
     position: "absolute",
     margin: "auto",
     zIndex: 1000,
-    bottom: "4vh",
+    bottom: "6vh",
     left: 0,
     right: 0,
     padding: 20,
