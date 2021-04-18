@@ -1,27 +1,30 @@
 # Rally App
 
 
-`Rally: Building Communities Through Volunteering`
+> Rally: Building Communities Through Volunteering
 
 
-Rall is a volunteer management app for de-centralized non-profits.
+Rally is a volunteer management app. It was built with de-centralized non-profit organizations in mind.
 
-Users are able to join Organizations and volunteer by filling out the Organization's application forms. 
-
-If users are owners they can also manage their volunteers. 
-
+With Rally, users are able to join organizations and volunteer by filling out the organization's application forms. Once members, they can browse through tasks: upcoming, active and completed.
+If users are owners they can also manage their volunteers, approve applications and create new task that all users in the organization will see in their user dashboards. 
 
 Rally is a quick and easy application that anyone can pick up and use.
 
 
-```Screenshots & GIFs```
+## Screenshots & GIFs
+
+
+### Landing, Login & Registration
 
 !["Landing-Page"](https://github.com/Idrking/rally/blob/master/docs/images/landing-min.png?raw=true)
 
-!["register"](https://github.com/Idrking/rally/blob/master/docs/images/register-min.png?raw=true)
 
 !["login"](https://github.com/Idrking/rally/blob/master/docs/images/login-min.png?raw=true)
 
+!["register"](https://github.com/Idrking/rally/blob/master/docs/images/register-min.png?raw=true)
+
+### User Dashboard
 
 !["user-dashboard"](https://github.com/Idrking/rally/blob/master/docs/images/user-dashboard.gif?raw=true)
 
@@ -29,27 +32,21 @@ Rally is a quick and easy application that anyone can pick up and use.
 
 !["signup-task"](https://github.com/Idrking/rally/blob/master/docs/images/task-signup.gif?raw=true)
 
-
+### Organizations Page
 
 !["discover-org-page"](https://github.com/Idrking/rally/blob/master/docs/images/discover-organizations-min.png?raw=true)
 
 !["org-info"](https://github.com/Idrking/rally/blob/master/docs/images/organization-info-min.png?raw=true)
 
+### Organization's Management Page
+
 ![org-dashboard](https://github.com/Idrking/rally/blob/master/docs/images/organization-dashboard-min.png?raw=true)
 
 !["mark-complete"](https://github.com/Idrking/rally/blob/master/docs/images/mark-complete.gif?raw=true)
 
-
 !["manage-pending-volunteers"](https://github.com/Idrking/rally/blob/master/docs/images/manage-pending-volunteers.gif?raw=true)
 
-
 !["pending-volunteers"](https://github.com/Idrking/rally/blob/master/docs/images/pending-volunteers-min.png?raw=true)
-
-
-
-
-
-
 
 ## Running the project
 
@@ -67,8 +64,6 @@ In the browser, you can click on the button and see the data get loaded.
 * [Dayjs](https://github.com/iamkun/dayjs)
 * [Node-sass](https://github.com/sass/node-sass) ^4.14.1
 * [Axios](https://github.com/axios)
-
-
 
 
 ## Contributors
